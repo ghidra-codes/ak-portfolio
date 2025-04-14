@@ -3,16 +3,17 @@
 	justify-content: space-between;
 	align-items: center;
 	padding: 1rem 2rem;
-	background-color: #e4e4e4;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	background-color: rgba(0, 0, 0, 0.2);
+	backdrop-filter: blur(10px);
 	position: sticky;
 	top: 0;
 	z-index: 10;
 
 	.logo-wrapper {
-		font-weight: 600;
-		font-size: 1.5rem;
-		color: #1a1a1a;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 20rem;
 	}
 
 	.navbar-links {
@@ -24,7 +25,6 @@
 
 			a {
 				font-size: 1.125rem;
-				color: #1a1a1a;
 				transition: color 0.2s ease;
 
 				&:hover {

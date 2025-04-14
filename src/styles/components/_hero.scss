@@ -1,0 +1,17 @@
+.hero {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	position: relative;
+}
+.hero-text {
+	display: inline-block;
+	white-space: nowrap;
+	position: relative;
+}
+
+.Typewriter {
+	display: inline;
+	position: absolut;
+}
