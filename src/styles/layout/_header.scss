@@ -1,0 +1,46 @@
+@use "../abstracts/variables" as *;
+
+header {
+	display: flex;
+	justify-content: space-between;
+
+	.home-content {
+		margin-left: 2rem;
+		margin-top: 3rem;
+		width: 50%;
+
+		.title {
+			color: $ivory;
+			font-size: 2rem;
+		}
+
+		.subtitle {
+			color: $bright-jet;
+			font-size: 1.25rem;
+		}
+
+		.Typewriter {
+			display: inline;
+		}
+	}
+
+	.hero-image-wrapper {
+		position: relative;
+		width: 30%;
+		text-align: center;
+		margin-right: 3rem;
+		margin-top: 1rem;
+
+		.hero-image {
+			border: 1px solid $maya-blue;
+		}
+
+		.grey-box {
+			position: absolute;
+			inset: 0;
+			transform: translate(15px, 10px);
+			background-color: $jet;
+			z-index: -1;
+		}
+	}
+}

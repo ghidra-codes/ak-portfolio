@@ -1,22 +1,21 @@
-import Typewriter from "typewriter-effect";
+import AboutPage from "./AboutPage";
+import ProjectsPage from "./ProjectsPage";
+import ContactPage from "./ContactPage";
+import Header from "../components/Header";
 
 export default function HomePage() {
 	return (
-		<header>
-			<section className="hero">
-				<h1 className="hero-text">
-					Hello my name is Alex, I do{" "}
-					<Typewriter
-						options={{
-							strings: ["websites", "design", "art", "apps"],
-							autoStart: true,
-							loop: true,
-							deleteSpeed: 50,
-							delay: 90,
-						}}
-					/>
-				</h1>
+		<>
+			<Header />
+			<section id="about">
+				<AboutPage />
 			</section>
-		</header>
+			<section id="projects">
+				<ProjectsPage />
+			</section>
+			<section id="contact">
+				<ContactPage />
+			</section>
+		</>
 	);
 }

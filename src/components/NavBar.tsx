@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import logo from "../assets/images/logo.png";
+import logo from "../assets/images/logo/logo.png";
 
-const NavBar = () => {
+export default function NavBar() {
 	return (
 		<nav className="navbar">
 			<div className="logo-wrapper">
@@ -24,6 +24,4 @@ const NavBar = () => {
 			</ul>
 		</nav>
 	);
-};
-
-export default NavBar;
+}
