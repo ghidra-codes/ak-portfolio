@@ -1,4 +1,3 @@
-import Typewriter from "typewriter-effect";
 import me from "../assets/images/me.jpg";
 
 export default function Header() {
@@ -6,16 +5,7 @@ export default function Header() {
 		<header>
 			<div className="home-content">
 				<h1 className="title">
-					Hello my name is Alex, I do{" "}
-					<Typewriter
-						options={{
-							strings: ["websites", "design", "art", "apps"],
-							autoStart: true,
-							loop: true,
-							deleteSpeed: 50,
-							delay: 90,
-						}}
-					/>
+					Hello my name is Alex, <br />I do web development.
 				</h1>
 				<h3 className="subtitle">
 					I’m a creative developer who loves crafting high-quality web experiences. My goal is always to build

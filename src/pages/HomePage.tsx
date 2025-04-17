@@ -7,15 +7,9 @@ export default function HomePage() {
 	return (
 		<>
 			<Header />
-			<section id="about">
-				<AboutPage />
-			</section>
-			<section id="projects">
-				<ProjectsPage />
-			</section>
-			<section id="contact">
-				<ContactPage />
-			</section>
+			<AboutPage />
+			<ProjectsPage />
+			<ContactPage />
 		</>
 	);
 }

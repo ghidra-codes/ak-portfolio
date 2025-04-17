@@ -26,7 +26,8 @@ header {
 
 	.hero-image-wrapper {
 		position: relative;
-		width: 30%;
+		width: 25rem;
+		height: fit-content;
 		text-align: center;
 		margin-right: 3rem;
 		margin-top: 1rem;
@@ -41,6 +42,19 @@ header {
 			transform: translate(15px, 10px);
 			background-color: $jet;
 			z-index: -1;
+		}
+	}
+}
+
+@media (max-width: 1200px) {
+	header {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		.home-content {
+			text-align: center;
+			width: 80%;
 		}
 	}
 }

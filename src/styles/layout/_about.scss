@@ -1,0 +1,21 @@
+@use "../abstracts/variables" as *;
+
+#about {
+	margin-top: 2rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 2rem;
+
+	div {
+		width: 40rem;
+		background-color: $honolulu-blue;
+		padding: 2rem;
+		border-radius: 5px;
+
+		h2 {
+			text-align: center;
+		}
+	}
+}
