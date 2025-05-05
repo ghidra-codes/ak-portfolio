@@ -15,7 +15,17 @@
 	.logo-wrapper {
 		display: flex;
 		align-items: center;
-		width: 25rem;
+		width: 20rem;
+		height: 3rem;
+		background-image: url("@/assets/images/logo/logo.png");
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position: center;
+
+		@media (max-width: 821px) {
+			background-image: url("@/assets/images/logo/just-logo.png");
+			width: 3rem;
+		}
 	}
 
 	.navbar-links {
@@ -34,11 +44,5 @@
 				}
 			}
 		}
-	}
-}
-
-@media (max-width: 821px) {
-	.logo-wrapper {
-		max-width: 5rem;
 	}
 }

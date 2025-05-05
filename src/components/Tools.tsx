@@ -5,10 +5,11 @@ import ts from "../assets/images/icons/ts.svg";
 import node from "../assets/images/icons/node-js.svg";
 import prisma from "../assets/images/icons/prisma.svg";
 import scss from "../assets/images/icons/scss.svg";
+import AnimateOnScroll from "./AnimateOnScroll";
 
 const Tools = () => {
 	return (
-		<div className="tools">
+		<AnimateOnScroll className="tools">
 			<h2>Frontend technologies I use</h2>
 			<div className="icon-wrapper">
 				<div className="icon-container">
@@ -40,7 +41,7 @@ const Tools = () => {
 					<p className="icon-label">Prisma</p>
 				</div>
 			</div>
-		</div>
+		</AnimateOnScroll>
 	);
 };
 
