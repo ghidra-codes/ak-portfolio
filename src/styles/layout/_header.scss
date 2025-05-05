@@ -1,14 +1,12 @@
 @use "../abstracts/variables" as *;
 
 header {
-	display: flex;
-	justify-content: space-between;
+	display: grid;
+	grid-template-columns: 2fr 1fr;
 	margin-top: 5rem;
 
 	.home-content {
-		margin-left: 2rem;
-		margin-top: 3rem;
-		width: 50%;
+		margin: 0 3rem;
 
 		.title {
 			color: $ivory;
@@ -19,19 +17,13 @@ header {
 			color: $bright-jet;
 			font-size: 1.25rem;
 		}
-
-		.Typewriter {
-			display: inline;
-		}
 	}
 
 	.hero-image-wrapper {
 		position: relative;
 		width: 25rem;
-		height: fit-content;
 		text-align: center;
-		margin-right: 3rem;
-		margin-top: 1rem;
+		margin: 0 3rem;
 
 		.hero-image {
 			border: 1px solid $maya-blue;
@@ -47,15 +39,20 @@ header {
 	}
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1130px) {
 	header {
+		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 
 		.home-content {
 			text-align: center;
-			width: 80%;
+		}
+
+		.hero-image-wrapper {
+			margin-top: 2rem;
+			width: 50%;
 		}
 	}
 }
