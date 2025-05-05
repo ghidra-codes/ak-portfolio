@@ -14,6 +14,9 @@ import tailwind from "../assets/images/icons/tailwind.svg";
 import AnimateOnScroll from "./AnimateOnScroll";
 import { useState } from "react";
 
+// TODO: Add a info text to the cursor when a icon is being hovered
+// TODO: Add databases to the tech stack
+
 const Tools = () => {
 	const [hoveredCategory, setHoverCategory] = useState<string | null>(null);
 
