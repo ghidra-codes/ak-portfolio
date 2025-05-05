@@ -12,74 +12,43 @@ import python from "../assets/images/icons/python.svg";
 import tailwind from "../assets/images/icons/tailwind.svg";
 
 import AnimateOnScroll from "./AnimateOnScroll";
+import { useState } from "react";
 
 const Tools = () => {
+	const [hoveredCategory, setHoverCategory] = useState<string | null>(null);
+
 	const techStack = [
 		{ name: "JavaScript", icon: js, category: "language" },
 		{ name: "TypeScript", icon: ts, category: "language" },
+		{ name: "Python", icon: python, category: "language" },
 		{ name: "React", icon: react, category: "frontend" },
 		{ name: "Tailwind", icon: tailwind, category: "frontend" },
 		{ name: "SCSS", icon: scss, category: "frontend" },
 		{ name: "Bootstrap", icon: bootstrap, category: "frontend" },
-		{ name: "WordPress", icon: wordpress, category: "platform" },
 		{ name: "Node.js", icon: node, category: "backend" },
 		{ name: "Express", icon: express, category: "backend" },
 		{ name: "Prisma", icon: prisma, category: "backend" },
-		{ name: "Git", icon: git, category: "tool" },
-		{ name: "Python", icon: python, category: "language" },
+		{ name: "WordPress", icon: wordpress, category: "tools & platforms" },
+		{ name: "Git", icon: git, category: "tools & platforms" },
 	];
+
 	return (
 		<AnimateOnScroll className="tools">
 			<h2>Technologies I’ve worked with</h2>
 			<div className="icon-wrapper">
-				<div className="icon-container">
-					<img src={js} alt="JavaScript icon" />
-					<p className="icon-label">JavaScript</p>
-				</div>
-				<div className="icon-container">
-					<img src={ts} alt="TypeScript icon" />
-					<p className="icon-label">TypeScript</p>
-				</div>
-				<div className="icon-container">
-					<img src={python} alt="Python icon" />
-					<p className="icon-label">Python</p>
-				</div>
-				<div className="icon-container">
-					<img src={react} alt="React icon" />
-					<p className="icon-label">React</p>
-				</div>
-				<div className="icon-container">
-					<img src={tailwind} alt="Prisma icon" />
-					<p className="icon-label">Tailwind</p>
-				</div>
-				<div className="icon-container">
-					<img src={scss} alt="Scss icon" />
-					<p className="icon-label">Scss</p>
-				</div>
-				<div className="icon-container">
-					<img src={bootstrap} alt="Bootstrap icon" />
-					<p className="icon-label">Bootstrap</p>
-				</div>
-				<div className="icon-container">
-					<img src={wordpress} alt="Wordpress icon" />
-					<p className="icon-label">WordPress</p>
-				</div>
-				<div className="icon-container">
-					<img src={node} alt="Node.js icon" />
-					<p className="icon-label">Node.js</p>
-				</div>
-				<div className="icon-container">
-					<img src={express} alt="Wordpress icon" />
-					<p className="icon-label">Express</p>
-				</div>
-				<div className="icon-container">
-					<img src={prisma} alt="Prisma icon" />
-					<p className="icon-label">Prisma</p>
-				</div>
-				<div className="icon-container">
-					<img src={git} alt="Git icon" />
-					<p className="icon-label">Git</p>
-				</div>
+				{techStack.map(({ name, icon, category }) => (
+					<div
+						key={name}
+						className={`icon-container ${
+							hoveredCategory === null || hoveredCategory === category ? "highlight" : "dimmed"
+						}`}
+						onMouseEnter={() => setHoverCategory(category)}
+						onMouseLeave={() => setHoverCategory(null)}
+					>
+						<img src={icon} alt={`${name} icon`} />
+						<p className="icon-label">{name}</p>
+					</div>
+				))}
 			</div>
 		</AnimateOnScroll>
 	);
