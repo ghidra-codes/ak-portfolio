@@ -28,6 +28,11 @@ const Tools = () => {
 	const handleMouseEnter = (info: string) => setHoveredInfo(info);
 	const handleMouseLeave = () => setHoveredInfo(null);
 
+	const handleCategoryClick = (category: string) => {
+		setHoverCategory(category);
+		setTimeout(() => setHoverCategory(null), 2500); // 2.5 seconds
+	};
+
 	const techStack = [
 		{ name: "JavaScript", icon: js, category: "language" },
 		{ name: "TypeScript", icon: ts, category: "language" },
@@ -64,6 +69,7 @@ const Tools = () => {
 							handleMouseLeave();
 						}}
 						// Add onClick event to highlight category
+						onClick={() => handleCategoryClick(category)}
 					>
 						<img src={icon} alt={`${name} icon`} />
 						<p className={`icon-label ${hoveredCategory === category ? "highlight-label" : ""}`}>{name}</p>
