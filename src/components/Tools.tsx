@@ -63,6 +63,7 @@ const Tools = () => {
 							setHoverCategory(null);
 							handleMouseLeave();
 						}}
+						// Add onClick event to highlight category
 					>
 						<img src={icon} alt={`${name} icon`} />
 						<p className={`icon-label ${hoveredCategory === category ? "highlight-label" : ""}`}>{name}</p>
