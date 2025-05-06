@@ -14,13 +14,19 @@ import mongodb from "@/assets/images/icons/mongodb.svg";
 import mysql from "@/assets/images/icons/mysql.svg";
 
 import AnimateOnScroll from "./AnimateOnScroll";
-import { useState } from "react";
+import React, { useState } from "react";
 
 // TODO: Add a info text to the cursor when a icon is being hovered
 // TODO: Add databases to the tech stack
 
 const Tools = () => {
 	const [hoveredCategory, setHoverCategory] = useState<string | null>(null);
+	const [hoveredInfo, setHoveredInfo] = useState<string | null>(null);
+	const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+
+	const handleMouseMove = (e: React.MouseEvent) => setCursorPos({ x: e.clientX, y: e.clientY });
+	const handleMouseEnter = (info: string) => setHoveredInfo(info);
+	const handleMouseLeave = () => setHoveredInfo(null);
 
 	const techStack = [
 		{ name: "JavaScript", icon: js, category: "language" },
@@ -42,21 +48,42 @@ const Tools = () => {
 	return (
 		<AnimateOnScroll className="tools">
 			<h2>Technologies I’ve worked with</h2>
-			<div className="icon-wrapper">
+			<div className="icon-wrapper" onMouseMove={handleMouseMove}>
 				{techStack.map(({ name, icon, category }) => (
 					<div
 						key={name}
 						className={`icon-container ${
 							hoveredCategory === null || hoveredCategory === category ? "highlight" : "dimmed"
 						}`}
-						onMouseEnter={() => setHoverCategory(category)}
-						onMouseLeave={() => setHoverCategory(null)}
+						onMouseEnter={() => {
+							setHoverCategory(category);
+							handleMouseEnter(category);
+						}}
+						onMouseLeave={() => {
+							setHoverCategory(null);
+							handleMouseLeave();
+						}}
 					>
 						<img src={icon} alt={`${name} icon`} />
 						<p className={`icon-label ${hoveredCategory === category ? "highlight-label" : ""}`}>{name}</p>
 					</div>
 				))}
 			</div>
+			{hoveredInfo && (
+				<div
+					className="cursor-info-box"
+					style={{
+						position: "fixed",
+						top: cursorPos.y - 15,
+						left: cursorPos.x + 50,
+						pointerEvents: "none",
+						zIndex: 9999,
+						transform: "translate(-50%, -50%)",
+					}}
+				>
+					{hoveredInfo}
+				</div>
+			)}
 		</AnimateOnScroll>
 	);
 };
