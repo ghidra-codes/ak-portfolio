@@ -1,15 +1,17 @@
-import git from "../assets/images/icons/git.svg";
-import react from "../assets/images/icons/react.svg";
-import js from "../assets/images/icons/js.svg";
-import ts from "../assets/images/icons/ts.svg";
-import node from "../assets/images/icons/node-js.svg";
-import prisma from "../assets/images/icons/prisma.svg";
-import scss from "../assets/images/icons/scss.svg";
-import bootstrap from "../assets/images/icons/bootstrap.svg";
-import express from "../assets/images/icons/express.svg";
-import wordpress from "../assets/images/icons/wordpress.svg";
-import python from "../assets/images/icons/python.svg";
-import tailwind from "../assets/images/icons/tailwind.svg";
+import git from "@/assets/images/icons/git.svg";
+import react from "@/assets/images/icons/react.svg";
+import js from "@/assets/images/icons/js.svg";
+import ts from "@/assets/images/icons/ts.svg";
+import node from "@/assets/images/icons/node-js.svg";
+import prisma from "@/assets/images/icons/prisma.svg";
+import scss from "@/assets/images/icons/scss.svg";
+import bootstrap from "@/assets/images/icons/bootstrap.svg";
+import express from "@/assets/images/icons/express.svg";
+import wordpress from "@/assets/images/icons/wordpress.svg";
+import python from "@/assets/images/icons/python.svg";
+import tailwind from "@/assets/images/icons/tailwind.svg";
+import mongodb from "@/assets/images/icons/mongodb.svg";
+import mysql from "@/assets/images/icons/mysql.svg";
 
 import AnimateOnScroll from "./AnimateOnScroll";
 import { useState } from "react";
@@ -33,6 +35,8 @@ const Tools = () => {
 		{ name: "Prisma", icon: prisma, category: "backend" },
 		{ name: "WordPress", icon: wordpress, category: "tools & platforms" },
 		{ name: "Git", icon: git, category: "tools & platforms" },
+		{ name: "MongoDB", icon: mongodb, category: "databases" },
+		{ name: "MySQL", icon: mysql, category: "databases" },
 	];
 
 	return (
@@ -49,7 +53,7 @@ const Tools = () => {
 						onMouseLeave={() => setHoverCategory(null)}
 					>
 						<img src={icon} alt={`${name} icon`} />
-						<p className="icon-label">{name}</p>
+						<p className={`icon-label ${hoveredCategory === category ? "highlight-label" : ""}`}>{name}</p>
 					</div>
 				))}
 			</div>

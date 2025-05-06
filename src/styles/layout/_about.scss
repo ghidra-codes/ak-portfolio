@@ -51,6 +51,10 @@
 			&.dimmed {
 				opacity: 0.3;
 			}
+
+			.highlight-label {
+				text-shadow: 0 0 10px rgba(115, 194, 251, 0.85);
+			}
 		}
 	}
 }

@@ -1,4 +1,4 @@
-import me from "../assets/images/me.jpg";
+import me from "@/assets/images/me.jpg";
 
 export default function Header() {
 	return (
