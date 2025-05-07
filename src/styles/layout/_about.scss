@@ -57,6 +57,33 @@
 				text-shadow: 0 0 10px rgba(115, 194, 251, 0.85);
 			}
 		}
+
+		.info-wrapper {
+			position: absolute;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 0.5rem;
+			padding: 0.25rem 0.35rem;
+			background-color: rgba(0, 0, 0, 0.6);
+			backdrop-filter: blur(7.5px);
+			border-radius: 0.5rem;
+
+			.info-icon-wrapper {
+				width: 1.25rem;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				.info-icon {
+					display: block;
+				}
+			}
+
+			.info-label {
+				font-size: 0.85rem;
+			}
+		}
 	}
 }
 
