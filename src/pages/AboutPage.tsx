@@ -1,11 +1,11 @@
 import AboutContent from "../components/AboutContent";
-import Tools from "../components/Tools";
+import TechStack from "../components/TechStack";
 
 export default function AboutPage() {
 	return (
 		<section id="about">
 			<AboutContent />
-			<Tools />
+			<TechStack />
 		</section>
 	);
 }

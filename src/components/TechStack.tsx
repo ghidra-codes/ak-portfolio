@@ -1,17 +1,19 @@
 import AnimateOnScroll from "./AnimateOnScroll";
 import React, { useState } from "react";
-import { techStack, categoryInfo } from "../data/techstack";
+import { techStack, categoryInfo } from "../data/techStack";
 import CursorInfoBox from "./CursorInfoBox";
+import useIsTouchDevice from "../hooks/useIsTouchDevice";
 
 const Tools = () => {
 	const [hoveredCategory, setHoverCategory] = useState<string | null>(null);
 	const [hoveredInfo, setHoveredInfo] = useState<string | null>(null);
 	const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
 
+	const isTouchDevice = useIsTouchDevice();
+
 	const handleMouseMove = (e: React.MouseEvent) => setCursorPos({ x: e.clientX, y: e.clientY });
 	const handleMouseEnter = (info: string) => setHoveredInfo(info);
 	const handleMouseLeave = () => setHoveredInfo(null);
-
 	const handleCategoryClick = (category: string) => {
 		setHoverCategory(category);
 		setTimeout(() => setHoverCategory(null), 2500);
@@ -42,7 +44,7 @@ const Tools = () => {
 					</div>
 				))}
 			</div>
-			{hoveredInfo && (
+			{hoveredInfo && !isTouchDevice && (
 				<CursorInfoBox
 					x={cursorPos.x}
 					y={cursorPos.y}
