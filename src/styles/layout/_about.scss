@@ -33,7 +33,7 @@
 		.icon-wrapper {
 			display: grid;
 			grid-template-columns: repeat(4, 1fr);
-			gap: 5rem;
+			gap: 6rem;
 		}
 
 		.icon-container {
@@ -45,16 +45,20 @@
 			transition: opacity 0.3s ease;
 			cursor: default;
 
+			.icon-label {
+				white-space: nowrap;
+			}
+
+			.highlight-label {
+				text-shadow: 0 0 10px rgba(115, 194, 251, 0.85);
+			}
+
 			&.highlight {
 				opacity: 1;
 			}
 
 			&.dimmed {
 				opacity: 0.3;
-			}
-
-			.highlight-label {
-				text-shadow: 0 0 10px rgba(115, 194, 251, 0.85);
 			}
 		}
 
