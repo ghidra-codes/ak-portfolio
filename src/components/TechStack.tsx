@@ -11,38 +11,49 @@ const Tools = () => {
 
 	const isTouchDevice = useIsTouchDevice();
 
+	// Mouse event handlers
 	const handleMouseMove = (e: React.MouseEvent) => setCursorPos({ x: e.clientX, y: e.clientY });
 	const handleMouseEnter = (info: string) => setHoveredInfo(info);
 	const handleMouseLeave = () => setHoveredInfo(null);
+
 	const handleCategoryClick = (category: string) => {
 		setHoverCategory(category);
-		setTimeout(() => setHoverCategory(null), 2500);
+
+		setTimeout(() => {
+			setHoverCategory(null);
+		}, 2500);
 	};
 
 	return (
 		<AnimateOnScroll className="tools">
 			<h2>Technologies I’ve worked with</h2>
 			<div className="icon-wrapper" onMouseMove={handleMouseMove}>
-				{techStack.map(({ name, icon, category }) => (
-					<div
-						key={name}
-						className={`icon-container ${
-							hoveredCategory === null || hoveredCategory === category ? "highlight" : "dimmed"
-						}`}
-						onMouseEnter={() => {
-							setHoverCategory(category);
-							handleMouseEnter(category);
-						}}
-						onMouseLeave={() => {
-							setHoverCategory(null);
-							handleMouseLeave();
-						}}
-						onClick={() => handleCategoryClick(category)}
-					>
-						<img src={icon} alt={`${name} icon`} />
-						<p className={`icon-label ${hoveredCategory === category ? "highlight-label" : ""}`}>{name}</p>
-					</div>
-				))}
+				{techStack.map(({ name, icon, category }) => {
+					const isDimmed = hoveredCategory !== null && hoveredCategory !== category;
+
+					return (
+						<div
+							key={name}
+							className={`icon-container ${isDimmed ? "dimmed" : "highlight"}`}
+							onMouseEnter={() => {
+								setHoverCategory(category);
+								handleMouseEnter(category);
+							}}
+							onMouseLeave={() => {
+								setHoverCategory(null);
+								handleMouseLeave();
+							}}
+							onClick={() => {
+								if (isTouchDevice) handleCategoryClick(category);
+							}}
+						>
+							<img src={icon} alt={`${name} icon`} />
+							<p className={`icon-label ${hoveredCategory === category ? "highlight-label" : ""}`}>
+								{name}
+							</p>
+						</div>
+					);
+				})}
 			</div>
 			{hoveredInfo && !isTouchDevice && (
 				<CursorInfoBox
