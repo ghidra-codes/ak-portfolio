@@ -4,6 +4,7 @@ import CursorInfoBox from "./CursorInfoBox";
 import useIsTouchDevice from "../hooks/useIsTouchDevice";
 import TechStackIcon from "./TechStackIcon";
 import TechStackIconTouch from "./TechStackIconTouch";
+import useMediaQuery from "../hooks/useMediaQuery";
 
 type Tech = (typeof techStack)[number];
 
@@ -13,6 +14,7 @@ const TechStack = () => {
 	const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
 
 	const isTouchDevice = useIsTouchDevice();
+	const isSmallScreen = useMediaQuery("(max-width: 600px)");
 
 	// Mouse event handlers
 	const handleMouseMove = (e: React.MouseEvent) => setCursorPos({ x: e.clientX, y: e.clientY });
@@ -64,15 +66,19 @@ const TechStack = () => {
 									</div>
 									<div className="icon-wrapper">
 										{items.map(({ name, icon }, index) => {
-											const isOdd = items.length % 2 === 1 && index === items.length - 1;
+											if (isSmallScreen) {
+												const isOdd = items.length % 2 === 1 && index === items.length - 1;
 
-											return !isOdd ? (
-												<TechStackIconTouch key={name} name={name} icon={icon} />
-											) : (
-												<div className="centered-icon-wrapper">
+												return !isOdd ? (
 													<TechStackIconTouch key={name} name={name} icon={icon} />
-												</div>
-											);
+												) : (
+													<div className="centered-icon-wrapper" key={name}>
+														<TechStackIconTouch name={name} icon={icon} />
+													</div>
+												);
+											}
+
+											return <TechStackIconTouch key={name} name={name} icon={icon} />;
 										})}
 									</div>
 								</div>
