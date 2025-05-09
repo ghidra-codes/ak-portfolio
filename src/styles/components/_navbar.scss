@@ -4,7 +4,7 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 0 2rem 0 0;
+	padding: 0 2rem;
 	background-color: rgba(0, 0, 0, 0.2);
 	backdrop-filter: blur(7.5px);
 	color: $maya-blue;
@@ -16,9 +16,10 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		gap: 2rem;
 
 		.logo-wrapper {
-			width: 10rem;
+			width: 3.75rem;
 			height: 4rem;
 			background-image: url("@/assets/images/logo/logo.png");
 			background-repeat: no-repeat;
@@ -54,5 +55,11 @@
 				}
 			}
 		}
+	}
+}
+
+@media (max-width: 800px) {
+	.navbar {
+		padding: 0.9rem 2rem;
 	}
 }
