@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 export default function NavBar() {
 	return (
 		<nav className="navbar">
-			<div className="logo-wrapper"></div>
-
+			<div className="brand">
+				<div className="logo-wrapper"></div>
+				<h1 className="navbar-heading">Alexander Kallin</h1>
+			</div>
 			<ul className="navbar-links">
 				<li className="home-link">
 					<Link to="/">Home</Link>

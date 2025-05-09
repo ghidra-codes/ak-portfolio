@@ -20,6 +20,22 @@ const TechStack = () => {
 	const handleMouseMove = (e: React.MouseEvent) => setCursorPos({ x: e.clientX, y: e.clientY });
 	const handleMouseEnter = (info: string) => setHoveredInfo(info);
 
+	const renderTouchIcons = (items: Tech[]) =>
+		items.map(({ name, icon }, index) => {
+			if (isSmallScreen) {
+				const isOdd = items.length % 2 === 1 && index === items.length - 1;
+
+				return !isOdd ? (
+					<TechStackIconTouch key={name} name={name} icon={icon} />
+				) : (
+					<div className="centered-icon-wrapper" key={name}>
+						<TechStackIconTouch name={name} icon={icon} />
+					</div>
+				);
+			}
+			return <TechStackIconTouch key={name} name={name} icon={icon} />;
+		});
+
 	const groupedByCategory = techStack.reduce((acc, tech) => {
 		if (!acc[tech.category]) acc[tech.category] = [];
 		acc[tech.category].push(tech);
@@ -64,23 +80,7 @@ const TechStack = () => {
 										/>
 										<h3 className="category-heading">{categoryInfo[category].label}</h3>
 									</div>
-									<div className="icon-wrapper">
-										{items.map(({ name, icon }, index) => {
-											if (isSmallScreen) {
-												const isOdd = items.length % 2 === 1 && index === items.length - 1;
-
-												return !isOdd ? (
-													<TechStackIconTouch key={name} name={name} icon={icon} />
-												) : (
-													<div className="centered-icon-wrapper" key={name}>
-														<TechStackIconTouch name={name} icon={icon} />
-													</div>
-												);
-											}
-
-											return <TechStackIconTouch key={name} name={name} icon={icon} />;
-										})}
-									</div>
+									<div className="icon-wrapper">{renderTouchIcons(items)}</div>
 								</div>
 						  ))}
 				</div>
