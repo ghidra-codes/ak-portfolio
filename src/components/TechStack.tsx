@@ -17,39 +17,43 @@ const TechStack = () => {
 	const handleMouseEnter = (info: string) => setHoveredInfo(info);
 
 	return (
-		<AnimateOnScroll className="tech-stack">
-			<h2>Technologies I’ve worked with</h2>
-			<div className="icon-wrapper" onMouseMove={handleMouseMove}>
-				{techStack.map(({ name, icon, category }) => {
-					const isHighlighted = hoveredCategory === null || hoveredCategory === category;
-					const isLabelHighlighted = hoveredCategory === category;
+		<>
+			<h2 className="section-header" id="tech-section-heading">
+				Technologies I’ve worked with
+			</h2>
+			<AnimateOnScroll className="tech-stack">
+				<div className="icon-wrapper" onMouseMove={handleMouseMove}>
+					{techStack.map(({ name, icon, category }) => {
+						const isHighlighted = hoveredCategory === null || hoveredCategory === category;
+						const isLabelHighlighted = hoveredCategory === category;
 
-					return (
-						<TechStackIcon
-							key={name}
-							name={name}
-							icon={icon}
-							category={category}
-							isHighlighted={isHighlighted}
-							isLabelHighlighted={isLabelHighlighted}
-							isTouchDevice={isTouchDevice}
-							onHoverChange={(newCategory) => {
-								setHoverCategory(newCategory);
-								handleMouseEnter(newCategory ?? "");
-							}}
-						/>
-					);
-				})}
-			</div>
-			{hoveredInfo && !isTouchDevice && (
-				<CursorInfoBox
-					x={cursorPos.x}
-					y={cursorPos.y}
-					icon={categoryInfo[hoveredInfo].icon}
-					label={categoryInfo[hoveredInfo].label}
-				/>
-			)}
-		</AnimateOnScroll>
+						return (
+							<TechStackIcon
+								key={name}
+								name={name}
+								icon={icon}
+								category={category}
+								isHighlighted={isHighlighted}
+								isLabelHighlighted={isLabelHighlighted}
+								isTouchDevice={isTouchDevice}
+								onHoverChange={(newCategory) => {
+									setHoverCategory(newCategory);
+									handleMouseEnter(newCategory ?? "");
+								}}
+							/>
+						);
+					})}
+				</div>
+				{hoveredInfo && !isTouchDevice && (
+					<CursorInfoBox
+						x={cursorPos.x}
+						y={cursorPos.y}
+						icon={categoryInfo[hoveredInfo].icon}
+						label={categoryInfo[hoveredInfo].label}
+					/>
+				)}
+			</AnimateOnScroll>
+		</>
 	);
 };
 

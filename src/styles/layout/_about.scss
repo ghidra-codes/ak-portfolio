@@ -1,7 +1,9 @@
 @use "../abstracts/variables" as *;
 
 #about {
-	margin-top: 10rem;
+	.section-header {
+		text-align: center;
+	}
 
 	.content {
 		display: flex;
@@ -15,11 +17,11 @@
 			background-color: $honolulu-blue;
 			padding: 2rem;
 			border-radius: 5px;
-
-			h2 {
-				text-align: center;
-			}
 		}
+	}
+
+	#tech-section-heading {
+		margin-top: 4rem;
 	}
 
 	.tech-stack {
@@ -34,6 +36,7 @@
 			display: grid;
 			grid-template-columns: repeat(4, 1fr);
 			gap: 6rem;
+			margin-top: 2rem;
 		}
 
 		.icon-container {
@@ -98,8 +101,8 @@
 		}
 
 		.tech-stack .icon-wrapper {
-			grid-template-columns: repeat(2, 1fr);
-			gap: 3rem;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 5rem;
 		}
 	}
 }
@@ -109,6 +112,11 @@
 		.content div {
 			width: 90%;
 			padding: 1.5rem;
+		}
+
+		.tech-stack .icon-wrapper {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 5rem;
 		}
 	}
 }
