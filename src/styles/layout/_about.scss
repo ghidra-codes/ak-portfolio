@@ -3,6 +3,10 @@
 #about {
 	.section-header {
 		text-align: center;
+
+		#tech-section-heading {
+			margin-top: 4rem;
+		}
 	}
 
 	.content {
@@ -20,10 +24,6 @@
 		}
 	}
 
-	#tech-section-heading {
-		margin-top: 4rem;
-	}
-
 	.tech-stack {
 		display: flex;
 		justify-content: center;
@@ -37,6 +37,31 @@
 			grid-template-columns: repeat(4, 1fr);
 			gap: 6rem;
 			margin-top: 2rem;
+		}
+
+		.icon-wrapper-touch {
+			text-align: center;
+
+			.centered-icon-wrapper {
+				grid-column: span 2;
+				display: flex;
+				justify-content: center;
+			}
+
+			.category-heading-wrapper {
+				// Add background color styling
+				margin: 2rem 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				gap: 1rem;
+				border-top: 2px solid $ivory;
+				border-bottom: 2px solid $ivory;
+
+				.category-heading-icon {
+					width: 2rem;
+				}
+			}
 		}
 
 		.icon-container {
