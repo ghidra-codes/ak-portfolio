@@ -1,6 +1,13 @@
 @use "./abstracts/mixins";
 @use "./abstracts/variables";
 @use "./base/reset";
-@use "./components/navbar";
 @use "./layout/header";
 @use "./layout/about";
+@use "./components/navBar";
+@use "./components/hamburgerMenu";
+@use "./components/hamburgerMenuBtn";
+@use "./components/aboutContent";
+@use "./components/techStack";
+@use "./components/techStackIcon";
+@use "./components/techStackIconTouch";
+@use "./components/cursorInfoBox";

@@ -13,7 +13,7 @@ export default function Header() {
 				</h3>
 			</div>
 			<div className="hero-image-wrapper">
-				<img className="hero-image" src={me} alt="A image of me" />
+				<img className="hero-image" src={me} alt="A picture of Alexander Kallin" />
 				<div className="grey-box"></div>
 			</div>
 		</header>

@@ -3,9 +3,7 @@ import AnimateOnScroll from "./AnimateOnScroll";
 const AboutContent = () => {
 	return (
 		<div className="content">
-			<h2 className="section-heading" id="about-section-heading">
-				About
-			</h2>
+			<h2 className="about-section-heading">About</h2>
 			<AnimateOnScroll className="about-section-one">
 				<h2>How I Found My Passion for Web Development</h2>
 				<p>

@@ -1,0 +1,41 @@
+.icon-wrapper {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 6rem;
+	margin-top: 2rem;
+
+	@media (max-width: 1024px) {
+		grid-template-columns: repeat(3, 1fr);
+		gap: 5rem;
+	}
+
+	@media (max-width: 1024px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+.icon-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 5rem;
+	transition: opacity 0.3s ease;
+	cursor: default;
+
+	.icon-label {
+		white-space: nowrap;
+	}
+
+	.highlight-label {
+		text-shadow: 0 0 10px rgba(115, 194, 251, 0.85);
+	}
+
+	&.highlight {
+		opacity: 1;
+	}
+
+	&.dimmed {
+		opacity: 0.3;
+	}
+}
