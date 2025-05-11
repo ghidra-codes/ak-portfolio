@@ -5,7 +5,6 @@ import useIsTouchDevice from "../hooks/useIsTouchDevice";
 import TechStackIcon from "./TechStackIcon";
 import TechStackIconTouch from "./TechStackIconTouch";
 import useMediaQuery from "../hooks/useMediaQuery";
-import { AnimatePresence } from "framer-motion";
 
 type Tech = (typeof techStack)[number];
 
@@ -83,16 +82,14 @@ const TechStack = () => {
 								</div>
 						  ))}
 				</div>
-				<AnimatePresence>
-					{hoveredInfo && !isTouchDevice && (
-						<CursorInfoBox
-							x={cursorPos.x}
-							y={cursorPos.y}
-							icon={categoryInfo[hoveredInfo].icon}
-							label={categoryInfo[hoveredInfo].label}
-						/>
-					)}
-				</AnimatePresence>
+				{hoveredInfo && !isTouchDevice && (
+					<CursorInfoBox
+						x={cursorPos.x}
+						y={cursorPos.y}
+						icon={categoryInfo[hoveredInfo].icon}
+						label={categoryInfo[hoveredInfo].label}
+					/>
+				)}
 			</div>
 		</>
 	);

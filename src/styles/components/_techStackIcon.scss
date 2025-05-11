@@ -26,16 +26,4 @@
 	.icon-label {
 		white-space: nowrap;
 	}
-
-	.highlight-label {
-		text-shadow: 0 0 10px rgba(115, 194, 251, 0.85);
-	}
-
-	&.highlight {
-		opacity: 1;
-	}
-
-	&.dimmed {
-		opacity: 0.3;
-	}
 }

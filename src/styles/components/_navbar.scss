@@ -39,25 +39,7 @@
 		}
 	}
 
-	.navbar-links {
-		display: flex;
-		gap: 1.5rem;
-
-		li {
-			list-style: none;
-
-			a {
-				font-size: 1.125rem;
-				transition: color 0.2s ease;
-
-				&:hover {
-					color: #0077ff;
-				}
-			}
-		}
-	}
-
 	@media (max-width: 800px) {
-		padding: 0.9rem 2rem;
+		padding: 0.9rem 1rem 0.9rem 2rem;
 	}
 }

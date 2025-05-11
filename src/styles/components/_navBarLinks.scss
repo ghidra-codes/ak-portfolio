@@ -1,0 +1,22 @@
+.navbar-links {
+	display: flex;
+	gap: 1.5rem;
+
+	li {
+		list-style: none;
+
+		a {
+			font-size: 1.125rem;
+			transition: color 0.2s ease;
+
+			&:hover {
+				color: #0077ff;
+			}
+		}
+	}
+}
+
+.navbar-links-hamburger {
+	display: flex;
+	flex-direction: column;
+}

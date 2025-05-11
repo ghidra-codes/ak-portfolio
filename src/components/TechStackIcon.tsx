@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 type TechStackIconProps = {
 	name: string;
@@ -28,14 +29,28 @@ const TechStackIcon: React.FC<TechStackIconProps> = ({
 	};
 
 	return (
-		<div
-			className={`icon-container ${isHighlighted ? "highlight" : "dimmed"}`}
+		<motion.div
+			className="icon-container"
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
+			animate={{
+				opacity: isHighlighted ? 1 : 0.3,
+			}}
+			transition={{ duration: 0.5, ease: "easeInOut" }}
 		>
 			<img src={icon} alt={`${name} icon`} />
-			<p className={`icon-label ${isLabelHighlighted ? "highlight-label" : ""}`}>{name}</p>
-		</div>
+			<motion.p
+				className="icon-label"
+				animate={{
+					textShadow: isLabelHighlighted
+						? "0px 0px 10px rgba(115, 194, 251, 0.85)"
+						: "0px 0px 0px rgba(0,0,0,0)",
+				}}
+				transition={{ duration: 0.3 }}
+			>
+				{name}
+			</motion.p>
+		</motion.div>
 	);
 };
 
