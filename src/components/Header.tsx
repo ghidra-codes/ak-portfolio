@@ -2,7 +2,7 @@ import me from "@/assets/images/me.jpg";
 
 export default function Header() {
 	return (
-		<header>
+		<header id="home">
 			<div className="home-content">
 				<h1 className="title">
 					Hello my name is Alex, <br />I do web development.

@@ -1,6 +1,5 @@
 import AboutPage from "./AboutPage";
 import ProjectsPage from "./ProjectsPage";
-import ContactPage from "./ContactPage";
 import Header from "../components/Header";
 
 export default function HomePage() {
@@ -9,7 +8,6 @@ export default function HomePage() {
 			<Header />
 			<AboutPage />
 			<ProjectsPage />
-			<ContactPage />
 		</>
 	);
 }
