@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { techStack, categoryInfo } from "../data/techStack";
 import CursorInfoBox from "./CursorInfoBox";
-import useIsTouchDevice from "../hooks/useIsTouchDevice";
 import TechStackIcon from "./TechStackIcon";
 import TechStackIconTouch from "./TechStackIconTouch";
 import useMediaQuery from "../hooks/useMediaQuery";
@@ -13,8 +12,7 @@ const TechStack = () => {
 	const [hoveredInfo, setHoveredInfo] = useState<string | null>(null);
 	const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
 
-	const isTouchDevice = useIsTouchDevice();
-	const isSmallScreen = useMediaQuery("(max-width: 600px)");
+	const isSmallScreen = useMediaQuery("(max-width: 768px)");
 
 	// Mouse event handlers
 	const handleMouseMove = (e: React.MouseEvent) => setCursorPos({ x: e.clientX, y: e.clientY });
@@ -45,52 +43,50 @@ const TechStack = () => {
 	return (
 		<>
 			<h2 className="about-section-heading">Technologies I’ve worked with</h2>
-			<div className="tech-stack">
-				<div className={isTouchDevice ? "icon-wrapper-touch" : "icon-wrapper"} onMouseMove={handleMouseMove}>
-					{!isTouchDevice
-						? techStack.map(({ name, icon, category }) => {
-								const isHighlighted = hoveredCategory === null || hoveredCategory === category;
-								const isLabelHighlighted = hoveredCategory === category;
+			<div className={isSmallScreen ? "icon-wrapper-touch" : "icon-wrapper"} onMouseMove={handleMouseMove}>
+				{!isSmallScreen
+					? techStack.map(({ name, icon, category }) => {
+							const isHighlighted = hoveredCategory === null || hoveredCategory === category;
+							const isLabelHighlighted = hoveredCategory === category;
 
-								return (
-									<TechStackIcon
-										key={name}
-										name={name}
-										icon={icon}
-										category={category}
-										isHighlighted={isHighlighted}
-										isLabelHighlighted={isLabelHighlighted}
-										isTouchDevice={isTouchDevice}
-										onHoverChange={(newCategory) => {
-											setHoverCategory(newCategory);
-											handleMouseEnter(newCategory ?? "");
-										}}
+							return (
+								<TechStackIcon
+									key={name}
+									name={name}
+									icon={icon}
+									category={category}
+									isHighlighted={isHighlighted}
+									isLabelHighlighted={isLabelHighlighted}
+									isSmallScreen={isSmallScreen}
+									onHoverChange={(newCategory) => {
+										setHoverCategory(newCategory);
+										handleMouseEnter(newCategory ?? "");
+									}}
+								/>
+							);
+					  })
+					: Object.entries(groupedByCategory).map(([category, items]) => (
+							<div key={category} className="tech-category-group">
+								<div className="category-heading-wrapper">
+									<img
+										className="category-heading-icon"
+										src={categoryInfo[category].icon}
+										alt={categoryInfo[category].label}
 									/>
-								);
-						  })
-						: Object.entries(groupedByCategory).map(([category, items]) => (
-								<div key={category} className="tech-category-group">
-									<div className="category-heading-wrapper">
-										<img
-											className="category-heading-icon"
-											src={categoryInfo[category].icon}
-											alt={categoryInfo[category].label}
-										/>
-										<h3 className="category-heading">{categoryInfo[category].label}</h3>
-									</div>
-									<div className="icon-wrapper">{renderTouchIcons(items)}</div>
+									<h3 className="category-heading">{categoryInfo[category].label}</h3>
 								</div>
-						  ))}
-				</div>
-				{hoveredInfo && !isTouchDevice && (
-					<CursorInfoBox
-						x={cursorPos.x}
-						y={cursorPos.y}
-						icon={categoryInfo[hoveredInfo].icon}
-						label={categoryInfo[hoveredInfo].label}
-					/>
-				)}
+								<div className="icon-wrapper">{renderTouchIcons(items)}</div>
+							</div>
+					  ))}
 			</div>
+			{hoveredInfo && !isSmallScreen && (
+				<CursorInfoBox
+					x={cursorPos.x}
+					y={cursorPos.y}
+					icon={categoryInfo[hoveredInfo].icon}
+					label={categoryInfo[hoveredInfo].label}
+				/>
+			)}
 		</>
 	);
 };

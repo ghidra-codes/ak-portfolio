@@ -1,8 +1,20 @@
 import me from "@/assets/images/me.jpg";
+import { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
+import { useActiveSection } from "../hooks/useActiveSection";
 
 export default function Header() {
+	const { ref, inView } = useInView({ threshold: 0.3 });
+	const setActiveSection = useActiveSection((state) => state.setActiveSection);
+
+	useEffect(() => {
+		if (inView) {
+			setActiveSection("home");
+		}
+	}, [inView, setActiveSection]);
+
 	return (
-		<header id="home">
+		<header ref={ref} id="home">
 			<div className="home-content">
 				<h1 className="title">
 					Hello my name is Alex, <br />I do web development.

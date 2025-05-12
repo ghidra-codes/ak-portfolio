@@ -18,7 +18,6 @@
 		.active {
 			color: #00ffff;
 			font-weight: bold;
-			text-decoration: underline;
 		}
 	}
 }
@@ -26,6 +25,24 @@
 .navbar-links-hamburger {
 	display: flex;
 	flex-direction: column;
+
+	li {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+
+		.active {
+			color: #00ffff;
+			font-weight: bold;
+		}
+
+		.left-arrow-wrapper {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 2rem;
+		}
+	}
 }
 
 .contact-button {

@@ -7,7 +7,7 @@ type TechStackIconProps = {
 	category: string;
 	isHighlighted: boolean;
 	isLabelHighlighted: boolean;
-	isTouchDevice: boolean;
+	isSmallScreen: boolean;
 	onHoverChange: (category: string | null) => void;
 };
 
@@ -17,15 +17,15 @@ const TechStackIcon: React.FC<TechStackIconProps> = ({
 	category,
 	isHighlighted,
 	isLabelHighlighted,
-	isTouchDevice,
+	isSmallScreen,
 	onHoverChange,
 }) => {
 	const handleMouseEnter = () => {
-		if (!isTouchDevice) onHoverChange(category);
+		if (!isSmallScreen) onHoverChange(category);
 	};
 
 	const handleMouseLeave = () => {
-		if (!isTouchDevice) onHoverChange(null);
+		if (!isSmallScreen) onHoverChange(null);
 	};
 
 	return (

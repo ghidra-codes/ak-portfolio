@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
-import { useEffect, useState, useMemo } from "react";
+import { useMemo } from "react";
 import { Link } from "react-router-dom";
+import useMediaQuery from "../hooks/useMediaQuery";
+import leftArrow from "@/assets/images/left-arrow.svg";
+import { useActiveSection } from "../hooks/useActiveSection";
 
 type NavBarLinksProps = {
 	variant?: "regular" | "hamburger";
@@ -25,30 +28,11 @@ const itemVariants = {
 };
 
 const NavBarLinks: React.FC<NavBarLinksProps> = ({ variant = "regular", onLinkClick }) => {
-	const isHamburger = variant === "hamburger";
+	const activeSection = useActiveSection((state) => state.activeSection);
+
 	const sections = useMemo(() => ["home", "about", "projects"], []);
-
-	const [activeSection, setActiveSection] = useState<string>("");
-
-	useEffect(() => {
-		const observer = new IntersectionObserver(
-			(entries) => {
-				entries.forEach((entry) => {
-					if (entry.isIntersecting && entry.intersectionRatio > 0.2) {
-						setActiveSection(entry.target.id);
-					}
-				});
-			},
-			{ threshold: 0.2 }
-		);
-
-		sections.forEach((section) => {
-			const sectionElement = document.getElementById(section);
-			if (sectionElement) observer.observe(sectionElement);
-		});
-
-		return () => observer.disconnect();
-	}, [sections]);
+	const isHamburger = variant === "hamburger";
+	const isSmallScreen = useMediaQuery("(max-width: 768px)");
 
 	const motionProps = isHamburger
 		? {
@@ -61,17 +45,26 @@ const NavBarLinks: React.FC<NavBarLinksProps> = ({ variant = "regular", onLinkCl
 
 	return (
 		<motion.ul className={isHamburger ? "navbar-links-hamburger" : "navbar-links"} {...motionProps}>
-			{sections.map((section) => (
-				<motion.li key={section} variants={isHamburger ? itemVariants : undefined}>
-					<Link
-						to={section === "home" ? "/" : section}
-						onClick={onLinkClick}
-						className={activeSection === section ? "active" : ""}
-					>
-						{section.charAt(0).toUpperCase() + section.slice(1)}
-					</Link>
-				</motion.li>
-			))}
+			{sections.map((section) => {
+				const currentSection = activeSection === section;
+
+				return (
+					<motion.li key={section} variants={isHamburger ? itemVariants : undefined}>
+						<Link
+							to={section === "home" ? "/" : section}
+							onClick={onLinkClick}
+							className={currentSection ? "active" : ""}
+						>
+							{section.charAt(0).toUpperCase() + section.slice(1)}
+						</Link>
+						{isSmallScreen && currentSection && (
+							<div className="left-arrow-wrapper">
+								<img src={leftArrow} alt="Left arrow highlighting current section" />
+							</div>
+						)}
+					</motion.li>
+				);
+			})}
 			<motion.li>
 				<button className="contact-button">
 					<span>Contact</span>
