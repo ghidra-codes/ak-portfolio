@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import useMediaQuery from "../hooks/useMediaQuery";
 import leftArrow from "@/assets/images/left-arrow.svg";
@@ -10,6 +9,8 @@ type NavBarLinksProps = {
 	onLinkClick?: () => void;
 	onContactClick?: () => void;
 };
+
+const SECTIONS = ["home", "about", "projects"] as const;
 
 const containerVariants = {
 	hidden: { opacity: 0 },
@@ -30,9 +31,8 @@ const itemVariants = {
 const NavBarLinks: React.FC<NavBarLinksProps> = ({ variant = "regular", onLinkClick }) => {
 	const activeSection = useActiveSection((state) => state.activeSection);
 
-	const sections = useMemo(() => ["home", "about", "projects"], []);
 	const isHamburger = variant === "hamburger";
-	const isSmallScreen = useMediaQuery("(max-width: 768px)");
+	const isSmallScreen = useMediaQuery("(max-width: 920px)");
 
 	const motionProps = isHamburger
 		? {
@@ -44,22 +44,23 @@ const NavBarLinks: React.FC<NavBarLinksProps> = ({ variant = "regular", onLinkCl
 		: {};
 
 	return (
-		<motion.ul className={isHamburger ? "navbar-links-hamburger" : "navbar-links"} {...motionProps}>
-			{sections.map((section) => {
-				const currentSection = activeSection === section;
+		<motion.ul className={isHamburger ? "navbar-links-hamburger-list" : "navbar-links-list"} {...motionProps}>
+			{SECTIONS.map((section) => {
+				const isActive = activeSection === section;
+				const path = section === "home" ? "/" : section;
 
 				return (
-					<motion.li key={section} variants={isHamburger ? itemVariants : undefined}>
-						<Link
-							to={section === "home" ? "/" : section}
-							onClick={onLinkClick}
-							className={currentSection ? "active" : ""}
-						>
-							{section.charAt(0).toUpperCase() + section.slice(1)}
+					<motion.li
+						key={section}
+						variants={isHamburger ? itemVariants : undefined}
+						className={`navbar-link-list-item ${isActive ? "active" : ""}`}
+					>
+						<Link to={path} onClick={onLinkClick} className={isActive ? "underline" : ""}>
+							{section}
 						</Link>
-						{isSmallScreen && currentSection && (
+						{isSmallScreen && isActive && (
 							<div className="left-arrow-wrapper">
-								<img src={leftArrow} alt="Left arrow highlighting current section" />
+								<img src={leftArrow} alt="Arrow pointing at current section" />
 							</div>
 						)}
 					</motion.li>

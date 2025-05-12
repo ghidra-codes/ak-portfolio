@@ -5,21 +5,21 @@ import { useInView } from "react-intersection-observer";
 import { useActiveSection } from "../hooks/useActiveSection";
 
 export default function AboutPage() {
-	const { ref, inView } = useInView({ threshold: 0.3 });
+	const { ref: aboutContentRef, inView: aboutContentInView } = useInView({ threshold: 0.3 });
+	const { ref: techStackRef, inView: techStackInView } = useInView({ threshold: 0.2 });
+
 	const setActiveSection = useActiveSection((state) => state.setActiveSection);
 
 	useEffect(() => {
-		if (inView) {
-			setActiveSection("about");
-		}
-	}, [inView, setActiveSection]);
+		if (aboutContentInView || techStackInView) setActiveSection("about");
+	}, [aboutContentInView, techStackInView, setActiveSection]);
 
 	return (
-		<section ref={ref} id="about">
-			<div id="aboutContent">
+		<section id="about">
+			<div id="aboutContent" ref={aboutContentRef}>
 				<AboutContent />
 			</div>
-			<div id="techStack">
+			<div id="techStack" ref={techStackRef}>
 				<TechStack />
 			</div>
 		</section>

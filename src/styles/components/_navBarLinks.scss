@@ -1,9 +1,17 @@
-.navbar-links {
-	display: flex;
-	gap: 1.5rem;
+@use "../abstracts/variables" as *;
 
-	li {
-		list-style: none;
+.navbar-links-list,
+.navbar-links-hamburger-list {
+	display: flex;
+	text-transform: capitalize;
+}
+
+.navbar-links-list {
+	gap: 1.25rem;
+	align-items: center;
+
+	.navbar-link-list-item {
+		padding: 1.9rem 1rem;
 
 		a {
 			font-size: 1.125rem;
@@ -14,27 +22,17 @@
 				color: #0077ff;
 			}
 		}
-
-		.active {
-			color: #00ffff;
-			font-weight: bold;
-		}
 	}
 }
 
-.navbar-links-hamburger {
-	display: flex;
+.navbar-links-hamburger-list {
 	flex-direction: column;
+	gap: 0.5rem;
 
-	li {
+	.navbar-link-list-item {
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
-
-		.active {
-			color: #00ffff;
-			font-weight: bold;
-		}
 
 		.left-arrow-wrapper {
 			display: flex;
@@ -42,6 +40,35 @@
 			align-items: center;
 			width: 2rem;
 		}
+	}
+}
+
+.navbar-link-list-item {
+	position: relative;
+	transition: background-color 0.3s ease-in-out;
+
+	&.active {
+		background-color: #39393a40;
+
+		&::after {
+			content: "";
+			position: absolute;
+			bottom: -2px;
+			left: 0;
+			width: 0%;
+			height: 2px;
+			background-color: $maya-blue;
+			animation: drawUnderline 0.4s ease forwards;
+		}
+	}
+}
+
+@keyframes drawUnderline {
+	from {
+		width: 0%;
+	}
+	to {
+		width: 100%;
 	}
 }
 

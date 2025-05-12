@@ -3,7 +3,8 @@ import HamburgerMenu from "./HamburgerMenu";
 import NavBarLinks from "./NavBarLinks";
 
 export default function NavBar() {
-	const isSmallScreen = useMediaQuery("(max-width: 800px)");
+	const isSmallScreen = useMediaQuery("(max-width: 920px)");
+
 	return (
 		<nav className="navbar">
 			<div className="brand">
