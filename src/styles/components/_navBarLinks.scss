@@ -11,7 +11,7 @@
 	align-items: center;
 
 	.navbar-link-list-item {
-		padding: 1.9rem 1rem;
+		padding: 1.9rem 0.75rem;
 		position: relative;
 		transition: background-color 0.3s ease-in-out;
 
@@ -21,7 +21,7 @@
 			cursor: pointer;
 
 			&:hover {
-				color: #0077ff;
+				color: #067fd5;
 			}
 		}
 
@@ -65,6 +65,10 @@
 			justify-content: center;
 			align-items: center;
 			width: 2rem;
+		}
+
+		&.active {
+			color: #067fd5;
 		}
 	}
 }
