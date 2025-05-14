@@ -4,6 +4,10 @@
 	display: flex;
 	align-items: center;
 	gap: 1.25rem;
+
+	@media (max-width: 920px) {
+		flex-direction: row-reverse;
+	}
 }
 
 .navbar-links-list,
@@ -84,16 +88,16 @@
 	position: relative;
 	overflow: hidden;
 	padding: 1rem 2rem;
-	border: none;
+	color: $maya-blue;
+	border: 2px solid $blue-gray;
 	border-radius: 2rem;
-	background-color: #3b82f6;
-	color: $ivory;
+	background: rgb(57, 57, 58, 0.6);
 	cursor: pointer;
-	transition: background-color 0.3s ease;
+	transition: box-shadow 0.5s ease-in-out;
 	font-size: 1.125rem;
 
 	&:hover {
-		background-color: #2563eb;
+		box-shadow: 0 0 8px 2px #f4f9e920;
 	}
 
 	&::before {
@@ -114,6 +118,14 @@
 
 	&:hover::before {
 		animation: shine 0.75s forwards;
+	}
+
+	@media (max-width: 920px) {
+		padding: 0.75rem 1.5rem;
+	}
+
+	@media (max-width: 525px) {
+		padding: 0.5rem 1rem;
 	}
 }
 

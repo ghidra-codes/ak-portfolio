@@ -20,9 +20,14 @@ export default function NavBar() {
 				</div>
 				<div className="navbar-links-wrapper">
 					{isSmallScreen ? <HamburgerMenuBtn onToggle={onToggle} active={isMenuOpen} /> : <NavBarLinks />}
-					<button className="contact-button">
-						<span>Contact</span>
-					</button>
+					<motion.button
+						whileHover={{ scale: 1.05 }}
+						whileTap={{ scale: 0.95 }}
+						transition={{ type: "tween", duration: 0.2, ease: "easeInOut" }}
+						className="contact-button"
+					>
+						Contact
+					</motion.button>
 				</div>
 			</nav>
 
