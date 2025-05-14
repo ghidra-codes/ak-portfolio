@@ -58,8 +58,8 @@ const NavBarLinks: React.FC<NavBarLinksProps> = ({ variant = "regular", onLinkCl
 						<Link to={path} onClick={onLinkClick} className={isActive ? "underline" : ""}>
 							{section}
 						</Link>
-						{isSmallScreen && isActive && (
-							<div className="left-arrow-wrapper">
+						{isSmallScreen && (
+							<div className="left-arrow-wrapper" style={{ visibility: isActive ? "visible" : "hidden" }}>
 								<img src={leftArrow} alt="Arrow pointing at current section" />
 							</div>
 						)}
