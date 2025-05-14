@@ -18,7 +18,12 @@ export default function NavBar() {
 					<div className="logo-wrapper"></div>
 					{!isSmallScreen && <h1 className="navbar-heading">Alexander Kallin</h1>}
 				</div>
-				{isSmallScreen ? <HamburgerMenuBtn onToggle={onToggle} active={isMenuOpen} /> : <NavBarLinks />}
+				<div className="navbar-links-wrapper">
+					{isSmallScreen ? <HamburgerMenuBtn onToggle={onToggle} active={isMenuOpen} /> : <NavBarLinks />}
+					<button className="contact-button">
+						<span>Contact</span>
+					</button>
+				</div>
 			</nav>
 
 			<AnimatePresence>

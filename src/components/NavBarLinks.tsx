@@ -66,11 +66,6 @@ const NavBarLinks: React.FC<NavBarLinksProps> = ({ variant = "regular", onLinkCl
 					</motion.li>
 				);
 			})}
-			<motion.li>
-				<button className="contact-button">
-					<span>Contact</span>
-				</button>
-			</motion.li>
 		</motion.ul>
 	);
 };

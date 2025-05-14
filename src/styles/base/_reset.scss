@@ -1,9 +1,5 @@
 @use "../abstracts/variables" as *;
 
-#root {
-	max-width: 100vw;
-}
-
 body {
 	margin: 0;
 	padding: 0;
@@ -12,6 +8,7 @@ body {
 	font-family: "Poppins", sans-serif;
 	background-color: $rich-black;
 	color: $ivory;
+	line-height: 1.6;
 }
 
 *,
@@ -20,10 +17,29 @@ body {
 	box-sizing: inherit;
 }
 
+h1,
+h2,
+h3 {
+	letter-spacing: 0.02em;
+}
+
+p {
+	letter-spacing: 0.01em;
+}
+
+a,
+button {
+	letter-spacing: 0.05em;
+}
+
 a {
 	all: unset;
 	cursor: pointer;
 	text-decoration: none;
+}
+
+button {
+	font-family: inherit;
 }
 
 ul {

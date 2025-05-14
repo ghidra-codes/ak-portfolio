@@ -1,22 +1,20 @@
+@use "../abstracts/variables" as *;
+
 .hamburger-button {
 	position: relative;
 	height: 4rem;
 	width: 4rem;
 	border: none;
 	border-radius: 100%;
-	background-color: rgba(255, 255, 255, 0);
+	background-color: rgba(0, 0, 0, 0);
 	transition: all;
 	z-index: 10;
-
-	&:hover {
-		background-color: rgba(255, 255, 255, 0.2);
-	}
 
 	.hamburger-span {
 		position: absolute;
 		height: 0.25rem;
 		width: 2.5rem;
-		background-color: #fff;
+		background-color: $ivory;
 	}
 
 	.hamburger-span:last-of-type {
