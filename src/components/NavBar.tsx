@@ -2,18 +2,31 @@ import { useState } from "react";
 import useMediaQuery from "../hooks/useMediaQuery";
 import HamburgerMenuBtn from "./HamburgerMenuBtn";
 import NavBarLinks from "./NavBarLinks";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 
 export default function NavBar() {
+	const { scrollY } = useScroll();
 	const isSmallScreen = useMediaQuery("(max-width: 920px)");
 
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const [hidden, setHidden] = useState(false);
+
+	useMotionValueEvent(scrollY, "change", (latest) => {
+		const previous = scrollY.getPrevious();
+
+		if (previous) setHidden(latest > previous && latest > 150);
+	});
 
 	const onToggle = () => setIsMenuOpen((prev) => !prev);
 
 	return (
 		<>
-			<nav className="navbar">
+			<motion.nav
+				className="navbar"
+				variants={{ hidden: { y: "-100%" }, visible: { y: 0 } }}
+				animate={hidden ? "hidden" : "visible"}
+				transition={{ duration: 0.4, ease: "easeInOut" }}
+			>
 				<div className="brand">
 					<div className="logo-wrapper"></div>
 					{!isSmallScreen && <h1 className="navbar-heading">Alexander Kallin</h1>}
@@ -29,7 +42,7 @@ export default function NavBar() {
 						Contact
 					</motion.button>
 				</div>
-			</nav>
+			</motion.nav>
 
 			<AnimatePresence>
 				{isMenuOpen && isSmallScreen && (

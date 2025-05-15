@@ -1,4 +1,5 @@
 @use "sass:color";
+
 $maya-blue: #73c2fb;
 $honolulu-blue: #2176ae;
 $rich-black: #001a23;
@@ -6,4 +7,4 @@ $jet: #39393a;
 $bright-jet: #878789;
 $ivory: #f4f9e9;
 $blue-gray: #7b9eaf;
-$soft-blue-white: color.mix(#73c2fb, #f4f9e9, 60%);
+$soft-blue-white: color.mix(#73c2fb, #f4f9e9, 80%);
