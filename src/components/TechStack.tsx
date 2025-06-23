@@ -3,7 +3,7 @@ import { techStack, categoryInfo } from "../data/techStack";
 import CursorInfoBox from "./CursorInfoBox";
 import TechStackIcon from "./TechStackIcon";
 import TechStackIconTouch from "./TechStackIconTouch";
-import useMediaQuery from "../hooks/useMediaQuery";
+import { useMediaQuery } from "react-responsive";
 
 type Tech = (typeof techStack)[number];
 
@@ -12,7 +12,7 @@ const TechStack = () => {
 	const [hoveredInfo, setHoveredInfo] = useState<string | null>(null);
 	const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
 
-	const isSmallScreen = useMediaQuery("(max-width: 768px)");
+	const isSmallScreen = useMediaQuery({ maxWidth: 768 });
 
 	// Mouse event handlers
 	const handleMouseMove = (e: React.MouseEvent) => setCursorPos({ x: e.clientX, y: e.clientY });

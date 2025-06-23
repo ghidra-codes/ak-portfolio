@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { motion, useAnimation, useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 interface RevealOnScrollProps {
 	children: React.ReactNode;
@@ -11,6 +11,7 @@ const RevealOnScroll: React.FC<RevealOnScrollProps> = ({ children, width = "fit-
 	const isInView = useInView(ref, { once: true });
 
 	useEffect(() => {}, [isInView]);
+
 	return (
 		<div style={{ position: "relative", width, overflow: "hidden" }}>
 			<motion.div

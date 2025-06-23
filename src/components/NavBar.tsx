@@ -1,12 +1,12 @@
 import { useState } from "react";
-import useMediaQuery from "../hooks/useMediaQuery";
 import HamburgerMenuBtn from "./HamburgerMenuBtn";
 import NavBarLinks from "./NavBarLinks";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
+import { useMediaQuery } from "react-responsive";
 
 export default function NavBar() {
 	const { scrollY } = useScroll();
-	const isSmallScreen = useMediaQuery("(max-width: 920px)");
+	const isSmallScreen = useMediaQuery({ maxWidth: 920 });
 
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [hidden, setHidden] = useState(false);
@@ -14,7 +14,11 @@ export default function NavBar() {
 	useMotionValueEvent(scrollY, "change", (latest) => {
 		const previous = scrollY.getPrevious();
 
-		if (previous) setHidden(latest > previous && latest > 150);
+		if (isSmallScreen && previous) {
+			setHidden(latest > previous && latest > 150);
+
+			if (isMenuOpen) setIsMenuOpen(false);
+		}
 	});
 
 	const onToggle = () => setIsMenuOpen((prev) => !prev);

@@ -10,11 +10,12 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 0 2rem;
+	padding: 0 2rem 0 1.5rem;
 	position: sticky;
 	top: 0;
 	z-index: 9;
-	height: 5.75rem;
+	height: 4.5rem;
+	--navbar-height: 4.5rem;
 
 	background-color: rgba(0, 0, 0, 0.2);
 	backdrop-filter: blur(7.5px);
@@ -23,11 +24,11 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		gap: 2rem;
+		gap: 1.25rem;
 
 		.logo-wrapper {
 			width: 3.75rem;
-			height: 4rem;
+			height: 3.25rem;
 			background-image: url("@/assets/images/logo/logo.png");
 			background-repeat: no-repeat;
 			background-size: contain;
@@ -35,7 +36,7 @@
 		}
 
 		.navbar-heading {
-			font-size: 2rem;
+			font-size: 1.75rem;
 			font-family: "Oxanium", sans-serif;
 			background: linear-gradient(140deg, rgba(33, 118, 174, 1) 70%, rgba(123, 158, 175, 0.4) 100%);
 			-webkit-background-clip: text;
@@ -47,13 +48,13 @@
 	}
 
 	@media (max-width: 920px) {
-		padding: 0.9rem 1rem 0.9rem 2rem;
+		padding: 0 1rem 0 0.4rem;
 	}
 }
 
 .menu-wrapper {
 	position: fixed;
-	top: calc(var(--navbar-height, 5.75rem));
+	top: calc(var(--navbar-height));
 	border: none;
 	right: 0;
 	z-index: 100;

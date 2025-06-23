@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import useMediaQuery from "../hooks/useMediaQuery";
 import leftArrow from "@/assets/images/left-arrow.svg";
 import { useActiveSection } from "../hooks/useActiveSection";
+import { useMediaQuery } from "react-responsive";
 
 type NavBarLinksProps = {
 	variant?: "regular" | "hamburger";
@@ -32,7 +32,7 @@ const NavBarLinks: React.FC<NavBarLinksProps> = ({ variant = "regular", onLinkCl
 	const activeSection = useActiveSection((state) => state.activeSection);
 
 	const isHamburger = variant === "hamburger";
-	const isSmallScreen = useMediaQuery("(max-width: 920px)");
+	const isSmallScreen = useMediaQuery({ maxWidth: 920 });
 
 	const motionProps = isHamburger
 		? {
