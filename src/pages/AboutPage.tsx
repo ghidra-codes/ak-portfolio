@@ -1,8 +1,8 @@
-import AboutContent from "../components/AboutContent";
-import TechStack from "../components/TechStack";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
-import { useActiveSection } from "../hooks/useActiveSection";
+import { useActiveSection } from "@/hooks/useActiveSection";
+import AboutContent from "@/components/about/AboutContent";
+import TechStack from "@/components/tech-stack/TechStack";
 
 export default function AboutPage() {
 	const { ref: aboutContentRef, inView: aboutContentInView } = useInView({ threshold: 0.3 });

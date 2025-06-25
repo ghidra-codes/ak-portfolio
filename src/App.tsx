@@ -1,10 +1,10 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router";
 import HomePage from "./pages/HomePage";
 import ProjectsPage from "./pages/ProjectsPage";
-import Footer from "./components/Footer";
-import NavBar from "./components/NavBar";
+import Footer from "./components/layout/Footer";
 import AboutPage from "./pages/AboutPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import NavBar from "./components/layout/NavBar/NavBar";
 
 function App() {
 	return (

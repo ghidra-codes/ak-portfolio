@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
-import { useActiveSection } from "../hooks/useActiveSection";
+import { useActiveSection } from "@/hooks/useActiveSection";
 
 export default function ProjectsPage() {
 	const { ref, inView } = useInView({ threshold: 0.3 });

@@ -1,7 +1,22 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+	"files": [],
+	"references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }],
+	"compilerOptions": {
+		"composite": true,
+		"jsx": "react-jsx",
+		"module": "ESNext",
+		"target": "ES2020",
+		"moduleResolution": "node",
+
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["src/*"]
+		},
+
+		"esModuleInterop": true,
+		"strict": true,
+		"noImplicitAny": true,
+		"forceConsistentCasingInFileNames": true,
+		"skipLibCheck": true
+	}
 }

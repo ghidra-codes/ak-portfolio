@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { techStack, categoryInfo } from "../data/techStack";
-import CursorInfoBox from "./CursorInfoBox";
-import TechStackIcon from "./TechStackIcon";
 import TechStackIconTouch from "./TechStackIconTouch";
+import TechStackIcon from "./TechStackIcon";
+import CursorInfoBox from "@/components/ui/CursorInfoBox";
 import { useMediaQuery } from "react-responsive";
+import { categoryInfo, techStack } from "@/constants/techStack";
 
 type Tech = (typeof techStack)[number];
 
@@ -43,10 +43,14 @@ const TechStack = () => {
 	return (
 		<>
 			<h2 className="about-section-heading">Technologies I’ve worked with</h2>
-			<div className={isSmallScreen ? "icon-wrapper-touch" : "icon-wrapper"} onMouseMove={handleMouseMove}>
+			<div
+				className={isSmallScreen ? "icon-wrapper-touch" : "icon-wrapper"}
+				onMouseMove={handleMouseMove}
+			>
 				{!isSmallScreen
 					? techStack.map(({ name, icon, category }) => {
-							const isHighlighted = hoveredCategory === null || hoveredCategory === category;
+							const isHighlighted =
+								hoveredCategory === null || hoveredCategory === category;
 							const isLabelHighlighted = hoveredCategory === category;
 
 							return (
@@ -73,7 +77,9 @@ const TechStack = () => {
 										src={categoryInfo[category].icon}
 										alt={categoryInfo[category].label}
 									/>
-									<h3 className="category-heading">{categoryInfo[category].label}</h3>
+									<h3 className="category-heading">
+										{categoryInfo[category].label}
+									</h3>
 								</div>
 								<div className="icon-wrapper">{renderTouchIcons(items)}</div>
 							</div>

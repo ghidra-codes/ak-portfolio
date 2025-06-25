@@ -1,7 +1,7 @@
 import { useState } from "react";
 import HamburgerMenuBtn from "./HamburgerMenuBtn";
 import NavBarLinks from "./NavBarLinks";
-import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "motion/react";
 import { useMediaQuery } from "react-responsive";
 
 export default function NavBar() {
@@ -36,7 +36,11 @@ export default function NavBar() {
 					{!isSmallScreen && <h1 className="navbar-heading">Alexander Kallin</h1>}
 				</div>
 				<div className="navbar-links-wrapper">
-					{isSmallScreen ? <HamburgerMenuBtn onToggle={onToggle} active={isMenuOpen} /> : <NavBarLinks />}
+					{isSmallScreen ? (
+						<HamburgerMenuBtn onToggle={onToggle} active={isMenuOpen} />
+					) : (
+						<NavBarLinks />
+					)}
 					<motion.button
 						whileHover={{ scale: 1.05 }}
 						whileTap={{ scale: 0.95 }}

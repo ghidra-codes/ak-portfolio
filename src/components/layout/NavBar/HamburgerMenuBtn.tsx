@@ -1,4 +1,4 @@
-import { motion, MotionConfig } from "framer-motion";
+import { motion, MotionConfig } from "motion/react";
 import React from "react";
 
 type HamburgerMenuBtnProps = {

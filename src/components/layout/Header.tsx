@@ -1,7 +1,7 @@
 import me from "@/assets/images/me.jpg";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
-import { useActiveSection } from "../hooks/useActiveSection";
+import { useActiveSection } from "@/hooks/useActiveSection";
 
 export default function Header() {
 	const { ref, inView } = useInView({ threshold: 0.3 });
@@ -20,8 +20,9 @@ export default function Header() {
 					Hello my name is Alex, <br />I do web development.
 				</h1>
 				<h3 className="subtitle">
-					I’m a creative developer who loves crafting high-quality web experiences. My goal is always to build
-					the best product possible, using modern technologies and industry best practices.
+					I’m a creative developer who loves crafting high-quality web experiences. My
+					goal is always to build the best product possible, using modern technologies and
+					industry best practices.
 				</h3>
 			</div>
 			<div className="hero-image-wrapper">

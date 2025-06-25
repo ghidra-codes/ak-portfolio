@@ -1,8 +1,8 @@
-import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { motion } from "motion/react";
+import { Link } from "react-router";
 import leftArrow from "@/assets/images/left-arrow.svg";
-import { useActiveSection } from "../hooks/useActiveSection";
 import { useMediaQuery } from "react-responsive";
+import { useActiveSection } from "@/hooks/useActiveSection";
 
 type NavBarLinksProps = {
 	variant?: "regular" | "hamburger";
@@ -44,7 +44,10 @@ const NavBarLinks: React.FC<NavBarLinksProps> = ({ variant = "regular", onLinkCl
 		: {};
 
 	return (
-		<motion.ul className={isHamburger ? "navbar-links-hamburger-list" : "navbar-links-list"} {...motionProps}>
+		<motion.ul
+			className={isHamburger ? "navbar-links-hamburger-list" : "navbar-links-list"}
+			{...motionProps}
+		>
 			{SECTIONS.map((section) => {
 				const isActive = activeSection === section;
 				const path = section === "home" ? "/" : section;
@@ -55,11 +58,18 @@ const NavBarLinks: React.FC<NavBarLinksProps> = ({ variant = "regular", onLinkCl
 						variants={isHamburger ? itemVariants : undefined}
 						className={`navbar-link-list-item ${isActive ? "active" : ""}`}
 					>
-						<Link to={path} onClick={onLinkClick} className={isActive ? "underline" : ""}>
+						<Link
+							to={path}
+							onClick={onLinkClick}
+							className={isActive ? "underline" : ""}
+						>
 							{section}
 						</Link>
 						{isSmallScreen && (
-							<div className="left-arrow-wrapper" style={{ visibility: isActive ? "visible" : "hidden" }}>
+							<div
+								className="left-arrow-wrapper"
+								style={{ visibility: isActive ? "visible" : "hidden" }}
+							>
 								<img src={leftArrow} alt="Arrow pointing at current section" />
 							</div>
 						)}
