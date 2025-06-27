@@ -16,6 +16,7 @@
 		"react-dom": "^19.0.0",
 		"react-responsive": "^10.0.1",
 		"react-router": "^7.6.2",
+		"react-scroll": "^1.9.3",
 		"react-ui-animate": "^4.2.0",
 		"sass": "^1.86.3",
 		"type-coverage": "^2.29.7"
@@ -26,6 +27,7 @@
 		"@types/node": "^24.0.4",
 		"@types/react": "^19.0.10",
 		"@types/react-dom": "^19.0.4",
+		"@types/react-scroll": "^1.8.10",
 		"@typescript-eslint/eslint-plugin": "^8.29.0",
 		"@typescript-eslint/parser": "^8.29.0",
 		"@vitejs/plugin-react": "^4.3.4",

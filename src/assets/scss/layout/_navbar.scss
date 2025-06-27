@@ -13,12 +13,12 @@
 	padding: 0 2rem 0 1.5rem;
 	position: sticky;
 	top: 0;
-	z-index: 9;
+	z-index: 25;
 	height: 4.5rem;
 	--navbar-height: 4.5rem;
-
-	background-color: rgba(0, 0, 0, 0.2);
-	backdrop-filter: blur(7.5px);
+	background-color: rgba(0, 29, 38, 0.95);
+	backdrop-filter: blur(10px);
+	box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
 
 	.brand {
 		display: flex;
@@ -38,7 +38,11 @@
 		.navbar-heading {
 			font-size: 1.75rem;
 			font-family: "Oxanium", sans-serif;
-			background: linear-gradient(140deg, rgba(33, 118, 174, 1) 70%, rgba(123, 158, 175, 0.4) 100%);
+			background: linear-gradient(
+				140deg,
+				rgba(33, 118, 174, 1) 70%,
+				rgba(123, 158, 175, 0.4) 100%
+			);
 			-webkit-background-clip: text;
 			-webkit-text-fill-color: transparent;
 			background-clip: text;
@@ -57,13 +61,14 @@
 	top: calc(var(--navbar-height));
 	border: none;
 	right: 0;
-	z-index: 100;
+	z-index: 20;
 	padding: 1rem;
 	width: 30vw;
 	max-width: 300px;
 	border-radius: 0 0 0 1.25rem;
-	background: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 100%);
-	backdrop-filter: blur(7.5px);
+	background: linear-gradient(0deg, rgba(0, 29, 38, 0.8) 0%, rgb(0, 29, 38, 0.95) 100%);
+	box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.15);
+	backdrop-filter: blur(10px);
 
 	&::after {
 		content: "";

@@ -1,16 +1,8 @@
 import { motion } from "motion/react";
-import { Link } from "react-router";
 import leftArrow from "@/assets/images/left-arrow.svg";
 import { useMediaQuery } from "react-responsive";
-import { useActiveSection } from "@/hooks/useActiveSection";
-
-type NavBarLinksProps = {
-	variant?: "regular" | "hamburger";
-	onLinkClick?: () => void;
-	onContactClick?: () => void;
-};
-
-const SECTIONS = ["home", "about", "projects"] as const;
+import { Link } from "react-scroll";
+import { Section, SECTIONS } from "@/constants/sections";
 
 const containerVariants = {
 	hidden: { opacity: 0 },
@@ -28,9 +20,20 @@ const itemVariants = {
 	show: { x: 0, opacity: 1 },
 };
 
-const NavBarLinks: React.FC<NavBarLinksProps> = ({ variant = "regular", onLinkClick }) => {
-	const activeSection = useActiveSection((state) => state.activeSection);
+interface NavBarLinksProps {
+	variant: "regular" | "hamburger";
+	onLinkClick?: () => void;
+	onContactClick?: () => void;
+	activeSection: Section;
+	onSetActive: (section: Section) => void;
+}
 
+const NavBarLinks: React.FC<NavBarLinksProps> = ({
+	variant,
+	onLinkClick,
+	activeSection,
+	onSetActive,
+}) => {
 	const isHamburger = variant === "hamburger";
 	const isSmallScreen = useMediaQuery({ maxWidth: 920 });
 
@@ -50,7 +53,6 @@ const NavBarLinks: React.FC<NavBarLinksProps> = ({ variant = "regular", onLinkCl
 		>
 			{SECTIONS.map((section) => {
 				const isActive = activeSection === section;
-				const path = section === "home" ? "/" : section;
 
 				return (
 					<motion.li
@@ -59,12 +61,18 @@ const NavBarLinks: React.FC<NavBarLinksProps> = ({ variant = "regular", onLinkCl
 						className={`navbar-link-list-item ${isActive ? "active" : ""}`}
 					>
 						<Link
-							to={path}
+							to={section}
+							smooth={true}
+							duration={600}
+							spy={true}
+							offset={-30}
 							onClick={onLinkClick}
+							onSetActive={() => onSetActive(section)}
 							className={isActive ? "underline" : ""}
 						>
 							{section}
 						</Link>
+
 						{isSmallScreen && (
 							<div
 								className="left-arrow-wrapper"

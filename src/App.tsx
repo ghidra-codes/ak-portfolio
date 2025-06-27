@@ -1,21 +1,24 @@
-import { Routes, Route } from "react-router";
-import HomePage from "./pages/HomePage";
-import ProjectsPage from "./pages/ProjectsPage";
+import Projects from "./pages/Projects";
 import Footer from "./components/layout/Footer";
-import AboutPage from "./pages/AboutPage";
-import NotFoundPage from "./pages/NotFoundPage";
+import About from "./pages/About";
 import NavBar from "./components/layout/NavBar/NavBar";
+import Header from "./components/layout/Header";
 
 function App() {
 	return (
 		<>
 			<NavBar />
-			<Routes>
-				<Route path="/" element={<HomePage />} />
-				<Route path="/about" element={<AboutPage />} />
-				<Route path="/projects" element={<ProjectsPage />} />
-				<Route path="*" element={<NotFoundPage />} />
-			</Routes>
+			<main>
+				<section id="home">
+					<Header />
+				</section>
+				<section id="about">
+					<About />
+				</section>
+				<section id="projects">
+					<Projects />
+				</section>
+			</main>
 			<Footer />
 		</>
 	);

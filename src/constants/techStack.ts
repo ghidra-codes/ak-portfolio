@@ -35,7 +35,7 @@ export const categoryInfo: Record<string, { icon: string; label: string }> = {
 	tools: { icon: tools, label: "Tools" },
 	platforms: { icon: platforms, label: "Platforms" },
 	databases: { icon: databases, label: "Databases" },
-};
+} as const;
 
 export const techStack = [
 	{ name: "JavaScript", icon: js, category: "languages" },
@@ -54,4 +54,4 @@ export const techStack = [
 	{ name: "WordPress", icon: wordpress, category: "platforms" },
 	{ name: "Cypress", icon: cypress, category: "tools" },
 	{ name: "Git", icon: git, category: "tools" },
-];
+] as const;

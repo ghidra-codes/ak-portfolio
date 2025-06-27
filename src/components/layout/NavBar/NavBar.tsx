@@ -1,27 +1,44 @@
 import { useState } from "react";
 import HamburgerMenuBtn from "./HamburgerMenuBtn";
 import NavBarLinks from "./NavBarLinks";
-import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "motion/react";
+import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import { useMediaQuery } from "react-responsive";
+import type { Section } from "@/constants/sections";
 
 export default function NavBar() {
 	const { scrollY } = useScroll();
 	const isSmallScreen = useMediaQuery({ maxWidth: 920 });
 
+	const [activeSection, setActiveSection] = useState<Section>("home");
+
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [hidden, setHidden] = useState(false);
+	const [menuKey, setMenuKey] = useState(0);
 
 	useMotionValueEvent(scrollY, "change", (latest) => {
+		if (!isSmallScreen) {
+			setHidden(false);
+			return;
+		}
+
 		const previous = scrollY.getPrevious();
 
-		if (isSmallScreen && previous) {
-			setHidden(latest > previous && latest > 150);
+		if (previous) {
+			setHidden(latest > previous && latest > 100);
 
 			if (isMenuOpen) setIsMenuOpen(false);
 		}
 	});
 
-	const onToggle = () => setIsMenuOpen((prev) => !prev);
+	const onToggle = () => {
+		setIsMenuOpen((prev) => {
+			const next = !prev;
+
+			if (next) setMenuKey((key) => key + 1);
+
+			return next;
+		});
+	};
 
 	return (
 		<>
@@ -36,10 +53,13 @@ export default function NavBar() {
 					{!isSmallScreen && <h1 className="navbar-heading">Alexander Kallin</h1>}
 				</div>
 				<div className="navbar-links-wrapper">
-					{isSmallScreen ? (
-						<HamburgerMenuBtn onToggle={onToggle} active={isMenuOpen} />
-					) : (
-						<NavBarLinks />
+					{isSmallScreen && <HamburgerMenuBtn onToggle={onToggle} active={isMenuOpen} />}
+					{!isSmallScreen && (
+						<NavBarLinks
+							variant="regular"
+							activeSection={activeSection}
+							onSetActive={setActiveSection}
+						/>
 					)}
 					<motion.button
 						whileHover={{ scale: 1.05 }}
@@ -51,21 +71,26 @@ export default function NavBar() {
 					</motion.button>
 				</div>
 			</motion.nav>
-
-			<AnimatePresence>
-				{isMenuOpen && isSmallScreen && (
-					<motion.div
-						key="menu"
-						initial={{ opacity: 0, x: "100%" }}
-						animate={{ opacity: 1, x: 0 }}
-						exit={{ opacity: 0, x: "100%" }}
-						transition={{ duration: 0.3, ease: "easeInOut" }}
-						className="menu-wrapper"
-					>
-						<NavBarLinks variant="hamburger" onLinkClick={onToggle} />
-					</motion.div>
-				)}
-			</AnimatePresence>
+			{isSmallScreen && (
+				<motion.div
+					key={menuKey}
+					className="menu-wrapper"
+					initial={{ x: "100%", opacity: 0 }}
+					animate={{
+						x: isMenuOpen ? 0 : "100%",
+						opacity: isMenuOpen ? 1 : 0,
+						pointerEvents: isMenuOpen ? "auto" : "none",
+					}}
+					transition={{ duration: 0.3, ease: "easeInOut" }}
+				>
+					<NavBarLinks
+						variant="hamburger"
+						onLinkClick={onToggle}
+						activeSection={activeSection}
+						onSetActive={setActiveSection}
+					/>
+				</motion.div>
+			)}
 		</>
 	);
 }
