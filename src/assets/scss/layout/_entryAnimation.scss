@@ -1,0 +1,62 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.entry-wrapper {
+	@include flex-center;
+	height: 100vh;
+	width: 100vw;
+}
+
+.entry-animation {
+	@include flex-center;
+
+	.logo-frame {
+		@include flex-center;
+		position: relative;
+		width: 12rem;
+		height: 12rem;
+		margin: auto;
+
+		.logo-text-image {
+			display: block;
+			max-width: 8.5rem;
+			height: auto;
+		}
+
+		.border {
+			position: absolute;
+			background-color: $honolulu-blue;
+			z-index: 1;
+
+			&.top,
+			&.bottom {
+				height: 5px;
+				width: 100%;
+				left: 0;
+			}
+
+			&.top {
+				top: 0;
+			}
+
+			&.bottom {
+				bottom: 0;
+			}
+
+			&.left,
+			&.right {
+				width: 5px;
+				height: 100%;
+				top: 0;
+			}
+
+			&.left {
+				left: 0;
+			}
+
+			&.right {
+				right: 0;
+			}
+		}
+	}
+}

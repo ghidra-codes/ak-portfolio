@@ -1,26 +1,35 @@
-import Projects from "./pages/Projects";
 import Footer from "./components/layout/Footer";
-import About from "./pages/About";
 import NavBar from "./components/layout/NavBar/NavBar";
-import Header from "./components/layout/Header";
+import { useState } from "react";
+import EntryAnimation from "./components/layout/EntryAnimation";
+import { motion, AnimatePresence } from "framer-motion";
+import MainContent from "./layouts/MainContent";
 
 function App() {
+	const [showEntry, setShowEntry] = useState(true);
+
 	return (
-		<>
-			<NavBar />
-			<main>
-				<section id="home">
-					<Header />
-				</section>
-				<section id="about">
-					<About />
-				</section>
-				<section id="projects">
-					<Projects />
-				</section>
-			</main>
-			<Footer />
-		</>
+		<AnimatePresence mode="wait">
+			{showEntry ? (
+				<motion.div
+					key="entry"
+					exit={{ scale: 0.3, opacity: 0 }}
+					transition={{ delay: 0.2, duration: 0.25 }}
+					onAnimationComplete={(definition) => {
+						if (definition === "exit") setShowEntry(false);
+					}}
+					className="entry-wrapper"
+				>
+					<EntryAnimation onComplete={() => setShowEntry(false)} />
+				</motion.div>
+			) : (
+				<>
+					<NavBar />
+					<MainContent />
+					<Footer />
+				</>
+			)}
+		</AnimatePresence>
 	);
 }
 
