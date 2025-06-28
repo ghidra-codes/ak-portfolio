@@ -4,6 +4,7 @@ import TechStackIcon from "./TechStackIcon";
 import CursorInfoBox from "@/components/ui/CursorInfoBox";
 import { useMediaQuery } from "react-responsive";
 import { categoryInfo, techStack } from "@/constants/techStack";
+import RevealAnimation from "../ui/RevealAnimation";
 
 type Tech = (typeof techStack)[number];
 
@@ -20,18 +21,15 @@ const TechStack = () => {
 
 	const renderTouchIcons = (items: Tech[]) =>
 		items.map(({ name, icon }, index) => {
-			if (isSmallScreen) {
-				const isOdd = items.length % 2 === 1 && index === items.length - 1;
+			const isOdd = items.length % 2 === 1 && index === items.length - 1;
 
-				return !isOdd ? (
-					<TechStackIconTouch key={name} name={name} icon={icon} />
-				) : (
-					<div className="centered-icon-wrapper" key={name}>
-						<TechStackIconTouch name={name} icon={icon} />
-					</div>
-				);
-			}
-			return <TechStackIconTouch key={name} name={name} icon={icon} />;
+			return !isOdd ? (
+				<TechStackIconTouch key={name} name={name} icon={icon} />
+			) : (
+				<div className="centered-icon-wrapper" key={name}>
+					<TechStackIconTouch name={name} icon={icon} />
+				</div>
+			);
 		});
 
 	const groupedByCategory = techStack.reduce((acc, tech) => {
@@ -49,40 +47,40 @@ const TechStack = () => {
 			>
 				{!isSmallScreen
 					? techStack.map(({ name, icon, category }) => {
-							const isHighlighted =
-								hoveredCategory === null || hoveredCategory === category;
+							const isHighlighted = hoveredCategory === null || hoveredCategory === category;
 							const isLabelHighlighted = hoveredCategory === category;
 
 							return (
-								<TechStackIcon
-									key={name}
-									name={name}
-									icon={icon}
-									category={category}
-									isHighlighted={isHighlighted}
-									isLabelHighlighted={isLabelHighlighted}
-									isSmallScreen={isSmallScreen}
-									onHoverChange={(newCategory) => {
-										setHoverCategory(newCategory);
-										handleMouseEnter(newCategory ?? "");
-									}}
-								/>
+								<RevealAnimation>
+									<TechStackIcon
+										name={name}
+										icon={icon}
+										category={category}
+										isHighlighted={isHighlighted}
+										isLabelHighlighted={isLabelHighlighted}
+										isSmallScreen={isSmallScreen}
+										onHoverChange={(newCategory) => {
+											setHoverCategory(newCategory);
+											handleMouseEnter(newCategory ?? "");
+										}}
+									/>
+								</RevealAnimation>
 							);
 					  })
 					: Object.entries(groupedByCategory).map(([category, items]) => (
-							<div key={category} className="tech-category-group">
+							<RevealAnimation className="tech-category-group" key={category}>
 								<div className="category-heading-wrapper">
 									<img
 										className="category-heading-icon"
 										src={categoryInfo[category].icon}
 										alt={categoryInfo[category].label}
 									/>
-									<h3 className="category-heading">
-										{categoryInfo[category].label}
-									</h3>
+									<h3 className="category-heading">{categoryInfo[category].label}</h3>
 								</div>
-								<div className="icon-wrapper">{renderTouchIcons(items)}</div>
-							</div>
+								<RevealAnimation className="icon-wrapper">
+									{renderTouchIcons(items)}
+								</RevealAnimation>
+							</RevealAnimation>
 					  ))}
 			</div>
 			{hoveredInfo && !isSmallScreen && (

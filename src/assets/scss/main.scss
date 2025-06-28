@@ -4,6 +4,7 @@
 @use "./pages/about";
 @use "./layout/header";
 @use "./layout/navbar";
+@use "./layout/entryAnimation";
 @use "./components/navbarLinks";
 @use "./components/hamburgerMenuBtn";
 @use "./components/aboutContent";
@@ -11,4 +12,3 @@
 @use "./components/techStackIcon";
 @use "./components/techStackIconTouch";
 @use "./components/cursorInfoBox";
-@use "./layout/entryAnimation";

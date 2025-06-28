@@ -13,13 +13,13 @@
 	.logo-frame {
 		@include flex-center;
 		position: relative;
-		width: 12rem;
-		height: 12rem;
+		width: 10rem;
+		height: 10rem;
 		margin: auto;
 
 		.logo-text-image {
 			display: block;
-			max-width: 8.5rem;
+			max-width: 7.25rem;
 			height: auto;
 		}
 
@@ -47,15 +47,43 @@
 			&.right {
 				width: 5px;
 				height: 100%;
-				top: 0;
 			}
 
 			&.left {
+				top: 0;
 				left: 0;
+
+				&.glow-active::before {
+					@include glow-dot(bottom);
+				}
+
+				&::before {
+					opacity: 0;
+					box-shadow: none;
+				}
 			}
 
 			&.right {
 				right: 0;
+				bottom: 0;
+
+				&.glow-active::before {
+					@include glow-dot(top);
+				}
+
+				&::before {
+					opacity: 0;
+					box-shadow: none;
+				}
+			}
+		}
+
+		@include respond(mobile) {
+			width: 8rem;
+			height: 8rem;
+
+			.logo-text-image {
+				max-width: 5.25rem;
 			}
 		}
 	}
