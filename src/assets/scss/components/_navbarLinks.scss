@@ -34,7 +34,7 @@
 			cursor: pointer;
 
 			&:hover {
-				color: #067fd5;
+				color: $blue-gray;
 			}
 		}
 
@@ -82,7 +82,7 @@
 		}
 
 		&.active {
-			color: #067fd5;
+			color: $blue-gray;
 		}
 	}
 }

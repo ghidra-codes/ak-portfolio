@@ -1,0 +1,37 @@
+.tinted-image-wrapper {
+	position: relative;
+	cursor: pointer;
+
+	.tinted-image {
+		display: block;
+		filter: grayscale(90%);
+		transition: opacity 0.5s ease-in-out;
+
+		&.revealed {
+			filter: none;
+		}
+	}
+
+	.image-overlay {
+		position: absolute;
+		inset: 0;
+		mix-blend-mode: multiply;
+		z-index: 1;
+		transition: opacity 0.5s ease-in-out;
+
+		&.revealed {
+			opacity: 0;
+		}
+	}
+	@media (min-width: 769px) {
+		&:hover {
+			.tinted-image {
+				filter: none;
+			}
+
+			.image-overlay {
+				opacity: 0;
+			}
+		}
+	}
+}

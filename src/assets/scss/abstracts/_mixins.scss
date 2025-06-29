@@ -1,10 +1,5 @@
 @use "sass:map";
-
-$breakpoints: (
-	mobile: 480px,
-	tablet: 768px,
-	desktop: 1024px,
-);
+@use "../abstracts/variables" as *;
 
 @mixin respond($breakpoint) {
 	@if map.has-key($breakpoints, $breakpoint) {
@@ -13,6 +8,15 @@ $breakpoints: (
 		}
 	} @else {
 		@warn "No value found for breakpoint: #{$breakpoint}";
+	}
+}
+
+@mixin fluid-type($element) {
+	@if map.has-key($font-sizes, $element) {
+		$size-map: map.get($font-sizes, $element);
+		font-size: clamp(map.get($size-map, min), map.get($size-map, fluid), map.get($size-map, max));
+	} @else {
+		@warn "No font-size defined for #{$element}";
 	}
 }
 

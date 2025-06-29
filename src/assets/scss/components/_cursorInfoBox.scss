@@ -1,3 +1,6 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
 .info-wrapper {
 	position: absolute;
 	display: flex;
@@ -22,5 +25,6 @@
 
 	.info-label {
 		font-size: 0.85rem;
+		color: $blue-ivory;
 	}
 }

@@ -1,16 +1,15 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
+
 .icon-wrapper {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
-	gap: 6rem;
+	gap: 4.5rem;
 	margin-top: 2rem;
 
-	@media (max-width: 1024px) {
+	@include respond(desktop) {
 		grid-template-columns: repeat(3, 1fr);
-		gap: 5rem;
-	}
-
-	@media (max-width: 1024px) {
-		grid-template-columns: repeat(2, 1fr);
+		gap: 4rem;
 	}
 }
 
@@ -19,11 +18,17 @@
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	width: 5rem;
+	width: 4rem;
 	transition: opacity 0.3s ease;
 	cursor: default;
 
 	.icon-label {
 		white-space: nowrap;
+		color: $blue-ivory;
+		@include fluid-type(label-p);
+	}
+
+	@include respond(tablet) {
+		width: 3rem;
 	}
 }

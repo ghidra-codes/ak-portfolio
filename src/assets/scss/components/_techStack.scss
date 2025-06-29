@@ -1,7 +1,13 @@
+@use "../abstracts/mixins" as *;
+
 #techStack {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
 	gap: 2rem;
+
+	@include respond(tablet) {
+		gap: 0.5rem;
+	}
 }

@@ -8,7 +8,7 @@ const AboutContent = () => {
 			</RevealAnimation>
 			<div className="about-section">
 				<RevealAnimation>
-					<h2>How I Found My Passion for Web Development</h2>
+					<h3>How I Found My Passion for Web Development</h3>
 					<p>
 						It all started with a simple curiosity for how things work behind the scenes. I’ve
 						always enjoyed understanding the logic that holds creative ideas together, whether
@@ -20,7 +20,7 @@ const AboutContent = () => {
 			</div>
 			<div className="about-section">
 				<RevealAnimation>
-					<h2>Why Details Matter</h2>
+					<h3>Why Details Matter</h3>
 					<p>
 						Before I started working with code, I worked with paint — literally. My background as
 						a decorative painter taught me an important lesson: details shape everything. That

@@ -44,7 +44,7 @@ export const techStack = [
 	{ name: "Vite", icon: vite, category: "frontend" },
 	{ name: "Tailwind", icon: tailwind, category: "frontend" },
 	{ name: "SCSS", icon: scss, category: "frontend" },
-	{ name: "Framer Motion", icon: framer, category: "frontend" },
+	{ name: "Motion", icon: framer, category: "frontend" },
 	{ name: "Node.js", icon: node, category: "backend" },
 	{ name: "Express", icon: express, category: "backend" },
 	{ name: "Prisma", icon: prisma, category: "backend" },

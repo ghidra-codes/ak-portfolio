@@ -1,10 +1,65 @@
 @use "sass:color";
 
-$maya-blue: #73c2fbef;
 $honolulu-blue: #2176ae;
+$maya-blue: #73c2fbef;
+
 $rich-black: #001a23;
 $jet: #39393a;
 $bright-jet: #878789;
-$ivory: #f4f9e9;
+$brighter-jet: #adadaf;
+
 $blue-gray: #7b9eaf;
-$soft-blue-white: color.mix(#73c2fb, #f4f9e9, 80%);
+$blue-tint: #c1ced8;
+$blue-ivory: #d5dee5;
+
+$soft-light-blue: color.mix(#73c2fb, #f4f9e9, 80%);
+
+$breakpoints: (
+	mobile: 480px,
+	tablet: 768px,
+	desktop: 1024px,
+);
+
+$font-sizes: (
+	h1: (
+		min: 1.7rem,
+		fluid: 4.6vw,
+		max: 2.85rem,
+	),
+
+	h2: (
+		min: 1.4rem,
+		fluid: 3vw,
+		max: 2rem,
+	),
+
+	h3: (
+		min: 1.1rem,
+		fluid: 2.5vw,
+		max: 1.5rem,
+	),
+
+	p: (
+		min: 1rem,
+		fluid: 2vw,
+		max: 1.25rem,
+	),
+
+	header-p: (
+		min: 1.05rem,
+		fluid: 2.15vw,
+		max: 1.3rem,
+	),
+
+	header-period: (
+		min: 2.125rem,
+		fluid: 5.75vw,
+		max: 3.56rem,
+	),
+
+	label-p: (
+		min: 0.9rem,
+		fluid: 1.85vw,
+		max: 1.25rem,
+	),
+);

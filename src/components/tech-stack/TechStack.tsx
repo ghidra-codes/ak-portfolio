@@ -19,19 +19,6 @@ const TechStack = () => {
 	const handleMouseMove = (e: React.MouseEvent) => setCursorPos({ x: e.clientX, y: e.clientY });
 	const handleMouseEnter = (info: string) => setHoveredInfo(info);
 
-	const renderTouchIcons = (items: Tech[]) =>
-		items.map(({ name, icon }, index) => {
-			const isOdd = items.length % 2 === 1 && index === items.length - 1;
-
-			return !isOdd ? (
-				<TechStackIconTouch key={name} name={name} icon={icon} />
-			) : (
-				<div className="centered-icon-wrapper" key={name}>
-					<TechStackIconTouch name={name} icon={icon} />
-				</div>
-			);
-		});
-
 	const groupedByCategory = techStack.reduce((acc, tech) => {
 		if (!acc[tech.category]) acc[tech.category] = [];
 		acc[tech.category].push(tech);
@@ -40,49 +27,58 @@ const TechStack = () => {
 
 	return (
 		<>
-			<h2 className="about-section-heading">Technologies I’ve worked with</h2>
-			<div
-				className={isSmallScreen ? "icon-wrapper-touch" : "icon-wrapper"}
-				onMouseMove={handleMouseMove}
-			>
-				{!isSmallScreen
-					? techStack.map(({ name, icon, category }) => {
-							const isHighlighted = hoveredCategory === null || hoveredCategory === category;
-							const isLabelHighlighted = hoveredCategory === category;
+			<RevealAnimation>
+				<h3 className="about-section-heading">Technologies I’ve worked with</h3>
+			</RevealAnimation>
+			{!isSmallScreen ? (
+				<div className="icon-wrapper" onMouseMove={handleMouseMove}>
+					{techStack.map(({ name, icon, category }) => {
+						const isHighlighted = hoveredCategory === null || hoveredCategory === category;
+						const isLabelHighlighted = hoveredCategory === category;
 
-							return (
-								<RevealAnimation>
-									<TechStackIcon
-										name={name}
-										icon={icon}
-										category={category}
-										isHighlighted={isHighlighted}
-										isLabelHighlighted={isLabelHighlighted}
-										isSmallScreen={isSmallScreen}
-										onHoverChange={(newCategory) => {
-											setHoverCategory(newCategory);
-											handleMouseEnter(newCategory ?? "");
-										}}
-									/>
-								</RevealAnimation>
-							);
-					  })
-					: Object.entries(groupedByCategory).map(([category, items]) => (
-							<RevealAnimation className="tech-category-group" key={category}>
-								<div className="category-heading-wrapper">
-									<img
-										className="category-heading-icon"
-										src={categoryInfo[category].icon}
-										alt={categoryInfo[category].label}
-									/>
-									<h3 className="category-heading">{categoryInfo[category].label}</h3>
-								</div>
-								<RevealAnimation className="icon-wrapper">
-									{renderTouchIcons(items)}
-								</RevealAnimation>
+						return (
+							<RevealAnimation key={name}>
+								<TechStackIcon
+									name={name}
+									icon={icon}
+									category={category}
+									isHighlighted={isHighlighted}
+									isLabelHighlighted={isLabelHighlighted}
+									isSmallScreen={isSmallScreen}
+									onHoverChange={(newCategory) => {
+										setHoverCategory(newCategory);
+										handleMouseEnter(newCategory ?? "");
+									}}
+								/>
 							</RevealAnimation>
-					  ))}
-			</div>
+						);
+					})}
+				</div>
+			) : (
+				<RevealAnimation className="icon-wrapper-touch">
+					<div className="scroll-row">
+						{Object.entries(groupedByCategory).map(([category, items]) => (
+							<div className="tech-category-group" key={category}>
+								<div className="category-heading-wrapper">
+									<div className="category-heading-container">
+										<img
+											className="category-heading-icon"
+											src={categoryInfo[category].icon}
+											alt={categoryInfo[category].label}
+										/>
+										<p className="category-heading">{categoryInfo[category].label}</p>
+									</div>
+								</div>
+								<div className="touch-icons">
+									{items.map(({ name, icon }) => (
+										<TechStackIconTouch key={name} name={name} icon={icon} />
+									))}
+								</div>
+							</div>
+						))}
+					</div>
+				</RevealAnimation>
+			)}
 			{hoveredInfo && !isSmallScreen && (
 				<CursorInfoBox
 					x={cursorPos.x}

@@ -1,0 +1,26 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
+
+h1 {
+	@include fluid-type(h1);
+}
+
+h2 {
+	@include fluid-type(h2);
+}
+
+h3 {
+	@include fluid-type(h3);
+}
+
+p {
+	@include fluid-type(p);
+	letter-spacing: 0.01em;
+	color: $bright-jet;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: 0.02em;
+}

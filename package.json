@@ -12,6 +12,7 @@
 		"type-coverage": "type-coverage --strict --at-least 100 -p ./tsconfig.app.json"
 	},
 	"dependencies": {
+		"classnames": "^2.5.1",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
 		"react-responsive": "^10.0.1",
