@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import TechStackIconTouch from "./TechStackIconTouch";
 import TechStackIcon from "./TechStackIcon";
 import CursorInfoBox from "@/components/ui/CursorInfoBox";
 import { useMediaQuery } from "react-responsive";
-import { categoryInfo, techStack } from "@/constants/techStack";
+import { categoryInfo, Tech, techStack } from "@/constants/techStack";
 import RevealAnimation from "../ui/RevealAnimation";
-
-type Tech = (typeof techStack)[number];
+import TechStackSlider from "./TechStackSlider";
 
 const TechStack = () => {
 	const [hoveredCategory, setHoverCategory] = useState<string | null>(null);
@@ -56,27 +54,7 @@ const TechStack = () => {
 				</div>
 			) : (
 				<RevealAnimation className="icon-wrapper-touch">
-					<div className="scroll-row">
-						{Object.entries(groupedByCategory).map(([category, items]) => (
-							<div className="tech-category-group" key={category}>
-								<div className="category-heading-wrapper">
-									<div className="category-heading-container">
-										<img
-											className="category-heading-icon"
-											src={categoryInfo[category].icon}
-											alt={categoryInfo[category].label}
-										/>
-										<p className="category-heading">{categoryInfo[category].label}</p>
-									</div>
-								</div>
-								<div className="touch-icons">
-									{items.map(({ name, icon }) => (
-										<TechStackIconTouch key={name} name={name} icon={icon} />
-									))}
-								</div>
-							</div>
-						))}
-					</div>
+					<TechStackSlider groupedByCategory={groupedByCategory} />
 				</RevealAnimation>
 			)}
 			{hoveredInfo && !isSmallScreen && (

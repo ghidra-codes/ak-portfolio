@@ -55,3 +55,5 @@ export const techStack = [
 	{ name: "Cypress", icon: cypress, category: "tools" },
 	{ name: "Git", icon: git, category: "tools" },
 ] as const;
+
+export type Tech = (typeof techStack)[number];
