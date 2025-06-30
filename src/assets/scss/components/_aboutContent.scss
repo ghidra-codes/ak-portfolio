@@ -9,17 +9,6 @@
 	gap: 2rem;
 
 	.about-section {
-		width: 50%;
 		padding: 0 2rem;
-		border-radius: 5px;
-
-		@include respond(tablet) {
-			width: 70%;
-		}
-
-		@include respond(mobile) {
-			width: 90%;
-			padding: 0 1.5rem;
-		}
 	}
 }

@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import leftArrow from "@/assets/images/left-arrow.svg";
+import leftArrow from "@/assets/images/icons/left-arrow.svg";
 import { useMediaQuery } from "react-responsive";
 import { Link } from "react-scroll";
 import { Section, SECTIONS } from "@/constants/sections";
@@ -28,12 +28,7 @@ interface NavBarLinksProps {
 	onSetActive: (section: Section) => void;
 }
 
-const NavBarLinks: React.FC<NavBarLinksProps> = ({
-	variant,
-	onLinkClick,
-	activeSection,
-	onSetActive,
-}) => {
+const NavBarLinks: React.FC<NavBarLinksProps> = ({ variant, onLinkClick, activeSection, onSetActive }) => {
 	const isHamburger = variant === "hamburger";
 	const isSmallScreen = useMediaQuery({ maxWidth: 920 });
 

@@ -1,19 +1,22 @@
 import me from "@/assets/images/me.jpg";
 import TintedImage from "../ui/TintedImage";
+import RevealAnimation from "../ui/RevealAnimation";
 
 export default function Header() {
 	return (
 		<header>
 			<div className="header-content">
-				<h1 className="title">
-					Hello, my name is Alex<span>.</span>
-				</h1>
-				<h2 className="subtitle">I build things for the web.</h2>
-				<p className="header-paragraph">
-					I’m a creative developer who loves crafting high-quality web experiences. My goal is
-					always to build the best product possible, using modern technologies and industry best
-					practices.
-				</p>
+				<RevealAnimation>
+					<h1 className="title">
+						Hello, my name is Alex<span>.</span>
+					</h1>
+					<h2 className="subtitle">I build things for the web.</h2>
+					<p className="header-paragraph">
+						I’m a creative developer who loves crafting high-quality web experiences. My goal is
+						always to build the best product possible, using modern technologies and industry best
+						practices.
+					</p>
+				</RevealAnimation>
 			</div>
 			<TintedImage
 				src={me}

@@ -1,38 +1,45 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import TechStackIcon from "./TechStackIcon";
 import CursorInfoBox from "@/components/ui/CursorInfoBox";
 import { useMediaQuery } from "react-responsive";
 import { categoryInfo, Tech, techStack } from "@/constants/techStack";
 import RevealAnimation from "../ui/RevealAnimation";
 import TechStackSlider from "./TechStackSlider";
+import { motion, useInView } from "motion/react";
+import { EASE_OUT_SLOW } from "@/constants/animations";
 
 const TechStack = () => {
-	const [hoveredCategory, setHoverCategory] = useState<string | null>(null);
+	const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
 	const [hoveredInfo, setHoveredInfo] = useState<string | null>(null);
 	const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
 
+	const sliderRef = useRef(null);
+	const isInView = useInView(sliderRef, { once: true, margin: "30px" });
 	const isSmallScreen = useMediaQuery({ maxWidth: 768 });
 
-	// Mouse event handlers
-	const handleMouseMove = (e: React.MouseEvent) => setCursorPos({ x: e.clientX, y: e.clientY });
-	const handleMouseEnter = (info: string) => setHoveredInfo(info);
-
 	const groupedByCategory = techStack.reduce((acc, tech) => {
-		if (!acc[tech.category]) acc[tech.category] = [];
-		acc[tech.category].push(tech);
+		(acc[tech.category] ??= []).push(tech);
+
 		return acc;
 	}, {} as Record<string, Tech[]>);
+
+	const handleMouseMove = (e: React.MouseEvent) => setCursorPos({ x: e.clientX, y: e.clientY });
+
+	const onHoverChange = (newCategory: string | null) => {
+		setHoveredCategory(newCategory);
+		setHoveredInfo(newCategory ?? null);
+	};
 
 	return (
 		<>
 			<RevealAnimation>
 				<h3 className="about-section-heading">Technologies I’ve worked with</h3>
 			</RevealAnimation>
+
 			{!isSmallScreen ? (
 				<div className="icon-wrapper" onMouseMove={handleMouseMove}>
 					{techStack.map(({ name, icon, category }) => {
-						const isHighlighted = hoveredCategory === null || hoveredCategory === category;
-						const isLabelHighlighted = hoveredCategory === category;
+						const isHighlighted = !hoveredCategory || hoveredCategory === category;
 
 						return (
 							<RevealAnimation key={name}>
@@ -41,22 +48,29 @@ const TechStack = () => {
 									icon={icon}
 									category={category}
 									isHighlighted={isHighlighted}
-									isLabelHighlighted={isLabelHighlighted}
-									isSmallScreen={isSmallScreen}
-									onHoverChange={(newCategory) => {
-										setHoverCategory(newCategory);
-										handleMouseEnter(newCategory ?? "");
-									}}
+									isLabelHighlighted={hoveredCategory === category}
+									onHoverChange={onHoverChange}
 								/>
 							</RevealAnimation>
 						);
 					})}
 				</div>
 			) : (
-				<RevealAnimation className="icon-wrapper-touch">
+				<motion.div
+					ref={sliderRef}
+					className="slider-wrapper"
+					initial={{ opacity: 0, y: 75, filter: "grayscale(100%)" }}
+					animate={isInView ? { opacity: 1, y: 0, filter: "grayscale(0%)" } : {}}
+					transition={{
+						opacity: { duration: 0.8, ease: EASE_OUT_SLOW },
+						y: { duration: 0.8, ease: EASE_OUT_SLOW },
+						filter: { duration: 1, ease: [0.3, 0, 0.7, 1] },
+					}}
+				>
 					<TechStackSlider groupedByCategory={groupedByCategory} />
-				</RevealAnimation>
+				</motion.div>
 			)}
+
 			{hoveredInfo && !isSmallScreen && (
 				<CursorInfoBox
 					x={cursorPos.x}

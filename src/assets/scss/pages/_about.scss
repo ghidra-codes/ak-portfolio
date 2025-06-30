@@ -1,8 +1,14 @@
-.about-wrapper {
-	display: flex;
+@use "../abstracts/mixins" as *;
+
+#about {
 	margin: 0 auto;
-	.about-section-heading {
-		text-align: center;
-		margin-top: 4rem;
+	width: 60%;
+
+	@include respond(tablet) {
+		width: 70%;
+	}
+
+	@include respond(mobile) {
+		width: 90%;
 	}
 }

@@ -5,7 +5,7 @@
 	.tinted-image {
 		display: block;
 		filter: grayscale(90%);
-		transition: opacity 0.5s ease-in-out;
+		transition: opacity 0.4s ease-in-out;
 
 		&.revealed {
 			filter: none;
@@ -17,12 +17,18 @@
 		inset: 0;
 		mix-blend-mode: multiply;
 		z-index: 1;
-		transition: opacity 0.5s ease-in-out;
+		transform: translate(15px, 15px);
+		transition: opacity 0.4s ease-in-out, transform 0.5s ease;
 
 		&.revealed {
 			opacity: 0;
 		}
+
+		&.pop-in {
+			transform: translate(0, 0);
+		}
 	}
+
 	@media (min-width: 769px) {
 		&:hover {
 			.tinted-image {
