@@ -14,7 +14,7 @@ header {
 
 			span {
 				color: $maya-blue;
-				@include fluid-type(header-period);
+				@include fluid-type(header-period-h1);
 				padding-left: 1.5px;
 			}
 		}

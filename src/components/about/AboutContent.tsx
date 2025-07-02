@@ -1,14 +1,18 @@
-import RevealAnimation from "../ui/RevealAnimation";
+import SectionHeader from "@/components/layout/SectionHeader";
+import RevealAnimation from "@/components/ui/RevealAnimation";
+import paintBrush from "@/assets/icons/paint-brush.svg";
+import heart from "@/assets/icons/heart.svg";
 
 const AboutContent = () => {
 	return (
 		<>
-			<RevealAnimation>
-				<h2 className="about-section-heading">About</h2>
-			</RevealAnimation>
 			<div className="about-section">
 				<RevealAnimation>
-					<h3>How I Found My Passion for Web Development</h3>
+					<SectionHeader title={"About"} />
+					<h3>
+						<img src={heart} alt="Heart" className="about-section-icon" />
+						How I Found My Passion for Web Development{" "}
+					</h3>
 					<p>
 						It all started with a simple curiosity for how things work behind the scenes. I’ve
 						always enjoyed understanding the logic that holds creative ideas together, whether
@@ -20,7 +24,10 @@ const AboutContent = () => {
 			</div>
 			<div className="about-section">
 				<RevealAnimation>
-					<h3>Why Details Matter</h3>
+					<h3>
+						<img src={paintBrush} alt="Paint brush" className="about-section-icon" />
+						Why Details Matter
+					</h3>
 					<p>
 						Before I started working with code, I worked with paint — literally. My background as
 						a decorative painter taught me an important lesson: details shape everything. That

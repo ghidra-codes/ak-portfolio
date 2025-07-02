@@ -1,13 +1,40 @@
 @use "../abstracts/index" as *;
 
-#aboutContent {
+#about-content {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	gap: 2rem;
+	padding-top: 2rem;
 
 	.about-section {
 		padding: 0 2rem;
+
+		h3 {
+			display: flex;
+			align-items: center;
+			gap: 0.75rem;
+
+			.about-section-icon {
+				width: 1em;
+
+				@include respond(desktop) {
+					width: 1.25em;
+				}
+
+				@include respond(mobile) {
+					width: 1.35em;
+				}
+			}
+		}
+	}
+
+	@include respond(desktop) {
+		gap: 1rem;
+	}
+
+	@include respond(mobile) {
+		gap: 0.75rem;
 	}
 }

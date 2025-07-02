@@ -34,8 +34,12 @@ const TechStack = () => {
 
 	return (
 		<>
-			<RevealAnimation>
-				<h3 className="about-section-heading">Technologies I’ve worked with</h3>
+			<RevealAnimation width="100%">
+				<div className="tech-stack-header-container">
+					<div className="tech-stack-header-line"></div>
+					<h3 className="tech-stack-header">Technologies I’ve worked with</h3>
+					<div className="tech-stack-header-line"></div>
+				</div>
 			</RevealAnimation>
 
 			{!isSmallScreen ? (

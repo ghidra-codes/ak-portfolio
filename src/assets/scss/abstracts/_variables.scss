@@ -35,10 +35,16 @@ $font-sizes: (
 		max: 1.3rem,
 	),
 
-	header-period: (
+	header-period-h1: (
 		min: 2.125rem,
 		fluid: 5.75vw,
 		max: 3.56rem,
+	),
+
+	header-period-h2: (
+		min: 1.75rem,
+		fluid: 3.75vw,
+		max: 2.5rem,
 	),
 
 	label-p: (

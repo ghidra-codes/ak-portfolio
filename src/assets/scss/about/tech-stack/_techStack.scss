@@ -1,13 +1,31 @@
 @use "../../abstracts/index" as *;
 
-#techStack {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+#tech-stack {
+	@include flex-center;
 	flex-direction: column;
-	gap: 2rem;
+	gap: 2.5rem;
 
-	@include respond(tablet) {
-		gap: 0.5rem;
+	.tech-stack-header-container {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
+		margin-top: 2.5rem;
+
+		.tech-stack-header {
+			margin: 0;
+			white-space: nowrap;
+		}
+
+		.tech-stack-header-line {
+			flex: 1;
+			height: 1px;
+			background: $mid-jet;
+			opacity: 0.6;
+		}
+
+		@include respond(tablet) {
+			margin-top: 2rem;
+		}
 	}
 }

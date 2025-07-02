@@ -4,10 +4,10 @@ import TechStack from "@/components/about/tech-stack/TechStack";
 export default function About() {
 	return (
 		<>
-			<div id="aboutContent">
+			<div id="about-content">
 				<AboutContent />
 			</div>
-			<div id="techStack">
+			<div id="tech-stack">
 				<TechStack />
 			</div>
 		</>
