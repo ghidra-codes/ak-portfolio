@@ -1,5 +1,5 @@
 import Footer from "./components/layout/Footer";
-import NavBar from "./components/layout/NavBar/NavBar";
+import NavBar from "./components/layout/nav-bar/NavBar";
 import { useState } from "react";
 import EntryAnimation from "./components/layout/EntryAnimation";
 import { motion, AnimatePresence } from "framer-motion";

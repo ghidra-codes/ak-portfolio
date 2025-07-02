@@ -1,5 +1,6 @@
 @use "sass:map";
-@use "../abstracts/variables" as *;
+
+@use "./variables" as *;
 
 @mixin respond($breakpoint) {
 	@if map.has-key($breakpoints, $breakpoint) {

@@ -1,32 +1,32 @@
 /**
  * Tech stack icons
  */
-import git from "@/assets/images/icons/tech-stack/git.svg";
-import react from "@/assets/images/icons/tech-stack/react.svg";
-import js from "@/assets/images/icons/tech-stack/js.svg";
-import ts from "@/assets/images/icons/tech-stack/ts.svg";
-import node from "@/assets/images/icons/tech-stack/node-js.svg";
-import prisma from "@/assets/images/icons/tech-stack/prisma.svg";
-import scss from "@/assets/images/icons/tech-stack/scss.svg";
-import framer from "@/assets/images/icons/tech-stack/framer.svg";
-import express from "@/assets/images/icons/tech-stack/express.svg";
-import wordpress from "@/assets/images/icons/tech-stack/wordpress.svg";
-import vite from "@/assets/images/icons/tech-stack/vite.svg";
-import tailwind from "@/assets/images/icons/tech-stack/tailwind.svg";
-import mongodb from "@/assets/images/icons/tech-stack/mongodb.svg";
-import mysql from "@/assets/images/icons/tech-stack/mysql.svg";
-import cypress from "@/assets/images/icons/tech-stack/cypress.svg";
-import firebase from "@/assets/images/icons/tech-stack/firebase.svg";
+import git from "@/assets/icons/tech-stack/git.svg";
+import react from "@/assets/icons/tech-stack/react.svg";
+import js from "@/assets/icons/tech-stack/js.svg";
+import ts from "@/assets/icons/tech-stack/ts.svg";
+import node from "@/assets/icons/tech-stack/node-js.svg";
+import prisma from "@/assets/icons/tech-stack/prisma.svg";
+import scss from "@/assets/icons/tech-stack/scss.svg";
+import framer from "@/assets/icons/tech-stack/framer.svg";
+import express from "@/assets/icons/tech-stack/express.svg";
+import wordpress from "@/assets/icons/tech-stack/wordpress.svg";
+import vite from "@/assets/icons/tech-stack/vite.svg";
+import tailwind from "@/assets/icons/tech-stack/tailwind.svg";
+import mongodb from "@/assets/icons/tech-stack/mongodb.svg";
+import mysql from "@/assets/icons/tech-stack/mysql.svg";
+import cypress from "@/assets/icons/tech-stack/cypress.svg";
+import firebase from "@/assets/icons/tech-stack/firebase.svg";
 
 /**
  * Category icons
  */
-import frontend from "@/assets/images/icons/categories/monitor-2.svg";
-import backend from "@/assets/images/icons/categories/gear.svg";
-import tools from "@/assets/images/icons/categories/tools-2.svg";
-import platforms from "@/assets/images/icons/categories/layer.svg";
-import databases from "@/assets/images/icons/categories/database.svg";
-import languages from "@/assets/images/icons/categories/code-2.svg";
+import frontend from "@/assets/icons/categories/monitor-2.svg";
+import backend from "@/assets/icons/categories/gear.svg";
+import tools from "@/assets/icons/categories/tools-2.svg";
+import platforms from "@/assets/icons/categories/layer.svg";
+import databases from "@/assets/icons/categories/database.svg";
+import languages from "@/assets/icons/categories/code-2.svg";
 
 export const categoryInfo: Record<string, { icon: string; label: string }> = {
 	languages: { icon: languages, label: "Languages" },
@@ -55,5 +55,3 @@ export const techStack = [
 	{ name: "Cypress", icon: cypress, category: "tools" },
 	{ name: "Git", icon: git, category: "tools" },
 ] as const;
-
-export type Tech = (typeof techStack)[number];

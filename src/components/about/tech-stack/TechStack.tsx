@@ -2,11 +2,13 @@ import React, { useRef, useState } from "react";
 import TechStackIcon from "./TechStackIcon";
 import CursorInfoBox from "@/components/ui/CursorInfoBox";
 import { useMediaQuery } from "react-responsive";
-import { categoryInfo, Tech, techStack } from "@/constants/techStack";
-import RevealAnimation from "../ui/RevealAnimation";
+import { categoryInfo, techStack } from "@/constants/techStack";
+import RevealAnimation from "../../ui/RevealAnimation";
 import TechStackSlider from "./TechStackSlider";
 import { motion, useInView } from "motion/react";
 import { EASE_OUT_SLOW } from "@/constants/animations";
+import { GroupedCategories } from "@/types/techStack.types";
+import { fadeInSimpleStaggered } from "@/utils/animations/techStack/fadeInSimpleStaggered";
 
 const TechStack = () => {
 	const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
@@ -14,14 +16,14 @@ const TechStack = () => {
 	const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
 
 	const sliderRef = useRef(null);
-	const isInView = useInView(sliderRef, { once: true, margin: "30px" });
+	const isInView = useInView(sliderRef, { once: true, margin: "-50px" });
 	const isSmallScreen = useMediaQuery({ maxWidth: 768 });
 
 	const groupedByCategory = techStack.reduce((acc, tech) => {
 		(acc[tech.category] ??= []).push(tech);
 
 		return acc;
-	}, {} as Record<string, Tech[]>);
+	}, {} as GroupedCategories);
 
 	const handleMouseMove = (e: React.MouseEvent) => setCursorPos({ x: e.clientX, y: e.clientY });
 
@@ -38,11 +40,18 @@ const TechStack = () => {
 
 			{!isSmallScreen ? (
 				<div className="icon-wrapper" onMouseMove={handleMouseMove}>
-					{techStack.map(({ name, icon, category }) => {
+					{techStack.map(({ name, icon, category }, index) => {
 						const isHighlighted = !hoveredCategory || hoveredCategory === category;
 
 						return (
-							<RevealAnimation key={name}>
+							<motion.div
+								key={name}
+								variants={fadeInSimpleStaggered}
+								initial="initial"
+								whileInView="animate"
+								viewport={{ once: true, margin: "15px" }}
+								custom={index}
+							>
 								<TechStackIcon
 									name={name}
 									icon={icon}
@@ -51,7 +60,7 @@ const TechStack = () => {
 									isLabelHighlighted={hoveredCategory === category}
 									onHoverChange={onHoverChange}
 								/>
-							</RevealAnimation>
+							</motion.div>
 						);
 					})}
 				</div>
@@ -59,15 +68,14 @@ const TechStack = () => {
 				<motion.div
 					ref={sliderRef}
 					className="slider-wrapper"
-					initial={{ opacity: 0, y: 75, filter: "grayscale(100%)" }}
-					animate={isInView ? { opacity: 1, y: 0, filter: "grayscale(0%)" } : {}}
+					initial={{ opacity: 0, filter: "grayscale(100%)" }}
+					animate={isInView ? { opacity: 1, filter: "grayscale(0%)" } : {}}
 					transition={{
 						opacity: { duration: 0.8, ease: EASE_OUT_SLOW },
-						y: { duration: 0.8, ease: EASE_OUT_SLOW },
-						filter: { duration: 1, ease: [0.3, 0, 0.7, 1] },
+						filter: { duration: 0.8, ease: [0.3, 0, 0.7, 1] },
 					}}
 				>
-					<TechStackSlider groupedByCategory={groupedByCategory} />
+					<TechStackSlider groupedByCategory={groupedByCategory} isInView={isInView} />
 				</motion.div>
 			)}
 

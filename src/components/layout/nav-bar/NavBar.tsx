@@ -1,9 +1,9 @@
 import { useState } from "react";
-import HamburgerMenuBtn from "./HamburgerMenuBtn";
+import HamburgerBtn from "./hamburger-btn/HamburgerBtn";
 import NavBarLinks from "./NavBarLinks";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import { useMediaQuery } from "react-responsive";
-import type { Section } from "@/constants/sections";
+import { Section } from "@/types/sections.types";
 
 export default function NavBar() {
 	const { scrollY } = useScroll();
@@ -53,7 +53,7 @@ export default function NavBar() {
 					{!isSmallScreen && <h1 className="navbar-heading">Alexander Kallin</h1>}
 				</div>
 				<div className="navbar-links-wrapper">
-					{isSmallScreen && <HamburgerMenuBtn onToggle={onToggle} active={isMenuOpen} />}
+					{isSmallScreen && <HamburgerBtn onToggle={onToggle} active={isMenuOpen} />}
 					{!isSmallScreen && (
 						<NavBarLinks
 							variant="regular"

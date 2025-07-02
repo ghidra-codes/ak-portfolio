@@ -1,25 +1,10 @@
 import { motion } from "motion/react";
-import leftArrow from "@/assets/images/icons/left-arrow.svg";
+import leftArrow from "@/assets/icons/left-arrow.svg";
 import { useMediaQuery } from "react-responsive";
 import { Link } from "react-scroll";
-import { Section, SECTIONS } from "@/constants/sections";
-
-const containerVariants = {
-	hidden: { opacity: 0 },
-	show: {
-		opacity: 1,
-		transition: {
-			staggerChildren: 0.2,
-			delayChildren: 0.2,
-		},
-	},
-};
-
-const itemVariants = {
-	hidden: { x: 50, opacity: 0 },
-	show: { x: 0, opacity: 1 },
-};
-
+import { SECTIONS } from "@/constants/sections";
+import { Section } from "@/types/sections.types";
+import { fadeInSlideGroup } from "@/utils/animations/navBarLinks/fadeInSlideGroup";
 interface NavBarLinksProps {
 	variant: "regular" | "hamburger";
 	onLinkClick?: () => void;
@@ -34,7 +19,7 @@ const NavBarLinks: React.FC<NavBarLinksProps> = ({ variant, onLinkClick, activeS
 
 	const motionProps = isHamburger
 		? {
-				variants: containerVariants,
+				variants: fadeInSlideGroup.container,
 				initial: "hidden",
 				animate: "show",
 				exit: "hidden",
@@ -52,7 +37,7 @@ const NavBarLinks: React.FC<NavBarLinksProps> = ({ variant, onLinkClick, activeS
 				return (
 					<motion.li
 						key={section}
-						variants={isHamburger ? itemVariants : undefined}
+						variants={isHamburger ? fadeInSlideGroup.item : undefined}
 						className={`navbar-link-list-item ${isActive ? "active" : ""}`}
 					>
 						<Link

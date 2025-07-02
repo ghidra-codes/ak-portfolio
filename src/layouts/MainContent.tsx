@@ -1,6 +1,6 @@
-import About from "@/components/About";
+import About from "@/components/about/About";
 import Header from "@/components/layout/Header";
-import Projects from "@/components/Projects";
+import Projects from "@/components/projects/Projects";
 
 const MainContent = () => (
 	<main>

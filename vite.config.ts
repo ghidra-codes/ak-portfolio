@@ -5,6 +5,14 @@ import path from "path";
 
 export default defineConfig({
 	plugins: [react(), tsconfigPaths()],
+	css: {
+		preprocessorOptions: {
+			api: "legacy",
+			scss: {
+				includePaths: [path.resolve(__dirname, "src/assets/scss")],
+			},
+		},
+	},
 	resolve: {
 		alias: {
 			"@": path.resolve(__dirname, "src"),

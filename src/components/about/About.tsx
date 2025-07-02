@@ -1,5 +1,5 @@
 import AboutContent from "@/components/about/AboutContent";
-import TechStack from "@/components/tech-stack/TechStack";
+import TechStack from "@/components/about/tech-stack/TechStack";
 
 export default function About() {
 	return (

@@ -1,0 +1,20 @@
+@use "sass:color";
+
+$honolulu-blue: #2176ae;
+$maya-blue: #73c2fbef;
+
+$rich-black-darker: #001019;
+$rich-black: #001a23;
+$rich-black-light: #021c26;
+$rich-black-lighter: #031f29;
+
+$jet: #39393a;
+$mid-jet: #606062;
+$bright-jet: #878789;
+$brighter-jet: #adadaf;
+
+$blue-gray: #7b9eaf;
+$blue-tint: #c1ced8;
+$blue-ivory: #d5dee5;
+
+$soft-light-blue: color.mix(#73c2fb, #f4f9e9, 80%);

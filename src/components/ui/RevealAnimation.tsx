@@ -1,5 +1,5 @@
-import { EASE_OUT_SLOW } from "@/constants/animations";
-import { motion, Variants } from "framer-motion";
+import { fadeInStaggeredGroup } from "@/utils/animations/shared/fadeInStaggeredGroup";
+import { motion } from "framer-motion";
 import React from "react";
 
 interface RevealAnimationProps {
@@ -7,40 +7,17 @@ interface RevealAnimationProps {
 	className?: string;
 }
 
-const containerVariants: Variants = {
-	hidden: {},
-	visible: {
-		transition: {
-			staggerChildren: 0.15,
-			delayChildren: 0.25,
-		},
-	},
-};
-
-const childVariants: Variants = {
-	hidden: { opacity: 0, y: 75 },
-	visible: {
-		opacity: 1,
-		y: 0,
-		transition: {
-			duration: 0.5,
-			type: "tween",
-			ease: EASE_OUT_SLOW,
-		},
-	},
-};
-
 const RevealAnimation: React.FC<RevealAnimationProps> = ({ children, className }) => {
 	return (
 		<motion.div
 			className={className ?? ""}
-			variants={containerVariants}
+			variants={fadeInStaggeredGroup.container}
 			initial="hidden"
 			whileInView="visible"
 			viewport={{ once: true }}
 		>
 			{React.Children.map(children, (child, index) => (
-				<motion.div key={index} variants={childVariants}>
+				<motion.div key={index} variants={fadeInStaggeredGroup.child}>
 					{child}
 				</motion.div>
 			))}
