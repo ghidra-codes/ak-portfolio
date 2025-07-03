@@ -1,0 +1,95 @@
+@use "../abstracts/index" as *;
+
+$fill-offset: -2px;
+$fill-width-horizontal: calc(50% + 2px);
+$fill-width-vertical: calc(100% + 2px);
+
+.slide-fill-button {
+	position: relative;
+	padding: 0.65rem 1.25rem;
+	border: 2px solid $maya-blue;
+	background: transparent;
+	border-radius: 4px;
+	color: $maya-blue;
+	@include fluid-type(button-text);
+	font-weight: 500;
+	overflow: hidden;
+	cursor: pointer;
+	transition: color 0.3s ease;
+
+	&.size-lg {
+		padding: 0.75rem 1.35rem;
+		margin-top: 0.5rem;
+
+		&.desktop-size {
+			padding: 0.7rem 1.3rem;
+			margin-bottom: 1.25rem;
+		}
+	}
+
+	.slide-fill-button-text {
+		position: relative;
+		z-index: 5;
+	}
+
+	&::before,
+	&::after,
+	.fill-top,
+	.fill-bottom {
+		content: "";
+		position: absolute;
+		background-color: $maya-blue;
+		z-index: 1;
+		transition: all 0.4s ease;
+	}
+
+	&::before {
+		top: 0;
+		left: $fill-offset;
+		width: $fill-width-horizontal;
+		height: 100%;
+		transform: scaleX(0);
+		transform-origin: left;
+	}
+
+	&::after {
+		top: 0;
+		right: $fill-offset;
+		width: $fill-width-horizontal;
+		height: 100%;
+		transform: scaleX(0);
+		transform-origin: right;
+	}
+
+	.fill-top {
+		top: 0;
+		left: $fill-offset;
+		width: $fill-width-vertical;
+		height: 50%;
+		transform: scaleY(0);
+		transform-origin: top;
+	}
+
+	.fill-bottom {
+		bottom: 0;
+		left: $fill-offset;
+		width: $fill-width-vertical;
+		height: 50%;
+		transform: scaleY(0);
+		transform-origin: bottom;
+	}
+
+	&:hover {
+		color: $rich-black-darker;
+
+		&::before,
+		&::after {
+			transform: scaleX(1);
+		}
+
+		.fill-top,
+		.fill-bottom {
+			transform: scaleY(1);
+		}
+	}
+}

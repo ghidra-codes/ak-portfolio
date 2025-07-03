@@ -1,6 +1,7 @@
 import me from "@/assets/images/me.jpg";
 import TintedImage from "../ui/TintedImage";
 import RevealAnimation from "../ui/RevealAnimation";
+import SlideFillButton from "../ui/SlideFillButton";
 
 export default function Header() {
 	return (
@@ -16,6 +17,7 @@ export default function Header() {
 						always to build the best product possible, using modern technologies and industry best
 						practices.
 					</p>
+					<SlideFillButton title="Contact Me" largerSize />
 				</RevealAnimation>
 			</div>
 			<TintedImage

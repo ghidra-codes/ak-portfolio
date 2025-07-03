@@ -4,10 +4,11 @@ import NavBarLinks from "./NavBarLinks";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import { useMediaQuery } from "react-responsive";
 import { Section } from "@/types/sections.types";
+import SlideFillButton from "@/components/ui/SlideFillButton";
 
 export default function NavBar() {
 	const { scrollY } = useScroll();
-	const isSmallScreen = useMediaQuery({ maxWidth: 920 });
+	const isDesktopSize = useMediaQuery({ maxWidth: 768 });
 
 	const [activeSection, setActiveSection] = useState<Section>("home");
 
@@ -16,7 +17,7 @@ export default function NavBar() {
 	const [menuKey, setMenuKey] = useState(0);
 
 	useMotionValueEvent(scrollY, "change", (latest) => {
-		if (!isSmallScreen) {
+		if (!isDesktopSize) {
 			setHidden(false);
 			return;
 		}
@@ -50,28 +51,21 @@ export default function NavBar() {
 			>
 				<div className="brand">
 					<div className="logo-wrapper"></div>
-					{!isSmallScreen && <h1 className="navbar-heading">Alexander Kallin</h1>}
+					{!isDesktopSize && <h1 className="navbar-heading">Alexander Kallin</h1>}
 				</div>
 				<div className="navbar-links-wrapper">
-					{isSmallScreen && <HamburgerBtn onToggle={onToggle} active={isMenuOpen} />}
-					{!isSmallScreen && (
+					{isDesktopSize && <HamburgerBtn onToggle={onToggle} active={isMenuOpen} />}
+					{!isDesktopSize && (
 						<NavBarLinks
 							variant="regular"
 							activeSection={activeSection}
 							onSetActive={setActiveSection}
 						/>
 					)}
-					<motion.button
-						whileHover={{ scale: 1.05 }}
-						whileTap={{ scale: 0.95 }}
-						transition={{ type: "tween", duration: 0.2, ease: "easeInOut" }}
-						className="contact-button"
-					>
-						Contact
-					</motion.button>
+					<SlideFillButton title="Resume" />
 				</div>
 			</motion.nav>
-			{isSmallScreen && (
+			{isDesktopSize && (
 				<motion.div
 					key={menuKey}
 					className="menu-wrapper"

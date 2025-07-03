@@ -42,7 +42,7 @@
 		}
 	}
 
-	@media (max-width: 920px) {
+	@include respond(tablet) {
 		padding: 0 1rem 0 0.4rem;
 	}
 }
@@ -54,7 +54,7 @@
 	right: 0;
 	z-index: 20;
 	padding: 1rem;
-	width: 30vw;
+	width: 14rem;
 	max-width: 300px;
 	border-radius: 0 0 0 1.25rem;
 	background: linear-gradient(0deg, rgba(0, 29, 38, 0.8) 0%, rgb(0, 29, 38, 0.95) 100%);
@@ -70,21 +70,5 @@
 		width: 100%;
 		background: linear-gradient(90deg, $soft-light-blue 0%, rgba(244, 249, 233, 1) 100%);
 		z-index: -1;
-	}
-
-	@media (max-width: 725px) {
-		width: 35vw;
-	}
-}
-
-@media (max-width: 550px) {
-	.menu-wrapper {
-		width: 40vw;
-	}
-}
-
-@media (max-width: 430px) {
-	.menu-wrapper {
-		width: 50vw;
 	}
 }

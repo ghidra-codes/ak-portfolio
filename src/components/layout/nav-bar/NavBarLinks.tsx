@@ -15,7 +15,7 @@ interface NavBarLinksProps {
 
 const NavBarLinks: React.FC<NavBarLinksProps> = ({ variant, onLinkClick, activeSection, onSetActive }) => {
 	const isHamburger = variant === "hamburger";
-	const isSmallScreen = useMediaQuery({ maxWidth: 920 });
+	const isSmallScreen = useMediaQuery({ maxWidth: 768 });
 
 	const motionProps = isHamburger
 		? {

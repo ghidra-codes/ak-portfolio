@@ -5,7 +5,7 @@
 	align-items: center;
 	gap: 1.25rem;
 
-	@media (max-width: 920px) {
+	@include respond(tablet) {
 		flex-direction: row-reverse;
 	}
 }
@@ -83,55 +83,5 @@
 		&.active {
 			color: $blue-gray;
 		}
-	}
-}
-
-.contact-button {
-	position: relative;
-	overflow: hidden;
-	padding: 0.5rem 1.25rem;
-	color: $maya-blue;
-	border: 2px solid $blue-gray;
-	border-radius: 2rem;
-	background: rgb(57, 57, 58, 0.6);
-	cursor: pointer;
-	transition: box-shadow 0.5s ease-in-out;
-	font-size: 1.125rem;
-
-	&:hover {
-		box-shadow: 0 0 8px 2px #f4f9e920;
-	}
-
-	&::before {
-		content: "";
-		position: absolute;
-		top: 0;
-		left: -75%;
-		height: 100%;
-		width: 50%;
-		background: linear-gradient(
-			120deg,
-			rgba(255, 255, 255, 0) 0%,
-			rgba(255, 255, 255, 0.6) 50%,
-			rgba(255, 255, 255, 0) 100%
-		);
-		transform: skewX(-25deg);
-	}
-
-	&:hover::before {
-		animation: shine 0.75s forwards;
-	}
-
-	@media (max-width: 525px) {
-		padding: 0.45rem 1rem;
-	}
-}
-
-@keyframes shine {
-	0% {
-		left: -75%;
-	}
-	100% {
-		left: 125%;
 	}
 }
