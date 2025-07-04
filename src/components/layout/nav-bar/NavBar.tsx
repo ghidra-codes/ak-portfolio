@@ -19,7 +19,7 @@ const containerVariants = {
 
 export default function NavBar() {
 	const { scrollY } = useScroll();
-	const isSmallScreen = useMediaQuery({ maxWidth: 768 });
+	const isSmallScreen = useMediaQuery({ maxWidth: 800 });
 
 	const [activeSection, setActiveSection] = useState<Section>("home");
 	const [isReady, setIsReady] = useState(false);

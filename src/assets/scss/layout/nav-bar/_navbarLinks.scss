@@ -5,7 +5,7 @@
 	align-items: center;
 	gap: 1.25rem;
 
-	@include respond(tablet) {
+	@media (max-width: 800px) {
 		flex-direction: row-reverse;
 	}
 }
