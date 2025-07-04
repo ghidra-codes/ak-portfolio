@@ -1,4 +1,6 @@
-export const fadeInSlideGroup = {
+import { Variants } from "motion/react";
+
+export const fadeInSlideLeftGroup: { container: Variants; item: Variants } = {
 	container: {
 		hidden: { opacity: 0 },
 		show: {

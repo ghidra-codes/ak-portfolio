@@ -18,8 +18,6 @@ const SlideFillButton: React.FC<SlideFillButtonProps> = ({ title, largerSize }) 
 				{ "size-lg": largerSize },
 				{ "desktop-size": isSmallScreen }
 			)}
-			whileHover="hover"
-			initial="initial"
 		>
 			<span className="slide-fill-button-text">{title}</span>
 			<span className="fill-top" />

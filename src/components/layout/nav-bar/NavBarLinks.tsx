@@ -4,27 +4,40 @@ import { useMediaQuery } from "react-responsive";
 import { Link } from "react-scroll";
 import { SECTIONS } from "@/constants/sections";
 import { Section } from "@/types/sections.types";
-import { fadeInSlideGroup } from "@/utils/animations/navBarLinks/fadeInSlideGroup";
+import { fadeInSlideLeftGroup } from "@/utils/animations/navBarLinks/fadeInSlideLeftGroup";
+import { fadeInSlideDownwardGroup } from "@/utils/animations/navBarLinks/fadeInSlideDownwardGroup";
+import classNames from "classnames";
 interface NavBarLinksProps {
 	variant: "regular" | "hamburger";
 	onLinkClick?: () => void;
 	onContactClick?: () => void;
-	activeSection: Section;
+	activeSection: Section | null;
 	onSetActive: (section: Section) => void;
+	isReady?: boolean;
 }
 
-const NavBarLinks: React.FC<NavBarLinksProps> = ({ variant, onLinkClick, activeSection, onSetActive }) => {
+const NavBarLinks: React.FC<NavBarLinksProps> = ({
+	variant,
+	onLinkClick,
+	activeSection,
+	onSetActive,
+	isReady = true,
+}) => {
 	const isHamburger = variant === "hamburger";
 	const isSmallScreen = useMediaQuery({ maxWidth: 768 });
 
 	const motionProps = isHamburger
 		? {
-				variants: fadeInSlideGroup.container,
+				variants: fadeInSlideLeftGroup.container,
 				initial: "hidden",
 				animate: "show",
 				exit: "hidden",
 		  }
-		: {};
+		: {
+				variants: fadeInSlideDownwardGroup.container,
+				initial: "hidden",
+				animate: "show",
+		  };
 
 	return (
 		<motion.ul
@@ -37,8 +50,11 @@ const NavBarLinks: React.FC<NavBarLinksProps> = ({ variant, onLinkClick, activeS
 				return (
 					<motion.li
 						key={section}
-						variants={isHamburger ? fadeInSlideGroup.item : undefined}
-						className={`navbar-link-list-item ${isActive ? "active" : ""}`}
+						variants={isHamburger ? fadeInSlideLeftGroup.item : fadeInSlideDownwardGroup.item}
+						className={classNames("navbar-link-list-item", {
+							active: isActive,
+							underline: isReady && isActive,
+						})}
 					>
 						<Link
 							to={section}
@@ -48,7 +64,6 @@ const NavBarLinks: React.FC<NavBarLinksProps> = ({ variant, onLinkClick, activeS
 							offset={-30}
 							onClick={onLinkClick}
 							onSetActive={() => onSetActive(section)}
-							className={isActive ? "underline" : ""}
 						>
 							{section}
 						</Link>

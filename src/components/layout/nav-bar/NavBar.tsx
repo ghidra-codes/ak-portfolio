@@ -1,23 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HamburgerBtn from "./hamburger-btn/HamburgerBtn";
 import NavBarLinks from "./NavBarLinks";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import { useMediaQuery } from "react-responsive";
 import { Section } from "@/types/sections.types";
 import SlideFillButton from "@/components/ui/SlideFillButton";
+import { SECTIONS } from "@/constants/sections";
+import { fadeInSlideBtn } from "@/utils/animations/navBarLinks/fadeInSlideBtn";
+
+const containerVariants = {
+	visible: {
+		transition: {
+			staggerChildren: 0.1,
+		},
+	},
+	hidden: {},
+};
 
 export default function NavBar() {
 	const { scrollY } = useScroll();
-	const isDesktopSize = useMediaQuery({ maxWidth: 768 });
+	const isSmallScreen = useMediaQuery({ maxWidth: 768 });
 
 	const [activeSection, setActiveSection] = useState<Section>("home");
+	const [isReady, setIsReady] = useState(false);
 
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [hidden, setHidden] = useState(false);
 	const [menuKey, setMenuKey] = useState(0);
 
 	useMotionValueEvent(scrollY, "change", (latest) => {
-		if (!isDesktopSize) {
+		if (!isSmallScreen) {
 			setHidden(false);
 			return;
 		}
@@ -41,6 +53,21 @@ export default function NavBar() {
 		});
 	};
 
+	useEffect(() => {
+		if (isSmallScreen) {
+			setIsReady(true);
+			return;
+		}
+
+		const delayUntilReady = (SECTIONS.length - 1) * 0.2 + 0.3;
+
+		const timeout = setTimeout(() => {
+			setIsReady(true);
+		}, delayUntilReady * 1000);
+
+		return () => clearTimeout(timeout);
+	}, [isSmallScreen]);
+
 	return (
 		<>
 			<motion.nav
@@ -51,21 +78,29 @@ export default function NavBar() {
 			>
 				<div className="brand">
 					<div className="logo-wrapper"></div>
-					{!isDesktopSize && <h1 className="navbar-heading">Alexander Kallin</h1>}
+					{!isSmallScreen && <h1 className="navbar-heading">Alexander Kallin</h1>}
 				</div>
-				<div className="navbar-links-wrapper">
-					{isDesktopSize && <HamburgerBtn onToggle={onToggle} active={isMenuOpen} />}
-					{!isDesktopSize && (
+				<motion.div
+					className="navbar-links-wrapper"
+					variants={containerVariants}
+					initial="hidden"
+					animate="visible"
+				>
+					{isSmallScreen && <HamburgerBtn onToggle={onToggle} active={isMenuOpen} />}
+					{!isSmallScreen && (
 						<NavBarLinks
 							variant="regular"
 							activeSection={activeSection}
 							onSetActive={setActiveSection}
+							isReady={isReady}
 						/>
 					)}
-					<SlideFillButton title="Resume" />
-				</div>
+					<motion.div variants={fadeInSlideBtn} initial="hidden" animate={isReady ? "show" : ""}>
+						<SlideFillButton title="Resume" />
+					</motion.div>
+				</motion.div>
 			</motion.nav>
-			{isDesktopSize && (
+			{isSmallScreen && (
 				<motion.div
 					key={menuKey}
 					className="menu-wrapper"

@@ -32,25 +32,28 @@
 			transition: color 0.2s ease;
 			cursor: pointer;
 
-			&:hover {
+			@include hover-or-active {
 				color: $blue-gray;
 			}
 		}
+	}
 
-		&.active {
-			background-color: #39393a40;
+	.navbar-link-list-item.active {
+		background-color: #39393a40;
 
-			&::after {
-				content: "";
-				position: absolute;
-				bottom: 1%;
-				left: 0;
-				width: 0%;
-				height: 2px;
-				background-color: $maya-blue;
-				animation: drawUnderline 0.4s ease forwards;
-			}
+		&::after {
+			content: "";
+			position: absolute;
+			bottom: 1%;
+			left: 0;
+			width: 0%;
+			height: 2px;
+			background-color: $maya-blue;
 		}
+	}
+
+	.navbar-link-list-item.active.underline::after {
+		animation: drawUnderline 0.4s ease forwards;
 	}
 }
 
