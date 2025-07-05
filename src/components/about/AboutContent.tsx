@@ -7,8 +7,10 @@ const AboutContent = () => {
 	return (
 		<>
 			<div className="about-section">
-				<RevealAnimation>
+				<RevealAnimation width="100%">
 					<SectionHeader title={"About"} />
+				</RevealAnimation>
+				<RevealAnimation>
 					<h3>
 						<img src={heart} alt="Heart" className="about-section-icon" />
 						How I Found My Passion for Web Development{" "}

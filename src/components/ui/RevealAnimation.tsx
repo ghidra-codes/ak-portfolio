@@ -5,10 +5,10 @@ import React from "react";
 interface RevealAnimationProps {
 	children: React.ReactNode;
 	className?: string;
-	width?: string;
+	width?: "100%" | "fit-content";
 }
 
-const RevealAnimation: React.FC<RevealAnimationProps> = ({ children, className, width }) => {
+const RevealAnimation: React.FC<RevealAnimationProps> = ({ children, className, width = "fit-content" }) => {
 	return (
 		<motion.div
 			className={className ?? ""}
@@ -16,7 +16,7 @@ const RevealAnimation: React.FC<RevealAnimationProps> = ({ children, className, 
 			initial="hidden"
 			whileInView="visible"
 			viewport={{ once: true }}
-			style={{ width: width ?? "fit-content" }}
+			style={{ width }}
 		>
 			{React.Children.map(children, (child, index) => (
 				<motion.div key={index} variants={fadeInStaggeredGroup.child}>
