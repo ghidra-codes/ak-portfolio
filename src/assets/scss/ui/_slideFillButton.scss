@@ -5,7 +5,7 @@ $fill-width-horizontal: calc(50% + 2px);
 $fill-width-vertical: calc(100% + 2px);
 
 .slide-fill-button {
-	touch-action: manipulation;
+	user-select: none;
 	position: relative;
 	padding: 0.65rem 1.25rem;
 	border: 2px solid $maya-blue;

@@ -1,6 +1,7 @@
 @use "../abstracts/index" as *;
 
 .tinted-image-wrapper {
+	-webkit-tap-highlight-color: transparent;
 	position: relative;
 	cursor: pointer;
 
