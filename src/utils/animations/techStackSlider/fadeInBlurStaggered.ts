@@ -48,4 +48,14 @@ export const fadeInBlurStaggered = {
 			},
 		};
 	},
+	exit: () => ({
+		y: 0,
+		scale: 1,
+		opacity: 0,
+		filter: "blur(2px)",
+		transition: {
+			duration: 0.3,
+			ease: EASE_IN_OUT,
+		},
+	}),
 };

@@ -2,7 +2,7 @@ import TechStackIconTouch from "./TechStackIconTouch";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import leftArrow from "@/assets/icons/left-slide-arrow.svg";
 import rightArrow from "@/assets/icons/right-slide-arrow.svg";
-import { motion, easeInOut } from "motion/react";
+import { motion, easeInOut, AnimatePresence } from "motion/react";
 import classNames from "classnames";
 import useTechStackSlider from "@/hooks/useTechStackSlider";
 import { Categories, GroupedCategories } from "@/types/techStack.types";
@@ -83,22 +83,27 @@ const TechStackSlider: React.FC<TechStackSliderProps> = ({
 					</div>
 
 					<div className={classNames("icons-row", { "icons-row--many": category === "frontend" })}>
-						{items.map(({ name, icon }, index) => (
-							<motion.div
-								key={name}
-								variants={fadeInBlurStaggered}
-								initial="initial"
-								animate={currentCategory === category && isInView ? "animate" : "initial"}
-								custom={{
-									index,
-									total: items.length,
-									direction: scrollDirection,
-									extraDelay: firstCategoryDelay.current || 0,
-								}}
-							>
-								<TechStackIconTouch name={name} icon={icon} />
-							</motion.div>
-						))}
+						<AnimatePresence mode="wait">
+							{currentCategory === category &&
+								isInView &&
+								items.map(({ name, icon }, index) => (
+									<motion.div
+										key={name}
+										variants={fadeInBlurStaggered}
+										initial="initial"
+										animate="animate"
+										exit="exit"
+										custom={{
+											index,
+											total: items.length,
+											direction: scrollDirection,
+											extraDelay: firstCategoryDelay.current || 0,
+										}}
+									>
+										<TechStackIconTouch name={name} icon={icon} />
+									</motion.div>
+								))}
+						</AnimatePresence>
 					</div>
 				</div>
 			))}

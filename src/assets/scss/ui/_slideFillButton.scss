@@ -79,18 +79,22 @@ $fill-width-vertical: calc(100% + 2px);
 		transform: scaleY(0);
 		transform-origin: bottom;
 	}
+}
 
-	@include hover-or-active {
-		color: $rich-black-darker;
+body:not(.no-hover) {
+	.slide-fill-button {
+		&:hover {
+			color: $rich-black-darker;
 
-		&::before,
-		&::after {
-			transform: scaleX(1);
-		}
+			&::before,
+			&::after {
+				transform: scaleX(1);
+			}
 
-		.fill-top,
-		.fill-bottom {
-			transform: scaleY(1);
+			.fill-top,
+			.fill-bottom {
+				transform: scaleY(1);
+			}
 		}
 	}
 }

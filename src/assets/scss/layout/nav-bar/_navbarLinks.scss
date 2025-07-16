@@ -32,7 +32,7 @@
 			transition: color 0.2s ease;
 			cursor: pointer;
 
-			@include hover-or-active {
+			&:hover {
 				color: $blue-gray;
 			}
 		}

@@ -1,12 +1,20 @@
 import Footer from "./components/layout/Footer";
 import NavBar from "./components/layout/nav-bar/NavBar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import EntryAnimation from "./components/layout/EntryAnimation";
 import { motion, AnimatePresence } from "framer-motion";
 import MainContent from "./layouts/MainContent";
 
 function App() {
 	const [showEntry, setShowEntry] = useState(true);
+
+	useEffect(() => {
+		if ("ontouchstart" in window) {
+			document.body.classList.add("no-hover");
+		} else {
+			document.body.classList.remove("no-hover");
+		}
+	}, []);
 
 	return (
 		<AnimatePresence mode="wait">
