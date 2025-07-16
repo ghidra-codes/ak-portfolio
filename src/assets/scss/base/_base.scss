@@ -20,7 +20,6 @@ body {
 a,
 button {
 	letter-spacing: 0.05em;
-	-webkit-tap-highlight-color: transparent;
 }
 
 a {
@@ -30,6 +29,7 @@ a {
 }
 
 button {
+	-webkit-tap-highlight-color: transparent;
 	font-family: inherit;
 }
 

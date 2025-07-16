@@ -71,6 +71,7 @@
 	gap: 0.5rem;
 
 	.navbar-link-list-item {
+		-webkit-tap-highlight-color: transparent;
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
