@@ -4,9 +4,7 @@ import Projects from "@/components/projects/Projects";
 
 const MainContent = () => (
 	<main>
-		<section id="home">
-			<Header />
-		</section>
+		<Header />
 		<section id="about">
 			<About />
 		</section>

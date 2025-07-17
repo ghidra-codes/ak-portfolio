@@ -1,1 +1,1 @@
-export const SECTIONS = ["home", "about", "projects"] as const;
+export const SECTIONS = ["about", "projects", "contact"] as const;

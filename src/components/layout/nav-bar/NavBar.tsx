@@ -19,10 +19,10 @@ const containerVariants = {
 
 export default function NavBar() {
 	const { scrollY } = useScroll();
-	const isSmallScreen = useMediaQuery({ maxWidth: 800 });
+	const isSmallScreen = useMediaQuery({ maxWidth: 942 });
 
-	const [activeSection, setActiveSection] = useState<Section>("home");
-	const [isReady, setIsReady] = useState(false);
+	const [activeSection, setActiveSection] = useState<Section | null>(null);
+	const [showBtn, setShowBtn] = useState(false);
 
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [hidden, setHidden] = useState(false);
@@ -43,7 +43,7 @@ export default function NavBar() {
 		}
 	});
 
-	const onToggle = () => {
+	const handleToggle = () => {
 		setIsMenuOpen((prev) => {
 			const next = !prev;
 
@@ -53,16 +53,18 @@ export default function NavBar() {
 		});
 	};
 
+	const handleLinkClick = () => setIsMenuOpen(false);
+
 	useEffect(() => {
 		if (isSmallScreen) {
-			setIsReady(true);
+			setShowBtn(true);
 			return;
 		}
 
 		const delayUntilReady = (SECTIONS.length - 1) * 0.2 + 0.3;
 
 		const timeout = setTimeout(() => {
-			setIsReady(true);
+			setShowBtn(true);
 		}, delayUntilReady * 1000);
 
 		return () => clearTimeout(timeout);
@@ -86,16 +88,15 @@ export default function NavBar() {
 					initial="hidden"
 					animate="visible"
 				>
-					{isSmallScreen && <HamburgerBtn onToggle={onToggle} active={isMenuOpen} />}
+					{isSmallScreen && <HamburgerBtn onToggle={handleToggle} active={isMenuOpen} />}
 					{!isSmallScreen && (
 						<NavBarLinks
 							variant="regular"
 							activeSection={activeSection}
 							onSetActive={setActiveSection}
-							isReady={isReady}
 						/>
 					)}
-					<motion.div variants={fadeInSlideBtn} initial="hidden" animate={isReady ? "show" : ""}>
+					<motion.div variants={fadeInSlideBtn} initial="hidden" animate={showBtn ? "show" : ""}>
 						<SlideFillButton title="Resume" />
 					</motion.div>
 				</motion.div>
@@ -114,7 +115,7 @@ export default function NavBar() {
 				>
 					<NavBarLinks
 						variant="hamburger"
-						onLinkClick={onToggle}
+						onLinkClick={handleLinkClick}
 						activeSection={activeSection}
 						onSetActive={setActiveSection}
 					/>

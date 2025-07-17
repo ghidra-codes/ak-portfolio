@@ -7,24 +7,63 @@ import { Section } from "@/types/sections.types";
 import { fadeInSlideLeftGroup } from "@/utils/animations/navBarLinks/fadeInSlideLeftGroup";
 import { fadeInSlideDownwardGroup } from "@/utils/animations/navBarLinks/fadeInSlideDownwardGroup";
 import classNames from "classnames";
+import { useEffect } from "react";
+import getTriggerPoints from "@/utils/helper/getTriggerPoints";
 interface NavBarLinksProps {
 	variant: "regular" | "hamburger";
 	onLinkClick?: () => void;
 	onContactClick?: () => void;
 	activeSection: Section | null;
-	onSetActive: (section: Section) => void;
-	isReady?: boolean;
+	onSetActive: (section: Section | null) => void;
 }
 
-const NavBarLinks: React.FC<NavBarLinksProps> = ({
-	variant,
-	onLinkClick,
-	activeSection,
-	onSetActive,
-	isReady = true,
-}) => {
+const NavBarLinks: React.FC<NavBarLinksProps> = ({ variant, onLinkClick, activeSection, onSetActive }) => {
 	const isHamburger = variant === "hamburger";
 	const isSmallScreen = useMediaQuery({ maxWidth: 768 });
+
+	const linkOffset = isSmallScreen ? -30 : -60;
+
+	useEffect(() => {
+		let lastScrollY = window.scrollY;
+		let triggerPointEnter = 0;
+		let triggerPointLeave = 0;
+
+		const updateTriggerPoints = () => {
+			const points = getTriggerPoints();
+			triggerPointEnter = points.enter;
+			triggerPointLeave = points.leave;
+		};
+
+		const timer = setTimeout(() => {
+			updateTriggerPoints();
+		}, 100);
+
+		window.addEventListener("resize", updateTriggerPoints);
+
+		const handleScroll = () => {
+			const currentScrollY = window.scrollY;
+			const scrollingDown = currentScrollY > lastScrollY;
+			lastScrollY = currentScrollY;
+
+			if (scrollingDown) {
+				if (currentScrollY >= triggerPointEnter && activeSection !== "about") {
+					onSetActive("about");
+				}
+			} else {
+				if (currentScrollY < triggerPointLeave && activeSection !== null) {
+					onSetActive(null);
+				}
+			}
+		};
+
+		window.addEventListener("scroll", handleScroll);
+
+		return () => {
+			clearTimeout(timer);
+			window.removeEventListener("scroll", handleScroll);
+			window.removeEventListener("resize", updateTriggerPoints);
+		};
+	}, [activeSection, onSetActive]);
 
 	const motionProps = isHamburger
 		? {
@@ -53,7 +92,7 @@ const NavBarLinks: React.FC<NavBarLinksProps> = ({
 						variants={isHamburger ? fadeInSlideLeftGroup.item : fadeInSlideDownwardGroup.item}
 						className={classNames("navbar-link-list-item", {
 							active: isActive,
-							underline: isReady && isActive,
+							underline: isActive,
 						})}
 					>
 						<Link
@@ -61,7 +100,7 @@ const NavBarLinks: React.FC<NavBarLinksProps> = ({
 							smooth={true}
 							duration={600}
 							spy={true}
-							offset={-30}
+							offset={linkOffset}
 							onClick={onLinkClick}
 							onSetActive={() => onSetActive(section)}
 						>
