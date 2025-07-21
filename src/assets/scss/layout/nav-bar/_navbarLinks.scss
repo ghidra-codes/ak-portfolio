@@ -25,7 +25,8 @@
 		height: var(--navbar-height);
 		padding: 0 0.75rem;
 		position: relative;
-		transition: background-color 0.3s ease-in-out;
+		transition: background-color 0.4s ease-in-out;
+		background-color: transparent;
 
 		a {
 			font-size: 1.125rem;
@@ -36,10 +37,6 @@
 				color: $blue-gray;
 			}
 		}
-	}
-
-	.navbar-link-list-item.active {
-		background-color: #39393a40;
 
 		&::after {
 			content: "";
@@ -50,10 +47,19 @@
 			height: 2px;
 			background-color: $maya-blue;
 		}
-	}
 
-	.navbar-link-list-item.active.underline::after {
-		animation: drawUnderline 0.4s ease forwards;
+		&.active {
+			background-color: #39393a40;
+		}
+
+		&.active.underline::after {
+			animation: drawUnderline 0.4s ease forwards;
+		}
+
+		&.no-underline::after {
+			width: 100%;
+			animation: eraseUnderline 0.4s ease forwards;
+		}
 	}
 }
 
@@ -63,6 +69,15 @@
 	}
 	to {
 		width: 100%;
+	}
+}
+
+@keyframes eraseUnderline {
+	from {
+		width: 100%;
+	}
+	to {
+		width: 0%;
 	}
 }
 
