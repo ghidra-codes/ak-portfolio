@@ -2,6 +2,7 @@ import me from "@/assets/images/me.jpg";
 import TintedImage from "../ui/TintedImage";
 import RevealAnimation from "../ui/RevealAnimation";
 import SlideFillButton from "../ui/SlideFillButton";
+import { motion } from "motion/react";
 
 export default function Header() {
 	return (
@@ -20,14 +21,20 @@ export default function Header() {
 					<SlideFillButton title="Contact Me" largerSize />
 				</RevealAnimation>
 			</div>
-			<TintedImage
-				src={me}
-				alt="A picture of Alexander Kallin"
-				wrapperClass="hero-image-wrapper"
-				imageClass="hero-image"
+			<motion.div
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ duration: 0.4, ease: "easeOut" }}
 			>
-				<div className="grey-box"></div>
-			</TintedImage>
+				<TintedImage
+					src={me}
+					alt="A picture of Alexander Kallin"
+					wrapperClass="hero-image-wrapper"
+					imageClass="hero-image"
+				>
+					<div className="grey-box"></div>
+				</TintedImage>
+			</motion.div>
 		</header>
 	);
 }

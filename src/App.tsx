@@ -1,9 +1,8 @@
 import Footer from "./components/layout/Footer";
-import NavBar from "./components/layout/nav-bar/NavBar";
 import { useEffect, useState } from "react";
-import EntryAnimation from "./components/layout/EntryAnimation";
 import { motion, AnimatePresence } from "framer-motion";
-import MainContent from "./layouts/MainContent";
+import SequentialLayout from "./layouts/SequentialLayout";
+import EntryAnimation from "./components/layout/EntryAnimation";
 
 function App() {
 	const [showEntry, setShowEntry] = useState(true);
@@ -18,7 +17,7 @@ function App() {
 
 	return (
 		<AnimatePresence mode="wait">
-			{showEntry ? (
+			{showEntry && (
 				<motion.div
 					key="entry"
 					exit={{ scale: 0.3, opacity: 0 }}
@@ -30,12 +29,13 @@ function App() {
 				>
 					<EntryAnimation onComplete={() => setShowEntry(false)} />
 				</motion.div>
-			) : (
-				<>
-					<NavBar />
-					<MainContent />
+			)}
+
+			{!showEntry && (
+				<div className="wrapper">
+					<SequentialLayout />
 					<Footer />
-				</>
+				</div>
 			)}
 		</AnimatePresence>
 	);

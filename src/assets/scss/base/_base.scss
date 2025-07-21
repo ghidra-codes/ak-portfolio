@@ -9,12 +9,21 @@ body {
 	background-color: $rich-black;
 	line-height: 1.6;
 	color: $blue-tint;
+	color-scheme: light dark;
+}
+
+.wrapper {
+	height: 100vh;
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
 
 *,
 *::before,
 *::after {
 	box-sizing: inherit;
+	scrollbar-width: 2rem;
+	scrollbar-color: #555 #1a1a1a;
 }
 
 a,

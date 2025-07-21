@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import HamburgerBtn from "./hamburger-btn/HamburgerBtn";
 import NavBarLinks from "./NavBarLinks";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
@@ -17,7 +17,11 @@ const containerVariants = {
 	hidden: {},
 };
 
-export default function NavBar() {
+interface NavBarProps {
+	onAnimationComplete: () => void;
+}
+
+export default function NavBar({ onAnimationComplete }: NavBarProps) {
 	const { scrollY } = useScroll();
 	const isSmallScreen = useMediaQuery({ maxWidth: 942 });
 
@@ -96,7 +100,12 @@ export default function NavBar() {
 							onSetActive={setActiveSection}
 						/>
 					)}
-					<motion.div variants={fadeInSlideBtn} initial="hidden" animate={showBtn ? "show" : ""}>
+					<motion.div
+						variants={fadeInSlideBtn}
+						initial="hidden"
+						animate={showBtn ? "show" : ""}
+						onAnimationComplete={onAnimationComplete}
+					>
 						<SlideFillButton title="Resume" />
 					</motion.div>
 				</motion.div>
