@@ -1,15 +1,15 @@
 import NavBar from "@/components/layout/nav-bar/NavBar";
-import { useState } from "react";
 import MainContent from "./MainContent";
+import { useAnimationContext } from "@/hooks/useAnimationContext";
 
 const SequentialLayout = () => {
-	const [showMainContent, setShowMainContent] = useState(false);
+	const { setStartAnimations } = useAnimationContext();
 
 	return (
 		<>
-			<NavBar onAnimationComplete={() => setShowMainContent(true)} />
+			<NavBar onAnimationComplete={() => setStartAnimations(true)} />
 
-			{showMainContent && <MainContent />}
+			<MainContent />
 		</>
 	);
 };

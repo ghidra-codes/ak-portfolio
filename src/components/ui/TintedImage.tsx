@@ -7,18 +7,28 @@ interface TintedImageProps {
 	wrapperClass: string;
 	imageClass: string;
 	children?: React.ReactNode;
+	shouldAnimate?: boolean;
 }
 
-const TintedImage: React.FC<TintedImageProps> = ({ src, alt, wrapperClass, imageClass, children }) => {
+const TintedImage: React.FC<TintedImageProps> = ({
+	src,
+	alt,
+	wrapperClass,
+	imageClass,
+	children,
+	shouldAnimate,
+}) => {
 	const [revealed, setRevealed] = useState(false);
 	const [popIn, setPopIn] = useState(false);
 
 	useEffect(() => {
-		const timer = setTimeout(() => {
-			setPopIn(true);
-		}, 50);
-		return () => clearTimeout(timer);
-	}, []);
+		if (shouldAnimate) {
+			const timer = setTimeout(() => setPopIn(true), 50);
+			return () => clearTimeout(timer);
+		} else {
+			setPopIn(false);
+		}
+	}, [shouldAnimate]);
 
 	const handleClick = () => {
 		if (revealed) return;
@@ -28,7 +38,11 @@ const TintedImage: React.FC<TintedImageProps> = ({ src, alt, wrapperClass, image
 	};
 
 	return (
-		<div className={`tinted-image-wrapper ${wrapperClass}`} onClick={handleClick}>
+		<div
+			className={`tinted-image-wrapper ${wrapperClass}`}
+			onClick={handleClick}
+			style={{ opacity: shouldAnimate ? 1 : 0, transition: "opacity 0.4s ease" }}
+		>
 			<img
 				className={classNames("tinted-image", imageClass, { revealed }, { "pop-in": popIn })}
 				src={src}

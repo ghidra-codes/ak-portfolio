@@ -2,13 +2,15 @@ import me from "@/assets/images/me.jpg";
 import TintedImage from "../ui/TintedImage";
 import RevealAnimation from "../ui/RevealAnimation";
 import SlideFillButton from "../ui/SlideFillButton";
-import { motion } from "motion/react";
+import { useAnimationContext } from "@/hooks/useAnimationContext";
 
 export default function Header() {
+	const { startAnimations } = useAnimationContext();
+
 	return (
 		<header>
 			<div className="header-content">
-				<RevealAnimation>
+				<RevealAnimation shouldAnimate={startAnimations} manualControl>
 					<h1 className="title">
 						Hello, my name is Alex<span>.</span>
 					</h1>
@@ -21,20 +23,15 @@ export default function Header() {
 					<SlideFillButton title="Contact Me" largerSize />
 				</RevealAnimation>
 			</div>
-			<motion.div
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				transition={{ duration: 0.4, ease: "easeOut" }}
+			<TintedImage
+				src={me}
+				alt="A picture of Alexander Kallin"
+				wrapperClass="hero-image-wrapper"
+				imageClass="hero-image"
+				shouldAnimate={startAnimations}
 			>
-				<TintedImage
-					src={me}
-					alt="A picture of Alexander Kallin"
-					wrapperClass="hero-image-wrapper"
-					imageClass="hero-image"
-				>
-					<div className="grey-box"></div>
-				</TintedImage>
-			</motion.div>
+				<div className="grey-box"></div>
+			</TintedImage>
 		</header>
 	);
 }

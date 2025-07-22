@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router";
 import App from "./App";
 import "./assets/scss/main.scss";
+import { AnimationProvider } from "./context/AnimationContextProvider";
 
 const rootElement = document.getElementById("root");
 
@@ -10,8 +10,8 @@ if (!rootElement) throw new Error("Root element with ID 'root' not found");
 
 ReactDOM.createRoot(rootElement).render(
 	<React.StrictMode>
-		<BrowserRouter>
+		<AnimationProvider>
 			<App />
-		</BrowserRouter>
+		</AnimationProvider>
 	</React.StrictMode>
 );
