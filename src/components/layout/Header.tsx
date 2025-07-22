@@ -3,14 +3,27 @@ import TintedImage from "../ui/TintedImage";
 import RevealAnimation from "../ui/RevealAnimation";
 import SlideFillButton from "../ui/SlideFillButton";
 import { useAnimationContext } from "@/hooks/useAnimationContext";
+import { motion } from "motion/react";
+import { fadeInStaggeredGroup } from "@/utils/animations/shared/fadeInStaggeredGroup";
+import { useState } from "react";
 
 export default function Header() {
 	const { startAnimations } = useAnimationContext();
+	const [triggerPopIn, setTriggerPopIn] = useState(false);
+	// Make RevealAnimation only trigger after the header-content fadeIn is complete
 
 	return (
-		<header>
-			<div className="header-content">
-				<RevealAnimation shouldAnimate={startAnimations} manualControl>
+		<motion.header
+			variants={fadeInStaggeredGroup.container}
+			initial="hidden"
+			animate={startAnimations ? "visible" : "hidden"}
+		>
+			<motion.div
+				variants={fadeInStaggeredGroup.child}
+				className="header-content"
+				onAnimationComplete={() => setTriggerPopIn(true)}
+			>
+				<RevealAnimation>
 					<h1 className="title">
 						Hello, my name is Alex<span>.</span>
 					</h1>
@@ -22,16 +35,19 @@ export default function Header() {
 					</p>
 					<SlideFillButton title="Contact Me" largerSize />
 				</RevealAnimation>
-			</div>
-			<TintedImage
-				src={me}
-				alt="A picture of Alexander Kallin"
-				wrapperClass="hero-image-wrapper"
-				imageClass="hero-image"
-				shouldAnimate={startAnimations}
-			>
-				<div className="grey-box"></div>
-			</TintedImage>
-		</header>
+			</motion.div>
+
+			<motion.div variants={fadeInStaggeredGroup.child}>
+				<TintedImage
+					src={me}
+					alt="A picture of Alexander Kallin"
+					wrapperClass="hero-image-wrapper"
+					imageClass="hero-image"
+					triggerPopIn={triggerPopIn}
+				>
+					<div className="grey-box"></div>
+				</TintedImage>
+			</motion.div>
+		</motion.header>
 	);
 }

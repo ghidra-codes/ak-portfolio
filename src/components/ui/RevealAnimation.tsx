@@ -8,6 +8,7 @@ interface RevealAnimationProps {
 	width?: "100%" | "fit-content";
 	shouldAnimate?: boolean;
 	manualControl?: boolean;
+	onAnimationComplete?: () => void;
 }
 
 const RevealAnimation: React.FC<RevealAnimationProps> = ({
@@ -16,6 +17,7 @@ const RevealAnimation: React.FC<RevealAnimationProps> = ({
 	width = "fit-content",
 	shouldAnimate,
 	manualControl = false,
+	onAnimationComplete,
 }) => {
 	const controls = useAnimation();
 
@@ -38,11 +40,19 @@ const RevealAnimation: React.FC<RevealAnimationProps> = ({
 			viewport={manualControl ? undefined : { once: true }}
 			style={{ width }}
 		>
-			{React.Children.map(children, (child, index) => (
-				<motion.div key={index} variants={fadeInStaggeredGroup.child}>
-					{child}
-				</motion.div>
-			))}
+			{React.Children.map(children, (child, index) => {
+				const isLast = index === React.Children.count(children) - 1;
+
+				return (
+					<motion.div
+						key={index}
+						variants={fadeInStaggeredGroup.child}
+						onAnimationComplete={isLast && onAnimationComplete ? onAnimationComplete : undefined}
+					>
+						{child}
+					</motion.div>
+				);
+			})}
 		</motion.div>
 	);
 };

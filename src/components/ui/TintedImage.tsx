@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 interface TintedImageProps {
 	src: string;
@@ -7,7 +7,7 @@ interface TintedImageProps {
 	wrapperClass: string;
 	imageClass: string;
 	children?: React.ReactNode;
-	shouldAnimate?: boolean;
+	triggerPopIn?: boolean;
 }
 
 const TintedImage: React.FC<TintedImageProps> = ({
@@ -16,19 +16,9 @@ const TintedImage: React.FC<TintedImageProps> = ({
 	wrapperClass,
 	imageClass,
 	children,
-	shouldAnimate,
+	triggerPopIn = false,
 }) => {
 	const [revealed, setRevealed] = useState(false);
-	const [popIn, setPopIn] = useState(false);
-
-	useEffect(() => {
-		if (shouldAnimate) {
-			const timer = setTimeout(() => setPopIn(true), 50);
-			return () => clearTimeout(timer);
-		} else {
-			setPopIn(false);
-		}
-	}, [shouldAnimate]);
 
 	const handleClick = () => {
 		if (revealed) return;
@@ -38,18 +28,14 @@ const TintedImage: React.FC<TintedImageProps> = ({
 	};
 
 	return (
-		<div
-			className={`tinted-image-wrapper ${wrapperClass}`}
-			onClick={handleClick}
-			style={{ opacity: shouldAnimate ? 1 : 0, transition: "opacity 0.4s ease" }}
-		>
+		<div className={`tinted-image-wrapper ${wrapperClass}`} onClick={handleClick}>
 			<img
-				className={classNames("tinted-image", imageClass, { revealed }, { "pop-in": popIn })}
+				className={classNames("tinted-image", imageClass, { revealed }, { "pop-in": triggerPopIn })}
 				src={src}
 				alt={alt}
 			/>
 			<div
-				className={classNames("image-overlay", { revealed }, { "pop-in": popIn })}
+				className={classNames("image-overlay", { revealed }, { "pop-in": triggerPopIn })}
 				style={{ backgroundColor: "rgba(33, 118, 174, 0.375)" }}
 			></div>
 			{children}
