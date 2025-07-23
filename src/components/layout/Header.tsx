@@ -5,41 +5,33 @@ import SlideFillButton from "../ui/SlideFillButton";
 import { useAnimationContext } from "@/hooks/useAnimationContext";
 import { motion, useAnimation } from "motion/react";
 import { useEffect, useState } from "react";
-import { EASE_OUT_SLOW } from "@/constants/animations";
+import { fadeInSlideImage } from "@/utils/animations/header/fadeInSlideImage";
 
 export default function Header() {
-	const { header, about } = useAnimationContext();
-	const { animateHeader } = header;
-	const [triggerPopIn, setTriggerPopIn] = useState(false);
-	const [revealText, setRevealText] = useState(false);
-	const [showImage, setShowImage] = useState(false);
-
-	useEffect(() => {
-		if (animateHeader) {
-			setRevealText(true);
-			setTimeout(() => setShowImage(true), 1000);
-		}
-	}, [animateHeader]);
+	// animateHeader boolean initiates animation sequence
+	const { animateHeader } = useAnimationContext();
 
 	const controls = useAnimation();
 
+	const [animationStep, setAnimationStep] = useState(0);
+
 	useEffect(() => {
-		if (showImage) {
-			controls.start({
-				opacity: 1,
-				y: 0,
-				transition: {
-					duration: 0.4,
-					ease: EASE_OUT_SLOW,
-				},
-			});
+		if (animateHeader) {
+			// Step 1 animates in text
+			setAnimationStep(1);
+			// Step 2 animates in image
+			setTimeout(() => setAnimationStep(2), 800);
 		}
-	}, [showImage, controls]);
+	}, [animateHeader]);
+
+	useEffect(() => {
+		if (animationStep === 2) controls.start("visible");
+	}, [animationStep, controls]);
 
 	return (
 		<motion.header initial={{ opacity: 0 }} animate={animateHeader ? { opacity: 1 } : { opacity: 0 }}>
 			<div className="header-content">
-				<RevealAnimation manualControl shouldAnimate={revealText}>
+				<RevealAnimation manualControl shouldAnimate={animationStep >= 1}>
 					<h1 className="title">
 						Hello, my name is Alex<span>.</span>
 					</h1>
@@ -54,13 +46,12 @@ export default function Header() {
 			</div>
 
 			<motion.div
-				initial={{ opacity: 0, y: 70 }}
+				initial="hidden"
 				animate={controls}
+				variants={fadeInSlideImage}
 				onAnimationComplete={() => {
-					if (showImage) {
-						setTriggerPopIn(true);
-						about.setAnimateAbout(true);
-					}
+					// Step 3 enables image pop-in animation
+					if (animationStep === 2) setAnimationStep(3);
 				}}
 			>
 				<TintedImage
@@ -68,7 +59,7 @@ export default function Header() {
 					alt="A picture of Alexander Kallin"
 					wrapperClass="hero-image-wrapper"
 					imageClass="hero-image"
-					triggerPopIn={triggerPopIn}
+					triggerPopIn={animationStep === 3}
 				>
 					<div className="grey-box"></div>
 				</TintedImage>

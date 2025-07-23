@@ -1,0 +1,104 @@
+@use "../abstracts/index" as *;
+
+.side {
+	position: fixed;
+	bottom: 0;
+	color: $blue-tint;
+	z-index: 10;
+
+	ul {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		li {
+			margin-bottom: 1.75rem;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			svg {
+				display: block;
+				width: 1.25rem;
+				height: 1.25rem;
+			}
+
+			a {
+				color: inherit;
+				transition: color 0.3s;
+
+				&:hover {
+					color: $blue-gray;
+				}
+			}
+		}
+
+		&::after {
+			content: "";
+			display: block;
+			width: 1px;
+			height: 5.75rem;
+			background-color: $blue-tint;
+			margin-top: 2rem;
+		}
+	}
+}
+
+.social {
+	left: 1.75rem;
+}
+
+.email {
+	right: 1.75rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	a {
+		writing-mode: vertical-rl;
+		font-family: "Oxanium", sans-serif;
+		font-size: 0.8rem;
+		letter-spacing: 0.175em;
+		text-decoration: none;
+		transition: color 0.3s ease;
+		position: relative;
+		overflow: hidden;
+		display: block;
+		line-height: 0.75;
+
+		span {
+			display: inline-block;
+		}
+
+		.first-link-span {
+			position: relative;
+		}
+
+		.second-link-span {
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: inline-block;
+		}
+
+		&:hover {
+			color: $blue-gray;
+		}
+	}
+
+	&::after {
+		content: "";
+		display: block;
+		width: 1px;
+		height: 5.75rem;
+		background-color: $blue-tint;
+		margin-top: 2rem;
+	}
+}
+
+@media (max-width: 768px) {
+	.side {
+		display: none;
+	}
+}

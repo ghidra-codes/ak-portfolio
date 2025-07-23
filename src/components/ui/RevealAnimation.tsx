@@ -6,46 +6,48 @@ interface RevealAnimationProps {
 	children: React.ReactNode;
 	className?: string;
 	width?: "100%" | "fit-content";
-	shouldAnimate?: boolean;
-	manualControl?: boolean;
-	onAnimationComplete?: () => void;
 	viewportMargin?: string;
+	manualControl?: boolean;
+	shouldAnimate?: boolean;
+	onAnimationComplete?: () => void;
 }
 
 const RevealAnimation: React.FC<RevealAnimationProps> = ({
 	children,
-	className,
+	className = "",
 	width = "fit-content",
+	viewportMargin,
 	shouldAnimate,
 	manualControl = false,
 	onAnimationComplete,
-	viewportMargin,
 }) => {
 	const controls = useAnimation();
 
 	useEffect(() => {
-		if (manualControl && shouldAnimate) {
-			controls.start("visible");
+		if (!manualControl) return;
+
+		if (typeof shouldAnimate === "undefined") {
+			console.error("RevealAnimation: manualControl requires shouldAnimate — skipping animation");
+			return;
 		}
-		if (manualControl && !shouldAnimate) {
-			controls.start("hidden");
-		}
+
+		controls.start(shouldAnimate ? "visible" : "hidden");
 	}, [manualControl, shouldAnimate, controls]);
 
 	return (
 		<motion.div
-			className={className ?? ""}
+			className={className}
 			variants={fadeInStaggeredGroup.container}
 			initial="hidden"
 			animate={manualControl ? controls : undefined}
-			whileInView={manualControl ? undefined : "visible"}
+			whileInView={!manualControl ? "visible" : undefined}
 			viewport={
-				manualControl
-					? undefined
-					: {
+				!manualControl
+					? {
 							once: true,
 							...(viewportMargin ? { margin: viewportMargin } : {}),
 					  }
+					: undefined
 			}
 			style={{ width }}
 		>
@@ -56,7 +58,7 @@ const RevealAnimation: React.FC<RevealAnimationProps> = ({
 					<motion.div
 						key={index}
 						variants={fadeInStaggeredGroup.child}
-						onAnimationComplete={isLast && onAnimationComplete ? onAnimationComplete : undefined}
+						onAnimationComplete={isLast ? onAnimationComplete : undefined}
 					>
 						{child}
 					</motion.div>

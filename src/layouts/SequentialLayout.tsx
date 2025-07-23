@@ -3,11 +3,11 @@ import MainContent from "./MainContent";
 import { useAnimationContext } from "@/hooks/useAnimationContext";
 
 const SequentialLayout = () => {
-	const { header } = useAnimationContext();
+	const { setAnimateHeader } = useAnimationContext();
 
 	return (
 		<>
-			<NavBar onStartHeaderAnimations={() => header.setAnimateHeader(true)} />
+			<NavBar onStartHeaderAnimations={() => setAnimateHeader(true)} />
 
 			<MainContent />
 		</>
