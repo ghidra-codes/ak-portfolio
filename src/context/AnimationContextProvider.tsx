@@ -6,10 +6,13 @@ interface AnimationProviderProps {
 }
 
 export const AnimationProvider: React.FC<AnimationProviderProps> = ({ children }) => {
-	const [startAnimations, setStartAnimations] = useState(false);
+	const [animateHeader, setAnimateHeader] = useState(false);
+	const [animateAbout, setAnimateAbout] = useState(false);
 
 	return (
-		<AnimationContext.Provider value={{ startAnimations, setStartAnimations }}>
+		<AnimationContext.Provider
+			value={{ header: { animateHeader, setAnimateHeader }, about: { animateAbout, setAnimateAbout } }}
+		>
 			{children}
 		</AnimationContext.Provider>
 	);

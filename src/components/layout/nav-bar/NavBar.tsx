@@ -6,7 +6,7 @@ import { useMediaQuery } from "react-responsive";
 import { Section } from "@/types/sections.types";
 import SlideFillButton from "@/components/ui/SlideFillButton";
 import { SECTIONS } from "@/constants/sections";
-import { fadeInSlideBtn } from "@/utils/animations/navBarLinks/fadeInSlideBtn";
+import { fadeInSlideBtn, fadeInSlideBtnSmallScreen } from "@/utils/animations/navBarLinks/fadeInSlideBtn";
 
 const containerVariants = {
 	visible: {
@@ -18,10 +18,10 @@ const containerVariants = {
 };
 
 interface NavBarProps {
-	onAnimationComplete: () => void;
+	onStartHeaderAnimations: () => void;
 }
 
-export default function NavBar({ onAnimationComplete }: NavBarProps) {
+export default function NavBar({ onStartHeaderAnimations }: NavBarProps) {
 	const { scrollY } = useScroll();
 	const isSmallScreen = useMediaQuery({ maxWidth: 942 });
 
@@ -98,13 +98,14 @@ export default function NavBar({ onAnimationComplete }: NavBarProps) {
 							variant="regular"
 							activeSection={activeSection}
 							onSetActive={setActiveSection}
+							onLastLinkAnimationComplete={!isSmallScreen ? onStartHeaderAnimations : undefined}
 						/>
 					)}
 					<motion.div
-						variants={fadeInSlideBtn}
+						variants={!isSmallScreen ? fadeInSlideBtn : fadeInSlideBtnSmallScreen}
 						initial="hidden"
 						animate={showBtn ? "show" : ""}
-						onAnimationComplete={onAnimationComplete}
+						onAnimationComplete={isSmallScreen ? onStartHeaderAnimations : undefined}
 					>
 						<SlideFillButton title="Resume" />
 					</motion.div>

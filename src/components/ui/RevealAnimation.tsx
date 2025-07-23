@@ -9,6 +9,7 @@ interface RevealAnimationProps {
 	shouldAnimate?: boolean;
 	manualControl?: boolean;
 	onAnimationComplete?: () => void;
+	viewportMargin?: string;
 }
 
 const RevealAnimation: React.FC<RevealAnimationProps> = ({
@@ -18,6 +19,7 @@ const RevealAnimation: React.FC<RevealAnimationProps> = ({
 	shouldAnimate,
 	manualControl = false,
 	onAnimationComplete,
+	viewportMargin,
 }) => {
 	const controls = useAnimation();
 
@@ -37,7 +39,14 @@ const RevealAnimation: React.FC<RevealAnimationProps> = ({
 			initial="hidden"
 			animate={manualControl ? controls : undefined}
 			whileInView={manualControl ? undefined : "visible"}
-			viewport={manualControl ? undefined : { once: true }}
+			viewport={
+				manualControl
+					? undefined
+					: {
+							once: true,
+							...(viewportMargin ? { margin: viewportMargin } : {}),
+					  }
+			}
 			style={{ width }}
 		>
 			{React.Children.map(children, (child, index) => {

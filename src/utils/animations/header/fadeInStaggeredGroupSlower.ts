@@ -1,4 +1,3 @@
-// utils/animations/shared/fadeInStaggeredGroupSlower.ts
 import { EASE_OUT_SLOW } from "@/constants/animations";
 import { Variants } from "motion/react";
 

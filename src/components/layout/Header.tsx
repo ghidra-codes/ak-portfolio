@@ -3,27 +3,43 @@ import TintedImage from "../ui/TintedImage";
 import RevealAnimation from "../ui/RevealAnimation";
 import SlideFillButton from "../ui/SlideFillButton";
 import { useAnimationContext } from "@/hooks/useAnimationContext";
-import { motion } from "motion/react";
-import { fadeInStaggeredGroup } from "@/utils/animations/shared/fadeInStaggeredGroup";
-import { useState } from "react";
+import { motion, useAnimation } from "motion/react";
+import { useEffect, useState } from "react";
+import { EASE_OUT_SLOW } from "@/constants/animations";
 
 export default function Header() {
-	const { startAnimations } = useAnimationContext();
+	const { header, about } = useAnimationContext();
+	const { animateHeader } = header;
 	const [triggerPopIn, setTriggerPopIn] = useState(false);
-	// Make RevealAnimation only trigger after the header-content fadeIn is complete
+	const [revealText, setRevealText] = useState(false);
+	const [showImage, setShowImage] = useState(false);
+
+	useEffect(() => {
+		if (animateHeader) {
+			setRevealText(true);
+			setTimeout(() => setShowImage(true), 1000);
+		}
+	}, [animateHeader]);
+
+	const controls = useAnimation();
+
+	useEffect(() => {
+		if (showImage) {
+			controls.start({
+				opacity: 1,
+				y: 0,
+				transition: {
+					duration: 0.4,
+					ease: EASE_OUT_SLOW,
+				},
+			});
+		}
+	}, [showImage, controls]);
 
 	return (
-		<motion.header
-			variants={fadeInStaggeredGroup.container}
-			initial="hidden"
-			animate={startAnimations ? "visible" : "hidden"}
-		>
-			<motion.div
-				variants={fadeInStaggeredGroup.child}
-				className="header-content"
-				onAnimationComplete={() => setTriggerPopIn(true)}
-			>
-				<RevealAnimation>
+		<motion.header initial={{ opacity: 0 }} animate={animateHeader ? { opacity: 1 } : { opacity: 0 }}>
+			<div className="header-content">
+				<RevealAnimation manualControl shouldAnimate={revealText}>
 					<h1 className="title">
 						Hello, my name is Alex<span>.</span>
 					</h1>
@@ -35,9 +51,18 @@ export default function Header() {
 					</p>
 					<SlideFillButton title="Contact Me" largerSize />
 				</RevealAnimation>
-			</motion.div>
+			</div>
 
-			<motion.div variants={fadeInStaggeredGroup.child}>
+			<motion.div
+				initial={{ opacity: 0, y: 70 }}
+				animate={controls}
+				onAnimationComplete={() => {
+					if (showImage) {
+						setTriggerPopIn(true);
+						about.setAnimateAbout(true);
+					}
+				}}
+			>
 				<TintedImage
 					src={me}
 					alt="A picture of Alexander Kallin"

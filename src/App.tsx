@@ -32,10 +32,10 @@ function App() {
 			)}
 
 			{!showEntry && (
-				<div className="wrapper">
+				<>
 					<SequentialLayout />
 					<Footer />
-				</div>
+				</>
 			)}
 		</AnimatePresence>
 	);

@@ -15,9 +15,16 @@ interface NavBarLinksProps {
 	onContactClick?: () => void;
 	activeSection: Section | null;
 	onSetActive: (section: Section | null) => void;
+	onLastLinkAnimationComplete?: () => void;
 }
 
-const NavBarLinks: React.FC<NavBarLinksProps> = ({ variant, onLinkClick, activeSection, onSetActive }) => {
+const NavBarLinks: React.FC<NavBarLinksProps> = ({
+	variant,
+	onLinkClick,
+	activeSection,
+	onSetActive,
+	onLastLinkAnimationComplete,
+}) => {
 	const [prevActiveSection, setPrevActiveSection] = useState<Section | null>(null);
 
 	const isHamburger = variant === "hamburger";
@@ -59,9 +66,10 @@ const NavBarLinks: React.FC<NavBarLinksProps> = ({ variant, onLinkClick, activeS
 			className={isHamburger ? "navbar-links-hamburger-list" : "navbar-links-list"}
 			{...motionProps}
 		>
-			{SECTIONS.map((section) => {
+			{SECTIONS.map((section, index) => {
 				const isActive = activeSection === section;
 				const shouldEraseUnderline = prevActiveSection === section && !isActive;
+				const isLast = index === SECTIONS.length - 1;
 
 				return (
 					<motion.li
@@ -72,6 +80,9 @@ const NavBarLinks: React.FC<NavBarLinksProps> = ({ variant, onLinkClick, activeS
 							underline: isActive,
 							"no-underline": shouldEraseUnderline,
 						})}
+						onAnimationComplete={
+							isLast && onLastLinkAnimationComplete ? onLastLinkAnimationComplete : undefined
+						}
 					>
 						<Link
 							to={section}
