@@ -1,15 +1,14 @@
 import NavBar from "@/components/layout/nav-bar/NavBar";
-import MainContent from "./MainContent";
 import { useAnimationContext } from "@/hooks/useAnimationContext";
+import SideElements from "@/components/layout/SideElements";
 
 const SequentialLayout = () => {
-	const { setAnimateHeader } = useAnimationContext();
+	const { setAnimateHeader, animateSides } = useAnimationContext();
 
 	return (
 		<>
 			<NavBar onStartHeaderAnimations={() => setAnimateHeader(true)} />
-
-			<MainContent />
+			{animateSides && <SideElements />}
 		</>
 	);
 };

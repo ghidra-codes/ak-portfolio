@@ -9,7 +9,7 @@ import { fadeInSlideImage } from "@/utils/animations/header/fadeInSlideImage";
 
 export default function Header() {
 	// animateHeader boolean initiates animation sequence
-	const { animateHeader } = useAnimationContext();
+	const { animateHeader, setAnimateSides } = useAnimationContext();
 
 	const controls = useAnimation();
 
@@ -50,8 +50,11 @@ export default function Header() {
 				animate={controls}
 				variants={fadeInSlideImage}
 				onAnimationComplete={() => {
-					// Step 3 enables image pop-in animation
-					if (animationStep === 2) setAnimationStep(3);
+					// Step 3 enables image pop-in animation and initates sides animation
+					if (animationStep === 2) {
+						setAnimationStep(3);
+						setAnimateSides(true);
+					}
 				}}
 			>
 				<TintedImage

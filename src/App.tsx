@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SequentialLayout from "./layouts/SequentialLayout";
 import EntryAnimation from "./components/layout/EntryAnimation";
-import SideElements from "./components/layout/SideElements";
+import MainContent from "./layouts/MainContent";
 
 function App() {
 	const [showEntry, setShowEntry] = useState(true);
@@ -35,7 +35,7 @@ function App() {
 			{!showEntry && (
 				<>
 					<SequentialLayout />
-					<SideElements />
+					<MainContent />
 					<Footer />
 				</>
 			)}

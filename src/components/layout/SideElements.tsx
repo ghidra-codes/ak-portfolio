@@ -1,4 +1,4 @@
-import { EASE_IN_OUT } from "@/constants/animations";
+import { EASE_IN_OUT_SMOOTH, EASE_IN_OUT, EASE_OUT_SLOW } from "@/constants/animations";
 import { motion } from "motion/react";
 import { FiGithub } from "react-icons/fi";
 import { FiLinkedin } from "react-icons/fi";
@@ -8,37 +8,48 @@ const DURATION = 0.25;
 
 const SideElements = () => {
 	return (
-		<>
+		<motion.div
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			transition={{ duration: 1.5, ease: EASE_OUT_SLOW }}
+		>
 			<div className="side social">
 				<ul>
 					<li>
-						<a href="https://github.com/ghidra-codes" target="_blank" rel="noopener noreferrer">
-							<motion.div whileHover={{ scale: 1.2 }}>
-								<FiGithub />
-							</motion.div>
-						</a>
-					</li>
-					<li>
-						<a
-							href="https://www.linkedin.com/in/alexander-kallin-42588b326/"
+						<motion.a
+							className="social-icon"
+							href="https://github.com/ghidra-codes"
 							target="_blank"
 							rel="noopener noreferrer"
+							whileHover={{ y: -3.5 }}
+							transition={{ duration: 0.2, ease: EASE_IN_OUT_SMOOTH }}
 						>
-							<motion.div whileHover={{ scale: 1.2 }}>
-								<FiLinkedin />
-							</motion.div>
-						</a>
+							<FiGithub />
+						</motion.a>
 					</li>
 					<li>
-						<a
+						<motion.a
+							className="social-icon"
+							href="https://www.linkedin.com/in/alexander-kallin-42588b526/"
+							target="_blank"
+							rel="noopener noreferrer"
+							whileHover={{ y: -3.5 }}
+							transition={{ duration: 0.2, ease: EASE_IN_OUT_SMOOTH }}
+						>
+							<FiLinkedin />
+						</motion.a>
+					</li>
+					<li>
+						<motion.a
+							className="social-icon"
 							href="https://www.instagram.com/kallin.kallin/"
 							target="_blank"
 							rel="noopener noreferrer"
+							whileHover={{ y: -3.5 }}
+							transition={{ duration: 0.2, ease: EASE_IN_OUT_SMOOTH }}
 						>
-							<motion.div whileHover={{ scale: 1.2 }}>
-								<FiInstagram />
-							</motion.div>
-						</a>
+							<FiInstagram />
+						</motion.a>
 					</li>
 				</ul>
 			</div>
@@ -51,7 +62,7 @@ const SideElements = () => {
 							hovered: { x: "-100%", opacity: 0 },
 						}}
 						transition={{ duration: DURATION, ease: EASE_IN_OUT }}
-						className="first-link-span"
+						className="first-mail-span"
 					>
 						akallin94@gmail.com
 					</motion.span>
@@ -62,13 +73,13 @@ const SideElements = () => {
 							hovered: { x: "0%", opacity: 1 },
 						}}
 						transition={{ duration: DURATION, ease: EASE_IN_OUT }}
-						className="second-link-span"
+						className="second-mail-span"
 					>
 						akallin94@gmail.com
 					</motion.span>
 				</motion.a>
 			</div>
-		</>
+		</motion.div>
 	);
 };
 

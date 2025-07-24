@@ -14,6 +14,7 @@
 .navbar-links-hamburger-list {
 	display: flex;
 	text-transform: capitalize;
+	font-size: 1.125rem;
 }
 
 .navbar-links-list {
@@ -29,7 +30,6 @@
 		background-color: transparent;
 
 		a {
-			font-size: 1.125rem;
 			transition: color 0.2s ease;
 			cursor: pointer;
 
