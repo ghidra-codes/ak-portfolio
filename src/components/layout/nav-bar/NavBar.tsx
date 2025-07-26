@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import HamburgerBtn from "./hamburger-btn/HamburgerBtn";
 import NavBarLinks from "./NavBarLinks";
-import { motion, useScroll, useMotionValueEvent } from "motion/react";
+import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "motion/react";
 import { useMediaQuery } from "react-responsive";
 import { Section } from "@/types/sections.types";
 import SlideFillButton from "@/components/ui/SlideFillButton";
@@ -28,9 +28,10 @@ export default function NavBar({ onStartHeaderAnimations }: NavBarProps) {
 	const [activeSection, setActiveSection] = useState<Section | null>(null);
 	const [showBtn, setShowBtn] = useState(false);
 
-	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const [showMenu, setShowMenu] = useState(false);
+
+	const [pendingHide, setPendingHide] = useState(false);
 	const [hidden, setHidden] = useState(false);
-	const [menuKey, setMenuKey] = useState(0);
 
 	useMotionValueEvent(scrollY, "change", (latest) => {
 		if (!isSmallScreen) {
@@ -41,23 +42,25 @@ export default function NavBar({ onStartHeaderAnimations }: NavBarProps) {
 		const previous = scrollY.getPrevious();
 
 		if (previous) {
-			setHidden(latest > previous && latest > 100);
+			const isScrollingDown = latest > previous && latest > 100;
 
-			if (isMenuOpen) setIsMenuOpen(false);
+			if (isScrollingDown) {
+				if (showMenu) {
+					setShowMenu(false);
+					setPendingHide(true);
+					return;
+				}
+
+				setHidden(true);
+			} else {
+				setHidden(false);
+			}
 		}
 	});
 
-	const handleToggle = () => {
-		setIsMenuOpen((prev) => {
-			const next = !prev;
+	const handleToggle = () => setShowMenu((prev) => !prev);
 
-			if (next) setMenuKey((key) => key + 1);
-
-			return next;
-		});
-	};
-
-	const handleLinkClick = () => setIsMenuOpen(false);
+	const handleLinkClick = () => setShowMenu(false);
 
 	useEffect(() => {
 		if (isSmallScreen) {
@@ -92,7 +95,7 @@ export default function NavBar({ onStartHeaderAnimations }: NavBarProps) {
 					initial="hidden"
 					animate="visible"
 				>
-					{isSmallScreen && <HamburgerBtn onToggle={handleToggle} active={isMenuOpen} />}
+					{isSmallScreen && <HamburgerBtn onToggle={handleToggle} active={showMenu} />}
 					{!isSmallScreen && (
 						<NavBarLinks
 							variant="regular"
@@ -111,26 +114,32 @@ export default function NavBar({ onStartHeaderAnimations }: NavBarProps) {
 					</motion.div>
 				</motion.div>
 			</motion.nav>
-			{isSmallScreen && (
-				<motion.div
-					key={menuKey}
-					className="menu-wrapper"
-					initial={{ x: "100%", opacity: 0 }}
-					animate={{
-						x: isMenuOpen ? 0 : "100%",
-						opacity: isMenuOpen ? 1 : 0,
-						pointerEvents: isMenuOpen ? "auto" : "none",
-					}}
-					transition={{ duration: 0.3, ease: "easeInOut" }}
-				>
-					<NavBarLinks
-						variant="hamburger"
-						onLinkClick={handleLinkClick}
-						activeSection={activeSection}
-						onSetActive={setActiveSection}
-					/>
-				</motion.div>
-			)}
+			<AnimatePresence>
+				{isSmallScreen && showMenu && (
+					<motion.div
+						key="menu"
+						className="menu-wrapper"
+						initial={{ x: "100%", opacity: 0 }}
+						animate={{ x: 0, opacity: 1, pointerEvents: "auto" }}
+						exit={{ x: "100%", opacity: 0, pointerEvents: "none" }}
+						transition={{ duration: 0.3, ease: "easeInOut" }}
+						onAnimationComplete={(definition) => {
+							if (definition === "exit" && pendingHide) {
+								setHidden(true);
+								setPendingHide(false);
+							}
+						}}
+					>
+						<NavBarLinks
+							variant="hamburger"
+							onLinkClick={handleLinkClick}
+							activeSection={activeSection}
+							onSetActive={setActiveSection}
+							stagger={showMenu}
+						/>
+					</motion.div>
+				)}
+			</AnimatePresence>
 		</>
 	);
 }

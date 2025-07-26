@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { motion, useAnimation } from "motion/react";
 import leftArrow from "@/assets/icons/left-arrow.svg";
 import { useMediaQuery } from "react-responsive";
 import { Link } from "react-scroll";
@@ -11,10 +11,11 @@ import { useEffect, useState } from "react";
 import useScrollActiveSection from "@/hooks/useScrollActiveSection";
 interface NavBarLinksProps {
 	variant: "regular" | "hamburger";
+	activeSection: Section | null;
+	stagger?: boolean;
+	onSetActive: (section: Section | null) => void;
 	onLinkClick?: () => void;
 	onContactClick?: () => void;
-	activeSection: Section | null;
-	onSetActive: (section: Section | null) => void;
 	onLastLinkAnimationComplete?: () => void;
 }
 
@@ -24,8 +25,11 @@ const NavBarLinks: React.FC<NavBarLinksProps> = ({
 	activeSection,
 	onSetActive,
 	onLastLinkAnimationComplete,
+	stagger,
 }) => {
 	const [prevActiveSection, setPrevActiveSection] = useState<Section | null>(null);
+
+	const controls = useAnimation();
 
 	const isHamburger = variant === "hamburger";
 	const isSmallScreen = useMediaQuery({ maxWidth: 768 });
@@ -33,6 +37,16 @@ const NavBarLinks: React.FC<NavBarLinksProps> = ({
 	const linkOffset = isSmallScreen ? -30 : -60;
 
 	useScrollActiveSection({ activeSection, onSetActive });
+
+	useEffect(() => {
+		if (isHamburger) {
+			if (stagger) {
+				controls.start("show");
+			} else {
+				controls.set("hidden");
+			}
+		}
+	}, [stagger, isHamburger, controls]);
 
 	useEffect(() => {
 		if (prevActiveSection && prevActiveSection !== activeSection) {
@@ -52,7 +66,7 @@ const NavBarLinks: React.FC<NavBarLinksProps> = ({
 		? {
 				variants: fadeInSlideLeftGroup.container,
 				initial: "hidden",
-				animate: "show",
+				animate: controls,
 				exit: "hidden",
 		  }
 		: {
