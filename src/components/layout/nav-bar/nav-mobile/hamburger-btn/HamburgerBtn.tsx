@@ -1,6 +1,6 @@
 import { motion, MotionConfig } from "motion/react";
 import React from "react";
-import { hamburgerBtnConfigs } from "@/components/layout/nav-bar/hamburger-btn/hamburgerBtn.config";
+import { hamburgerBtnConfigs } from "./hamburgerBtn.config";
 
 type HamburgerBtnProps = {
 	onToggle: () => void;

@@ -1,10 +1,10 @@
 import { motion } from "motion/react";
-import NavBarLinks from "./NavBarLinks";
 import SlideFillButton from "@/components/ui/SlideFillButton";
-import { fadeInSlideBtn } from "@/utils/animations/navBarLinks/fadeInSlideBtn";
+import { fadeInSlideBtn } from "@/utils/animations/navLinks/fadeInSlideBtn.js";
 import { Section } from "@/types/sections.types";
 import React, { useEffect, useState } from "react";
 import { SECTIONS } from "@/constants/sections";
+import DesktopNavLinks from "./DesktopNavLinks";
 
 const containerVariants = {
 	visible: {
@@ -48,8 +48,7 @@ const DesktopNavBar: React.FC<DesktopNavBarProps> = ({
 				initial="hidden"
 				animate="visible"
 			>
-				<NavBarLinks
-					variant="regular"
+				<DesktopNavLinks
 					activeSection={activeSection}
 					onSetActive={setActiveSection}
 					onLastLinkAnimationComplete={onStartHeaderAnimations}

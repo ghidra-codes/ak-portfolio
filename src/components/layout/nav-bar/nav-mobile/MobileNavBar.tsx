@@ -1,24 +1,17 @@
 import { AnimatePresence, motion } from "motion/react";
-import HamburgerBtn from "./hamburger-btn/HamburgerBtn";
 import SlideFillButton from "@/components/ui/SlideFillButton";
-import NavBarLinks from "./NavBarLinks";
 import React from "react";
-import { Section } from "@/types/sections.types";
-import { fadeInSlideBtnSmallScreen } from "@/utils/animations/navBarLinks/fadeInSlideBtn";
+import { fadeInSlideBtnSmallScreen } from "@/utils/animations/navLinks/fadeInSlideBtn";
 import { EASE_IN_OUT } from "@/constants/animations";
 import useNavbarAutoHide from "@/hooks/useNavbarAutoHide";
+import HamburgerBtn from "./hamburger-btn/HamburgerBtn";
+import MobileNavLinks from "./MobileNavLinks";
 
 interface MobileNavBarProps {
-	activeSection: Section | null;
-	setActiveSection: React.Dispatch<React.SetStateAction<Section | null>>;
 	onStartHeaderAnimations: () => void;
 }
 
-const MobileNavBar: React.FC<MobileNavBarProps> = ({
-	onStartHeaderAnimations,
-	activeSection,
-	setActiveSection,
-}) => {
+const MobileNavBar: React.FC<MobileNavBarProps> = ({ onStartHeaderAnimations }) => {
 	const { hidden, setShowMenu, completeExit, showMenu } = useNavbarAutoHide();
 
 	return (
@@ -55,12 +48,7 @@ const MobileNavBar: React.FC<MobileNavBarProps> = ({
 						exit={{ x: "100%", opacity: 0 }}
 						transition={{ type: "tween", ease: EASE_IN_OUT, duration: 0.3 }}
 					>
-						<NavBarLinks
-							variant="hamburger"
-							activeSection={activeSection}
-							onSetActive={setActiveSection}
-							stagger={showMenu}
-						/>
+						<MobileNavLinks setShowMenu={setShowMenu} />
 					</motion.div>
 				)}
 			</AnimatePresence>
