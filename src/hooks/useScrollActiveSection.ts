@@ -1,6 +1,6 @@
+import { useEffect, useRef } from "react";
 import { Section } from "@/types/sections.types";
 import getTriggerPoints from "@/utils/helper/getTriggerPoints";
-import { useEffect } from "react";
 
 interface UseScrollActiveSectionProps {
 	activeSection: Section | null;
@@ -8,41 +8,34 @@ interface UseScrollActiveSectionProps {
 }
 
 const useScrollActiveSection = ({ activeSection, onSetActive }: UseScrollActiveSectionProps) => {
+	const triggerPointsRef = useRef({ enter: 0, leave: 0 });
+	const lastScrollYRef = useRef(window.scrollY);
+
 	useEffect(() => {
-		let lastScrollY = window.scrollY;
-		let triggerPointEnter = 0;
-		let triggerPointLeave = 0;
-
 		const updateTriggerPoints = () => {
-			const points = getTriggerPoints();
-			triggerPointEnter = points.enter;
-			triggerPointLeave = points.leave;
+			triggerPointsRef.current = getTriggerPoints();
 		};
-
-		updateTriggerPoints();
 
 		const handleScroll = () => {
 			const currentScrollY = window.scrollY;
-			const scrollingDown = currentScrollY > lastScrollY;
-			lastScrollY = currentScrollY;
+			const scrollingDown = currentScrollY > lastScrollYRef.current;
+			lastScrollYRef.current = currentScrollY;
+
+			const { enter, leave } = triggerPointsRef.current;
 
 			if (scrollingDown) {
-				if (currentScrollY >= triggerPointEnter && activeSection !== "about") {
+				if (currentScrollY >= enter && activeSection !== "about") {
 					onSetActive("about");
 				}
 			} else {
-				if (currentScrollY < triggerPointLeave && activeSection !== null) {
+				if (currentScrollY < leave && activeSection !== null) {
 					onSetActive(null);
 				}
 			}
 		};
 
-		if (activeSection === null || activeSection === "about") {
-			window.addEventListener("scroll", handleScroll);
-		} else {
-			window.removeEventListener("scroll", handleScroll);
-		}
-
+		updateTriggerPoints();
+		window.addEventListener("scroll", handleScroll);
 		window.addEventListener("resize", updateTriggerPoints);
 
 		return () => {

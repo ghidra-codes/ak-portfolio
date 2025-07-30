@@ -7,25 +7,22 @@ import { Section } from "@/types/sections.types";
 import { fadeInSlideLeftGroup } from "@/utils/animations/navBarLinks/fadeInSlideLeftGroup";
 import { fadeInSlideDownwardGroup } from "@/utils/animations/navBarLinks/fadeInSlideDownwardGroup";
 import classNames from "classnames";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import useScrollActiveSection from "@/hooks/useScrollActiveSection";
 interface NavBarLinksProps {
 	variant: "regular" | "hamburger";
 	activeSection: Section | null;
 	stagger?: boolean;
 	onSetActive: (section: Section | null) => void;
-	onLinkClick?: () => void;
-	onContactClick?: () => void;
 	onLastLinkAnimationComplete?: () => void;
 }
 
 const NavBarLinks: React.FC<NavBarLinksProps> = ({
 	variant,
-	onLinkClick,
 	activeSection,
+	stagger,
 	onSetActive,
 	onLastLinkAnimationComplete,
-	stagger,
 }) => {
 	const [prevActiveSection, setPrevActiveSection] = useState<Section | null>(null);
 
@@ -34,7 +31,7 @@ const NavBarLinks: React.FC<NavBarLinksProps> = ({
 	const isHamburger = variant === "hamburger";
 	const isSmallScreen = useMediaQuery({ maxWidth: 768 });
 
-	const linkOffset = isSmallScreen ? -30 : -60;
+	const linkOffset = useMemo(() => (isSmallScreen ? -30 : -60), [isSmallScreen]);
 
 	useScrollActiveSection({ activeSection, onSetActive });
 
@@ -102,10 +99,11 @@ const NavBarLinks: React.FC<NavBarLinksProps> = ({
 							to={section}
 							smooth={true}
 							duration={600}
-							spy={true}
+							spy={variant === "regular"}
 							offset={linkOffset}
-							onClick={onLinkClick}
-							onSetActive={() => onSetActive(section)}
+							onSetActive={() => {
+								if (section !== "about") onSetActive(section);
+							}}
 						>
 							{section}
 						</Link>

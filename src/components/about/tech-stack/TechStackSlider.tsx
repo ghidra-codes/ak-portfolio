@@ -83,7 +83,7 @@ const TechStackSlider: React.FC<TechStackSliderProps> = ({
 					</div>
 
 					<div className={classNames("icons-row", { "icons-row--many": category === "frontend" })}>
-						<AnimatePresence mode="wait">
+						<AnimatePresence>
 							{currentCategory === category &&
 								isInView &&
 								items.map(({ name, icon }, index) => (

@@ -11,7 +11,6 @@ import useNavbarAutoHide from "@/hooks/useNavbarAutoHide";
 interface MobileNavBarProps {
 	activeSection: Section | null;
 	setActiveSection: React.Dispatch<React.SetStateAction<Section | null>>;
-	showBtn: boolean;
 	onStartHeaderAnimations: () => void;
 }
 
@@ -19,7 +18,6 @@ const MobileNavBar: React.FC<MobileNavBarProps> = ({
 	onStartHeaderAnimations,
 	activeSection,
 	setActiveSection,
-	showBtn,
 }) => {
 	const { hidden, setShowMenu, completeExit, showMenu } = useNavbarAutoHide();
 
@@ -39,7 +37,7 @@ const MobileNavBar: React.FC<MobileNavBarProps> = ({
 					<motion.div
 						variants={fadeInSlideBtnSmallScreen}
 						initial="hidden"
-						animate={showBtn ? "show" : ""}
+						animate="show"
 						onAnimationComplete={onStartHeaderAnimations}
 					>
 						<SlideFillButton title="Resume" />
@@ -61,7 +59,6 @@ const MobileNavBar: React.FC<MobileNavBarProps> = ({
 							variant="hamburger"
 							activeSection={activeSection}
 							onSetActive={setActiveSection}
-							onLinkClick={() => setShowMenu(false)}
 							stagger={showMenu}
 						/>
 					</motion.div>
