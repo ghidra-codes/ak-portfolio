@@ -4,8 +4,9 @@ import { SECTIONS } from "@/constants/sections";
 import { Section } from "@/types/sections.types";
 import { fadeInSlideDownwardGroup } from "@/utils/animations/navLinks/fadeInSlideDownwardGroup";
 import classNames from "classnames";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import useScrollActiveSection from "@/hooks/useScrollActiveSection";
+import getSectionState from "@/utils/helper/getSectionState";
 
 interface DesktopNavLinksProps {
 	activeSection: Section | null;
@@ -20,22 +21,23 @@ const DesktopNavLinks: React.FC<DesktopNavLinksProps> = ({
 }) => {
 	const [prevActiveSection, setPrevActiveSection] = useState<Section | null>(null);
 
-	// Refactor this hook since its only used for desktop sized screens
 	useScrollActiveSection({ activeSection, onSetActive });
 
 	useEffect(() => {
-		if (prevActiveSection && prevActiveSection !== activeSection) {
-			const timeout = setTimeout(() => {
-				setPrevActiveSection(null);
-			}, 400);
+		if (prevActiveSection === activeSection) return;
 
+		if (activeSection !== null) {
+			const timeout = setTimeout(() => setPrevActiveSection(activeSection), 400);
 			return () => clearTimeout(timeout);
 		}
-
-		if (activeSection !== prevActiveSection) {
-			setPrevActiveSection(activeSection);
-		}
 	}, [activeSection, prevActiveSection]);
+
+	const handleSetActive = useCallback(
+		(section: Section) => {
+			if (section !== "about") onSetActive(section);
+		},
+		[onSetActive]
+	);
 
 	return (
 		<motion.ul
@@ -45,9 +47,12 @@ const DesktopNavLinks: React.FC<DesktopNavLinksProps> = ({
 			animate="show"
 		>
 			{SECTIONS.map((section, index) => {
-				const isActive = activeSection === section;
-				const shouldEraseUnderline = prevActiveSection === section && !isActive;
-				const isLast = index === SECTIONS.length - 1;
+				const { isActive, eraseUnderline, isLast } = getSectionState(
+					section,
+					index,
+					activeSection,
+					prevActiveSection
+				);
 
 				return (
 					<motion.li
@@ -55,8 +60,7 @@ const DesktopNavLinks: React.FC<DesktopNavLinksProps> = ({
 						variants={fadeInSlideDownwardGroup.item}
 						className={classNames("navbar-link-list-item", {
 							active: isActive,
-							underline: isActive,
-							"no-underline": shouldEraseUnderline,
+							"underline-exit": eraseUnderline,
 						})}
 						onAnimationComplete={isLast ? onLastLinkAnimationComplete : undefined}
 					>
@@ -66,9 +70,7 @@ const DesktopNavLinks: React.FC<DesktopNavLinksProps> = ({
 							duration={600}
 							offset={-60}
 							spy={true}
-							onSetActive={() => {
-								if (section !== "about") onSetActive(section);
-							}}
+							onSetActive={() => handleSetActive(section)}
 						>
 							{section}
 						</Link>

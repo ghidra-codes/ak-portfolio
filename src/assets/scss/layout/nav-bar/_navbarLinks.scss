@@ -52,11 +52,11 @@
 			background-color: #39393a40;
 		}
 
-		&.active.underline::after {
+		&.active::after {
 			animation: drawUnderline 0.4s ease forwards;
 		}
 
-		&.no-underline::after {
+		&.underline-exit::after {
 			width: 100%;
 			animation: eraseUnderline 0.4s ease forwards;
 		}
@@ -90,17 +90,5 @@
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
-
-		.left-arrow-wrapper {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			width: 2rem;
-			height: 100%;
-		}
-
-		&.active {
-			color: $blue-gray;
-		}
 	}
 }

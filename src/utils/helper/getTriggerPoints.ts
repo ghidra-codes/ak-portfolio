@@ -1,23 +1,13 @@
-const breakpoints = {
-	mobile: 480,
-	tablet: 768,
-	desktop: 1024,
-};
-
 const getTriggerPoints = (): { enter: number; leave: number } => {
-	const screenWidth = window.innerWidth;
-	const aboutSection = document.getElementById("about");
-	const aboutTop = aboutSection ? aboutSection.offsetTop : 0;
+	const aboutSection = document.getElementById("about")!;
 
-	if (screenWidth <= breakpoints.mobile) {
-		return { enter: aboutTop - 70, leave: aboutTop - 60 };
-	} else if (screenWidth <= breakpoints.tablet) {
-		return { enter: aboutTop - 100, leave: aboutTop - 90 };
-	} else if (screenWidth <= breakpoints.desktop) {
-		return { enter: aboutTop - 130, leave: aboutTop - 120 };
-	}
+	const aboutTop = aboutSection.offsetTop;
+	const screenHeight = window.innerHeight;
 
-	return { enter: 500, leave: 510 };
+	const enter = aboutTop - screenHeight * 0.15;
+	const leave = aboutTop - screenHeight * 0.2;
+
+	return { enter, leave };
 };
 
 export default getTriggerPoints;

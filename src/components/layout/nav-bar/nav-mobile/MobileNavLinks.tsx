@@ -21,7 +21,7 @@ const MobileNavLinks: React.FC<MobileNavLinksProps> = ({ setShowMenu }) => (
 					to={section}
 					smooth={true}
 					duration={600}
-					offset={-30}
+					offset={-32.5}
 					onClick={() => setShowMenu(false)}
 				>
 					{section}

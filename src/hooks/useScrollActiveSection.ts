@@ -9,7 +9,7 @@ interface UseScrollActiveSectionProps {
 
 const useScrollActiveSection = ({ activeSection, onSetActive }: UseScrollActiveSectionProps) => {
 	const triggerPointsRef = useRef({ enter: 0, leave: 0 });
-	const lastScrollYRef = useRef(window.scrollY);
+	const lastScrollYRef = useRef(0);
 
 	useEffect(() => {
 		const updateTriggerPoints = () => {
@@ -23,22 +23,25 @@ const useScrollActiveSection = ({ activeSection, onSetActive }: UseScrollActiveS
 
 			const { enter, leave } = triggerPointsRef.current;
 
-			if (scrollingDown) {
-				if (currentScrollY >= enter && activeSection !== "about") {
-					onSetActive("about");
-				}
-			} else {
-				if (currentScrollY < leave && activeSection !== null) {
-					onSetActive(null);
-				}
+			if (scrollingDown && currentScrollY > enter && activeSection !== "about") {
+				onSetActive("about");
+			}
+
+			if (!scrollingDown && currentScrollY < leave && activeSection !== null) {
+				onSetActive(null);
 			}
 		};
 
-		updateTriggerPoints();
+		const rafId = requestAnimationFrame(() => {
+			updateTriggerPoints();
+			lastScrollYRef.current = window.scrollY;
+		});
+
 		window.addEventListener("scroll", handleScroll);
 		window.addEventListener("resize", updateTriggerPoints);
 
 		return () => {
+			cancelAnimationFrame(rafId);
 			window.removeEventListener("scroll", handleScroll);
 			window.removeEventListener("resize", updateTriggerPoints);
 		};
