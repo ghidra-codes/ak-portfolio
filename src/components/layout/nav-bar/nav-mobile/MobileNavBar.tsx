@@ -6,6 +6,7 @@ import { EASE_IN_OUT } from "@/constants/animations";
 import useNavbarAutoHide from "@/hooks/useNavbarAutoHide";
 import HamburgerBtn from "./hamburger-btn/HamburgerBtn";
 import MobileNavLinks from "./MobileNavLinks";
+import NavBarBrand from "../NavBarBrand";
 
 interface MobileNavBarProps {
 	onStartHeaderAnimations: () => void;
@@ -22,9 +23,8 @@ const MobileNavBar: React.FC<MobileNavBarProps> = ({ onStartHeaderAnimations }) 
 				animate={hidden ? "hidden" : "visible"}
 				transition={{ duration: 0.4, ease: "easeInOut" }}
 			>
-				<div className="brand">
-					<div className="logo-wrapper" />
-				</div>
+				<NavBarBrand />
+
 				<motion.div className="navbar-links-wrapper">
 					<HamburgerBtn onToggle={() => setShowMenu((prev) => !prev)} active={showMenu} />
 					<motion.div

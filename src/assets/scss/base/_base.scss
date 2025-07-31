@@ -19,6 +19,7 @@ body {
 	box-sizing: inherit;
 	scrollbar-width: 2rem;
 	scrollbar-color: #555 #1a1a1a;
+	-webkit-tap-highlight-color: transparent;
 }
 
 button {
@@ -33,7 +34,6 @@ a {
 }
 
 button {
-	-webkit-tap-highlight-color: transparent;
 	font-family: inherit;
 }
 

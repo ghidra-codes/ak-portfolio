@@ -29,6 +29,7 @@
 			background-repeat: no-repeat;
 			background-size: contain;
 			background-position: center;
+			cursor: pointer;
 		}
 
 		.navbar-heading {
@@ -40,6 +41,10 @@
 			background-clip: text;
 			color: transparent;
 			font-weight: 500;
+
+			@media (max-width: 560px) {
+				display: none;
+			}
 		}
 	}
 

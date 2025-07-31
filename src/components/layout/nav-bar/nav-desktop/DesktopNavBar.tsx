@@ -5,6 +5,7 @@ import { Section } from "@/types/sections.types";
 import React, { useEffect, useState } from "react";
 import { SECTIONS } from "@/constants/sections";
 import DesktopNavLinks from "./DesktopNavLinks";
+import NavBarBrand from "../NavBarBrand";
 
 const containerVariants = {
 	visible: {
@@ -37,10 +38,7 @@ const DesktopNavBar: React.FC<DesktopNavBarProps> = ({
 
 	return (
 		<motion.nav className="navbar">
-			<div className="brand">
-				<div className="logo-wrapper" />
-				<h1 className="navbar-heading">Alexander Kallin</h1>
-			</div>
+			<NavBarBrand />
 
 			<motion.div
 				className="navbar-links-wrapper"
