@@ -1,0 +1,24 @@
+@use "../abstracts/index" as *;
+
+.decor {
+	position: absolute;
+	z-index: -1;
+	width: 8.5rem;
+	color: $jet;
+
+	&.triangle {
+		top: 50%;
+		right: -20%;
+		opacity: 0.3;
+	}
+
+	&.square {
+		top: 50%;
+		left: -10%;
+		opacity: 0.3;
+	}
+
+	@include respond(desktop) {
+		display: none;
+	}
+}

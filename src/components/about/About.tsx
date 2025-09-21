@@ -1,5 +1,6 @@
 import AboutContent from "@/components/about/AboutContent";
 import TechStack from "@/components/about/tech-stack/TechStack";
+import Decoration from "../layout/Decoration";
 
 export default function About() {
 	return (
@@ -9,6 +10,8 @@ export default function About() {
 			</div>
 			<div id="tech-stack">
 				<TechStack />
+
+				<Decoration variant="square" />
 			</div>
 		</>
 	);
