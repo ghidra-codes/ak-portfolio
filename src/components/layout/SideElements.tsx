@@ -30,7 +30,7 @@ const SideElements = () => {
 					<li>
 						<motion.a
 							className="social-icon"
-							href="https://www.linkedin.com/in/alexander-kallin-42588b526/"
+							href="https://www.linkedin.com/in/alexander-kallin-42588b326/"
 							target="_blank"
 							rel="noopener noreferrer"
 							whileHover={{ y: -3.5 }}
