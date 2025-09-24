@@ -7,10 +7,10 @@ export default function About() {
 		<>
 			<div id="about-content">
 				<AboutContent />
+				<Decoration variant="triangle" />
 			</div>
 			<div id="tech-stack">
 				<TechStack />
-
 				<Decoration variant="square" />
 			</div>
 		</>

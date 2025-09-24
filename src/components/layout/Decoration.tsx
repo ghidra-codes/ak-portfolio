@@ -27,7 +27,7 @@ const Decoration: React.FC<DecorationProps> = ({ variant }) => {
 			);
 			break;
 		case "square":
-			mainShape = <rect x="19.75" y="19.75" width="8.5" height="8.5" rx="1" />;
+			mainShape = <rect x="19.25" y="19.25" width="9.5" height="9.5" rx="1" />;
 			break;
 		case "circle":
 			mainShape = <circle cx="24" cy="25" r="8" />;
