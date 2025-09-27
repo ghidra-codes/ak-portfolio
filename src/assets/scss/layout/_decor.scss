@@ -3,19 +3,27 @@
 .decor {
 	position: absolute;
 	z-index: -1;
-	width: 8.5rem;
+	width: 9.5rem;
 	color: $jet;
 
 	&.triangle {
-		top: 50%;
+		top: 20%;
 		right: -20%;
-		opacity: 0.3;
 	}
 
 	&.square {
+		top: 20%;
+		left: -20%;
+	}
+
+	&.diamond {
+		bottom: 0;
+		right: -20%;
+	}
+
+	&.hexagon {
 		top: 50%;
-		left: -10%;
-		opacity: 0.3;
+		right: -20%;
 	}
 
 	@include respond(desktop) {
