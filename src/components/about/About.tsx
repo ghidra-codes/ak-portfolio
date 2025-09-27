@@ -11,7 +11,6 @@ export default function About() {
 			</div>
 			<div id="tech-stack">
 				<TechStack />
-				<Decoration variant="diamond" />
 				<Decoration variant="square" />
 			</div>
 		</>
