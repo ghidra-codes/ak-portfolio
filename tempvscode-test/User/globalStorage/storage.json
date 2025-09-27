@@ -1,0 +1,83 @@
+{
+    "telemetry.machineId": "d540e72f3fe838b868312e4a697681a5314e351f360b4dd8cc0a38de46defdbb",
+    "telemetry.sqmId": "{38AB800A-907F-4FB0-99FF-4D8B8725CECC}",
+    "telemetry.devDeviceId": "8db135c0-eb43-420b-9071-1ee7b4de6926",
+    "backupWorkspaces": {
+        "workspaces": [],
+        "folders": [
+            {
+                "folderUri": "file:///c%3A/Users/alex-/projects/egna-projekt/react-portfolio-website"
+            }
+        ],
+        "emptyWindows": [
+            {
+                "backupFolder": "1759006299380"
+            }
+        ]
+    },
+    "windowControlHeight": 35,
+    "profileAssociations": {
+        "workspaces": {
+            "file:///c%3A/Users/alex-/projects/egna-projekt/react-portfolio-website": "__default__profile__"
+        },
+        "emptyWindows": {
+            "1759006299380": "__default__profile__"
+        }
+    },
+    "theme": "vs-dark",
+    "themeBackground": "#1f1f1f",
+    "windowSplash": {
+        "zoomLevel": 0,
+        "baseTheme": "vs-dark",
+        "colorInfo": {
+            "foreground": "#cccccc",
+            "background": "#1f1f1f",
+            "editorBackground": "#1f1f1f",
+            "titleBarBackground": "#181818",
+            "titleBarBorder": "#2b2b2b",
+            "activityBarBackground": "#181818",
+            "activityBarBorder": "#2b2b2b",
+            "sideBarBackground": "#181818",
+            "sideBarBorder": "#2b2b2b",
+            "statusBarBackground": "#181818",
+            "statusBarBorder": "#2b2b2b",
+            "statusBarNoFolderBackground": "#1f1f1f"
+        },
+        "layoutInfo": {
+            "sideBarSide": "left",
+            "editorPartMinWidth": 220,
+            "titleBarHeight": 35,
+            "activityBarWidth": 48,
+            "sideBarWidth": 300,
+            "auxiliaryBarWidth": 0,
+            "statusBarHeight": 22,
+            "windowBorder": false
+        }
+    },
+    "windowsState": {
+        "lastActiveWindow": {
+            "folder": "file:///c%3A/Users/alex-/projects/egna-projekt/react-portfolio-website",
+            "backupPath": "C:\\Users\\alex-\\projects\\egna-projekt\\react-portfolio-website\\tempvscode-test\\Backups\\0b583b00a415005064558a619e18968d",
+            "uiState": {
+                "mode": 1,
+                "x": 168,
+                "y": 32,
+                "width": 1200,
+                "height": 800
+            }
+        },
+        "openedWindows": []
+    },
+    "windowSplashWorkspaceOverride": {
+        "layoutInfo": {
+            "sideBarWidth": 300,
+            "auxiliaryBarWidth": 300,
+            "workspaces": {
+                "bae960c1d5eef7704fea1b8d7f89b879": {
+                    "sideBarVisible": true,
+                    "auxiliaryBarVisible": false
+                }
+            }
+        }
+    }
+}

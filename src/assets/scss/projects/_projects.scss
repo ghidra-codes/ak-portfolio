@@ -1,0 +1,17 @@
+@use "../abstracts/index" as *;
+
+#projects {
+	@include flex-center;
+	flex-direction: column;
+
+	margin: 0 auto;
+	width: 60%;
+
+	@include respond(tablet) {
+		width: 70%;
+	}
+
+	@include respond(mobile) {
+		width: 90%;
+	}
+}

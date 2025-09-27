@@ -21,6 +21,9 @@
 @use "./about/tech-stack/techStackIcon";
 @use "./about/tech-stack/techStackSlider";
 
+@use "./projects/projects";
+@use "./projects/projectFeature";
+
 @use "./ui/cursorInfoBox";
 @use "./ui/tintedImage";
 @use "./ui/slideFillButton";

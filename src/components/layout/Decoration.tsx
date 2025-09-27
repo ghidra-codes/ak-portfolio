@@ -1,7 +1,7 @@
 import { useAnimationContext } from "@/hooks/useAnimationContext";
 import React from "react";
 import { motion } from "motion/react";
-import { fadeInSimple } from "@/utils/animations/shared/fadeInSimple";
+import { EASE_OUT_SLOW } from "@/constants/animations";
 
 type DecorationProps = {
 	variant: "triangle" | "square" | "hexagon" | "diamond";
@@ -27,16 +27,11 @@ const Decoration: React.FC<DecorationProps> = ({ variant }) => {
 
 	switch (variant) {
 		case "triangle":
-			mainShape = <path d="M24 19 L29 28 H19 Z" />;
-			break;
-
-		case "square":
-			mainShape = <rect x="19.75" y="19.75" width="8.5" height="8.5" rx="0.5" />;
-			break;
-
-		case "hexagon":
 			mainShape = (
-				<path d="M23.134,19.75l-4.3688,7.5a1,1,0,0,0,.866,1.375h8.7376a1,1,0,0,0,.866-1.375l-4.3688-7.5A1,1,0,0,0,23.134,19.75Z" />
+				<path
+					d="M23.134,19.75l-4.3688,7.5a1,1,0,0,0,.866,1.375h8.7376a1,1,0,0,0,.866-1.375l-4.3688-7.5A1,1,0,0,0,23.134,19.75Z"
+					transform="translate(0,-0.3)"
+				/>
 			);
 			break;
 		case "square":
@@ -54,10 +49,11 @@ const Decoration: React.FC<DecorationProps> = ({ variant }) => {
 
 	return (
 		animateSides && (
-			<div style={{ display: "inline-block", opacity: 0.1 }}>
+			<div style={{ display: "inline-block" }}>
 				<motion.svg
-					{...fadeInSimple}
-					style={{ opacity: 0.15 }}
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 0.085 }}
+					transition={{ duration: 1.5, ease: EASE_OUT_SLOW }}
 					viewBox="0 0 48 48"
 					className={`decor ${variant}`}
 					fill="none"

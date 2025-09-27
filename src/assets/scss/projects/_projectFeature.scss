@@ -1,0 +1,17 @@
+@use "../abstracts/index" as *;
+
+.project-feature {
+	.project-image-wrapper {
+		position: relative;
+		display: inline-block;
+		height: fit-content;
+		width: fit-content;
+
+		.project-image {
+			display: block;
+			width: 30rem;
+			transform: translate(15px, 15px);
+			border-radius: 0.25rem;
+		}
+	}
+}

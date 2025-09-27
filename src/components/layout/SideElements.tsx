@@ -1,5 +1,4 @@
-import { EASE_IN_OUT_SMOOTH, EASE_IN_OUT } from "@/constants/animations";
-import { fadeInSimple } from "@/utils/animations/shared/fadeInSimple";
+import { EASE_IN_OUT_SMOOTH, EASE_IN_OUT, EASE_OUT_SLOW } from "@/constants/animations";
 import { motion } from "motion/react";
 import { FiGithub } from "react-icons/fi";
 import { FiLinkedin } from "react-icons/fi";
@@ -9,7 +8,11 @@ const DURATION = 0.25;
 
 const SideElements = () => {
 	return (
-		<motion.div {...fadeInSimple}>
+		<motion.div
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			transition={{ duration: 1.5, ease: EASE_OUT_SLOW }}
+		>
 			<div className="side social">
 				<ul>
 					<li>
