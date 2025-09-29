@@ -14,4 +14,16 @@
 	@include respond(mobile) {
 		width: 90%;
 	}
+
+	.project-heading {
+		line-height: 1.07;
+
+		.section-header-wrapper {
+			padding-bottom: 0;
+		}
+
+		.subheading {
+			color: $blue-gray;
+		}
+	}
 }
