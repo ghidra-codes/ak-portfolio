@@ -5,18 +5,17 @@
 	flex-direction: column;
 
 	margin: 0 auto;
-	width: 60%;
-
-	@include respond(tablet) {
-		width: 70%;
-	}
-
-	@include respond(mobile) {
-		width: 90%;
-	}
 
 	.project-heading {
 		line-height: 1.07;
+
+		@include respond(tablet) {
+			width: 70%;
+		}
+
+		@include respond(mobile) {
+			width: 90%;
+		}
 
 		.section-header-wrapper {
 			padding-bottom: 0;

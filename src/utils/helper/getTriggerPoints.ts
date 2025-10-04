@@ -1,13 +1,29 @@
-const getTriggerPoints = (): { enter: number; leave: number } => {
-	const aboutSection = document.getElementById("about")!;
+import { TriggerPoint } from "@/types/sections.types";
 
-	const aboutTop = aboutSection.offsetTop;
+/**
+ * Computes scroll trigger points for each page section.
+ * Returns an array of sections with enter/leave positions used for scroll tracking.
+ */
+const getTriggerPoints = (): TriggerPoint[] => {
+	const sections = document.querySelectorAll("section[id]");
 	const screenHeight = window.innerHeight;
 
-	const enter = aboutTop - screenHeight * 0.15;
-	const leave = aboutTop - screenHeight * 0.2;
+	const points: TriggerPoint[] = [];
 
-	return { enter, leave };
+	sections.forEach((section) => {
+		const el = section as HTMLElement;
+		const top = el.offsetTop;
+		const id = el.id;
+
+		const enter = top - screenHeight * 0.15;
+		const leave = top - screenHeight * 0.2;
+
+		points.push({ id, enter, leave });
+	});
+
+	points.sort((a, b) => a.enter - b.enter);
+
+	return points;
 };
 
 export default getTriggerPoints;

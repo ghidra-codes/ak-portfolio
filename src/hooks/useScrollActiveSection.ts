@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Section } from "@/types/sections.types";
+import { Section, TriggerPoint } from "@/types/sections.types";
 import getTriggerPoints from "@/utils/helper/getTriggerPoints";
 
 interface UseScrollActiveSectionProps {
@@ -7,41 +7,38 @@ interface UseScrollActiveSectionProps {
 	onSetActive: (section: Section | null) => void;
 }
 
+/**
+ * Tracks and updates the current active section based on scroll position.
+ */
 const useScrollActiveSection = ({ activeSection, onSetActive }: UseScrollActiveSectionProps) => {
-	const triggerPointsRef = useRef({ enter: 0, leave: 0 });
+	const triggerPointsRef = useRef<TriggerPoint[]>([]);
 	const lastScrollYRef = useRef(0);
 
 	useEffect(() => {
-		const updateTriggerPoints = () => {
-			triggerPointsRef.current = getTriggerPoints();
-		};
+		const updateTriggerPoints = () => (triggerPointsRef.current = getTriggerPoints());
 
 		const handleScroll = () => {
 			const currentScrollY = window.scrollY;
-			const scrollingDown = currentScrollY > lastScrollYRef.current;
-			lastScrollYRef.current = currentScrollY;
+			let newActiveSection: Section | null = null;
 
-			const { enter, leave } = triggerPointsRef.current;
-
-			if (scrollingDown && currentScrollY > enter && activeSection !== "about") {
-				onSetActive("about");
+			// Find the last section scrolled past
+			for (const { id, enter } of triggerPointsRef.current) {
+				// If we are in the header section this doesn't pass, newActiveSection remains null
+				if (currentScrollY >= enter) newActiveSection = id as Section;
 			}
 
-			if (!scrollingDown && currentScrollY < leave && activeSection !== null) {
-				onSetActive(null);
-			}
+			if (newActiveSection !== activeSection) onSetActive(newActiveSection);
 		};
 
-		const rafId = requestAnimationFrame(() => {
-			updateTriggerPoints();
-			lastScrollYRef.current = window.scrollY;
-		});
+		updateTriggerPoints();
+		handleScroll(); // Set initial section
+
+		lastScrollYRef.current = window.scrollY;
 
 		window.addEventListener("scroll", handleScroll);
 		window.addEventListener("resize", updateTriggerPoints);
 
 		return () => {
-			cancelAnimationFrame(rafId);
 			window.removeEventListener("scroll", handleScroll);
 			window.removeEventListener("resize", updateTriggerPoints);
 		};

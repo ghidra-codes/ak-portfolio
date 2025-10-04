@@ -1,17 +1,70 @@
 @use "../abstracts/index" as *;
 
 .project-feature {
-	.project-image-wrapper {
-		position: relative;
-		display: inline-block;
-		height: fit-content;
-		width: fit-content;
+	display: flex;
+	justify-content: center;
+	width: 70%;
 
-		.project-image {
-			display: block;
-			width: 30rem;
-			transform: translate(15px, 15px);
-			border-radius: 0.25rem;
+	@include respond(mobile) {
+		width: 90%;
+	}
+
+	.left {
+		width: 100%;
+
+		.project-image-wrapper {
+			height: fit-content;
+			width: fit-content;
+
+			.project-image {
+				width: 100%;
+				border-radius: 0.25rem;
+			}
+
+			.image-overlay {
+				transform: translate(0px, 0px);
+			}
+		}
+	}
+
+	.right {
+		border: 2px solid red;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		width: 100%;
+
+		.project-description {
+			position: absolute;
+			background-color: $jet;
+			left: -30px;
+			bottom: 20px;
+			overflow-y: auto;
+			z-index: 2;
+			padding: 0 1rem;
+
+			p {
+				@include fluid-type(smaller-p);
+			}
+		}
+
+		.project-heading {
+			display: flex;
+			justify-content: space-between;
+			padding: 0 1rem;
+
+			span {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				gap: 1rem;
+			}
+
+			h3 {
+				width: fit-content;
+				text-align: end;
+			}
 		}
 	}
 }

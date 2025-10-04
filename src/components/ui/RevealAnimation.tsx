@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 interface RevealAnimationProps {
 	children: React.ReactNode;
 	className?: string;
-	width?: "100%" | "fit-content";
+	width?: string;
 	viewportMargin?: string;
 	manualControl?: boolean;
 	shouldAnimate?: boolean;

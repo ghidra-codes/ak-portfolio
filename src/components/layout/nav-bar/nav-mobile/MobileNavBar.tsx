@@ -7,20 +7,18 @@ import useNavbarAutoHide from "@/hooks/useNavbarAutoHide";
 import HamburgerBtn from "./hamburger-btn/HamburgerBtn";
 import MobileNavLinks from "./MobileNavLinks";
 import NavBarBrand from "../NavBarBrand";
+import { useAnimationContext } from "@/hooks/useAnimationContext";
 
-interface MobileNavBarProps {
-	onStartHeaderAnimations: () => void;
-}
-
-const MobileNavBar: React.FC<MobileNavBarProps> = ({ onStartHeaderAnimations }) => {
-	const { hidden, setShowMenu, completeExit, showMenu } = useNavbarAutoHide();
+const MobileNavBar = () => {
+	const { isHidden, setShowMenu, completeExit, showMenu } = useNavbarAutoHide();
+	const { setAnimateHeader } = useAnimationContext();
 
 	return (
 		<>
 			<motion.nav
 				className="navbar"
 				variants={{ hidden: { y: "-100%" }, visible: { y: 0 } }}
-				animate={hidden ? "hidden" : "visible"}
+				animate={isHidden ? "hidden" : "visible"}
 				transition={{ duration: 0.4, ease: "easeInOut" }}
 			>
 				<NavBarBrand />
@@ -31,7 +29,7 @@ const MobileNavBar: React.FC<MobileNavBarProps> = ({ onStartHeaderAnimations }) 
 						variants={fadeInSlideBtnSmallScreen}
 						initial="hidden"
 						animate="show"
-						onAnimationComplete={onStartHeaderAnimations}
+						onAnimationComplete={() => setAnimateHeader(true)}
 					>
 						<SlideFillButton title="Resume" />
 					</motion.div>

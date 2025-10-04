@@ -1,7 +1,6 @@
 import { motion } from "motion/react";
 import SlideFillButton from "@/components/ui/SlideFillButton";
 import { fadeInSlideBtn } from "@/utils/animations/navLinks/fadeInSlideBtn.js";
-import { Section } from "@/types/sections.types";
 import React, { useEffect, useState } from "react";
 import { SECTIONS } from "@/constants/sections";
 import DesktopNavLinks from "./DesktopNavLinks";
@@ -18,17 +17,7 @@ const containerVariants = {
 
 const SHOW_BTN_DELAY = (SECTIONS.length - 1) * 0.2 + 0.3;
 
-interface DesktopNavBarProps {
-	activeSection: Section | null;
-	setActiveSection: React.Dispatch<React.SetStateAction<Section | null>>;
-	onStartHeaderAnimations: () => void;
-}
-
-const DesktopNavBar: React.FC<DesktopNavBarProps> = ({
-	activeSection,
-	setActiveSection,
-	onStartHeaderAnimations,
-}) => {
+const DesktopNavBar = () => {
 	const [showBtn, setShowBtn] = useState(false);
 
 	useEffect(() => {
@@ -46,11 +35,7 @@ const DesktopNavBar: React.FC<DesktopNavBarProps> = ({
 				initial="hidden"
 				animate="visible"
 			>
-				<DesktopNavLinks
-					activeSection={activeSection}
-					onSetActive={setActiveSection}
-					onLastLinkAnimationComplete={onStartHeaderAnimations}
-				/>
+				<DesktopNavLinks />
 
 				<motion.div variants={fadeInSlideBtn} initial="hidden" animate={showBtn ? "show" : ""}>
 					<SlideFillButton title="Resume" />

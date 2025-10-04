@@ -11,6 +11,10 @@ interface UseTechStackSliderParams {
 	firstCategoryDelay: RefObject<number>;
 }
 
+/**
+ * Sets up a looping KeenSlider for tech stack categories,
+ * tracking the current category and scroll direction while handling arrow visibility.
+ */
 const useTechStackSlider = ({
 	groupedByCategory,
 	firstCategoryDelay,
@@ -18,10 +22,13 @@ const useTechStackSlider = ({
 	setCurrentCategory,
 }: UseTechStackSliderParams) => {
 	const previousSlideIndexRef = useRef<number>(0);
+
+	// Get category names from grouped data
 	const categories = useMemo(() => Object.keys(groupedByCategory), [groupedByCategory]);
 	const [showArrows, setShowArrows] = useState(true);
 	const [timeoutId, setTimeoutId] = useState<number | null>(null);
 
+	// Update current category and scroll direction on slide change
 	const handleSlideChanged = useCallback(
 		(slider: KeenSliderInstance) => {
 			const newIndex = slider.track.details.rel;
@@ -30,6 +37,7 @@ const useTechStackSlider = ({
 			const previousIndex = previousSlideIndexRef.current;
 			const total = categories.length;
 
+			// Determine scroll direction
 			const direction =
 				(newIndex > previousIndex && newIndex - previousIndex < total / 2) ||
 				(previousIndex > newIndex && previousIndex - newIndex > total / 2)
@@ -39,7 +47,9 @@ const useTechStackSlider = ({
 			setScrollDirection(direction);
 			previousSlideIndexRef.current = newIndex;
 
+			// Reset first category delay if needed
 			if (firstCategoryDelay.current) firstCategoryDelay.current = 0;
+
 			setCurrentCategory(category);
 		},
 		[categories, firstCategoryDelay, setCurrentCategory, setScrollDirection]
@@ -52,10 +62,12 @@ const useTechStackSlider = ({
 			perView: 1,
 		},
 		slideChanged: handleSlideChanged,
+		// Hide arrows while dragging
 		dragStarted: () => {
 			setShowArrows(false);
 			if (timeoutId) clearTimeout(timeoutId);
 		},
+		// Show arrows 500ms after drag ends
 		dragEnded: () => {
 			const id = window.setTimeout(() => {
 				setShowArrows(true);

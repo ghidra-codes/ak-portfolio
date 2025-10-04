@@ -4,40 +4,33 @@ import { SECTIONS } from "@/constants/sections";
 import { Section } from "@/types/sections.types";
 import { fadeInSlideDownwardGroup } from "@/utils/animations/navLinks/fadeInSlideDownwardGroup";
 import classNames from "classnames";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import useScrollActiveSection from "@/hooks/useScrollActiveSection";
 import getSectionState from "@/utils/helper/getSectionState";
+import { useAnimationContext } from "@/hooks/useAnimationContext";
 
-interface DesktopNavLinksProps {
-	activeSection: Section | null;
-	onSetActive: (section: Section | null) => void;
-	onLastLinkAnimationComplete: () => void;
-}
+/**
+ * Renders desktop navigation links with scroll tracking.
+ *
+ * Highlights the active section and triggers header animation after the last link animates.
+ */
+const DesktopNavLinks = () => {
+	const { setAnimateHeader } = useAnimationContext();
 
-const DesktopNavLinks: React.FC<DesktopNavLinksProps> = ({
-	activeSection,
-	onSetActive,
-	onLastLinkAnimationComplete,
-}) => {
+	// Track current and previous active section for animations
+	const [activeSection, setActiveSection] = useState<Section | null>(null);
 	const [prevActiveSection, setPrevActiveSection] = useState<Section | null>(null);
 
-	useScrollActiveSection({ activeSection, onSetActive });
+	// Update activeSection based on scroll position
+	useScrollActiveSection({ activeSection, onSetActive: setActiveSection });
 
+	// Keep previous active section to handle underline exit animations
 	useEffect(() => {
-		if (prevActiveSection === activeSection) return;
-
-		if (activeSection !== null) {
+		if (activeSection && activeSection !== prevActiveSection) {
 			const timeout = setTimeout(() => setPrevActiveSection(activeSection), 400);
 			return () => clearTimeout(timeout);
 		}
 	}, [activeSection, prevActiveSection]);
-
-	const handleSetActive = useCallback(
-		(section: Section) => {
-			if (section !== "about") onSetActive(section);
-		},
-		[onSetActive]
-	);
 
 	return (
 		<motion.ul
@@ -62,16 +55,9 @@ const DesktopNavLinks: React.FC<DesktopNavLinksProps> = ({
 							active: isActive,
 							"underline-exit": eraseUnderline,
 						})}
-						onAnimationComplete={isLast ? onLastLinkAnimationComplete : undefined}
+						onAnimationComplete={isLast ? () => setAnimateHeader(true) : undefined}
 					>
-						<Link
-							to={section}
-							smooth={true}
-							duration={600}
-							offset={-60}
-							spy={true}
-							onSetActive={() => handleSetActive(section)}
-						>
+						<Link to={section} smooth={true} duration={600} offset={-60} spy={true}>
 							{section}
 						</Link>
 					</motion.li>

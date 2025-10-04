@@ -29,6 +29,18 @@ $font-sizes: (
 		max: 1.25rem,
 	),
 
+	small-p: (
+		min: 0.9rem,
+		fluid: 1.85vw,
+		max: 1.25rem,
+	),
+
+	smaller-p: (
+		min: 0.8rem,
+		fluid: 1.75vw,
+		max: 1.15rem,
+	),
+
 	header-p: (
 		min: 1.05rem,
 		fluid: 2.15vw,
@@ -45,12 +57,6 @@ $font-sizes: (
 		min: 1.75rem,
 		fluid: 3.75vw,
 		max: 2.5rem,
-	),
-
-	label-p: (
-		min: 0.9rem,
-		fluid: 1.85vw,
-		max: 1.25rem,
 	),
 
 	button-text: (

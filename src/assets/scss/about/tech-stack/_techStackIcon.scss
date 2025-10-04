@@ -23,7 +23,7 @@
 	.icon-label {
 		white-space: nowrap;
 		color: $blue-ivory;
-		@include fluid-type(label-p);
+		@include fluid-type(small-p);
 	}
 
 	@include respond(desktop) {
