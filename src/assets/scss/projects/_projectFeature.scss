@@ -10,7 +10,7 @@
 	}
 
 	.left {
-		padding-top: 1.25rem;
+		padding-top: 0.25rem;
 		width: 100%;
 
 		.project-image-wrapper {
@@ -42,8 +42,8 @@
 		.project-description {
 			position: relative;
 			background-color: $deep-blue-gray;
-			left: -20%;
-			width: 120%;
+			left: -25%;
+			width: 125%;
 			border-radius: 0.25rem;
 			margin-top: -1.5rem;
 			overflow-y: auto;
