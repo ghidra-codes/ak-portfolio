@@ -10,6 +10,7 @@
 	}
 
 	.left {
+		padding-top: 1.25rem;
 		width: 100%;
 
 		.project-image-wrapper {
@@ -17,47 +18,55 @@
 			width: fit-content;
 
 			.project-image {
-				width: 100%;
+				width: 35rem;
+				height: 100%;
 				border-radius: 0.25rem;
 			}
 
 			.image-overlay {
-				transform: translate(0px, 0px);
+				transform: translate(0);
+				background-color: rgba($honolulu-blue, 0.275);
 			}
 		}
 	}
 
 	.right {
-		border: 2px solid red;
 		position: relative;
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
 		width: 100%;
+		margin-top: 4rem;
+		gap: 1.5rem;
 
 		.project-description {
-			position: absolute;
-			background-color: $jet;
-			left: -30px;
-			bottom: 20px;
+			position: relative;
+			background-color: $deep-blue-gray;
+			left: -20%;
+			width: 120%;
+			border-radius: 0.25rem;
+			margin-top: -1.5rem;
 			overflow-y: auto;
 			z-index: 2;
 			padding: 0 1rem;
 
 			p {
 				@include fluid-type(smaller-p);
+				color: $blue-tint;
+				line-height: 1.4;
 			}
 		}
 
 		.project-heading {
 			display: flex;
 			justify-content: space-between;
+			align-items: center;
 			padding: 0 1rem;
+			margin-top: 0;
 
 			span {
+				margin-top: 0.25rem;
 				display: flex;
-				justify-content: center;
-				align-items: center;
 				gap: 1rem;
 			}
 

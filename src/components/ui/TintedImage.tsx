@@ -34,10 +34,7 @@ const TintedImage: React.FC<TintedImageProps> = ({
 				src={src}
 				alt={alt}
 			/>
-			<div
-				className={classNames("image-overlay", { revealed }, { "pop-in": triggerPopIn })}
-				style={{ backgroundColor: "rgba(33, 118, 174, 0.375)" }}
-			></div>
+			<div className={classNames("image-overlay", { revealed }, { "pop-in": triggerPopIn })}></div>
 			{children}
 		</div>
 	);
