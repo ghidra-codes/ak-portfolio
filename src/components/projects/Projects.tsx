@@ -2,6 +2,7 @@ import SectionHeader from "../layout/SectionHeader";
 import RevealAnimation from "../ui/RevealAnimation";
 import ProjectFeature from "./ProjectFeature";
 import filmFlare from "@/assets/images/filmflare-screenshot.png";
+import { projectIconsMap } from "@/constants/projectIcons";
 
 export default function Projects() {
 	return (
@@ -28,6 +29,14 @@ export default function Projects() {
 						API usage.
 					</p>
 				}
+				projectIcons={["typescript", "react", "reactQuery"].map((key) => {
+					const { icon: Icon, label } = projectIconsMap[key];
+					return (
+						<span key={key} className="project-icon" data-tooltip={label}>
+							<Icon />
+						</span>
+					);
+				})}
 			/>
 		</>
 	);

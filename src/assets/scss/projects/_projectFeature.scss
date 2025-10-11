@@ -16,6 +16,7 @@
 		.project-image-wrapper {
 			height: fit-content;
 			width: fit-content;
+			box-shadow: 0 0 8px rgba(0, 0, 0, 0.35);
 
 			.project-image {
 				width: 35rem;
@@ -26,6 +27,41 @@
 			.image-overlay {
 				transform: translate(0);
 				background-color: rgba($honolulu-blue, 0.275);
+			}
+		}
+
+		.project-icons {
+			position: relative;
+			display: flex;
+			gap: 1rem;
+			font-size: 1.55rem;
+			padding-left: 0.5rem;
+			padding-top: 0.55rem;
+
+			.project-icon {
+				color: $blue-gray;
+				position: relative;
+				cursor: pointer;
+
+				&::after {
+					color: $blue-tint;
+					content: attr(data-tooltip);
+					font-size: 0.94rem;
+					position: absolute;
+					top: 80%;
+					left: 50%;
+					transform: translateX(-50%);
+					padding: 0.25rem 0.5rem;
+					border-radius: 4px;
+					white-space: nowrap;
+					opacity: 0;
+					transition: opacity 0.2s ease;
+					z-index: 10;
+				}
+
+				&:hover::after {
+					opacity: 1;
+				}
 			}
 		}
 	}
@@ -49,6 +85,7 @@
 			overflow-y: auto;
 			z-index: 2;
 			padding: 0 1rem;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
 
 			p {
 				@include fluid-type(smaller-p);
@@ -61,18 +98,31 @@
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
-			padding: 0 1rem;
+			padding: 0 1rem 0 1.75rem;
 			margin-top: 0;
 
 			span {
 				margin-top: 0.25rem;
 				display: flex;
 				gap: 1rem;
+				font-size: 1.5rem;
+				color: inherit;
+
+				.project-link-icon {
+					cursor: pointer;
+					transition: color 0.3s;
+
+					&:hover {
+						color: $blue-gray;
+					}
+				}
 			}
 
 			h3 {
 				width: fit-content;
 				text-align: end;
+				border-bottom: 3px solid $dusty-olive;
+				padding: 0 3px 5px 3px;
 			}
 		}
 	}

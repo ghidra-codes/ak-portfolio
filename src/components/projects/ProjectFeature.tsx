@@ -8,19 +8,26 @@ interface ProjectFeatureProps {
 	imageProps: ProjectImageProps;
 	heading: React.ReactNode;
 	description: React.ReactNode;
+	projectIcons: React.ReactNode;
 }
 
-const ProjectFeature: React.FC<ProjectFeatureProps> = ({ imageProps, heading, description }) => {
+const ProjectFeature: React.FC<ProjectFeatureProps> = ({
+	imageProps,
+	heading,
+	description,
+	projectIcons,
+}) => {
 	return (
 		<div className="project-feature">
 			<div className="left">
 				<TintedImage {...imageProps} />
+				<div className="project-icons">{projectIcons}</div>
 			</div>
 			<div className="right">
 				<div className="project-heading">
 					<span>
-						<FiGithub />
-						<FiLink />
+						<FiGithub className="project-link-icon" />
+						<FiLink className="project-link-icon" />
 					</span>
 					{heading}
 				</div>
