@@ -7,7 +7,7 @@ const AboutContent = () => {
 	return (
 		<>
 			<div className="about-section">
-				<RevealAnimation width="100%" viewportMargin={"0px 0px -15% 0px"}>
+				<RevealAnimation viewportMargin={"0px 0px -15% 0px"}>
 					<SectionHeader title={"About"} />
 				</RevealAnimation>
 				<RevealAnimation viewportMargin={"0px 0px -5% 0px"}>

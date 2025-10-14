@@ -34,7 +34,7 @@ const TechStack = () => {
 
 	return (
 		<>
-			<RevealAnimation width="100%">
+			<RevealAnimation setFullWidth>
 				<div className="tech-stack-header-container">
 					<div className="tech-stack-header-line"></div>
 					<h3 className="tech-stack-header">Technologies I’ve worked with</h3>

@@ -7,7 +7,7 @@ import { projectIconsMap } from "@/constants/projectIcons";
 export default function Projects() {
 	return (
 		<>
-			<RevealAnimation width="60%" className="project-heading">
+			<RevealAnimation className="project-heading">
 				<SectionHeader title="Projects" />
 				<h3 className="subheading">Some Things I've Made.</h3>
 			</RevealAnimation>

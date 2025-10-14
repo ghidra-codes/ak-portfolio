@@ -23,20 +23,20 @@ const ProjectFeature: React.FC<ProjectFeatureProps> = ({
 	return (
 		<div className={`project-feature ${isSmallScreen ? "is-mobile" : "is-desktop"}`}>
 			{isSmallScreen ? (
-				<>
+				<div className="mobile-wrapper">
+					{heading}
 					<div className="top">
 						<TintedImage {...imageProps} />
-						{heading}
+						<div className="project-icons">{projectIcons}</div>
 					</div>
 					<div className="bottom">
-						<div className="project-icons">{projectIcons}</div>
+						<div className="project-description">{description}</div>
 						<span>
 							<FiGithub className="project-link-icon" />
 							<FiLink className="project-link-icon" />
 						</span>
-						<div className="project-description">{description}</div>
 					</div>
-				</>
+				</div>
 			) : (
 				<>
 					<div className="left">

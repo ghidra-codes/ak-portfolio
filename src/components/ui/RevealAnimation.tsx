@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 interface RevealAnimationProps {
 	children: React.ReactNode;
 	className?: string;
-	width?: string;
+	setFullWidth?: boolean;
 	viewportMargin?: string;
 	manualControl?: boolean;
 	shouldAnimate?: boolean;
@@ -15,7 +15,7 @@ interface RevealAnimationProps {
 const RevealAnimation: React.FC<RevealAnimationProps> = ({
 	children,
 	className = "",
-	width = "fit-content",
+	setFullWidth = false,
 	viewportMargin,
 	shouldAnimate,
 	manualControl = false,
@@ -49,7 +49,7 @@ const RevealAnimation: React.FC<RevealAnimationProps> = ({
 					  }
 					: undefined
 			}
-			style={{ width }}
+			style={{ width: setFullWidth ? "100%" : undefined }}
 		>
 			{React.Children.map(children, (child, index) => {
 				const isLast = index === React.Children.count(children) - 1;
