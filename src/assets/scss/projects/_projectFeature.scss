@@ -87,6 +87,13 @@
 		}
 	}
 
+	h3 {
+		width: fit-content;
+		border-bottom: 3px solid $dusty-olive;
+		padding: 0 3px 5px 3px;
+		white-space: nowrap;
+	}
+
 	// Desktop layout
 
 	&.is-desktop {
@@ -117,7 +124,7 @@
 				}
 			}
 
-			.project-heading {
+			.project-feature-heading {
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
@@ -129,14 +136,6 @@
 					gap: 1rem;
 					font-size: 1.5rem;
 					padding-right: 0.5rem;
-				}
-
-				h3 {
-					width: fit-content;
-					text-align: end;
-					border-bottom: 3px solid $dusty-olive;
-					padding: 0 3px 5px 3px;
-					white-space: nowrap;
 				}
 			}
 
@@ -157,40 +156,36 @@
 
 		.mobile-wrapper {
 			width: fit-content;
+			@include flex-center;
+			flex-direction: column;
+			gap: 0.5rem;
 		}
 
 		.top {
-			display: flex;
+			@include flex-center;
 			flex-direction: column;
-			align-items: center;
-			justify-content: center;
+			gap: 0.5rem;
 
 			.project-image-wrapper {
 				width: 100%;
 				max-width: 25rem;
 			}
 
-			h3 {
+			.project-feature-heading {
 				text-align: center;
-				border-bottom: 3px solid $dusty-olive;
-				padding-bottom: 0.25rem;
 			}
 
 			.project-icons {
 				align-self: flex-start;
+				padding-left: 0.5rem;
 			}
 		}
 
 		.bottom {
 			display: flex;
 			flex-direction: column;
-			align-items: center;
 			gap: 1rem;
-
-			.project-icons {
-				justify-content: center;
-				padding: 0;
-			}
+			align-items: flex-end;
 
 			.project-description {
 				width: 100%;
@@ -204,6 +199,7 @@
 				display: flex;
 				gap: 1.25rem;
 				font-size: 1.6rem;
+				padding-right: 0.25rem;
 			}
 		}
 	}
