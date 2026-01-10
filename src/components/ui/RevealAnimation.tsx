@@ -1,5 +1,5 @@
 import { fadeInStaggeredGroup } from "@/utils/animations/shared/fadeInStaggeredGroup";
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimation } from "motion/react";
 import React, { useEffect } from "react";
 
 interface RevealAnimationProps {
@@ -27,11 +27,13 @@ const RevealAnimation: React.FC<RevealAnimationProps> = ({
 		if (!manualControl) return;
 
 		if (typeof shouldAnimate === "undefined") {
-			console.error("RevealAnimation: manualControl requires shouldAnimate — skipping animation");
+			console.error(
+				"RevealAnimation: manualControl requires shouldAnimate — skipping animation"
+			);
 			return;
 		}
 
-		controls.start(shouldAnimate ? "visible" : "hidden");
+		controls.start(shouldAnimate ? "show" : "hidden");
 	}, [manualControl, shouldAnimate, controls]);
 
 	return (
@@ -40,7 +42,7 @@ const RevealAnimation: React.FC<RevealAnimationProps> = ({
 			variants={fadeInStaggeredGroup.container}
 			initial="hidden"
 			animate={manualControl ? controls : undefined}
-			whileInView={!manualControl ? "visible" : undefined}
+			whileInView={!manualControl ? "show" : undefined}
 			viewport={
 				!manualControl
 					? {
@@ -57,7 +59,7 @@ const RevealAnimation: React.FC<RevealAnimationProps> = ({
 				return (
 					<motion.div
 						key={index}
-						variants={fadeInStaggeredGroup.child}
+						variants={fadeInStaggeredGroup.item}
 						onAnimationComplete={isLast ? onAnimationComplete : undefined}
 					>
 						{child}

@@ -1,14 +1,14 @@
-import React, { useRef, useState } from "react";
-import TechStackIcon from "./TechStackIcon";
 import CursorInfoBox from "@/components/ui/CursorInfoBox";
-import { useMediaQuery } from "react-responsive";
-import { categoryInfo, techStack } from "@/constants/techStack";
-import RevealAnimation from "../../ui/RevealAnimation";
-import TechStackSlider from "./TechStackSlider";
-import { motion, useInView } from "motion/react";
 import { EASE_OUT_SLOW } from "@/constants/animations";
+import { categoryInfo, techStack } from "@/constants/techStack";
 import { GroupedCategories } from "@/types/techStack.types";
-import { fadeInSimpleStaggered } from "@/utils/animations/techStack/fadeInSimpleStaggered";
+import { fadeInSimpleStaggered } from "@/utils/animations/tech-stack/fadeInSimpleStaggered";
+import { motion, useInView } from "motion/react";
+import React, { useRef, useState } from "react";
+import { useMediaQuery } from "react-responsive";
+import RevealAnimation from "../../ui/RevealAnimation";
+import TechStackIcon from "./TechStackIcon";
+import TechStackSlider from "./TechStackSlider";
 
 const TechStack = () => {
 	const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
@@ -36,9 +36,23 @@ const TechStack = () => {
 		<>
 			<RevealAnimation setFullWidth>
 				<div className="tech-stack-header-container">
-					<div className="tech-stack-header-line"></div>
+					<motion.div
+						className="tech-stack-header-line"
+						initial={{ scaleX: 0 }}
+						whileInView={{ scaleX: 1 }}
+						viewport={{ once: true, margin: "-80px" }}
+						transition={{ duration: 0.3, ease: EASE_OUT_SLOW, delay: 0.4 }}
+					/>
+
 					<h3 className="tech-stack-header">Technologies I’ve worked with</h3>
-					<div className="tech-stack-header-line"></div>
+
+					<motion.div
+						className="tech-stack-header-line"
+						initial={{ scaleX: 0 }}
+						whileInView={{ scaleX: 1 }}
+						viewport={{ once: true, margin: "-80px" }}
+						transition={{ duration: 0.3, ease: EASE_OUT_SLOW, delay: 0.4 }}
+					/>
 				</div>
 			</RevealAnimation>
 

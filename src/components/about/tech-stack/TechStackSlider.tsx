@@ -7,7 +7,7 @@ import classNames from "classnames";
 import useTechStackSlider from "@/hooks/useTechStackSlider";
 import { Categories, GroupedCategories } from "@/types/techStack.types";
 import { categoryInfo } from "@/constants/techStack";
-import { fadeInBlurStaggered } from "@/utils/animations/techStackSlider/fadeInBlurStaggered";
+import { fadeInBlurStaggered } from "@/utils/animations/tech-stack-slider/fadeInBlurStaggered";
 
 export type ScrollDirections = "left" | "right";
 

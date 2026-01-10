@@ -3,20 +3,20 @@ import { Variants } from "motion/react";
 
 export const fadeInStaggeredGroup: {
 	container: Variants;
-	child: Variants;
+	item: Variants;
 } = {
 	container: {
 		hidden: {},
-		visible: {
+		show: {
 			transition: {
 				staggerChildren: 0.15,
 				delayChildren: 0.25,
 			},
 		},
 	},
-	child: {
+	item: {
 		hidden: { opacity: 0, y: 75 },
-		visible: {
+		show: {
 			opacity: 1,
 			y: 0,
 			transition: {

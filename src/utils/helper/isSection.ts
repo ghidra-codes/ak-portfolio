@@ -1,7 +1,6 @@
 import { SECTIONS } from "@/constants/sections";
 
-export const isSection = (value: string): value is (typeof SECTIONS)[number] => {
-	return (SECTIONS as readonly string[]).includes(value);
-};
+const isSection = (value: string): value is (typeof SECTIONS)[number] =>
+	SECTIONS.some((section) => section === value);
 
 export default isSection;

@@ -1,6 +1,6 @@
 import Footer from "./components/layout/Footer";
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import SequentialLayout from "./layouts/SequentialLayout";
 import EntryAnimation from "./components/layout/EntryAnimation";
 import MainContent from "./layouts/MainContent";

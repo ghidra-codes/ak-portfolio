@@ -24,6 +24,11 @@
 			height: 1px;
 			background: $mid-jet;
 			opacity: 0.6;
+			transform-origin: right center;
+		}
+
+		.tech-stack-header-line:last-child {
+			transform-origin: left center;
 		}
 
 		@include respond(tablet) {

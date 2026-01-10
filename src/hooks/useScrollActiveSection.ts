@@ -1,6 +1,7 @@
-import { useEffect, useRef } from "react";
 import { Section, TriggerPoint } from "@/types/sections.types";
 import getTriggerPoints from "@/utils/helper/getTriggerPoints";
+import isSection from "@/utils/helper/isSection";
+import { useEffect, useRef } from "react";
 
 interface UseScrollActiveSectionProps {
 	activeSection: Section | null;
@@ -12,7 +13,6 @@ interface UseScrollActiveSectionProps {
  */
 const useScrollActiveSection = ({ activeSection, onSetActive }: UseScrollActiveSectionProps) => {
 	const triggerPointsRef = useRef<TriggerPoint[]>([]);
-	const lastScrollYRef = useRef(0);
 
 	useEffect(() => {
 		const updateTriggerPoints = () => (triggerPointsRef.current = getTriggerPoints());
@@ -24,7 +24,7 @@ const useScrollActiveSection = ({ activeSection, onSetActive }: UseScrollActiveS
 			// Find the last section scrolled past
 			for (const { id, enter } of triggerPointsRef.current) {
 				// If we are in the header section this doesn't pass, newActiveSection remains null
-				if (currentScrollY >= enter) newActiveSection = id as Section;
+				if (currentScrollY >= enter && isSection(id)) newActiveSection = id;
 			}
 
 			if (newActiveSection !== activeSection) onSetActive(newActiveSection);
@@ -32,8 +32,6 @@ const useScrollActiveSection = ({ activeSection, onSetActive }: UseScrollActiveS
 
 		updateTriggerPoints();
 		handleScroll(); // Set initial section
-
-		lastScrollYRef.current = window.scrollY;
 
 		window.addEventListener("scroll", handleScroll);
 		window.addEventListener("resize", updateTriggerPoints);

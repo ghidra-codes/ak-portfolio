@@ -23,7 +23,7 @@ const Decoration: React.FC<DecorationProps> = ({ variant }) => {
 		</>
 	);
 
-	let mainShape;
+	let mainShape: React.ReactNode = null;
 
 	switch (variant) {
 		case "triangle":
