@@ -92,6 +92,13 @@
 		}
 	}
 
+	h3 {
+		width: fit-content;
+		border-bottom: 3px solid $dusty-olive;
+		padding: 0 3px 5px 3px;
+		white-space: nowrap;
+	}
+
 	// Desktop layout
 
 	&.is-desktop {
@@ -128,14 +135,6 @@
 					font-size: 1.5rem;
 					padding-right: 0.5rem;
 				}
-
-				h3 {
-					width: fit-content;
-					text-align: end;
-					border-bottom: 3px solid $dusty-olive;
-					padding: 0 3px 5px 3px;
-					white-space: nowrap;
-				}
 			}
 
 			.project-description {
@@ -167,13 +166,15 @@
 
 		.mobile-wrapper {
 			width: fit-content;
+			@include flex-center;
+			flex-direction: column;
+			gap: 0.5rem;
 		}
 
 		.top {
-			display: flex;
+			@include flex-center;
 			flex-direction: column;
-			align-items: center;
-			justify-content: center;
+			gap: 0.5rem;
 
 			.project-image-wrapper {
 				width: 100%;
@@ -182,6 +183,7 @@
 
 			.project-icons {
 				align-self: flex-start;
+				padding-left: 0.5rem;
 			}
 
 			h3 {
@@ -215,6 +217,7 @@
 				display: flex;
 				gap: 1.25rem;
 				font-size: 1.6rem;
+				padding-right: 0.25rem;
 			}
 		}
 	}
