@@ -33,7 +33,6 @@ const TechStackSlider: React.FC<TechStackSliderProps> = ({
 
 	const arrowProps = useMemo(
 		() => ({
-			className: "arrow",
 			initial: { opacity: 0 },
 			animate: { opacity: showArrows ? 1 : 0 },
 			transition: { duration: 0.25, ease: easeInOut },
@@ -58,6 +57,7 @@ const TechStackSlider: React.FC<TechStackSliderProps> = ({
 					<div className="category-header">
 						<div className="category-controls">
 							<motion.img
+								className="arrow"
 								{...arrowProps}
 								src={leftArrow}
 								alt="Left arrow"
@@ -74,6 +74,7 @@ const TechStackSlider: React.FC<TechStackSliderProps> = ({
 							</div>
 
 							<motion.img
+								className="arrow"
 								{...arrowProps}
 								src={rightArrow}
 								alt="Right arrow"
@@ -82,7 +83,11 @@ const TechStackSlider: React.FC<TechStackSliderProps> = ({
 						</div>
 					</div>
 
-					<div className={classNames("icons-row", { "icons-row--many": category === "frontend" })}>
+					<div
+						className={classNames("icons-row", {
+							"icons-row--many": category === "frontend",
+						})}
+					>
 						<AnimatePresence>
 							{currentCategory === category &&
 								isInView &&

@@ -5,6 +5,8 @@
 	justify-content: center;
 	width: 70%;
 
+	isolation: isolate;
+
 	@include respond(desktop-lg) {
 		width: 75%;
 	}
@@ -56,6 +58,12 @@
 		&:hover {
 			color: $blue-gray;
 		}
+	}
+
+	.project-description,
+	.project-image-wrapper {
+		transform: translateZ(0);
+		will-change: transform;
 	}
 
 	.project-description {

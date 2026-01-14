@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "motion/react";
 import SlideFillButton from "@/components/ui/SlideFillButton";
 import React from "react";
-import { fadeInSlideBtnSmallScreen } from "@/utils/animations/navLinks/fadeInSlideBtn";
+import { fadeInSlideBtnSmallScreen } from "@/utils/animations/nav-links/fadeInSlideBtn";
 import { EASE_IN_OUT } from "@/constants/animations";
 import useNavbarAutoHide from "@/hooks/useNavbarAutoHide";
 import HamburgerBtn from "./hamburger-btn/HamburgerBtn";

@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 import { Link } from "react-scroll";
 import { SECTIONS } from "@/constants/sections";
 import { Section } from "@/types/sections.types";
-import { fadeInSlideDownwardGroup } from "@/utils/animations/navLinks/fadeInSlideDownwardGroup";
+import { fadeInSlideDownwardGroup } from "@/utils/animations/nav-links/fadeInSlideDownwardGroup";
 import classNames from "classnames";
 import { useEffect, useState } from "react";
 import useScrollActiveSection from "@/hooks/useScrollActiveSection";
