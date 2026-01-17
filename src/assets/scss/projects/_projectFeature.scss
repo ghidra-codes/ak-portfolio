@@ -49,6 +49,10 @@
 				opacity: 1;
 			}
 		}
+
+		.project-icon[data-tooltip="PHP"] svg {
+			transform: scale(1.15);
+		}
 	}
 
 	.project-link-icon {
@@ -176,7 +180,7 @@
 			width: fit-content;
 			@include flex-center;
 			flex-direction: column;
-			gap: 0.5rem;
+			gap: 1.2rem;
 		}
 
 		.top {
@@ -191,7 +195,7 @@
 
 			.project-icons {
 				align-self: flex-start;
-				padding-left: 0.5rem;
+				padding-left: 1rem;
 			}
 
 			h3 {

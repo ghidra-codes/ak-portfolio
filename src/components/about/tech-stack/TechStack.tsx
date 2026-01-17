@@ -15,6 +15,12 @@ const TechStack = () => {
 	const [hoveredInfo, setHoveredInfo] = useState<string | null>(null);
 	const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
 
+	const headerRef = useRef(null);
+	const headerInView = useInView(headerRef, {
+		once: true,
+		margin: "-80px",
+	});
+
 	const sliderRef = useRef(null);
 	const isInView = useInView(sliderRef, { once: true, margin: "-50px" });
 	const isSmallScreen = useMediaQuery({ maxWidth: 768 });
@@ -35,12 +41,11 @@ const TechStack = () => {
 	return (
 		<>
 			<RevealAnimation setFullWidth>
-				<div className="tech-stack-header-container">
+				<div ref={headerRef} className="tech-stack-header-container">
 					<motion.div
 						className="tech-stack-header-line"
 						initial={{ scaleX: 0 }}
-						whileInView={{ scaleX: 1 }}
-						viewport={{ once: true, margin: "-80px" }}
+						animate={headerInView ? { scaleX: 1 } : {}}
 						transition={{ duration: 0.3, ease: EASE_OUT_SLOW, delay: 0.4 }}
 					/>
 
@@ -49,8 +54,7 @@ const TechStack = () => {
 					<motion.div
 						className="tech-stack-header-line"
 						initial={{ scaleX: 0 }}
-						whileInView={{ scaleX: 1 }}
-						viewport={{ once: true, margin: "-80px" }}
+						animate={headerInView ? { scaleX: 1 } : {}}
 						transition={{ duration: 0.3, ease: EASE_OUT_SLOW, delay: 0.4 }}
 					/>
 				</div>

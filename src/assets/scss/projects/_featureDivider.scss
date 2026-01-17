@@ -1,0 +1,49 @@
+@use "../abstracts/index" as *;
+
+.project-feature-divider-container {
+	width: 60%;
+	margin: 4rem auto;
+
+	display: grid;
+	grid-template-columns: 1fr auto 1fr;
+	align-items: center;
+	gap: 1.5rem;
+
+	@include respond(tablet) {
+		width: 70%;
+		margin: 2rem auto;
+		gap: 1rem;
+	}
+
+	@include respond(mobile) {
+		width: 90%;
+		gap: 0.75rem;
+	}
+}
+
+.feature-divider-line {
+	display: block;
+	height: 1px;
+	background: $mid-jet;
+	opacity: 0.6;
+	transform-origin: center;
+}
+
+.feature-divider-line.left {
+	transform-origin: right center;
+}
+
+.feature-divider-line.right {
+	transform-origin: left center;
+}
+
+.feature-divider-icon {
+	font-size: 1.35rem;
+	color: $mid-jet;
+	opacity: 0.7;
+	justify-self: center;
+
+	@include respond(mobile) {
+		font-size: 1.25rem;
+	}
+}

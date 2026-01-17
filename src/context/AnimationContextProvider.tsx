@@ -10,7 +10,9 @@ export const AnimationProvider: React.FC<AnimationProviderProps> = ({ children }
 	const [animateSides, setAnimateSides] = useState(false);
 
 	return (
-		<AnimationContext.Provider value={{ animateHeader, setAnimateHeader, animateSides, setAnimateSides }}>
+		<AnimationContext.Provider
+			value={{ animateHeader, setAnimateHeader, animateSides, setAnimateSides }}
+		>
 			{children}
 		</AnimationContext.Provider>
 	);

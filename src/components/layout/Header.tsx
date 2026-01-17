@@ -19,6 +19,7 @@ export default function Header() {
 		if (animateHeader) {
 			// Step 1 animates in text
 			setAnimationStep(1);
+
 			// Step 2 animates in image
 			setTimeout(() => setAnimationStep(2), 800);
 		}
@@ -29,7 +30,10 @@ export default function Header() {
 	}, [animationStep, controls]);
 
 	return (
-		<motion.header initial={{ opacity: 0 }} animate={animateHeader ? { opacity: 1 } : { opacity: 0 }}>
+		<motion.header
+			initial={{ opacity: 0 }}
+			animate={animateHeader ? { opacity: 1 } : { opacity: 0 }}
+		>
 			<div className="header-content">
 				<RevealAnimation manualControl shouldAnimate={animationStep >= 1}>
 					<h1 className="title">
@@ -37,9 +41,9 @@ export default function Header() {
 					</h1>
 					<h2 className="subtitle">I build things for the web.</h2>
 					<p className="header-paragraph">
-						I’m a creative developer who loves crafting high-quality web experiences. My goal is
-						always to build the best product possible, using modern technologies and industry best
-						practices.
+						I’m a creative developer who loves crafting high-quality web experiences. My
+						goal is always to build the best product possible, using modern technologies
+						and industry best practices.
 					</p>
 					<SlideFillButton title="Contact Me" largerSize />
 				</RevealAnimation>
