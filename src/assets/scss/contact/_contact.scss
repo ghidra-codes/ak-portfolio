@@ -1,0 +1,38 @@
+@use "../abstracts/index" as *;
+
+#contact {
+	@include section-container;
+}
+
+.contact-wrapper {
+	@include flex-center;
+	flex-direction: column;
+
+	.section-header {
+		@include fluid-type(h1);
+	}
+
+	p {
+		text-align: center;
+	}
+
+	.contact-description {
+		margin: 0 0 2.25rem;
+		padding: 0 4rem;
+
+		@include respond(tablet) {
+			padding: 0 2rem;
+		}
+
+		@include respond(mobile) {
+			padding: 0;
+		}
+	}
+
+	.eyebrow {
+		margin: 0;
+		color: $blue-gray;
+		font-family: "Oxanium", sans-serif;
+		font-weight: 500;
+	}
+}

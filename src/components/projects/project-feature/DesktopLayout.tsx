@@ -24,6 +24,7 @@ const DesktopLayout: React.FC<ProjectFeatureLayoutProps> = ({
 	onShowProjectLinks,
 	showProjectIcons,
 	showProjectLinks,
+	reverse,
 }) => {
 	return (
 		<>
@@ -31,7 +32,7 @@ const DesktopLayout: React.FC<ProjectFeatureLayoutProps> = ({
 				<motion.div
 					className="left-image"
 					variants={fadeInSlideX}
-					custom="left"
+					custom={reverse ? "right" : "left"}
 					initial="hidden"
 					whileInView="visible"
 					viewport={{ once: true, margin: "-100px" }}
@@ -48,13 +49,13 @@ const DesktopLayout: React.FC<ProjectFeatureLayoutProps> = ({
 			<motion.div
 				className="right"
 				variants={fadeInSlideX}
-				custom="right"
+				custom={reverse ? "left" : "right"}
 				initial="hidden"
 				whileInView="visible"
 				viewport={{ once: true, margin: "-100px" }}
 				onAnimationComplete={onShowProjectLinks}
 			>
-				<div className="project-heading">
+				<div className="project-feature-heading">
 					<motion.span className="project-links" {...scaleReveal(showProjectLinks)}>
 						<FiGithub className="project-link-icon" />
 						<FiLink className="project-link-icon" />

@@ -9,11 +9,8 @@ function App() {
 	const [showEntry, setShowEntry] = useState(true);
 
 	useEffect(() => {
-		if ("ontouchstart" in window) {
-			document.body.classList.add("no-hover");
-		} else {
-			document.body.classList.remove("no-hover");
-		}
+		if ("ontouchstart" in window) document.body.classList.add("no-hover");
+		else document.body.classList.remove("no-hover");
 	}, []);
 
 	return (

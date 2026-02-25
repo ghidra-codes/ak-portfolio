@@ -5,8 +5,6 @@
 	justify-content: center;
 	width: 70%;
 
-	isolation: isolate;
-
 	@include respond(desktop-lg) {
 		width: 75%;
 	}
@@ -64,19 +62,13 @@
 		}
 	}
 
-	.project-description,
-	.project-image-wrapper {
-		transform: translateZ(0);
-		will-change: transform;
-	}
-
 	.project-description {
 		position: relative;
 		background-color: $deep-blue-gray;
 		border-radius: 0.25rem;
 		padding: 0 1rem;
 		box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
-		z-index: 2;
+		z-index: 3;
 
 		p {
 			@include fluid-type(smaller-p);
@@ -116,6 +108,7 @@
 	&.is-desktop {
 		.left {
 			width: 50%;
+			z-index: 1;
 
 			.project-icons {
 				width: fit-content;
@@ -133,12 +126,12 @@
 			display: flex;
 			margin-top: 4.5rem;
 			gap: 1.5rem;
+			z-index: 2;
 
-			.project-heading {
+			.project-feature-heading {
 				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				flex-wrap: wrap;
+				flex-direction: column;
+				align-items: flex-start;
 				padding: 0 1rem 0 1.75rem;
 
 				.project-links {
@@ -146,6 +139,7 @@
 					gap: 1rem;
 					font-size: 1.5rem;
 					padding-right: 0.5rem;
+					align-self: flex-start;
 				}
 			}
 
@@ -164,6 +158,40 @@
 			@include respond(desktop-lg) {
 				width: 42.5%;
 				margin-top: 3rem;
+			}
+		}
+	}
+
+	&.is-desktop.is-reversed {
+		.left {
+			order: 2;
+
+			.project-icons {
+				margin-left: auto;
+			}
+		}
+
+		.right {
+			order: 1;
+			align-items: flex-end;
+
+			.project-feature-heading {
+				padding: 0 1.75rem 0 1rem;
+
+				.project-links {
+					align-self: flex-end;
+				}
+			}
+
+			.project-description {
+				left: auto;
+				right: -35%;
+			}
+
+			@include respond(desktop-lg) {
+				.project-description {
+					right: -50%;
+				}
 			}
 		}
 	}

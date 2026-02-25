@@ -1,14 +1,5 @@
 @use "../abstracts/index" as *;
 
 #about {
-	margin: 0 auto;
-	width: 60%;
-
-	@include respond(tablet) {
-		width: 70%;
-	}
-
-	@include respond(mobile) {
-		width: 90%;
-	}
+	@include section-container;
 }

@@ -3,12 +3,14 @@ import React, { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import DesktopLayout from "./DesktopLayout";
 import MobileLayout from "./MobileLayout";
+import classNames from "classnames";
 
 interface ProjectFeatureProps {
 	imageProps: StaticTintedImageProps;
 	heading: React.ReactNode;
 	description: React.ReactNode;
 	projectIcons: React.ReactNode;
+	reverse?: boolean;
 }
 
 const ProjectFeature: React.FC<ProjectFeatureProps> = ({
@@ -16,6 +18,7 @@ const ProjectFeature: React.FC<ProjectFeatureProps> = ({
 	heading,
 	description,
 	projectIcons,
+	reverse = false,
 }) => {
 	const [showProjectIcons, setShowProjectIcons] = useState(false);
 	const [showProjectLinks, setShowProjectLinks] = useState(false);
@@ -34,8 +37,18 @@ const ProjectFeature: React.FC<ProjectFeatureProps> = ({
 	};
 
 	return (
-		<div className={`project-feature ${isSmallScreen ? "is-mobile" : "is-desktop"}`}>
-			{isSmallScreen ? <MobileLayout {...sharedProps} /> : <DesktopLayout {...sharedProps} />}
+		<div
+			className={classNames("project-feature", {
+				"is-mobile": isSmallScreen,
+				"is-desktop": !isSmallScreen,
+				"is-reversed": reverse,
+			})}
+		>
+			{isSmallScreen ? (
+				<MobileLayout {...sharedProps} />
+			) : (
+				<DesktopLayout {...sharedProps} reverse={reverse} />
+			)}
 		</div>
 	);
 };

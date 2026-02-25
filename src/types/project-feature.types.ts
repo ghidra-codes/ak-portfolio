@@ -9,4 +9,5 @@ export interface ProjectFeatureLayoutProps {
 	onShowProjectLinks: () => void;
 	showProjectIcons: boolean;
 	showProjectLinks: boolean;
+	reverse?: boolean;
 }
