@@ -5,6 +5,7 @@ import SectionHeader from "../layout/SectionHeader";
 import RevealAnimation from "../ui/RevealAnimation";
 import ProjectFeature from "./project-feature/ProjectFeature";
 import FeatureDivider from "./FeatureDivider";
+import OtherProjects from "./OtherProjects";
 
 export default function Projects() {
 	return (
@@ -43,7 +44,9 @@ export default function Projects() {
 				})}
 			/>
 
-			<FeatureDivider />
+			<RevealAnimation setFullWidth>
+				<FeatureDivider />
+			</RevealAnimation>
 
 			<ProjectFeature
 				imageProps={{
@@ -77,6 +80,8 @@ export default function Projects() {
 				})}
 				reverse
 			/>
+
+			<OtherProjects />
 		</>
 	);
 }
