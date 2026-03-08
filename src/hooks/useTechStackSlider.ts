@@ -1,8 +1,8 @@
-import { ScrollDirections } from "@/components/about/tech-stack/TechStackSlider";
-import { Categories, GroupedCategories } from "@/types/techStack.types";
-import { KeenSliderInstance } from "keen-slider";
+import type { ScrollDirections } from "@/components/about/tech-stack/TechStackSlider";
+import type { Categories, GroupedCategories } from "@/types/techStack.types";
+import type { KeenSliderInstance } from "keen-slider";
 import { useKeenSlider } from "keen-slider/react";
-import { RefObject, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { type RefObject, useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 interface UseTechStackSliderParams {
 	groupedByCategory: GroupedCategories;
@@ -52,7 +52,7 @@ const useTechStackSlider = ({
 
 			setCurrentCategory(category);
 		},
-		[categories, firstCategoryDelay, setCurrentCategory, setScrollDirection]
+		[categories, firstCategoryDelay, setCurrentCategory, setScrollDirection],
 	);
 
 	const [sliderRef] = useKeenSlider<HTMLDivElement>({

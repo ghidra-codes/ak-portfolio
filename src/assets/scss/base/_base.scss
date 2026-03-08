@@ -17,9 +17,12 @@ body {
 *::before,
 *::after {
 	box-sizing: inherit;
-	scrollbar-width: 2rem;
-	scrollbar-color: #555 #1a1a1a;
 	-webkit-tap-highlight-color: transparent;
+}
+
+html {
+	scrollbar-color: $brighter-jet $deep-blue-gray;
+	scrollbar-width: auto;
 }
 
 main {

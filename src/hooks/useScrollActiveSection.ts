@@ -1,4 +1,4 @@
-import { Section, TriggerPoint } from "@/types/sections.types";
+import type { Section, TriggerPoint } from "@/types/sections.types";
 import getTriggerPoints from "@/utils/helper/getTriggerPoints";
 import isSection from "@/utils/helper/isSection";
 import { useEffect, useRef } from "react";

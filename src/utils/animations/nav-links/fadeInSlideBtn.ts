@@ -1,5 +1,5 @@
 import { EASE_OUT_SLOW } from "@/constants/animations";
-import { Variants } from "motion/react";
+import type { Variants } from "motion/react";
 
 export const fadeInSlideBtn: Variants = {
 	hidden: { opacity: 0, x: 100 },

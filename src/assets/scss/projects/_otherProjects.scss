@@ -2,6 +2,7 @@
 
 .other-projects-container {
 	@include section-container;
+	position: relative;
 
 	display: flex;
 	flex-direction: column;
@@ -18,7 +19,10 @@
 	overflow-y: auto;
 
 	scroll-behavior: smooth;
-	-webkit-overflow-scrolling: touch;
+	overscroll-behavior: contain;
+
+	scrollbar-width: thin;
+	scrollbar-color: rgba($blue-gray, 0.5) transparent;
 
 	.project {
 		background-color: $rich-black-lighter;
@@ -38,25 +42,4 @@
 			margin-bottom: 0.25rem;
 		}
 	}
-}
-
-/* width of the scrollbar */
-.other-projects-container::-webkit-scrollbar {
-	width: 6px;
-}
-
-/* invisible track */
-.other-projects-container::-webkit-scrollbar-track {
-	background: transparent;
-}
-
-/* scrollbar thumb */
-.other-projects-container::-webkit-scrollbar-thumb {
-	background-color: rgba($blue-gray, 0.5);
-	border-radius: 999px;
-}
-
-/* hover state */
-.other-projects-container::-webkit-scrollbar-thumb:hover {
-	background-color: rgba($blue-gray, 0.8);
 }

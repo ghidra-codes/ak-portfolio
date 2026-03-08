@@ -1,13 +1,13 @@
-import { motion } from "motion/react";
-import { Link } from "react-scroll";
 import { SECTIONS } from "@/constants/sections";
-import { Section } from "@/types/sections.types";
-import { fadeInSlideDownwardGroup } from "@/utils/animations/nav-links/fadeInSlideDownwardGroup";
-import classNames from "classnames";
-import { useEffect, useState } from "react";
-import useScrollActiveSection from "@/hooks/useScrollActiveSection";
-import getSectionState from "@/utils/helper/getSectionState";
 import { useAnimationContext } from "@/hooks/useAnimationContext";
+import useScrollActiveSection from "@/hooks/useScrollActiveSection";
+import type { Section } from "@/types/sections.types";
+import { fadeInSlideDownwardGroup } from "@/utils/animations/nav-links/fadeInSlideDownwardGroup";
+import getSectionState from "@/utils/helper/getSectionState";
+import classNames from "classnames";
+import { motion } from "motion/react";
+import { useEffect, useState } from "react";
+import { Link } from "react-scroll";
 
 /**
  * Renders desktop navigation links with scroll tracking.
@@ -44,7 +44,7 @@ const DesktopNavLinks = () => {
 					section,
 					index,
 					activeSection,
-					prevActiveSection
+					prevActiveSection,
 				);
 
 				return (

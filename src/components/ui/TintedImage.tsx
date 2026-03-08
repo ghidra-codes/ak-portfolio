@@ -1,4 +1,4 @@
-import { TintedImageProps } from "@/types/tinted-image.types";
+import type { TintedImageProps } from "@/types/tinted-image.types";
 import classNames from "classnames";
 import React, { useState } from "react";
 
@@ -26,7 +26,7 @@ const TintedImage: React.FC<TintedImageProps> = ({
 					"tinted-image",
 					imageClass,
 					{ revealed },
-					{ "pop-in": triggerPopIn }
+					{ "pop-in": triggerPopIn },
 				)}
 				src={src}
 				alt={alt}

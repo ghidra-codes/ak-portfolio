@@ -1,5 +1,5 @@
 import { EASE_IN_OUT_SMOOTH } from "@/constants/animations";
-import { Variants } from "motion/react";
+import type { Variants } from "motion/react";
 
 export const fadeInSlideImage: Variants = {
 	hidden: { opacity: 0, scale: 0.95 },

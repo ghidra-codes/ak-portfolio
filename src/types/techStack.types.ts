@@ -1,4 +1,4 @@
-import { categoryInfo, techStack } from "@/constants/techStack";
+import type { categoryInfo, techStack } from "@/constants/techStack";
 
 export type Tech = (typeof techStack)[number];
 

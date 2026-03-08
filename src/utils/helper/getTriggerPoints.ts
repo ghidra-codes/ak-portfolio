@@ -1,4 +1,4 @@
-import { TriggerPoint } from "@/types/sections.types";
+import type { TriggerPoint } from "@/types/sections.types";
 
 /**
  * Computes scroll trigger points for each page section.

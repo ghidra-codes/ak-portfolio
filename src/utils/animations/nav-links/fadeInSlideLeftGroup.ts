@@ -1,4 +1,4 @@
-import { Variants } from "motion/react";
+import type { Variants } from "motion/react";
 
 export const fadeInSlideLeftGroup: { container: Variants; item: Variants } = {
 	container: {

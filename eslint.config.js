@@ -6,26 +6,17 @@ import tsPlugin from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
 
 export default [
+	js.configs.recommended,
 	{
-		ignores: ["dist"],
+		ignores: ["dist", "node_modules"],
 	},
 	{
-		files: ["**/*.{ts,tsx}"],
+		files: ["src/**/*.{ts,tsx}"],
 		languageOptions: {
-			ecmaVersion: 2020,
-			globals: globals.browser,
 			parser: tsParser,
-			parserOptions: {
-				project: "./tsconfig.app.json",
-				sourceType: "module",
-			},
-		},
-		settings: {
-			"import/resolver": {
-				typescript: {
-					project: "./tsconfig.app.json",
-				},
-			},
+			ecmaVersion: 2020,
+			sourceType: "module",
+			globals: globals.browser,
 		},
 		plugins: {
 			"@typescript-eslint": tsPlugin,
@@ -33,9 +24,15 @@ export default [
 			"react-refresh": reactRefresh,
 		},
 		rules: {
+			"no-undef": "off",
+			"no-unused-vars": "off",
+			"@typescript-eslint/no-unused-vars": "off",
+
 			...reactHooks.configs.recommended.rules,
 			"react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
+
 			...tsPlugin.configs.recommended.rules,
+			"@typescript-eslint/consistent-type-imports": "warn",
 		},
 	},
 ];

@@ -1,13 +1,13 @@
-import TechStackIconTouch from "./TechStackIconTouch";
-import React, { useEffect, useMemo, useRef, useState } from "react";
 import leftArrow from "@/assets/icons/left-slide-arrow.svg";
 import rightArrow from "@/assets/icons/right-slide-arrow.svg";
-import { motion, easeInOut, AnimatePresence } from "motion/react";
-import classNames from "classnames";
-import useTechStackSlider from "@/hooks/useTechStackSlider";
-import { Categories, GroupedCategories } from "@/types/techStack.types";
 import { categoryInfo } from "@/constants/techStack";
+import useTechStackSlider from "@/hooks/useTechStackSlider";
+import type { Categories, GroupedCategories } from "@/types/techStack.types";
 import { fadeInBlurStaggered } from "@/utils/animations/tech-stack-slider/fadeInBlurStaggered";
+import classNames from "classnames";
+import { AnimatePresence, easeInOut, motion } from "motion/react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import TechStackIconTouch from "./TechStackIconTouch";
 
 export type ScrollDirections = "left" | "right";
 
@@ -37,7 +37,7 @@ const TechStackSlider: React.FC<TechStackSliderProps> = ({
 			animate: { opacity: showArrows ? 1 : 0 },
 			transition: { duration: 0.25, ease: easeInOut },
 		}),
-		[showArrows]
+		[showArrows],
 	);
 
 	useEffect(() => {

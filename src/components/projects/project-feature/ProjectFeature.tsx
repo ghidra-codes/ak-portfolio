@@ -1,9 +1,9 @@
-import { StaticTintedImageProps } from "@/types/tinted-image.types";
+import type { StaticTintedImageProps } from "@/types/tinted-image.types";
+import classNames from "classnames";
 import React, { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import DesktopLayout from "./DesktopLayout";
 import MobileLayout from "./MobileLayout";
-import classNames from "classnames";
 
 interface ProjectFeatureProps {
 	imageProps: StaticTintedImageProps;
@@ -20,20 +20,22 @@ const ProjectFeature: React.FC<ProjectFeatureProps> = ({
 	projectIcons,
 	reverse = false,
 }) => {
-	const [showProjectIcons, setShowProjectIcons] = useState(false);
-	const [showProjectLinks, setShowProjectLinks] = useState(false);
-
 	const isSmallScreen = useMediaQuery({ maxWidth: 1024 });
+
+	const [showIcons, setShowIcons] = useState(false);
+
+	const triggerIcons = () => {
+		if (showIcons) return;
+		setTimeout(() => setShowIcons(true), 100);
+	};
 
 	const sharedProps = {
 		imageProps,
 		heading,
 		description,
 		projectIcons,
-		onShowProjectIcons: () => setShowProjectIcons(true),
-		onShowProjectLinks: () => setShowProjectLinks(true),
-		showProjectIcons,
-		showProjectLinks,
+		showIcons,
+		triggerIcons,
 	};
 
 	return (

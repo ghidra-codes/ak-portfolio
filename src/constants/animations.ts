@@ -1,4 +1,4 @@
-import { Easing } from "motion/react";
+import type { Easing } from "motion/react";
 
 // Animation easing
 export const EASE_OUT_SLOW: Easing = [0.25, 1, 0.5, 1];

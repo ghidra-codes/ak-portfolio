@@ -1,6 +1,6 @@
 import TintedImage from "@/components/ui/TintedImage";
 import { EASE_OUT_SLOW } from "@/constants/animations";
-import { ProjectFeatureLayoutProps } from "@/types/project-feature.types";
+import type { ProjectFeatureLayoutProps } from "@/types/project-feature.types";
 import { fadeInSlideX } from "@/utils/animations/project-feature/fadeInSlideX";
 import { motion } from "motion/react";
 import React from "react";
@@ -8,10 +8,16 @@ import { FiGithub, FiLink } from "react-icons/fi";
 
 const scaleReveal = (show: boolean) => ({
 	initial: { scale: 0 },
-	animate: show ? { scale: [0, 1.1, 1] } : { scale: 0 },
-	transition: {
-		duration: 0.45,
-		ease: EASE_OUT_SLOW,
+	animate: show ? "visible" : "hidden",
+	variants: {
+		hidden: { scale: 0 },
+		visible: {
+			scale: [0, 1.1, 1],
+			transition: {
+				duration: 0.45,
+				ease: EASE_OUT_SLOW,
+			},
+		},
 	},
 });
 
@@ -20,10 +26,8 @@ const DesktopLayout: React.FC<ProjectFeatureLayoutProps> = ({
 	heading,
 	description,
 	projectIcons,
-	onShowProjectIcons,
-	onShowProjectLinks,
-	showProjectIcons,
-	showProjectLinks,
+	showIcons,
+	triggerIcons,
 	reverse,
 }) => {
 	return (
@@ -36,12 +40,11 @@ const DesktopLayout: React.FC<ProjectFeatureLayoutProps> = ({
 					initial="hidden"
 					whileInView="visible"
 					viewport={{ once: true, margin: "-100px" }}
-					onAnimationComplete={onShowProjectIcons}
 				>
 					<TintedImage {...imageProps} />
 				</motion.div>
 
-				<motion.div className="project-icons" {...scaleReveal(showProjectIcons)}>
+				<motion.div className="project-icons" {...scaleReveal(showIcons)}>
 					{projectIcons}
 				</motion.div>
 			</div>
@@ -53,10 +56,10 @@ const DesktopLayout: React.FC<ProjectFeatureLayoutProps> = ({
 				initial="hidden"
 				whileInView="visible"
 				viewport={{ once: true, margin: "-100px" }}
-				onAnimationComplete={onShowProjectLinks}
+				onAnimationComplete={triggerIcons}
 			>
 				<div className="project-feature-heading">
-					<motion.span className="project-links" {...scaleReveal(showProjectLinks)}>
+					<motion.span className="project-links" {...scaleReveal(showIcons)}>
 						<FiGithub className="project-link-icon" />
 						<FiLink className="project-link-icon" />
 					</motion.span>

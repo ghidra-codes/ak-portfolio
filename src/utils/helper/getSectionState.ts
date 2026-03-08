@@ -1,5 +1,5 @@
 import { SECTIONS } from "@/constants/sections";
-import { Section } from "@/types/sections.types";
+import type { Section } from "@/types/sections.types";
 
 /**
  * Returns the state of a navigation section for styling and animations.
@@ -10,7 +10,7 @@ const getSectionState = (
 	section: Section,
 	index: number,
 	activeSection: Section | null,
-	prevActiveSection: Section | null
+	prevActiveSection: Section | null,
 ) => ({
 	isActive: activeSection === section,
 	eraseUnderline: prevActiveSection === section && activeSection !== section,

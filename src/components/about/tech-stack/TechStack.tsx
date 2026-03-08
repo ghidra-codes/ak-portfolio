@@ -1,7 +1,7 @@
 import CursorInfoBox from "@/components/ui/CursorInfoBox";
 import { EASE_OUT_SLOW } from "@/constants/animations";
 import { categoryInfo, techStack } from "@/constants/techStack";
-import { GroupedCategories } from "@/types/techStack.types";
+import type { GroupedCategories } from "@/types/techStack.types";
 import { fadeInSimpleStaggered } from "@/utils/animations/tech-stack/fadeInSimpleStaggered";
 import { motion, useInView } from "motion/react";
 import React, { useRef, useState } from "react";
