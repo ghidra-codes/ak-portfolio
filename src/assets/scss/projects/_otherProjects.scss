@@ -6,23 +6,45 @@
 
 	display: flex;
 	flex-direction: column;
-	gap: 1.5rem;
 
-	padding: 1rem;
 	margin: 2rem 0;
+	padding: 0 3px 2px 3px;
 
 	height: 400px;
 
 	border: 2px solid rgba($blue-gray, 0.3);
-	border-radius: 3px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
 
-	overflow-y: auto;
+	overflow: hidden;
 
-	scroll-behavior: smooth;
-	overscroll-behavior: contain;
+	.scroll-progress {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 1px;
+		background: $dusty-olive;
+		transform-origin: left;
+		pointer-events: none;
+	}
 
-	scrollbar-width: thin;
-	scrollbar-color: rgba($blue-gray, 0.5) transparent;
+	.other-projects-scroll {
+		height: 100%;
+
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+
+		padding: 1rem;
+
+		overflow-y: auto;
+
+		scroll-behavior: smooth;
+		overscroll-behavior: contain;
+
+		scrollbar-width: thin;
+		scrollbar-color: rgba($blue-gray, 0.5) transparent;
+	}
 
 	.project {
 		background-color: $rich-black-lighter;
