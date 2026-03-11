@@ -1,7 +1,10 @@
 @use "../abstracts/index" as *;
 
-.other-projects-container {
+.other-projects-wrapper {
 	@include section-container;
+}
+
+.other-projects-container {
 	position: relative;
 
 	display: flex;

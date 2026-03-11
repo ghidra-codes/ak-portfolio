@@ -1,6 +1,7 @@
 import { EASE_OUT_SLOW } from "@/constants/animations";
+import type { Variants } from "motion";
 
-export const fadeInSlideX = {
+export const fadeInSlideX: Variants = {
 	hidden: (direction: "left" | "right") => ({
 		opacity: 0,
 		x: direction === "left" ? -80 : 80,

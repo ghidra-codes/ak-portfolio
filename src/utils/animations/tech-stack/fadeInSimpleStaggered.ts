@@ -1,4 +1,6 @@
-export const fadeInSimpleStaggered = {
+import type { Variants } from "motion";
+
+export const fadeInSimpleStaggered: Variants = {
 	initial: {
 		opacity: 0,
 		y: 75,

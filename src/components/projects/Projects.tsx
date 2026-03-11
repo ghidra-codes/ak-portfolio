@@ -80,8 +80,14 @@ export default function Projects() {
 				})}
 				reverse
 			/>
+			<RevealAnimation setFullWidth>
+				<FeatureDivider />
+			</RevealAnimation>
 
-			<OtherProjects />
+			<RevealAnimation className="other-projects-wrapper">
+				<h3>Additional projects</h3>
+				<OtherProjects />
+			</RevealAnimation>
 		</>
 	);
 }
