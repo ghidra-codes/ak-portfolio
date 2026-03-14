@@ -9,6 +9,11 @@
 	.project-heading {
 		width: 60%;
 		line-height: 1.07;
+		margin-bottom: 1.5rem;
+
+		@include respond(desktop) {
+			margin-bottom: 0;
+		}
 
 		@include respond(tablet) {
 			width: 70%;

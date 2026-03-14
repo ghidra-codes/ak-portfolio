@@ -5,39 +5,4 @@
 	@include flex-center;
 	flex-direction: column;
 	gap: 2.5rem;
-
-	.tech-stack-header-container {
-		width: 100%;
-		display: flex;
-		align-items: center;
-		gap: 1.5rem;
-		margin-top: 2.5rem;
-
-		.tech-stack-header {
-			margin: 0;
-			white-space: nowrap;
-			font-family: "Oxanium", sans-serif;
-		}
-
-		.tech-stack-header-line {
-			flex: 1;
-			height: 1px;
-			background: $mid-jet;
-			opacity: 0.6;
-			transform-origin: right center;
-		}
-
-		.tech-stack-header-line:last-child {
-			transform-origin: left center;
-		}
-
-		@include respond(tablet) {
-			margin-top: 2rem;
-			gap: 1rem;
-		}
-
-		@include respond(mobile) {
-			gap: 0.75rem;
-		}
-	}
 }

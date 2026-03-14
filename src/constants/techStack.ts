@@ -10,13 +10,13 @@ import prisma from "@/assets/icons/tech-stack/prisma.svg";
 import scss from "@/assets/icons/tech-stack/scss.svg";
 import framer from "@/assets/icons/tech-stack/framer.svg";
 import express from "@/assets/icons/tech-stack/express.svg";
-import wordpress from "@/assets/icons/tech-stack/wordpress.svg";
-import vite from "@/assets/icons/tech-stack/vite.svg";
-import tailwind from "@/assets/icons/tech-stack/tailwind.svg";
+import tanstack from "@/assets/icons/tech-stack/tanstack.svg";
+import laravel from "@/assets/icons/tech-stack/laravel.svg";
 import mongodb from "@/assets/icons/tech-stack/mongodb.svg";
-import mysql from "@/assets/icons/tech-stack/mysql.svg";
+import postgresql from "@/assets/icons/tech-stack/postgresql.svg";
 import cypress from "@/assets/icons/tech-stack/cypress.svg";
 import firebase from "@/assets/icons/tech-stack/firebase.svg";
+import supabase from "@/assets/icons/tech-stack/supabase.svg";
 
 /**
  * Category icons
@@ -40,18 +40,23 @@ export const categoryInfo: Record<string, { icon: string; label: string }> = {
 export const techStack = [
 	{ name: "JavaScript", icon: js, category: "languages" },
 	{ name: "TypeScript", icon: ts, category: "languages" },
+
 	{ name: "React", icon: react, category: "frontend" },
-	{ name: "Vite", icon: vite, category: "frontend" },
-	{ name: "Tailwind", icon: tailwind, category: "frontend" },
+	{ name: "TanStack", icon: tanstack, category: "frontend" },
 	{ name: "SCSS", icon: scss, category: "frontend" },
 	{ name: "Motion", icon: framer, category: "frontend" },
+
+	{ name: "Laravel", icon: laravel, category: "backend" },
 	{ name: "Node.js", icon: node, category: "backend" },
 	{ name: "Express", icon: express, category: "backend" },
 	{ name: "Prisma", icon: prisma, category: "backend" },
+
 	{ name: "MongoDB", icon: mongodb, category: "databases" },
-	{ name: "MySQL", icon: mysql, category: "databases" },
+	{ name: "PostgreSQL", icon: postgresql, category: "databases" },
+
 	{ name: "Firebase", icon: firebase, category: "platforms" },
-	{ name: "WordPress", icon: wordpress, category: "platforms" },
+	{ name: "Supabase", icon: supabase, category: "platforms" },
+
 	{ name: "Cypress", icon: cypress, category: "tools" },
 	{ name: "Git", icon: git, category: "tools" },
 ] as const;

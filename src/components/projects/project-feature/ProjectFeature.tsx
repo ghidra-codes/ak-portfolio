@@ -26,7 +26,8 @@ const ProjectFeature: React.FC<ProjectFeatureProps> = ({
 
 	const triggerIcons = () => {
 		if (showIcons) return;
-		setTimeout(() => setShowIcons(true), 100);
+
+		setShowIcons(true);
 	};
 
 	const sharedProps = {

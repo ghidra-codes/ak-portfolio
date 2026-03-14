@@ -9,17 +9,12 @@ import { useMediaQuery } from "react-responsive";
 import RevealAnimation from "../../ui/RevealAnimation";
 import TechStackIcon from "./TechStackIcon";
 import TechStackSlider from "./TechStackSlider";
+import SectionDivider from "@/components/layout/SectionDivider";
 
 const TechStack = () => {
 	const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
 	const [hoveredInfo, setHoveredInfo] = useState<string | null>(null);
 	const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
-
-	const headerRef = useRef(null);
-	const headerInView = useInView(headerRef, {
-		once: true,
-		margin: "-80px",
-	});
 
 	const sliderRef = useRef(null);
 	const isInView = useInView(sliderRef, { once: true, margin: "-50px" });
@@ -41,23 +36,7 @@ const TechStack = () => {
 	return (
 		<>
 			<RevealAnimation setFullWidth>
-				<div ref={headerRef} className="tech-stack-header-container">
-					<motion.div
-						className="tech-stack-header-line"
-						initial={{ scaleX: 0 }}
-						animate={headerInView ? { scaleX: 1 } : {}}
-						transition={{ duration: 0.3, ease: EASE_OUT_SLOW, delay: 0.4 }}
-					/>
-
-					<h3 className="tech-stack-header">Technologies I’ve worked with</h3>
-
-					<motion.div
-						className="tech-stack-header-line"
-						initial={{ scaleX: 0 }}
-						animate={headerInView ? { scaleX: 1 } : {}}
-						transition={{ duration: 0.3, ease: EASE_OUT_SLOW, delay: 0.4 }}
-					/>
-				</div>
+				<SectionDivider title="Technologies I’ve worked with" />
 			</RevealAnimation>
 
 			{!isSmallScreen ? (

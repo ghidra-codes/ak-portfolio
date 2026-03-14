@@ -4,7 +4,6 @@ import { categoryInfo } from "@/constants/techStack";
 import useTechStackSlider from "@/hooks/useTechStackSlider";
 import type { Categories, GroupedCategories } from "@/types/techStack.types";
 import { fadeInBlurStaggered } from "@/utils/animations/tech-stack-slider/fadeInBlurStaggered";
-import classNames from "classnames";
 import { AnimatePresence, easeInOut, motion } from "motion/react";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import TechStackIconTouch from "./TechStackIconTouch";
@@ -83,11 +82,7 @@ const TechStackSlider: React.FC<TechStackSliderProps> = ({
 						</div>
 					</div>
 
-					<div
-						className={classNames("icons-row", {
-							"icons-row--many": category === "frontend",
-						})}
-					>
+					<div className="icons-row">
 						<AnimatePresence>
 							{currentCategory === category &&
 								isInView &&

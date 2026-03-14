@@ -6,6 +6,7 @@ export const fadeInSlideDownwardGroup: { container: Variants; item: Variants } =
 		show: {
 			transition: {
 				staggerChildren: 0.2,
+				delayChildren: 0.1,
 			},
 		},
 		hidden: {},

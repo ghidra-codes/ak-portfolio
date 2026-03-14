@@ -8,6 +8,8 @@
 	@include flex-center;
 	flex-direction: column;
 
+	margin: 4rem 0;
+
 	.section-header {
 		@include fluid-type(h1);
 	}

@@ -2,6 +2,10 @@
 
 .other-projects-wrapper {
 	@include section-container;
+
+	.other-projects-divider {
+		margin-top: 4.75rem;
+	}
 }
 
 .other-projects-container {
