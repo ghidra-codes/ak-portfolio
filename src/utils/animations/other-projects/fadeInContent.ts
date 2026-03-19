@@ -1,5 +1,5 @@
-import { EASE_CONTENT } from "@/constants/animations";
 import type { Variants } from "motion";
+import { EASE_CONTENT } from "@/constants/animations";
 
 export const fadeInContent: Variants = {
 	hidden: {

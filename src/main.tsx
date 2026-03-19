@@ -13,5 +13,5 @@ ReactDOM.createRoot(rootElement).render(
 		<AnimationProvider>
 			<App />
 		</AnimationProvider>
-	</React.StrictMode>
+	</React.StrictMode>,
 );

@@ -1,6 +1,6 @@
+import type { Variants } from "motion";
 import type { ScrollDirections } from "@/components/about/tech-stack/TechStackSlider";
 import { EASE_GENTLE_SPRING, EASE_IN_OUT, EASE_IN_OUT_SMOOTH } from "@/constants/animations";
-import type { Variants } from "motion";
 
 interface AnimateProps {
 	index: number;

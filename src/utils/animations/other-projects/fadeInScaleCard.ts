@@ -1,5 +1,5 @@
-import { EASE_SURFACE } from "@/constants/animations";
 import type { Variants } from "motion";
+import { EASE_SURFACE } from "@/constants/animations";
 
 export const fadeInScaleCard: Variants = {
 	hidden: {

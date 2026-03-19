@@ -1,5 +1,5 @@
-import { EASE_OUT_SLOW } from "@/constants/animations";
 import type { Variants } from "motion/react";
+import { EASE_OUT_SLOW } from "@/constants/animations";
 
 export const fadeInStaggeredGroup: {
 	container: Variants;

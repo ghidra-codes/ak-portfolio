@@ -1,5 +1,5 @@
-import { EASE_OUT_SLOW } from "@/constants/animations";
 import type { Variants } from "motion";
+import { EASE_OUT_SLOW } from "@/constants/animations";
 
 export const fadeInSlideX: Variants = {
 	hidden: (direction: "left" | "right") => ({

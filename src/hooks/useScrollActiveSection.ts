@@ -1,7 +1,7 @@
+import { useEffect, useRef } from "react";
 import type { Section, TriggerPoint } from "@/types/sections.types";
 import getTriggerPoints from "@/utils/helper/getTriggerPoints";
 import isSection from "@/utils/helper/isSection";
-import { useEffect, useRef } from "react";
 
 interface UseScrollActiveSectionProps {
 	activeSection: Section | null;

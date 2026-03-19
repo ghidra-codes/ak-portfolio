@@ -1,8 +1,8 @@
-import type { ScrollDirections } from "@/components/about/tech-stack/TechStackSlider";
-import type { Categories, GroupedCategories } from "@/types/techStack.types";
 import type { KeenSliderInstance } from "keen-slider";
 import { useKeenSlider } from "keen-slider/react";
 import { type RefObject, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import type { ScrollDirections } from "@/components/about/tech-stack/TechStackSlider";
+import type { Categories, GroupedCategories } from "@/types/techStack.types";
 
 interface UseTechStackSliderParams {
 	groupedByCategory: GroupedCategories;
