@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { motion } from "motion/react";
-import React from "react";
+import type { FC } from "react";
 import { useMediaQuery } from "react-responsive";
 
 interface SlideFillButtonProps {
@@ -9,7 +9,7 @@ interface SlideFillButtonProps {
 	largerSize?: boolean;
 }
 
-const SlideFillButton: React.FC<SlideFillButtonProps> = ({ title, href, largerSize }) => {
+const SlideFillButton: FC<SlideFillButtonProps> = ({ title, href, largerSize }) => {
 	const isSmallScreen = useMediaQuery({ maxWidth: 1024 });
 	const isTouchDevice = document.body.classList.contains("no-hover");
 

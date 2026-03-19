@@ -1,5 +1,5 @@
-import { motion, MotionConfig } from "motion/react";
-import React from "react";
+import { MotionConfig, motion } from "motion/react";
+import type { FC } from "react";
 import { hamburgerBtnConfigs } from "./hamburgerBtn.config";
 
 type HamburgerBtnProps = {
@@ -7,7 +7,7 @@ type HamburgerBtnProps = {
 	active: boolean;
 };
 
-const HamburgerBtn: React.FC<HamburgerBtnProps> = ({ onToggle, active }) => {
+const HamburgerBtn: FC<HamburgerBtnProps> = ({ onToggle, active }) => {
 	return (
 		<MotionConfig
 			transition={{

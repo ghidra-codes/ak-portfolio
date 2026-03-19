@@ -1,8 +1,6 @@
-import { EASE_IN_OUT_SMOOTH, EASE_IN_OUT, EASE_OUT_SLOW } from "@/constants/animations";
 import { motion } from "motion/react";
-import { FiGithub } from "react-icons/fi";
-import { FiLinkedin } from "react-icons/fi";
-import { FiInstagram } from "react-icons/fi";
+import { FiGithub, FiInstagram, FiLinkedin } from "react-icons/fi";
+import { EASE_IN_OUT, EASE_IN_OUT_SMOOTH, EASE_OUT_SLOW } from "@/constants/animations";
 
 const DURATION = 0.25;
 

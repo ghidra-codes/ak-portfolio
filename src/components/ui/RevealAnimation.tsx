@@ -1,6 +1,6 @@
-import { fadeInStaggeredGroup } from "@/utils/animations/shared/fadeInStaggeredGroup";
 import { motion, useAnimation } from "motion/react";
 import React, { useEffect } from "react";
+import { fadeInStaggeredGroup } from "@/utils/animations/shared/fadeInStaggeredGroup";
 
 interface RevealAnimationProps {
 	children: React.ReactNode;
@@ -27,9 +27,7 @@ const RevealAnimation: React.FC<RevealAnimationProps> = ({
 		if (!manualControl) return;
 
 		if (typeof shouldAnimate === "undefined") {
-			console.error(
-				"RevealAnimation: manualControl requires shouldAnimate — skipping animation"
-			);
+			console.error("RevealAnimation: manualControl requires shouldAnimate — skipping animation");
 			return;
 		}
 
@@ -48,7 +46,7 @@ const RevealAnimation: React.FC<RevealAnimationProps> = ({
 					? {
 							once: true,
 							...(viewportMargin ? { margin: viewportMargin } : {}),
-					  }
+						}
 					: undefined
 			}
 			style={{ width: setFullWidth ? "100%" : undefined }}

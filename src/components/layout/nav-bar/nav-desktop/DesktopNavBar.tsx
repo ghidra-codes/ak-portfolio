@@ -1,10 +1,10 @@
 import { motion } from "motion/react";
+import { useEffect, useState } from "react";
 import SlideFillButton from "@/components/ui/SlideFillButton";
-import { fadeInSlideBtn } from "@/utils/animations/nav-links/fadeInSlideBtn.js";
-import React, { useEffect, useState } from "react";
 import { SECTIONS } from "@/constants/sections";
-import DesktopNavLinks from "./DesktopNavLinks";
+import { fadeInSlideBtn } from "@/utils/animations/nav-links/fadeInSlideBtn.js";
 import NavBarBrand from "../NavBarBrand";
+import DesktopNavLinks from "./DesktopNavLinks";
 
 const containerVariants = {
 	visible: {
@@ -37,11 +37,7 @@ const DesktopNavBar = () => {
 			>
 				<DesktopNavLinks />
 
-				<motion.div
-					variants={fadeInSlideBtn}
-					initial="hidden"
-					animate={showBtn ? "show" : ""}
-				>
+				<motion.div variants={fadeInSlideBtn} initial="hidden" animate={showBtn ? "show" : ""}>
 					<SlideFillButton title="Resume" />
 				</motion.div>
 			</motion.div>

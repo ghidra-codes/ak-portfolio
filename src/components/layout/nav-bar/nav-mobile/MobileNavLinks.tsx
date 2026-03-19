@@ -16,11 +16,7 @@ const MobileNavLinks: React.FC<MobileNavLinksProps> = ({ setShowMenu }) => (
 		exit="hidden"
 	>
 		{SECTIONS.map((section) => (
-			<motion.li
-				key={section}
-				variants={fadeInSlideLeftGroup.item}
-				className={"navbar-link-list-item"}
-			>
+			<motion.li key={section} variants={fadeInSlideLeftGroup.item} className={"navbar-link-list-item"}>
 				<Link
 					to={section}
 					smooth={true}

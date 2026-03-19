@@ -1,13 +1,13 @@
-import { EASE_OUT_SLOW } from "@/constants/animations";
 import { motion } from "motion/react";
-import React from "react";
+import type { FC } from "react";
+import { EASE_OUT_SLOW } from "@/constants/animations";
 
 interface SectionHeaderProps {
 	title: string;
 	noLine?: boolean;
 }
 
-const SectionHeader: React.FC<SectionHeaderProps> = ({ title, noLine = false }) => {
+const SectionHeader: FC<SectionHeaderProps> = ({ title, noLine = false }) => {
 	return (
 		<div className="section-header-wrapper">
 			<h2 className="section-header">

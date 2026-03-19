@@ -1,8 +1,9 @@
-import type { TintedImageProps } from "@/types/tinted-image.types";
 import classNames from "classnames";
-import React, { useState } from "react";
+import type { FC } from "react";
+import { useState } from "react";
+import type { TintedImageProps } from "@/types/tinted-image.types";
 
-const TintedImage: React.FC<TintedImageProps> = ({
+const TintedImage: FC<TintedImageProps> = ({
 	src,
 	alt,
 	wrapperClass,
@@ -22,18 +23,11 @@ const TintedImage: React.FC<TintedImageProps> = ({
 	return (
 		<div className={`tinted-image-wrapper ${wrapperClass}`} onClick={handleClick}>
 			<img
-				className={classNames(
-					"tinted-image",
-					imageClass,
-					{ revealed },
-					{ "pop-in": triggerPopIn },
-				)}
+				className={classNames("tinted-image", imageClass, { revealed }, { "pop-in": triggerPopIn })}
 				src={src}
 				alt={alt}
 			/>
-			<div
-				className={classNames("image-overlay", { revealed }, { "pop-in": triggerPopIn })}
-			></div>
+			<div className={classNames("image-overlay", { revealed }, { "pop-in": triggerPopIn })}></div>
 			{children}
 		</div>
 	);

@@ -1,7 +1,8 @@
-import type { StaticTintedImageProps } from "@/types/tinted-image.types";
 import classNames from "classnames";
-import React, { useState } from "react";
+import type { FC } from "react";
+import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
+import type { StaticTintedImageProps } from "@/types/tinted-image.types";
 import DesktopLayout from "./DesktopLayout";
 import MobileLayout from "./MobileLayout";
 
@@ -13,7 +14,7 @@ interface ProjectFeatureProps {
 	reverse?: boolean;
 }
 
-const ProjectFeature: React.FC<ProjectFeatureProps> = ({
+const ProjectFeature: FC<ProjectFeatureProps> = ({
 	imageProps,
 	heading,
 	description,

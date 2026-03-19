@@ -1,5 +1,5 @@
-import React from "react";
 import { motion } from "motion/react";
+import type { FC } from "react";
 
 type TechStackIconProps = {
 	name: string;
@@ -10,7 +10,7 @@ type TechStackIconProps = {
 	onHoverChange: (category: string | null) => void;
 };
 
-const TechStackIcon: React.FC<TechStackIconProps> = ({
+const TechStackIcon: FC<TechStackIconProps> = ({
 	name,
 	icon,
 	category,

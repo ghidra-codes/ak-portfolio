@@ -1,15 +1,16 @@
+import { motion, useInView } from "motion/react";
+import type { MouseEvent } from "react";
+import { useRef, useState } from "react";
+import { useMediaQuery } from "react-responsive";
+import SectionDivider from "@/components/layout/SectionDivider";
 import CursorInfoBox from "@/components/ui/CursorInfoBox";
 import { EASE_OUT_SLOW } from "@/constants/animations";
 import { categoryInfo, techStack } from "@/constants/techStack";
 import type { GroupedCategories } from "@/types/techStack.types";
 import { fadeInSimpleStaggered } from "@/utils/animations/tech-stack/fadeInSimpleStaggered";
-import { motion, useInView } from "motion/react";
-import React, { useRef, useState } from "react";
-import { useMediaQuery } from "react-responsive";
 import RevealAnimation from "../../ui/RevealAnimation";
 import TechStackIcon from "./TechStackIcon";
 import TechStackSlider from "./TechStackSlider";
-import SectionDivider from "@/components/layout/SectionDivider";
 
 const TechStack = () => {
 	const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
@@ -26,7 +27,7 @@ const TechStack = () => {
 		return acc;
 	}, {} as GroupedCategories);
 
-	const handleMouseMove = (e: React.MouseEvent) => setCursorPos({ x: e.clientX, y: e.clientY });
+	const handleMouseMove = (e: MouseEvent) => setCursorPos({ x: e.clientX, y: e.clientY });
 
 	const onHoverChange = (newCategory: string | null) => {
 		setHoveredCategory(newCategory);

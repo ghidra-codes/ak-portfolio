@@ -1,13 +1,13 @@
-import { useAnimationContext } from "@/hooks/useAnimationContext";
-import React from "react";
 import { motion } from "motion/react";
+import type { FC } from "react";
 import { EASE_OUT_SLOW } from "@/constants/animations";
+import { useAnimationContext } from "@/hooks/useAnimationContext";
 
 type DecorationProps = {
 	variant: "triangle" | "square" | "hexagon" | "diamond";
 };
 
-const Decoration: React.FC<DecorationProps> = ({ variant }) => {
+const Decoration: FC<DecorationProps> = ({ variant }) => {
 	const { animateSides } = useAnimationContext();
 
 	const dots = (

@@ -1,7 +1,7 @@
-import { fadeInContent } from "@/utils/animations/other-projects/fadeInContent";
-import { fadeInScaleCard } from "@/utils/animations/other-projects/fadeInScaleCard";
 import { motion, useScroll, useSpring } from "motion/react";
 import { useRef } from "react";
+import { fadeInContent } from "@/utils/animations/other-projects/fadeInContent";
+import { fadeInScaleCard } from "@/utils/animations/other-projects/fadeInScaleCard";
 
 const OtherProjects = () => {
 	const scrollRef = useRef<HTMLDivElement | null>(null);

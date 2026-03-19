@@ -1,5 +1,4 @@
 import filmFlare from "@/assets/images/filmflare-screenshot.png";
-import matdagboken from "@/assets/images/matdagboken-screenshot.jpg";
 import { projectIconsMap } from "@/constants/projectIcons";
 import SectionDivider from "../layout/SectionDivider";
 import SectionHeader from "../layout/SectionHeader";
@@ -27,12 +26,12 @@ export default function Projects() {
 				heading={<h3>The Filmflare Project</h3>}
 				description={
 					<p>
-						FilmFlare is a React web app that leverages TanStack Query and the TMDB API.
-						It lets users explore movies and TV shows, with features like search, genre
-						filters, sorting, and a movie history to revisit previously viewed titles.
-						Building it taught me about caching, local storage, and structuring React
-						components for efficient data fetching. I’m proud of this project, as it
-						strengthened my understanding of React and real-world API usage.
+						FilmFlare is a React web app that leverages TanStack Query and the TMDB API. It lets
+						users explore movies and TV shows, with features like search, genre filters, sorting,
+						and a movie history to revisit previously viewed titles. Building it taught me about
+						caching, local storage, and structuring React components for efficient data fetching.
+						I’m proud of this project, as it strengthened my understanding of React and real-world
+						API usage.
 					</p>
 				}
 				projectIcons={["typescript", "react", "reactQuery"].map((key) => {
@@ -93,12 +92,12 @@ export default function Projects() {
 				heading={<h3>The Filmflare Project</h3>}
 				description={
 					<p>
-						FilmFlare is a React web app that leverages TanStack Query and the TMDB API.
-						It lets users explore movies and TV shows, with features like search, genre
-						filters, sorting, and a movie history to revisit previously viewed titles.
-						Building it taught me about caching, local storage, and structuring React
-						components for efficient data fetching. I’m proud of this project, as it
-						strengthened my understanding of React and real-world API usage.
+						FilmFlare is a React web app that leverages TanStack Query and the TMDB API. It lets
+						users explore movies and TV shows, with features like search, genre filters, sorting,
+						and a movie history to revisit previously viewed titles. Building it taught me about
+						caching, local storage, and structuring React components for efficient data fetching.
+						I’m proud of this project, as it strengthened my understanding of React and real-world
+						API usage.
 					</p>
 				}
 				projectIcons={["typescript", "react", "reactQuery"].map((key) => {
@@ -127,12 +126,12 @@ export default function Projects() {
 				heading={<h3>The Filmflare Project</h3>}
 				description={
 					<p>
-						FilmFlare is a React web app that leverages TanStack Query and the TMDB API.
-						It lets users explore movies and TV shows, with features like search, genre
-						filters, sorting, and a movie history to revisit previously viewed titles.
-						Building it taught me about caching, local storage, and structuring React
-						components for efficient data fetching. I’m proud of this project, as it
-						strengthened my understanding of React and real-world API usage.
+						FilmFlare is a React web app that leverages TanStack Query and the TMDB API. It lets
+						users explore movies and TV shows, with features like search, genre filters, sorting,
+						and a movie history to revisit previously viewed titles. Building it taught me about
+						caching, local storage, and structuring React components for efficient data fetching.
+						I’m proud of this project, as it strengthened my understanding of React and real-world
+						API usage.
 					</p>
 				}
 				projectIcons={["typescript", "react", "reactQuery"].map((key) => {

@@ -1,9 +1,9 @@
-import Footer from "./components/layout/Footer";
+import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import SequentialLayout from "./layouts/SequentialLayout";
 import EntryAnimation from "./components/layout/EntryAnimation";
+import Footer from "./components/layout/Footer";
 import MainContent from "./layouts/MainContent";
+import SequentialLayout from "./layouts/SequentialLayout";
 
 function App() {
 	const [showEntry, setShowEntry] = useState(true);

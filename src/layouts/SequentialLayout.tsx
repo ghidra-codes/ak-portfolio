@@ -1,6 +1,6 @@
 import NavBar from "@/components/layout/nav-bar/NavBar";
-import { useAnimationContext } from "@/hooks/useAnimationContext";
 import SideElements from "@/components/layout/SideElements";
+import { useAnimationContext } from "@/hooks/useAnimationContext";
 
 /**
  * Renders the main navigation and side elements based on animation context state.

@@ -1,10 +1,10 @@
+import { motion } from "motion/react";
+import React, { useState } from "react";
+import { FiGithub, FiLink } from "react-icons/fi";
 import RevealAnimation from "@/components/ui/RevealAnimation";
 import TintedImage from "@/components/ui/TintedImage";
 import type { ProjectFeatureLayoutProps } from "@/types/project-feature.types";
 import { fadeInSlideDownwardGroup } from "@/utils/animations/nav-links/fadeInSlideDownwardGroup";
-import { motion } from "motion/react";
-import React, { useState } from "react";
-import { FiGithub, FiLink } from "react-icons/fi";
 
 const MobileLayout: React.FC<ProjectFeatureLayoutProps> = ({
 	heading,

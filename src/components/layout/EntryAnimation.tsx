@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
 import { motion, useInView, type ValueTransition } from "motion/react";
+import { useEffect, useRef, useState } from "react";
 import logoText from "@/assets/images/logo/logo-text.png";
 import { EASE_OUT_SLOW, HONOLULU_BLUE, MAYA_BLUE } from "@/constants/animations";
 

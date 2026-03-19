@@ -1,13 +1,12 @@
 import { AnimatePresence, motion } from "motion/react";
 import SlideFillButton from "@/components/ui/SlideFillButton";
-import React from "react";
-import { fadeInSlideBtnSmallScreen } from "@/utils/animations/nav-links/fadeInSlideBtn";
 import { EASE_IN_OUT } from "@/constants/animations";
+import { useAnimationContext } from "@/hooks/useAnimationContext";
 import useNavbarAutoHide from "@/hooks/useNavbarAutoHide";
+import { fadeInSlideBtnSmallScreen } from "@/utils/animations/nav-links/fadeInSlideBtn";
+import NavBarBrand from "../NavBarBrand";
 import HamburgerBtn from "./hamburger-btn/HamburgerBtn";
 import MobileNavLinks from "./MobileNavLinks";
-import NavBarBrand from "../NavBarBrand";
-import { useAnimationContext } from "@/hooks/useAnimationContext";
 
 const MobileNavBar = () => {
 	const { isHidden, setShowMenu, completeExit, showMenu } = useNavbarAutoHide();

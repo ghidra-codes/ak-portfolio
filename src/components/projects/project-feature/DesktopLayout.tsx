@@ -1,10 +1,10 @@
+import { motion } from "motion/react";
+import type { FC } from "react";
+import { FiGithub, FiLink } from "react-icons/fi";
 import TintedImage from "@/components/ui/TintedImage";
 import { EASE_OUT_SLOW } from "@/constants/animations";
 import type { ProjectFeatureLayoutProps } from "@/types/project-feature.types";
 import { fadeInSlideX } from "@/utils/animations/project-feature/fadeInSlideX";
-import { motion } from "motion/react";
-import React from "react";
-import { FiGithub, FiLink } from "react-icons/fi";
 
 const scaleReveal = (show: boolean) => ({
 	initial: { scale: 0 },
@@ -21,7 +21,7 @@ const scaleReveal = (show: boolean) => ({
 	},
 });
 
-const DesktopLayout: React.FC<ProjectFeatureLayoutProps> = ({
+const DesktopLayout: FC<ProjectFeatureLayoutProps> = ({
 	imageProps,
 	heading,
 	description,

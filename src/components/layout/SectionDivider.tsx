@@ -1,7 +1,7 @@
+import classNames from "classnames";
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
 import { EASE_OUT_SLOW } from "@/constants/animations";
-import classNames from "classnames";
 
 interface SectionDividerProps {
 	title: React.ReactNode;
