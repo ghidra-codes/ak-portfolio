@@ -9,7 +9,7 @@ import TintedImage from "../ui/TintedImage";
 
 export default function Header() {
 	// animateHeader boolean initiates animation sequence
-	const { animateHeader, setAnimateSides } = useAnimationContext();
+	const { animateHeader, setAnimateSides, setAnimateAbout } = useAnimationContext();
 
 	const controls = useAnimation();
 
@@ -55,6 +55,7 @@ export default function Header() {
 					if (animationStep === 2) {
 						setAnimationStep(3);
 						setAnimateSides(true);
+						setAnimateAbout(true);
 					}
 				}}
 			>

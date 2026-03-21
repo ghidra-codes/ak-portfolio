@@ -18,10 +18,17 @@ const SectionHeader: FC<SectionHeaderProps> = ({ title, noLine = false }) => {
 			{!noLine && (
 				<motion.div
 					className="section-header-line"
-					initial={{ scaleX: 0 }}
-					whileInView={{ scaleX: 1 }}
-					viewport={{ once: true, margin: "-80px" }}
-					transition={{ duration: 0.3, ease: EASE_OUT_SLOW, delay: 0.4 }}
+					variants={{
+						hidden: { scaleX: 0 },
+						show: {
+							scaleX: 1,
+							transition: {
+								duration: 0.3,
+								ease: EASE_OUT_SLOW,
+								delay: 0.4,
+							},
+						},
+					}}
 				/>
 			)}
 		</div>

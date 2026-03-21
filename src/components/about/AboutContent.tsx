@@ -1,16 +1,37 @@
+import { useLayoutEffect, useRef, useState } from "react";
 import heart from "@/assets/icons/heart.svg";
 import paintBrush from "@/assets/icons/paint-brush.svg";
 import SectionHeader from "@/components/layout/SectionHeader";
 import RevealAnimation from "@/components/ui/RevealAnimation";
+import { useAnimationContext } from "@/hooks/useAnimationContext";
+import { useSkipSequence } from "@/hooks/useSkipSequence";
 
 const AboutContent = () => {
+	const { animateAbout } = useAnimationContext();
+	const sectionRef = useRef<HTMLDivElement | null>(null);
+
+	const [threshold, setThreshold] = useState(0);
+
+	useLayoutEffect(() => {
+		if (!sectionRef.current) return;
+
+		const rect = sectionRef.current.getBoundingClientRect();
+		const offsetTop = rect.top + window.scrollY;
+
+		setThreshold(offsetTop - window.innerHeight * 0.2);
+	}, []);
+
+	const skipSequence = useSkipSequence(threshold);
+
+	const shouldAnimate = animateAbout || skipSequence;
+
 	return (
 		<>
 			<div className="about-section">
-				<RevealAnimation viewportMargin={"0px 0px -15% 0px"}>
+				<RevealAnimation manualControl shouldAnimate={shouldAnimate}>
 					<SectionHeader title={"About"} />
 				</RevealAnimation>
-				<RevealAnimation viewportMargin={"0px 0px -5% 0px"}>
+				<RevealAnimation manualControl shouldAnimate={shouldAnimate}>
 					<h3>
 						<img src={heart} alt="Heart" className="about-section-icon" />
 						How I Found My Passion for Web Development
@@ -25,7 +46,7 @@ const AboutContent = () => {
 				</RevealAnimation>
 			</div>
 			<div className="about-section">
-				<RevealAnimation>
+				<RevealAnimation manualControl shouldAnimate={shouldAnimate}>
 					<h3>
 						<img src={paintBrush} alt="Paint brush" className="about-section-icon" />
 						Why Details Matter

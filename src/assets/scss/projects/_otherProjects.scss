@@ -4,7 +4,15 @@
 	@include section-container;
 
 	.other-projects-divider {
-		margin-top: 4.75rem;
+		margin-top: 6.25rem;
+
+		@include respond(tablet) {
+			margin-top: 4.25rem;
+		}
+
+		@include respond(mobile) {
+			margin-top: 3.25rem;
+		}
 	}
 }
 

@@ -5,7 +5,7 @@ import leftArrow from "@/assets/icons/left-slide-arrow.svg";
 import rightArrow from "@/assets/icons/right-slide-arrow.svg";
 import { categoryInfo } from "@/constants/techStack";
 import useTechStackSlider from "@/hooks/useTechStackSlider";
-import type { Categories, GroupedCategories } from "@/types/techStack.types";
+import type { Categories, GroupedCategories } from "@/types/tech-stack.types";
 import { fadeInBlurStaggered } from "@/utils/animations/tech-stack-slider/fadeInBlurStaggered";
 import TechStackIconTouch from "./TechStackIconTouch";
 

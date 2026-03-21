@@ -6,7 +6,7 @@ import SectionDivider from "@/components/layout/SectionDivider";
 import CursorInfoBox from "@/components/ui/CursorInfoBox";
 import { EASE_OUT_SLOW } from "@/constants/animations";
 import { categoryInfo, techStack } from "@/constants/techStack";
-import type { GroupedCategories } from "@/types/techStack.types";
+import type { GroupedCategories } from "@/types/tech-stack.types";
 import { fadeInSimpleStaggered } from "@/utils/animations/tech-stack/fadeInSimpleStaggered";
 import RevealAnimation from "../../ui/RevealAnimation";
 import TechStackIcon from "./TechStackIcon";
