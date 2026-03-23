@@ -2,13 +2,18 @@
 
 #contact {
 	@include section-container;
+	@include flex-center;
+	min-height: 80vh;
+
+	@include respond(tablet) {
+		min-height: 70vh;
+	}
 }
 
 .contact-wrapper {
 	@include flex-center;
 	flex-direction: column;
-
-	margin: 4rem 0;
+	margin-bottom: 3rem;
 
 	.section-header {
 		@include fluid-type(h1);
