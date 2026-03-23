@@ -12,14 +12,37 @@ body {
 	color: $blue-tint;
 	color-scheme: light dark;
 	overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+	-webkit-tap-highlight-color: transparent;
+}
+
+html {
+	scrollbar-color: $brighter-jet $deep-blue-gray;
+	scrollbar-width: auto;
+}
+
+main {
+	position: relative;
+	z-index: 1;
+
+	max-width: 1525px;
+	margin: 0 auto;
 
 	&::after {
 		content: "";
 		position: absolute;
-		left: 0;
+
+		left: 50%;
+		transform: translateX(-50%);
+
 		bottom: -40px;
 
-		width: 100%;
+		width: 100vw;
 		height: 600px;
 
 		background:
@@ -46,25 +69,8 @@ body {
 		}
 
 		pointer-events: none;
-		z-index: 0;
+		z-index: -1;
 	}
-}
-
-*,
-*::before,
-*::after {
-	box-sizing: inherit;
-	-webkit-tap-highlight-color: transparent;
-}
-
-html {
-	scrollbar-color: $brighter-jet $deep-blue-gray;
-	scrollbar-width: auto;
-}
-
-main {
-	max-width: 1525px;
-	margin: 0 auto;
 }
 
 button {
