@@ -18,11 +18,7 @@ const SlideFillButton: FC<SlideFillButtonProps> = ({ title, href, largerSize }) 
 	return (
 		<Component
 			{...(href ? { href } : {})}
-			className={classNames(
-				"slide-fill-button",
-				{ "size-lg": largerSize },
-				{ "desktop-size": isSmallScreen },
-			)}
+			className={classNames("slide-fill-button", { "size-lg": largerSize }, { compact: isSmallScreen })}
 			{...(isTouchDevice
 				? {
 						whileTap: {

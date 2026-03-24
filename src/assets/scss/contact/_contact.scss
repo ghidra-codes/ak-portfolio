@@ -42,4 +42,17 @@
 		font-family: "Oxanium", sans-serif;
 		font-weight: 500;
 	}
+
+	a {
+		line-height: 1.45;
+		min-width: 7.25rem;
+
+		@include respond(tablet) {
+			min-width: 6.5rem;
+		}
+
+		@include respond(mobile) {
+			min-width: 6.25rem;
+		}
+	}
 }
