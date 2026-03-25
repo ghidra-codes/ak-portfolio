@@ -7,6 +7,8 @@ export const EASE_IN_OUT_SMOOTH: Easing = [0.4, 0, 0.3, 0.9];
 export const EASE_IN_OUT: Easing = [0.42, 0, 0.58, 1];
 export const EASE_SURFACE: Easing = [0.48, 0.05, 0.52, 0.96];
 export const EASE_CONTENT: Easing = [0.5, 0.05, 0.5, 0.95];
+export const EASE_OUT_SHARP: Easing = [0.4, 0, 0.2, 1];
+export const EASE_OUT_BACK: Easing = [0.34, 1.56, 0.64, 1];
 
 // Animation colors
 export const MAYA_BLUE = "#73c2fb";

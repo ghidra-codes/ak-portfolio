@@ -5,20 +5,36 @@ import { useMediaQuery } from "react-responsive";
 
 interface SlideFillButtonProps {
 	title: string;
-	href?: string;
+	href: string;
 	largerSize?: boolean;
+	download?: boolean;
 }
 
-const SlideFillButton: FC<SlideFillButtonProps> = ({ title, href, largerSize }) => {
+const SlideFillButton: FC<SlideFillButtonProps> = ({ title, href, largerSize, download }) => {
 	const isSmallScreen = useMediaQuery({ maxWidth: 1024 });
 	const isTouchDevice = document.body.classList.contains("no-hover");
 
-	const Component = href ? motion.a : motion.button;
+	// SMOOTH SCROLL HANDLER
+	const handleClick = (e: React.MouseEvent) => {
+		if (!href?.startsWith("#")) return;
+
+		e.preventDefault();
+
+		const target = document.querySelector(href);
+		if (!target) return;
+
+		target.scrollIntoView({
+			behavior: "smooth",
+			block: "start",
+		});
+	};
 
 	return (
-		<Component
-			{...(href ? { href } : {})}
+		<motion.a
+			href={href}
 			className={classNames("slide-fill-button", { "size-lg": largerSize }, { compact: isSmallScreen })}
+			onClick={handleClick}
+			{...(download ? { download: true } : {})}
 			{...(isTouchDevice
 				? {
 						whileTap: {
@@ -33,7 +49,7 @@ const SlideFillButton: FC<SlideFillButtonProps> = ({ title, href, largerSize }) 
 			<span className="slide-fill-button-text">{title}</span>
 			<span className="fill-top" />
 			<span className="fill-bottom" />
-		</Component>
+		</motion.a>
 	);
 };
 

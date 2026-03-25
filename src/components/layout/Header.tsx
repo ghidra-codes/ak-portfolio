@@ -42,7 +42,7 @@ export default function Header() {
 						always to build the best product possible, using modern technologies and industry best
 						practices.
 					</p>
-					<SlideFillButton title="Contact Me" largerSize />
+					<SlideFillButton title="Contact Me" href="#contact" largerSize />
 				</RevealAnimation>
 			</div>
 

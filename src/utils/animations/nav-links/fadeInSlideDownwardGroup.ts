@@ -12,7 +12,7 @@ export const fadeInSlideDownwardGroup: { container: Variants; item: Variants } =
 		hidden: {},
 	},
 	item: {
-		hidden: { opacity: 0, y: -50 },
+		hidden: { opacity: 0, y: -30 },
 		show: {
 			opacity: 1,
 			y: 0,

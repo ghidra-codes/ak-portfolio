@@ -3,17 +3,51 @@
 #contact {
 	@include section-container;
 	@include flex-center;
-	min-height: 80vh;
+	min-height: max(80vh, 700px);
 
 	@include respond(tablet) {
-		min-height: 70vh;
+		min-height: max(60vh, 500px);
 	}
 }
 
 .contact-wrapper {
 	@include flex-center;
 	flex-direction: column;
-	margin-bottom: 3rem;
+	position: relative;
+	margin-inline: auto;
+	box-sizing: border-box;
+	padding: 2.75rem 3.25rem 2.5rem 3.25rem;
+
+	@include respond(mobile) {
+		padding: 2rem 1.25rem;
+	}
+
+	.contact-border {
+		position: absolute;
+		inset: 0;
+
+		--border-color: #{rgba($mid-jet, 0.6)};
+		border: 1px solid transparent;
+		border-radius: 0.25rem;
+
+		.contact-border-icon {
+			position: absolute;
+			top: 0;
+			left: 50%;
+			transform: translate(-50%, -50%);
+
+			background: $rich-black;
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			svg {
+				font-size: 1.45rem;
+				color: $mid-jet;
+			}
+		}
+	}
 
 	.section-header {
 		@include fluid-type(h1);
@@ -25,14 +59,9 @@
 
 	.contact-description {
 		margin: 0 0 2.25rem;
-		padding: 0 4rem;
 
-		@include respond(tablet) {
-			padding: 0 2rem;
-		}
-
-		@include respond(mobile) {
-			padding: 0;
+		span {
+			font-weight: 500;
 		}
 	}
 
@@ -43,8 +72,8 @@
 		font-weight: 500;
 	}
 
-	a {
-		line-height: 1.45;
+	.slide-fill-button {
+		margin: 0 !important;
 		min-width: 7.25rem;
 
 		@include respond(tablet) {
