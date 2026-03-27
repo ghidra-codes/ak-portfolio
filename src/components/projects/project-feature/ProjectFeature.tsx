@@ -11,6 +11,11 @@ interface ProjectFeatureProps {
 	heading: React.ReactNode;
 	description: React.ReactNode;
 	projectIcons: React.ReactNode;
+	projectLinks?: {
+		github?: string;
+		site?: string;
+		figma?: string;
+	};
 	reverse?: boolean;
 }
 
@@ -19,6 +24,7 @@ const ProjectFeature: FC<ProjectFeatureProps> = ({
 	heading,
 	description,
 	projectIcons,
+	projectLinks,
 	reverse = false,
 }) => {
 	const isSmallScreen = useMediaQuery({ maxWidth: 1024 });
@@ -36,6 +42,7 @@ const ProjectFeature: FC<ProjectFeatureProps> = ({
 		heading,
 		description,
 		projectIcons,
+		projectLinks,
 		showIcons,
 		triggerIcons,
 	};

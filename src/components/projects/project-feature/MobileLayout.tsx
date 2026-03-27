@@ -1,16 +1,17 @@
 import { motion } from "motion/react";
 import React, { useState } from "react";
-import { FiGithub, FiLink } from "react-icons/fi";
 import RevealAnimation from "@/components/ui/RevealAnimation";
 import TintedImage from "@/components/ui/TintedImage";
 import type { ProjectFeatureLayoutProps } from "@/types/project-feature.types";
 import { fadeInSlideDownwardGroup } from "@/utils/animations/nav-links/fadeInSlideDownwardGroup";
+import ProjectLinks from "./ProjectLinks";
 
 const MobileLayout: React.FC<ProjectFeatureLayoutProps> = ({
 	heading,
 	imageProps,
 	description,
 	projectIcons,
+	projectLinks,
 	showIcons: showProjectIcons,
 	triggerIcons: triggerProjectIcons,
 }) => {
@@ -54,11 +55,7 @@ const MobileLayout: React.FC<ProjectFeatureLayoutProps> = ({
 					initial="hidden"
 					animate={showLinkIcons ? "show" : "hidden"}
 				>
-					{[FiGithub, FiLink].map((Icon, i) => (
-						<motion.span key={i} variants={fadeInSlideDownwardGroup.item}>
-							<Icon className="project-link-icon" />
-						</motion.span>
-					))}
+					<ProjectLinks links={projectLinks} itemVariants={fadeInSlideDownwardGroup.item} />
 				</motion.div>
 			</div>
 		</div>

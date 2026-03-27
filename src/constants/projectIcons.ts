@@ -8,4 +8,4 @@ export const projectIconsMap: Record<string, { icon: IconType; label: string }> 
 	javascript: { icon: SiJavascript, label: "JavaScript" },
 	php: { icon: SiPhp, label: "PHP" },
 	laravel: { icon: SiLaravel, label: "Laravel" },
-};
+} as const;

@@ -83,14 +83,16 @@
 		height: fit-content;
 		width: fit-content;
 		box-shadow: 0 0 8px rgba(0, 0, 0, 0.35);
+		border-radius: 0.25rem;
 
 		.project-image {
+			border-radius: inherit;
 			width: 100%;
 			height: 100%;
-			border-radius: 0.25rem;
 		}
 
 		.image-overlay {
+			border-radius: inherit;
 			transform: translate(0);
 			background-color: rgba($honolulu-blue, 0.275);
 		}

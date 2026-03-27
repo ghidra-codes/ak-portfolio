@@ -1,10 +1,10 @@
 import { motion } from "motion/react";
 import type { FC } from "react";
-import { FiGithub, FiLink } from "react-icons/fi";
 import TintedImage from "@/components/ui/TintedImage";
 import { EASE_OUT_SLOW } from "@/constants/animations";
 import type { ProjectFeatureLayoutProps } from "@/types/project-feature.types";
 import { fadeInSlideX } from "@/utils/animations/project-feature/fadeInSlideX";
+import ProjectLinks from "./ProjectLinks";
 
 const scaleReveal = (show: boolean) => ({
 	initial: { scale: 0 },
@@ -26,6 +26,7 @@ const DesktopLayout: FC<ProjectFeatureLayoutProps> = ({
 	heading,
 	description,
 	projectIcons,
+	projectLinks,
 	showIcons,
 	triggerIcons,
 	reverse,
@@ -60,8 +61,7 @@ const DesktopLayout: FC<ProjectFeatureLayoutProps> = ({
 			>
 				<div className="project-feature-heading">
 					<motion.span className="project-links" {...scaleReveal(showIcons)}>
-						<FiGithub className="project-link-icon" />
-						<FiLink className="project-link-icon" />
+						<ProjectLinks links={projectLinks} />
 					</motion.span>
 
 					{heading}

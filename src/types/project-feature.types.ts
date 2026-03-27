@@ -6,7 +6,14 @@ export interface ProjectFeatureLayoutProps {
 	heading: React.ReactNode;
 	description: React.ReactNode;
 	projectIcons: React.ReactNode;
+	projectLinks?: ProjectLinks;
 	showIcons: boolean;
 	triggerIcons: () => void;
 	reverse?: boolean;
+}
+
+export interface ProjectLinks {
+	github?: string;
+	site?: string;
+	figma?: string;
 }
