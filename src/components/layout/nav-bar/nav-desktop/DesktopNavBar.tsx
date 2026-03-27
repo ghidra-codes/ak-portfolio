@@ -38,7 +38,7 @@ const DesktopNavBar = () => {
 				<DesktopNavLinks />
 
 				<motion.div variants={fadeInSlideBtn} initial="hidden" animate={showBtn ? "show" : ""}>
-					<SlideFillButton href="#" title="Resume" />
+					<SlideFillButton href="/resume.pdf" title="Resume" download />
 				</motion.div>
 			</motion.div>
 		</motion.nav>

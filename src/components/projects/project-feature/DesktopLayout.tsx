@@ -14,7 +14,7 @@ const scaleReveal = (show: boolean) => ({
 		visible: {
 			scale: [0, 1.1, 1],
 			transition: {
-				duration: 0.45,
+				duration: 0.35,
 				ease: EASE_OUT_SLOW,
 			},
 		},
