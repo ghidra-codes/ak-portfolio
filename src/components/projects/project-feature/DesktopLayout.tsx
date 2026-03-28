@@ -42,7 +42,11 @@ const DesktopLayout: FC<ProjectFeatureLayoutProps> = ({
 					whileInView="visible"
 					viewport={{ once: true, margin: "-100px" }}
 				>
-					<TintedImage {...imageProps} />
+					<TintedImage
+						{...imageProps}
+						imageClass="project-image"
+						wrapperClass="project-image-wrapper"
+					/>
 				</motion.div>
 
 				<motion.div className="project-icons" {...scaleReveal(showIcons)}>
@@ -61,7 +65,7 @@ const DesktopLayout: FC<ProjectFeatureLayoutProps> = ({
 			>
 				<div className="project-feature-heading">
 					<motion.span className="project-links" {...scaleReveal(showIcons)}>
-						<ProjectLinks links={projectLinks} />
+						<ProjectLinks links={projectLinks} reverse={reverse} />
 					</motion.span>
 
 					{heading}

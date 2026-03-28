@@ -2,6 +2,7 @@ import classNames from "classnames";
 import type { FC } from "react";
 import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
+import type { ProjectLinks } from "@/types/project-feature.types";
 import type { StaticTintedImageProps } from "@/types/tinted-image.types";
 import DesktopLayout from "./DesktopLayout";
 import MobileLayout from "./MobileLayout";
@@ -11,11 +12,7 @@ interface ProjectFeatureProps {
 	heading: React.ReactNode;
 	description: React.ReactNode;
 	projectIcons: React.ReactNode;
-	projectLinks?: {
-		github?: string;
-		site?: string;
-		figma?: string;
-	};
+	projectLinks: ProjectLinks;
 	reverse?: boolean;
 }
 

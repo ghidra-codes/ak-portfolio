@@ -5,7 +5,7 @@ import { useMediaQuery } from "react-responsive";
 import SectionDivider from "@/components/layout/SectionDivider";
 import CursorInfoBox from "@/components/ui/CursorInfoBox";
 import { EASE_OUT_SLOW } from "@/constants/animations";
-import { categoryInfo, techStack } from "@/constants/techStack";
+import { CATEGORY_INFO, TECH_STACK } from "@/constants/techStack";
 import type { GroupedCategories } from "@/types/tech-stack.types";
 import { fadeInSimpleStaggered } from "@/utils/animations/tech-stack/fadeInSimpleStaggered";
 import RevealAnimation from "../../ui/RevealAnimation";
@@ -21,7 +21,7 @@ const TechStack = () => {
 	const isInView = useInView(sliderRef, { once: true, margin: "-50px" });
 	const isSmallScreen = useMediaQuery({ maxWidth: 768 });
 
-	const groupedByCategory = techStack.reduce((acc, tech) => {
+	const groupedByCategory = TECH_STACK.reduce((acc, tech) => {
 		(acc[tech.category] ??= []).push(tech);
 
 		return acc;
@@ -42,7 +42,7 @@ const TechStack = () => {
 
 			{!isSmallScreen ? (
 				<div className="icon-wrapper" onMouseMove={handleMouseMove}>
-					{techStack.map(({ name, icon, category }, index) => {
+					{TECH_STACK.map(({ name, icon, category }, index) => {
 						const isHighlighted = !hoveredCategory || hoveredCategory === category;
 
 						return (
@@ -85,8 +85,8 @@ const TechStack = () => {
 				<CursorInfoBox
 					x={cursorPos.x}
 					y={cursorPos.y}
-					icon={categoryInfo[hoveredInfo].icon}
-					label={categoryInfo[hoveredInfo].label}
+					icon={CATEGORY_INFO[hoveredInfo].icon}
+					label={CATEGORY_INFO[hoveredInfo].label}
 				/>
 			)}
 		</>

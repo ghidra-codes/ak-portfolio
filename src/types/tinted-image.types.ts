@@ -7,4 +7,7 @@ export interface TintedImageProps {
 	triggerPopIn?: boolean;
 }
 
-export type StaticTintedImageProps = Omit<TintedImageProps, "children" | "triggerPopIn">;
+export type StaticTintedImageProps = Omit<
+	TintedImageProps,
+	"children" | "triggerPopIn" | "wrapperClass" | "imageClass"
+>;

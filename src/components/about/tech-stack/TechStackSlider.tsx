@@ -3,7 +3,7 @@ import type { FC } from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import leftArrow from "@/assets/icons/left-slide-arrow.svg";
 import rightArrow from "@/assets/icons/right-slide-arrow.svg";
-import { categoryInfo } from "@/constants/techStack";
+import { CATEGORY_INFO } from "@/constants/techStack";
 import useTechStackSlider from "@/hooks/useTechStackSlider";
 import type { Categories, GroupedCategories } from "@/types/tech-stack.types";
 import { fadeInBlurStaggered } from "@/utils/animations/tech-stack-slider/fadeInBlurStaggered";
@@ -64,10 +64,10 @@ const TechStackSlider: FC<TechStackSliderProps> = ({ groupedByCategory, isInView
 							<div className="category-title">
 								<img
 									className="category-icon"
-									src={categoryInfo[category].icon}
-									alt={categoryInfo[category].label}
+									src={CATEGORY_INFO[category].icon}
+									alt={CATEGORY_INFO[category].label}
 								/>
-								<p className="category-label">{categoryInfo[category].label}</p>
+								<p className="category-label">{CATEGORY_INFO[category].label}</p>
 							</div>
 
 							<motion.img

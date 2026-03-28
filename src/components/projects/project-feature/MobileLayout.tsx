@@ -29,7 +29,11 @@ const MobileLayout: React.FC<ProjectFeatureLayoutProps> = ({
 				{heading}
 
 				<RevealAnimation viewportMargin="-100px" onAnimationComplete={triggerProjectIcons}>
-					<TintedImage {...imageProps} />
+					<TintedImage
+						{...imageProps}
+						imageClass="project-image"
+						wrapperClass="project-image-wrapper"
+					/>
 				</RevealAnimation>
 
 				<motion.div
@@ -55,7 +59,11 @@ const MobileLayout: React.FC<ProjectFeatureLayoutProps> = ({
 					initial="hidden"
 					animate={showLinkIcons ? "show" : "hidden"}
 				>
-					<ProjectLinks links={projectLinks} itemVariants={fadeInSlideDownwardGroup.item} />
+					<ProjectLinks
+						links={projectLinks}
+						itemVariants={fadeInSlideDownwardGroup.item}
+						isMobile
+					/>
 				</motion.div>
 			</div>
 		</div>

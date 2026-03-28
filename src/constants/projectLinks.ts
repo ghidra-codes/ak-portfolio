@@ -1,7 +1,7 @@
 import { FaFigma } from "react-icons/fa6";
 import { FiGithub, FiLink } from "react-icons/fi";
 
-export const projectLinksMap = {
+export const PROJECT_LINKS = {
 	github: {
 		Icon: FiGithub,
 		label: "GitHub",
@@ -16,4 +16,4 @@ export const projectLinksMap = {
 	},
 } as const;
 
-export type ProjectLinkKey = keyof typeof projectLinksMap;
+export type ProjectLinkKey = keyof typeof PROJECT_LINKS;

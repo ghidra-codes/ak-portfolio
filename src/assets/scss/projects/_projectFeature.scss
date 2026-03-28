@@ -226,6 +226,10 @@
 			.project-icons {
 				align-self: flex-start;
 				padding-left: 1rem;
+
+				.project-icon::after {
+					font-size: 0.84rem;
+				}
 			}
 
 			h3 {

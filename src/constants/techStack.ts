@@ -28,7 +28,7 @@ import supabase from "@/assets/icons/tech-stack/supabase.svg";
 import tanstack from "@/assets/icons/tech-stack/tanstack.svg";
 import ts from "@/assets/icons/tech-stack/ts.svg";
 
-export const categoryInfo: Record<string, { icon: string; label: string }> = {
+export const CATEGORY_INFO: Record<string, { icon: string; label: string }> = {
 	languages: { icon: languages, label: "Languages" },
 	frontend: { icon: frontend, label: "Frontend" },
 	backend: { icon: backend, label: "Backend" },
@@ -37,7 +37,7 @@ export const categoryInfo: Record<string, { icon: string; label: string }> = {
 	databases: { icon: databases, label: "Databases" },
 } as const;
 
-export const techStack = [
+export const TECH_STACK = [
 	{ name: "JavaScript", icon: js, category: "languages" },
 	{ name: "TypeScript", icon: ts, category: "languages" },
 
