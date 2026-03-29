@@ -61,22 +61,45 @@
 		scrollbar-color: rgba($blue-gray, 0.5) transparent;
 	}
 
-	.project {
+	.other-project {
 		background-color: $rich-black-lighter;
 		padding: 0.5rem 0.75rem;
 		border-radius: 4px;
+		display: grid;
+		grid-template-columns: 1fr auto;
 
-		h3,
-		p {
-			margin-top: 0;
-		}
+		.other-project-content {
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
 
-		h3 {
-			margin-bottom: 0.5rem;
-		}
+			.header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				gap: 0.25rem;
 
-		p {
-			margin-bottom: 0.25rem;
+				.links {
+					display: flex;
+					gap: 0.5rem;
+					font-size: 1.35rem;
+					padding-right: 0.15rem;
+				}
+			}
+
+			.title,
+			.description {
+				margin-top: 0;
+			}
+
+			.title {
+				margin-bottom: 0.5rem;
+			}
+
+			.description {
+				@include fluid-type(smaller-p);
+				margin-bottom: 0.25rem;
+			}
 		}
 	}
 }

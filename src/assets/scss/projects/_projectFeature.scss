@@ -53,15 +53,6 @@
 		}
 	}
 
-	.project-link-icon {
-		cursor: pointer;
-		transition: color 0.3s;
-
-		&:hover {
-			color: $blue-gray;
-		}
-	}
-
 	.project-description {
 		position: relative;
 		background-color: $deep-blue-gray;

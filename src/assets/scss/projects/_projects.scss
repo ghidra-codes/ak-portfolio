@@ -31,4 +31,13 @@
 			color: $blue-gray;
 		}
 	}
+
+	.project-link-icon {
+		cursor: pointer;
+		transition: color 0.3s;
+
+		&:hover {
+			color: $blue-gray;
+		}
+	}
 }
