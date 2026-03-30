@@ -62,7 +62,7 @@
 		z-index: 3;
 
 		p {
-			@include fluid-type(smaller-p);
+			@include fluid-type(small-p);
 			color: $blue-tint;
 			line-height: 1.4;
 			margin-left: auto;

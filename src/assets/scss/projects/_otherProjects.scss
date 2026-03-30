@@ -97,8 +97,26 @@
 			}
 
 			.description {
-				@include fluid-type(smaller-p);
+				@include fluid-type(small-p);
 				margin-bottom: 0.25rem;
+			}
+
+			.technologies {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.5rem;
+
+				.technology {
+					@include flex-center;
+					@include fluid-type(small-label);
+					font-family: "Oxanium", sans-serif;
+					text-transform: uppercase;
+					background-color: rgba($blue-gray, 0.2);
+					padding: 0.35rem 0.6rem;
+					border-radius: 3px;
+					font-weight: 500;
+					line-height: 1;
+				}
 			}
 		}
 	}

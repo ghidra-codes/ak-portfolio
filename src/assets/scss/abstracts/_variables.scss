@@ -31,15 +31,21 @@ $font-sizes: (
 	),
 
 	small-p: (
+		min: 0.88rem,
+		fluid: 1.75vw,
+		max: 1.15rem,
+	),
+
+	label: (
 		min: 0.9rem,
 		fluid: 1.85vw,
 		max: 1.25rem,
 	),
 
-	smaller-p: (
-		min: 0.88rem,
-		fluid: 1.75vw,
-		max: 1.15rem,
+	small-label: (
+		min: 0.78rem,
+		fluid: 1.5vw,
+		max: 1rem,
 	),
 
 	header-p: (

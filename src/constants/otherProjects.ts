@@ -5,6 +5,7 @@ interface OtherProject {
 	title: string;
 	description: string;
 	links: ProjectLinks;
+	technologies: string[];
 }
 
 export const OTHER_PROJECTS: OtherProject[] = [
@@ -17,5 +18,6 @@ export const OTHER_PROJECTS: OtherProject[] = [
 			github: "asd",
 			site: "asd",
 		},
+		technologies: ["React", "TypeScript", "Vite", "i18next"],
 	},
 ];

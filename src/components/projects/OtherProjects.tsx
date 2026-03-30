@@ -15,7 +15,7 @@ const OtherProjects = () => {
 	return (
 		<div className="other-projects-container">
 			<div ref={scrollRef} className="other-projects-scroll">
-				{OTHER_PROJECTS.map(({ id, title, description, links }) => (
+				{OTHER_PROJECTS.map(({ id, title, description, links, technologies }) => (
 					<motion.div
 						key={id}
 						className="other-project"
@@ -33,6 +33,13 @@ const OtherProjects = () => {
 								</div>
 							</div>
 							<p className="description">{description}</p>
+							<div className="technologies">
+								{technologies.map((tech) => (
+									<span key={tech} className="technology">
+										{tech}
+									</span>
+								))}
+							</div>
 						</motion.div>
 					</motion.div>
 				))}

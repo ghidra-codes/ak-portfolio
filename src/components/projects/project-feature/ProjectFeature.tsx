@@ -8,6 +8,7 @@ import DesktopLayout from "./DesktopLayout";
 import MobileLayout from "./MobileLayout";
 
 interface ProjectFeatureProps {
+	id: string;
 	imageProps: StaticTintedImageProps;
 	heading: React.ReactNode;
 	description: React.ReactNode;
@@ -17,6 +18,7 @@ interface ProjectFeatureProps {
 }
 
 const ProjectFeature: FC<ProjectFeatureProps> = ({
+	id,
 	imageProps,
 	heading,
 	description,
@@ -46,6 +48,7 @@ const ProjectFeature: FC<ProjectFeatureProps> = ({
 
 	return (
 		<div
+			id={id}
 			className={classNames("project-feature", {
 				"is-mobile": isSmallScreen,
 				"is-desktop": !isSmallScreen,

@@ -1,3 +1,4 @@
+import React from "react";
 import { FEATURED_PROJECTS } from "@/constants/featuredProjects";
 import { PROJECT_ICONS } from "@/constants/projectIcons";
 import SectionDivider from "../layout/SectionDivider";
@@ -18,9 +19,9 @@ export default function Projects() {
 			{/* PROJECT LIST */}
 			{FEATURED_PROJECTS.map((project, index) => {
 				return (
-					<>
+					<React.Fragment key={project.id}>
 						<ProjectFeature
-							key={project.id}
+							id={project.id}
 							imageProps={project.image}
 							heading={<h3>{project.title}</h3>}
 							description={<p>{project.description}</p>}
@@ -43,7 +44,7 @@ export default function Projects() {
 								<FeatureDivider />
 							</RevealAnimation>
 						)}
-					</>
+					</React.Fragment>
 				);
 			})}
 
