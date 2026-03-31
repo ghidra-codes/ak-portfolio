@@ -10,6 +10,16 @@ interface OtherProject {
 
 export const OTHER_PROJECTS: OtherProject[] = [
 	{
+		id: "ourgreencar",
+		title: "OurGreenCar",
+		description:
+			"OurGreenCar is a platform for managing shared electric vehicle pools, enabling users to book, track, and administer vehicles. During my internship at OAWA, I worked primarily on the frontend, building features such as Google Maps integrations and FAQ search, while contributing to other core parts of the platform within an existing Laravel system.",
+		links: {
+			site: "https://ourgreencar.se/",
+		},
+		technologies: ["Laravel", "JavaScript", "MySQL"],
+	},
+	{
 		id: "nadjas-levande-tradvard",
 		title: "Nadjas Levande Trädvård",
 		description:
@@ -31,13 +41,13 @@ export const OTHER_PROJECTS: OtherProject[] = [
 		technologies: ["Node.js", "Express.js", "TypeScript", "Prisma ORM"],
 	},
 	{
-		id: "ourgreencar",
-		title: "OurGreenCar",
+		id: "ak-portfolio",
+		title: "AK Portfolio",
 		description:
-			"OurGreenCar is a platform for managing shared electric vehicle pools, enabling users to book, track, and administer vehicles. During my internship at OAWA, I worked primarily on the frontend, building features such as Google Maps integrations and FAQ search, while contributing to other core parts of the platform within an existing Laravel system.",
+			"A React and TypeScript portfolio project focused on polished UI and animation, built with Motion for smooth transitions, interactive elements, and animated section reveals.",
 		links: {
-			site: "https://ourgreencar.se/",
+			github: "https://github.com/ghidra-codes/ak-portfolio",
 		},
-		technologies: ["Laravel", "JavaScript", "MySQL"],
+		technologies: ["React", "TypeScript", "Vite", "Motion"],
 	},
 ];

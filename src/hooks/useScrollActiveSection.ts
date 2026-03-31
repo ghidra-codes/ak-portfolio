@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import type { Section, TriggerPoint } from "@/types/sections.types";
-import getTriggerPoints from "@/utils/helper/getTriggerPoints";
-import isSection from "@/utils/helper/isSection";
+import getTriggerPoints from "@/utils/helpers/getTriggerPoints";
+import isSection from "@/utils/helpers/isSection";
 
 const BOTTOM_THRESHOLD = 80;
 

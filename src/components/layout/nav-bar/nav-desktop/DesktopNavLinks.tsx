@@ -7,7 +7,7 @@ import { useAnimationContext } from "@/hooks/useAnimationContext";
 import useScrollActiveSection from "@/hooks/useScrollActiveSection";
 import type { Section } from "@/types/sections.types";
 import { fadeInSlideDownwardGroup } from "@/utils/animations/nav-links/fadeInSlideDownwardGroup";
-import getSectionState from "@/utils/helper/getSectionState";
+import getSectionState from "@/utils/helpers/getSectionState";
 
 /**
  * Renders desktop navigation links with scroll tracking.

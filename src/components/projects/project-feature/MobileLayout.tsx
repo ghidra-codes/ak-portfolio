@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import React, { useState } from "react";
 import RevealAnimation from "@/components/ui/RevealAnimation";
 import TintedImage from "@/components/ui/TintedImage";
+import { DEFAULT_VIEWPORT_MARGIN } from "@/constants/animations";
 import type { ProjectFeatureLayoutProps } from "@/types/project-feature.types";
 import { fadeInSlideDownwardGroup } from "@/utils/animations/nav-links/fadeInSlideDownwardGroup";
 import ProjectLinks from "./ProjectLinks";
@@ -28,7 +29,10 @@ const MobileLayout: React.FC<ProjectFeatureLayoutProps> = ({
 			<div className="top">
 				{heading}
 
-				<RevealAnimation viewportMargin="-100px" onAnimationComplete={triggerProjectIcons}>
+				<RevealAnimation
+					viewportMargin={DEFAULT_VIEWPORT_MARGIN}
+					onAnimationComplete={triggerProjectIcons}
+				>
 					<TintedImage
 						{...imageProps}
 						imageClass="project-image"
