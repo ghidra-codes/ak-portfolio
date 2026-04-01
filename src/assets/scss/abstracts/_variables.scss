@@ -7,9 +7,9 @@ $breakpoints: (
 
 $font-sizes: (
 	h1: (
-		min: 1.7rem,
-		fluid: 4.6vw,
-		max: 2.85rem,
+		min: 1.8rem,
+		fluid: 5vw,
+		max: 3.2rem,
 	),
 
 	h2: (
@@ -20,7 +20,7 @@ $font-sizes: (
 
 	h3: (
 		min: 1.1rem,
-		fluid: 2.5vw,
+		fluid: 2.2vw,
 		max: 1.5rem,
 	),
 
@@ -31,27 +31,27 @@ $font-sizes: (
 	),
 
 	small-p: (
-		min: 0.88rem,
-		fluid: 1.75vw,
-		max: 1.15rem,
-	),
-
-	label: (
-		min: 0.9rem,
-		fluid: 1.85vw,
-		max: 1.25rem,
-	),
-
-	small-label: (
-		min: 0.78rem,
+		min: 0.85rem,
 		fluid: 1.5vw,
 		max: 1rem,
 	),
 
+	label: (
+		min: 0.8rem,
+		fluid: 1.4vw,
+		max: 0.95rem,
+	),
+
+	small-label: (
+		min: 0.7rem,
+		fluid: 1.2vw,
+		max: 0.85rem,
+	),
+
 	header-p: (
-		min: 1.05rem,
-		fluid: 2.15vw,
-		max: 1.3rem,
+		min: 1.1rem,
+		fluid: 2.2vw,
+		max: 1.4rem,
 	),
 
 	header-period-h1: (
@@ -67,8 +67,8 @@ $font-sizes: (
 	),
 
 	button-text: (
-		min: 0.95rem,
-		fluid: 1.75vw,
+		min: 0.9rem,
+		fluid: 1.6vw,
 		max: 1.1rem,
 	),
 );

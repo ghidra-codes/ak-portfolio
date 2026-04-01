@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
-import { Link } from "react-scroll";
 import { SECTIONS } from "@/constants/sections";
 import { fadeInSlideLeftGroup } from "@/utils/animations/nav-links/fadeInSlideLeftGroup";
+import { smoothScrollTo } from "@/utils/helpers/smoothScroll";
 
 interface MobileNavLinksProps {
 	setShowMenu: (show: boolean) => void;
@@ -17,15 +17,17 @@ const MobileNavLinks: React.FC<MobileNavLinksProps> = ({ setShowMenu }) => (
 	>
 		{SECTIONS.map((section) => (
 			<motion.li key={section} variants={fadeInSlideLeftGroup.item} className={"navbar-link-list-item"}>
-				<Link
-					to={section}
-					smooth={true}
-					duration={600}
-					offset={-32.5}
-					onClick={() => setShowMenu(false)}
+				<a
+					href={`#${section}`}
+					onClick={(e) => {
+						e.preventDefault();
+						smoothScrollTo(section);
+						setShowMenu(false);
+					}}
+					className="navbar-link"
 				>
 					{section}
-				</Link>
+				</a>
 			</motion.li>
 		))}
 	</motion.ul>

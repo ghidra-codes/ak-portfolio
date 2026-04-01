@@ -1,0 +1,32 @@
+@use "../abstracts/index" as *;
+
+footer {
+	background-color: $rich-black-darker;
+
+	p {
+		color: $blue-gray;
+		margin: 0;
+		padding-bottom: 1rem;
+		white-space: nowrap;
+		@include fluid-type(small-label);
+		text-align: center;
+		font-weight: 500;
+	}
+
+	.mobile-links {
+		width: fit-content;
+		margin: 0 auto 0.75rem auto;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 1.75rem;
+
+		a {
+			line-height: 1;
+		}
+
+		svg {
+			font-size: 1.45rem;
+		}
+	}
+}

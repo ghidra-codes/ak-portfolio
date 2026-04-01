@@ -1,13 +1,13 @@
 import classNames from "classnames";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
-import { Link } from "react-scroll";
 import { SECTIONS } from "@/constants/sections";
 import { useAnimationContext } from "@/hooks/useAnimationContext";
 import useScrollActiveSection from "@/hooks/useScrollActiveSection";
 import type { Section } from "@/types/sections.types";
 import { fadeInSlideDownwardGroup } from "@/utils/animations/nav-links/fadeInSlideDownwardGroup";
 import getSectionState from "@/utils/helpers/getSectionState";
+import { smoothScrollTo } from "@/utils/helpers/smoothScroll";
 
 /**
  * Renders desktop navigation links with scroll tracking.
@@ -57,9 +57,16 @@ const DesktopNavLinks = () => {
 						})}
 						onAnimationComplete={isLast ? () => setAnimateHeader(true) : undefined}
 					>
-						<Link to={section} smooth={true} duration={600} offset={-60} spy={true}>
+						<a
+							href={`#${section}`}
+							onClick={(e) => {
+								e.preventDefault();
+								smoothScrollTo(section);
+							}}
+							className="navbar-link"
+						>
 							{section}
-						</Link>
+						</a>
 					</motion.li>
 				);
 			})}

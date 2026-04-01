@@ -15,8 +15,8 @@ const Contact = () => {
 		<RevealAnimation className="contact-wrapper" onAnimationComplete={() => setRevealFinished(true)}>
 			<motion.div
 				className="contact-border"
-				initial={{ borderColor: "rgba(96, 96, 98, 0)" }}
-				animate={revealFinished ? { borderColor: "rgba(96, 96, 98, 0.6)" } : {}}
+				initial={{ borderColor: "rgba(96, 96, 98, 0)", scale: 0.98 }}
+				animate={revealFinished ? { borderColor: "rgba(96, 96, 98, 0.6)", scale: 1 } : {}}
 				transition={{
 					duration: 0.45,
 					ease: EASE_OUT_SLOW,

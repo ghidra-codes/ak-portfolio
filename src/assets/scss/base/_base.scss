@@ -40,14 +40,15 @@ main {
 		left: 50%;
 		transform: translateX(-50%);
 
-		bottom: -30px;
+		bottom: 0;
 
 		width: 100vw;
 		height: 160px;
 
 		background: linear-gradient(
 			to top,
-			rgba($rich-black-darker, 0.9) 0%,
+			rgba($rich-black-darker, 1) 0%,
+			rgba($rich-black-darker, 0.9) 5%,
 			rgba($rich-black-darker, 0.75) 20%,
 			rgba($rich-black-darker, 0.55) 40%,
 			rgba($rich-black-darker, 0.3) 60%,
@@ -57,7 +58,6 @@ main {
 
 		@include respond(tablet) {
 			height: 140px;
-			bottom: -20px;
 		}
 
 		pointer-events: none;
