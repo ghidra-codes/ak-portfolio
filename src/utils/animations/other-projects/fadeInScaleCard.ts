@@ -3,7 +3,7 @@ import { EASE_SURFACE } from "@/constants/animations";
 
 export const fadeInScaleCard: Variants = {
 	hidden: {
-		opacity: 0,
+		opacity: 0.3,
 		scale: 0.985,
 		boxShadow: "0 0 0 rgba(0,0,0,0)",
 	},

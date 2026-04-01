@@ -21,6 +21,7 @@
 	cursor: default;
 
 	.icon-label {
+		letter-spacing: 0.02em;
 		white-space: nowrap;
 		color: $blue-ivory;
 		@include fluid-type(label);

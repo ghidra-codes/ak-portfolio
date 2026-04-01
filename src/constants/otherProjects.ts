@@ -25,8 +25,8 @@ export const OTHER_PROJECTS: OtherProject[] = [
 		description:
 			"Designed and developed a modern, mobile-friendly website for my sister’s arborist business, focused on clearly presenting services, showcasing before-and-after work, and making it easy for customers to get in touch.",
 		links: {
-			github: "https://github.com/ghidra-codes/nadjas-levande-tradvard",
 			site: "https://nadjas-levande-tradvard.se/",
+			github: "https://github.com/ghidra-codes/nadjas-levande-tradvard",
 		},
 		technologies: ["React", "TypeScript", "Vite", "i18next"],
 	},

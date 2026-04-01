@@ -26,11 +26,10 @@ const OtherProjects = () => {
 					>
 						<motion.div className="other-project-content" variants={fadeInContent}>
 							<div className="header">
-								<h3 className="title">{title}</h3>
-
 								<div className="links">
-									<ProjectLinks links={links} />
+									<ProjectLinks links={links} reverse />
 								</div>
+								<h3 className="title">{title}</h3>
 							</div>
 							<p className="description">{description}</p>
 							<div className="technologies">

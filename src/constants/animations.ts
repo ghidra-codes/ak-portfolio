@@ -13,6 +13,7 @@ export const EASE_OUT_BACK: Easing = [0.34, 1.56, 0.64, 1];
 // Animation colors
 export const MAYA_BLUE = "#73c2fb";
 export const HONOLULU_BLUE = "#2176ae";
+export const RICH_BLACK_DARKER = "#0a0a0a";
 
 // Animation viewport margin
 export const DEFAULT_VIEWPORT_MARGIN = "-100px";

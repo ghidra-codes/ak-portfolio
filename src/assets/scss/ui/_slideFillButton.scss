@@ -95,7 +95,7 @@ $fill-width-vertical: calc(100% + 2px);
 body:not(.no-hover) {
 	.slide-fill-button {
 		&:hover {
-			color: $rich-black-darker;
+			color: $rich-black-dark;
 
 			&::before,
 			&::after {
