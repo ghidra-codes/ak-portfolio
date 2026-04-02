@@ -63,6 +63,7 @@ const RevealAnimation: React.FC<RevealAnimationProps> = ({
 				return (
 					<motion.div
 						key={index}
+						className="reveal-animation-item"
 						variants={fadeInStaggeredGroup.item}
 						onAnimationComplete={isLast ? onAnimationComplete : undefined}
 					>

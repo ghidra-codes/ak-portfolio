@@ -63,7 +63,7 @@
 
 		p {
 			@include fluid-type(small-p);
-			color: $blue-tint;
+			color: rgba($blue-tint, 0.85);
 			line-height: 1.4;
 			margin-left: auto;
 			margin-right: auto;

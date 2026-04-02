@@ -17,6 +17,7 @@ h3 {
 p {
 	@include fluid-type(p);
 	letter-spacing: 0.01em;
+	line-height: 1.65;
 	color: $bright-jet;
 }
 

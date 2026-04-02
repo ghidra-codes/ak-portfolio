@@ -63,7 +63,7 @@
 
 	.other-project {
 		background-color: $rich-black-lighter;
-		padding: 0.5rem 0.75rem;
+		padding: 0.75rem 0.75rem 0.5rem 0.75rem;
 		border-radius: 4px;
 		display: grid;
 		grid-template-columns: 1fr auto;
@@ -76,13 +76,19 @@
 			.header {
 				display: flex;
 				align-items: center;
-				gap: 0.55rem;
+				gap: 0.75rem;
 
 				.links {
 					display: flex;
-					gap: 0.5rem;
+					gap: 0.65rem;
 					font-size: 1.35rem;
-					padding-right: 0.15rem;
+					padding-left: 0.15rem;
+					vertical-align: middle;
+					line-height: 1;
+
+					@include respond(mobile) {
+						font-size: 1.32rem;
+					}
 				}
 			}
 
@@ -93,12 +99,13 @@
 
 			.title {
 				margin-bottom: 0.5rem;
+				padding-top: 3px;
+				line-height: 1;
 			}
 
 			.description {
 				@include fluid-type(small-p);
 				margin-bottom: 0.25rem;
-				transform: translateZ(0);
 			}
 
 			.technologies {
