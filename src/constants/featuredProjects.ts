@@ -5,6 +5,22 @@ import type { FeaturedProject } from "@/types/project-feature.types";
 
 export const FEATURED_PROJECTS: FeaturedProject[] = [
 	{
+		id: "grow-your-habits",
+		title: "Grow Your Habits",
+		description:
+			"Grow Your Habits is a mobile-first React application that combines habit tracking with gamification. Users log daily habits while a virtual plant reflects consistency by growing or declining over time. The system includes insights, statistics, and achievements, backed by Supabase and edge functions for persistent data and logic. The project focuses on scalable state management with TanStack Query and Zustand, along with a structured component architecture and UI animations using Framer Motion and Lottie.",
+		image: {
+			src: growYourHabits,
+			alt: "Screenshot from grow your habits site",
+		},
+		icons: ["typescript", "react", "reactQuery", "supabase"],
+		links: {
+			site: "https://grow-your-habits.netlify.app",
+			github: "https://github.com/ghidra-codes/grow-your-habits",
+		},
+	},
+
+	{
 		id: "matdagboken",
 		title: "Matdagboken",
 		description:
@@ -18,7 +34,9 @@ export const FEATURED_PROJECTS: FeaturedProject[] = [
 			figma: "https://www.figma.com/design/jUxajtCOkJ8woK2e037Eor/matdagbok?node-id=162-5968",
 			site: "https://www.matdagboken.se/",
 		},
+		reverse: true,
 	},
+
 	{
 		id: "filmflare",
 		title: "The Filmflare Project",
@@ -32,22 +50,6 @@ export const FEATURED_PROJECTS: FeaturedProject[] = [
 		links: {
 			github: "https://github.com/ghidra-codes/filmflare-project",
 			site: "https://the-filmflare-project.netlify.app",
-		},
-		reverse: true,
-	},
-	{
-		id: "grow-your-habits",
-		title: "Grow Your Habits",
-		description:
-			"Grow Your Habits is a mobile-first React application that combines habit tracking with gamification. Users log daily habits while a virtual plant reflects consistency by growing or declining over time. The system includes insights, statistics, and achievements, backed by Supabase and edge functions for persistent data and logic. The project focuses on scalable state management with TanStack Query and Zustand, along with a structured component architecture and UI animations using Framer Motion and Lottie.",
-		image: {
-			src: growYourHabits,
-			alt: "Screenshot from grow your habits site",
-		},
-		icons: ["typescript", "react", "reactQuery", "supabase"],
-		links: {
-			site: "https://grow-your-habits.netlify.app",
-			github: "https://github.com/ghidra-codes/grow-your-habits",
 		},
 	},
 ];
