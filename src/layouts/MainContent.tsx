@@ -1,5 +1,6 @@
 import About from "@/components/about/About";
 import Contact from "@/components/contact/Contact";
+import Decorations from "@/components/layout/Decorations";
 import Header from "@/components/layout/Header";
 import Projects from "@/components/projects/Projects";
 
@@ -15,6 +16,8 @@ const MainContent = () => (
 		<section id="contact">
 			<Contact />
 		</section>
+
+		<Decorations />
 	</main>
 );
 

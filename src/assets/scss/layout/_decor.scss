@@ -5,25 +5,26 @@
 	z-index: -1;
 	width: 9.5rem;
 	color: $jet;
+	pointer-events: none;
 
 	&.triangle {
-		top: 15%;
-		right: -20%;
+		top: 12%;
+		right: 0;
 	}
 
 	&.square {
-		top: 15%;
-		left: -20%;
+		top: 35%;
+		left: 0;
 	}
 
 	&.hexagon {
-		top: 50%;
-		right: -10%;
+		top: 30%;
+		right: 0;
 	}
 
 	&.diamond {
 		top: 50%;
-		left: -10%;
+		left: 0;
 	}
 
 	@include respond(desktop) {

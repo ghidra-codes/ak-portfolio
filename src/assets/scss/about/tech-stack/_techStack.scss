@@ -1,7 +1,6 @@
 @use "../../abstracts/index" as *;
 
 #tech-stack {
-	position: relative;
 	@include flex-center;
 	flex-direction: column;
 	gap: 2.5rem;
