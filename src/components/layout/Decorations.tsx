@@ -44,12 +44,12 @@ const Decorations: FC = () => {
 	if (!animateSides) return null;
 
 	return (
-		<>
+		<div className="decor-rail">
 			{VARIANTS.map((variant) => (
 				<motion.svg
 					key={variant}
 					initial={{ opacity: 0 }}
-					animate={{ opacity: 0.085 }}
+					animate={{ opacity: 0.0985 }}
 					transition={{ duration: 1.5, ease: EASE_OUT_SLOW }}
 					viewBox="0 0 48 48"
 					width="152"
@@ -66,7 +66,7 @@ const Decorations: FC = () => {
 					{getMainShape(variant)}
 				</motion.svg>
 			))}
-		</>
+		</div>
 	);
 };
 

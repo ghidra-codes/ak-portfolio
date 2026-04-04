@@ -1,33 +1,43 @@
 @use "../abstracts/index" as *;
 
-.decor {
+.decor-rail {
 	position: absolute;
+	inset: 0;
 	z-index: -1;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	padding-block: 8vh;
+	pointer-events: none;
+
+	@media (max-width: 1325px) {
+		display: none;
+	}
+}
+
+.decor {
+	position: relative;
 	width: 9.5rem;
 	color: $jet;
 	pointer-events: none;
 
-	&.triangle {
-		top: 12%;
-		right: 0;
-	}
-
-	&.square {
-		top: 35%;
-		left: 0;
-	}
-
+	&.triangle,
 	&.hexagon {
-		top: 30%;
-		right: 0;
+		align-self: flex-end;
+		margin-right: 0;
+
+		@media (max-width: 1640px) {
+			margin-right: 3.25rem;
+		}
 	}
 
+	&.square,
 	&.diamond {
-		top: 50%;
-		left: 0;
-	}
+		align-self: flex-start;
+		margin-left: 0;
 
-	@include respond(desktop) {
-		display: none;
+		@media (max-width: 1640px) {
+			margin-left: 3.25rem;
+		}
 	}
 }
