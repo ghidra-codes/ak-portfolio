@@ -8,10 +8,9 @@
 		"strict": true,
 		"esModuleInterop": true,
 		"noEmit": true,
-
-		"baseUrl": "src",
+		"skipLibCheck": true,
 		"paths": {
-			"@/*": ["*"]
+			"@/*": ["./src/*"]
 		}
 	},
 
