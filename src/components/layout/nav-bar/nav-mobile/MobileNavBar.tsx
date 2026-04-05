@@ -30,7 +30,7 @@ const MobileNavBar = () => {
 						animate="show"
 						onAnimationComplete={() => setAnimateHeader(true)}
 					>
-						<SlideFillButton href="#" title="Resume" />
+						<SlideFillButton href="/resume.pdf" btnText="Resume" download />
 					</motion.div>
 				</motion.div>
 			</motion.nav>

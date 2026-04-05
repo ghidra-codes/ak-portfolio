@@ -4,13 +4,14 @@ import type { FC } from "react";
 import { useMediaQuery } from "react-responsive";
 
 interface SlideFillButtonProps {
-	title: string;
+	btnText: string;
+	title?: string;
 	href: string;
 	largerSize?: boolean;
 	download?: boolean;
 }
 
-const SlideFillButton: FC<SlideFillButtonProps> = ({ title, href, largerSize, download }) => {
+const SlideFillButton: FC<SlideFillButtonProps> = ({ btnText, title, href, largerSize, download }) => {
 	const isSmallScreen = useMediaQuery({ maxWidth: 1024 });
 	const isTouchDevice = document.body.classList.contains("no-hover");
 
@@ -34,6 +35,7 @@ const SlideFillButton: FC<SlideFillButtonProps> = ({ title, href, largerSize, do
 			href={href}
 			className={classNames("slide-fill-button", { "size-lg": largerSize }, { compact: isSmallScreen })}
 			onClick={handleClick}
+			{...(title ? { title } : {})}
 			{...(download ? { download: true } : {})}
 			{...(isTouchDevice
 				? {
@@ -46,7 +48,7 @@ const SlideFillButton: FC<SlideFillButtonProps> = ({ title, href, largerSize, do
 					}
 				: {})}
 		>
-			<span className="slide-fill-button-text">{title}</span>
+			<span className="slide-fill-button-text">{btnText}</span>
 			<span className="fill-top" />
 			<span className="fill-bottom" />
 		</motion.a>

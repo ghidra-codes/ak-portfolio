@@ -65,7 +65,12 @@ const Contact = () => {
 				<span>I’m ready to contribute.</span>
 			</p>
 
-			<SlideFillButton title="Let's talk" href="mailto:akallin94@gmail.com" largerSize />
+			<SlideFillButton
+				href="mailto:akallin94@gmail.com"
+				btnText="Let's talk"
+				title="No fancy form, just a simple mail to link"
+				largerSize
+			/>
 		</RevealAnimation>
 	);
 };
