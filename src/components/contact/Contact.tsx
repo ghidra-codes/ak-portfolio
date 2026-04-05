@@ -68,7 +68,7 @@ const Contact = () => {
 			<SlideFillButton
 				href="mailto:akallin94@gmail.com"
 				btnText="Let's talk"
-				title="No fancy form, just a simple mail to link"
+				title="No fancy form, just a mail to link"
 				largerSize
 			/>
 		</RevealAnimation>

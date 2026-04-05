@@ -1,10 +1,13 @@
 import { motion } from "motion/react";
 import React, { useState } from "react";
-import RevealAnimation from "@/components/ui/RevealAnimation";
 import TintedImage from "@/components/ui/TintedImage";
 import { DEFAULT_VIEWPORT_MARGIN } from "@/constants/animations";
 import type { ProjectFeatureLayoutProps } from "@/types/project-feature.types";
 import { fadeInSlideDownwardGroup } from "@/utils/animations/nav-links/fadeInSlideDownwardGroup";
+import {
+	fadeInMobileDescription,
+	fadeInMobileImage,
+} from "@/utils/animations/project-feature/fadeInMobileContent";
 import ProjectLinks from "./ProjectLinks";
 
 const MobileLayout: React.FC<ProjectFeatureLayoutProps> = ({
@@ -29,8 +32,11 @@ const MobileLayout: React.FC<ProjectFeatureLayoutProps> = ({
 			<div className="top">
 				{heading}
 
-				<RevealAnimation
-					viewportMargin={DEFAULT_VIEWPORT_MARGIN}
+				<motion.div
+					variants={fadeInMobileImage}
+					initial="hidden"
+					whileInView="show"
+					viewport={{ once: true, margin: DEFAULT_VIEWPORT_MARGIN }}
 					onAnimationComplete={triggerProjectIcons}
 				>
 					<TintedImage
@@ -38,7 +44,7 @@ const MobileLayout: React.FC<ProjectFeatureLayoutProps> = ({
 						imageClass="project-image"
 						wrapperClass="project-image-wrapper"
 					/>
-				</RevealAnimation>
+				</motion.div>
 
 				<motion.div
 					className="project-icons"
@@ -53,9 +59,16 @@ const MobileLayout: React.FC<ProjectFeatureLayoutProps> = ({
 			</div>
 
 			<div className="bottom">
-				<RevealAnimation viewportMargin="-80px" onAnimationComplete={triggerLinkIcons}>
-					<div className="project-description">{description}</div>
-				</RevealAnimation>
+				<motion.div
+					className="project-description"
+					variants={fadeInMobileDescription}
+					initial="hidden"
+					whileInView="show"
+					viewport={{ once: true, margin: "-80px" }}
+					onAnimationComplete={triggerLinkIcons}
+				>
+					{description}
+				</motion.div>
 
 				<motion.div
 					className="project-links"

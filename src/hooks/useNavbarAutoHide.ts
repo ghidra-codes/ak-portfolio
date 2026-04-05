@@ -1,6 +1,8 @@
 import { useMotionValueEvent, useScroll } from "motion/react";
 import { useRef, useState } from "react";
 
+const TOP_VISIBILITY_THRESHOLD = 8;
+
 /**
  * Hides navbar on downward scroll and shows it on scroll up.
  */
@@ -12,6 +14,13 @@ const useNavbarAutoHide = () => {
 	const pendingHideRef = useRef(false);
 
 	useMotionValueEvent(scrollY, "change", (latest) => {
+		// Always show navbar when near the top of the page
+		if (latest <= TOP_VISIBILITY_THRESHOLD) {
+			if (isHidden) setIsHidden(false);
+			pendingHideRef.current = false;
+			return;
+		}
+
 		const prev = scrollY.getPrevious();
 		const scrollingDown = prev !== undefined && latest > prev;
 
