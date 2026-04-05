@@ -18,7 +18,7 @@ const AboutContent = () => {
 		const rect = sectionRef.current.getBoundingClientRect();
 		const offsetTop = rect.top + window.scrollY;
 
-		setThreshold(offsetTop - window.innerHeight * 0.2);
+		setThreshold(Math.max(0, offsetTop - window.innerHeight * 0.2));
 	}, []);
 
 	const skipSequence = useSkipSequence(threshold);
@@ -27,7 +27,7 @@ const AboutContent = () => {
 
 	return (
 		<>
-			<div className="about-section">
+			<div ref={sectionRef} className="about-section">
 				<RevealAnimation manualControl shouldAnimate={shouldAnimate}>
 					<SectionHeader title={"About"} />
 				</RevealAnimation>
