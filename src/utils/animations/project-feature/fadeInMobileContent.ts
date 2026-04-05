@@ -12,7 +12,7 @@ export const fadeInMobileImage: Variants = {
 		y: 0,
 		scale: 1,
 		transition: {
-			duration: 0.62,
+			duration: 0.54,
 			ease: EASE_OUT_SLOW,
 		},
 	},
@@ -29,7 +29,7 @@ export const fadeInMobileDescription: Variants = {
 		y: 0,
 		scale: 1,
 		transition: {
-			duration: 0.48,
+			duration: 0.4,
 			ease: EASE_IN_OUT,
 		},
 	},
