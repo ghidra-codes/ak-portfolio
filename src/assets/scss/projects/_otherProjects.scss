@@ -57,6 +57,11 @@
 		scroll-behavior: smooth;
 		overscroll-behavior: contain;
 
+		@include respond(tablet) {
+			overscroll-behavior-y: auto;
+			-webkit-overflow-scrolling: touch;
+		}
+
 		scrollbar-width: thin;
 		scrollbar-color: rgba($blue-gray, 0.5) transparent;
 	}
