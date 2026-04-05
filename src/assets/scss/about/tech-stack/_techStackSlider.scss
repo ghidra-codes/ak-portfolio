@@ -30,6 +30,16 @@
 					width: 1.75rem;
 				}
 
+				.arrow-left {
+					transform: scaleX(-1);
+					-webkit-transform: scaleX(-1);
+				}
+
+				.arrow-right {
+					transform: scaleX(1);
+					-webkit-transform: scaleX(1);
+				}
+
 				.category-title {
 					@include flex-center;
 					gap: 1rem;

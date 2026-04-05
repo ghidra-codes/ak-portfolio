@@ -1,7 +1,6 @@
 import { AnimatePresence, easeInOut, motion } from "motion/react";
 import type { FC } from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
-import leftArrow from "@/assets/icons/left-slide-arrow.svg";
 import rightArrow from "@/assets/icons/right-slide-arrow.svg";
 import { CATEGORY_INFO } from "@/constants/techStack";
 import useTechStackSlider from "@/hooks/useTechStackSlider";
@@ -54,9 +53,9 @@ const TechStackSlider: FC<TechStackSliderProps> = ({ groupedByCategory, isInView
 					<div className="category-header">
 						<div className="category-controls">
 							<motion.img
-								className="arrow"
+								className="arrow arrow-left"
 								{...arrowProps}
-								src={leftArrow}
+								src={rightArrow}
 								alt="Left arrow"
 								aria-label="Scroll left"
 							/>
@@ -71,7 +70,7 @@ const TechStackSlider: FC<TechStackSliderProps> = ({ groupedByCategory, isInView
 							</div>
 
 							<motion.img
-								className="arrow"
+								className="arrow arrow-right"
 								{...arrowProps}
 								src={rightArrow}
 								alt="Right arrow"
