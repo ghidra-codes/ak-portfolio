@@ -1,8 +1,0 @@
-// Optimize animation performance and prevent rendering artifacts during opacity/transform transitions
-.reveal-animation-item {
-	backface-visibility: hidden;
-	-webkit-backface-visibility: hidden;
-
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}

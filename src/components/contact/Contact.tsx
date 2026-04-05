@@ -1,7 +1,12 @@
 import { motion } from "motion/react";
 import { useState } from "react";
 import { FaRegPaperPlane } from "react-icons/fa6";
-import { EASE_OUT_BACK, EASE_OUT_SHARP, EASE_OUT_SLOW } from "@/constants/animations";
+import {
+	DEFAULT_VIEWPORT_MARGIN,
+	EASE_OUT_BACK,
+	EASE_OUT_SHARP,
+	EASE_OUT_SLOW,
+} from "@/constants/animations";
 import SectionHeader from "../layout/SectionHeader";
 import RevealAnimation from "../ui/RevealAnimation";
 import SlideFillButton from "../ui/SlideFillButton";
@@ -12,7 +17,11 @@ const Contact = () => {
 	const [showIcon, setShowIcon] = useState(false);
 
 	return (
-		<RevealAnimation className="contact-wrapper" onAnimationComplete={() => setRevealFinished(true)}>
+		<RevealAnimation
+			className="contact-wrapper"
+			onAnimationComplete={() => setRevealFinished(true)}
+			viewportMargin={DEFAULT_VIEWPORT_MARGIN}
+		>
 			<motion.div
 				className="contact-border"
 				initial={{ borderColor: "rgba(96, 96, 98, 0)", scale: 0.98 }}

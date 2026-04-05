@@ -5,12 +5,12 @@ type StaggerMeta = {
 	cols: number;
 };
 
-const STAGGER_STEP = 0.075;
+const STAGGER_STEP = 0.1;
 
 export const fadeInSimpleStaggered: Variants = {
 	initial: {
 		opacity: 0,
-		y: 65,
+		y: 40,
 	},
 	animate: ({ i, cols }: StaggerMeta) => {
 		const row = Math.floor(i / cols);
