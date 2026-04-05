@@ -3,11 +3,7 @@
 #contact {
 	@include section-container;
 	@include flex-center;
-	min-height: max(80vh, 700px);
-
-	@include respond(tablet) {
-		min-height: max(60vh, 600px);
-	}
+	min-height: clamp(550px, 68vh, 700px);
 }
 
 .contact-wrapper {
