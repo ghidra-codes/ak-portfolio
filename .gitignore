@@ -12,6 +12,7 @@ dist
 dist-ssr
 biome.json
 *.local
+*.tsbuildinfo
 
 # Editor directories and files
 .vscode/*
