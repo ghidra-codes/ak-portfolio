@@ -20,6 +20,7 @@ const TechStack = () => {
 	const sliderRef = useRef(null);
 	const isInView = useInView(sliderRef, { once: true, margin: "-50px" });
 	const isSmallScreen = useMediaQuery({ maxWidth: 768 });
+	const cols = 4;
 
 	const groupedByCategory = TECH_STACK.reduce((acc, tech) => {
 		(acc[tech.category] ??= []).push(tech);
@@ -42,7 +43,7 @@ const TechStack = () => {
 
 			{!isSmallScreen ? (
 				<div className="icon-wrapper" onMouseMove={handleMouseMove}>
-					{TECH_STACK.map(({ name, icon, category }, index) => {
+					{TECH_STACK.map(({ name, icon, category }, i) => {
 						const isHighlighted = !hoveredCategory || hoveredCategory === category;
 
 						return (
@@ -52,7 +53,7 @@ const TechStack = () => {
 								initial="initial"
 								whileInView="animate"
 								viewport={{ once: true, margin: "15px" }}
-								custom={index}
+								custom={{ i, cols }}
 							>
 								<TechStackIcon
 									name={name}

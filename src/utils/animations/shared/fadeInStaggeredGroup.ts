@@ -15,12 +15,12 @@ export const fadeInStaggeredGroup: {
 		},
 	},
 	item: {
-		hidden: { opacity: 0, y: 75 },
+		hidden: { opacity: 0, y: 28 },
 		show: {
 			opacity: 1,
 			y: 0,
 			transition: {
-				duration: 0.5,
+				duration: 0.45,
 				type: "tween",
 				ease: EASE_OUT_SLOW,
 			},
