@@ -34,7 +34,7 @@ const AboutContent = () => {
 				<RevealAnimation manualControl shouldAnimate={shouldAnimate}>
 					<h3>
 						<img src={heart} alt="Heart" className="about-section-icon" />
-						How I Found My Passion for Web Development
+						How I Found My Passion for Development
 					</h3>
 					<p>
 						It all started with a simple curiosity for how things work behind the scenes. I’ve
