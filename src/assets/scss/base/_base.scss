@@ -91,3 +91,9 @@ img {
 	display: inline-block;
 	width: 100%;
 }
+
+a:focus-visible,
+button:focus-visible {
+	outline: 2px solid $soft-light-blue;
+	outline-offset: 5px;
+}

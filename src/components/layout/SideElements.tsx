@@ -19,6 +19,7 @@ const SideElements = () => {
 							href="https://github.com/ghidra-codes"
 							target="_blank"
 							rel="noopener noreferrer"
+							aria-label="GitHub"
 							whileHover={{ y: -3.5 }}
 							transition={{ duration: 0.2, ease: EASE_IN_OUT_SMOOTH }}
 						>
@@ -31,6 +32,7 @@ const SideElements = () => {
 							href="https://www.linkedin.com/in/alexander-kallin-42588b326/"
 							target="_blank"
 							rel="noopener noreferrer"
+							aria-label="LinkedIn"
 							whileHover={{ y: -3.5 }}
 							transition={{ duration: 0.2, ease: EASE_IN_OUT_SMOOTH }}
 						>
@@ -43,6 +45,7 @@ const SideElements = () => {
 							href="https://www.instagram.com/kallin.kallin/"
 							target="_blank"
 							rel="noopener noreferrer"
+							aria-label="Instagram"
 							whileHover={{ y: -3.5 }}
 							transition={{ duration: 0.2, ease: EASE_IN_OUT_SMOOTH }}
 						>

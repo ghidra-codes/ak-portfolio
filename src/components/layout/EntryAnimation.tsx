@@ -35,7 +35,7 @@ const EntryAnimation = ({ onComplete }: { onComplete: () => void }) => {
 	const backgroundColor = colorTransition ? MAYA_BLUE : HONOLULU_BLUE;
 
 	return (
-		<motion.div className="entry-animation" ref={ref}>
+		<motion.div className="entry-animation" ref={ref} aria-hidden="true">
 			{isInView && (
 				<div className="logo-frame">
 					{[
@@ -89,7 +89,7 @@ const EntryAnimation = ({ onComplete }: { onComplete: () => void }) => {
 						/>
 					))}
 
-					<img src={logoText} alt="logo-text" className="logo-text-image" />
+					<img src={logoText} alt="" className="logo-text-image" />
 				</div>
 			)}
 		</motion.div>

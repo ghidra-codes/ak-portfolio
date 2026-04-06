@@ -11,11 +11,16 @@ export default function Footer() {
 			<div className="footer-inner">
 				{isSmallScreen && (
 					<div className="mobile-links">
-						<a href="mailto:akallin94@gmail.com">
+						<a href="mailto:akallin94@gmail.com" aria-label="Email Alexander Kallin">
 							<FiMail />
 						</a>
 
-						<a href="https://github.com/ghidra-codes" target="_blank" rel="noreferrer">
+						<a
+							href="https://github.com/ghidra-codes"
+							target="_blank"
+							rel="noreferrer"
+							aria-label="GitHub"
+						>
 							<FiGithub />
 						</a>
 
@@ -23,11 +28,17 @@ export default function Footer() {
 							href="https://www.linkedin.com/in/alexander-kallin-42588b326/"
 							target="_blank"
 							rel="noreferrer"
+							aria-label="LinkedIn"
 						>
 							<FiLinkedin />
 						</a>
 
-						<a href="https://www.instagram.com/kallin.kallin/" target="_blank" rel="noreferrer">
+						<a
+							href="https://www.instagram.com/kallin.kallin/"
+							target="_blank"
+							rel="noreferrer"
+							aria-label="Instagram"
+						>
 							<FiInstagram />
 						</a>
 					</div>

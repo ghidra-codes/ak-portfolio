@@ -8,7 +8,7 @@ type TechStackIconTouchProps = {
 const TechStackIconTouch: FC<TechStackIconTouchProps> = ({ icon, name }) => {
 	return (
 		<div className="icon-container">
-			<img src={icon} alt={`${name} icon`} />
+			<img src={icon} alt="" aria-hidden="true" />
 			<p className="icon-label">{name}</p>
 		</div>
 	);

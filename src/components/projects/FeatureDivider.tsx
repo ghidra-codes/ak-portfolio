@@ -7,7 +7,7 @@ const FeatureDivider = () => {
 			<div className="project-feature-divider-container">
 				<div className="feature-divider-line left" />
 
-				<FaRegFolder className="feature-divider-icon" />
+				<FaRegFolder className="feature-divider-icon" aria-hidden="true" />
 
 				<div className="feature-divider-line right" />
 			</div>

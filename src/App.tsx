@@ -5,9 +5,10 @@ import Footer from "./components/layout/Footer";
 import { EASE_OUT_SHARP } from "./constants/animations";
 import MainContent from "./layouts/MainContent";
 import SequentialLayout from "./layouts/SequentialLayout";
+import { prefersReducedMotion } from "./utils/helpers/prefersReducedMotion";
 
 function App() {
-	const [showEntry, setShowEntry] = useState(true);
+	const [showEntry, setShowEntry] = useState(!prefersReducedMotion());
 
 	useEffect(() => {
 		if ("ontouchstart" in window) document.body.classList.add("no-hover");
@@ -17,7 +18,7 @@ function App() {
 	return (
 		<AnimatePresence mode="wait">
 			{showEntry && (
-				<motion.div key="entry-root" className="entry-root">
+				<motion.div key="entry-root" className="entry-root" aria-hidden="true">
 					<motion.div
 						className="entry-background"
 						initial={{ opacity: 1 }}

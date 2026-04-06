@@ -32,7 +32,7 @@ const TechStackIcon: FC<TechStackIconProps> = ({
 			}}
 			transition={{ duration: 0.5, ease: "easeInOut" }}
 		>
-			<img src={icon} alt={`${name} icon`} />
+			<img src={icon} alt="" aria-hidden="true" />
 			<motion.p
 				className="icon-label"
 				animate={{

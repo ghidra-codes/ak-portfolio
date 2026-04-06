@@ -31,7 +31,7 @@ const CursorInfoBoxComponent: React.FC<CursorInfoBoxProps> = ({ x, y, icon, labe
 		>
 			<div className="info-wrapper">
 				<div className="info-icon-wrapper">
-					<img src={icon} alt="info-icon" />
+					<img src={icon} alt="" aria-hidden="true" />
 				</div>
 				<span className="info-label">{label}</span>
 			</div>

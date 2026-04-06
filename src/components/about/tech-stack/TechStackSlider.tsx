@@ -56,15 +56,16 @@ const TechStackSlider: FC<TechStackSliderProps> = ({ groupedByCategory, isInView
 								className="arrow arrow-left"
 								{...arrowProps}
 								src={rightArrow}
-								alt="Left arrow"
-								aria-label="Scroll left"
+								alt=""
+								aria-hidden="true"
 							/>
 
 							<div className="category-title">
 								<img
 									className="category-icon"
 									src={CATEGORY_INFO[category].icon}
-									alt={CATEGORY_INFO[category].label}
+									alt=""
+									aria-hidden="true"
 								/>
 								<p className="category-label">{CATEGORY_INFO[category].label}</p>
 							</div>
@@ -73,8 +74,8 @@ const TechStackSlider: FC<TechStackSliderProps> = ({ groupedByCategory, isInView
 								className="arrow arrow-right"
 								{...arrowProps}
 								src={rightArrow}
-								alt="Right arrow"
-								aria-label="Scroll right"
+								alt=""
+								aria-hidden="true"
 							/>
 						</div>
 					</div>

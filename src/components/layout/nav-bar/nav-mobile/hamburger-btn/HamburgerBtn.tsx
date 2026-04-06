@@ -20,6 +20,10 @@ const HamburgerBtn: FC<HamburgerBtnProps> = ({ onToggle, active }) => {
 				className="hamburger-button"
 				onClick={onToggle}
 				animate={active ? "open" : "closed"}
+				aria-expanded={active}
+				aria-controls="mobile-nav-menu"
+				aria-label={active ? "Close navigation menu" : "Open navigation menu"}
+				type="button"
 			>
 				{hamburgerBtnConfigs.map(({ key, style, variants }) => (
 					<motion.span key={key} style={style} variants={variants} className="hamburger-span" />

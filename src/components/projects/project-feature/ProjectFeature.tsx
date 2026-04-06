@@ -49,6 +49,7 @@ const ProjectFeature: FC<ProjectFeatureProps> = ({
 	return (
 		<div
 			id={id}
+			tabIndex={-1}
 			className={classNames("project-feature", {
 				"is-mobile": isSmallScreen,
 				"is-desktop": !isSmallScreen,

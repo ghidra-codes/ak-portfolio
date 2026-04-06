@@ -16,6 +16,7 @@ const MobileNavBar = () => {
 		<>
 			<motion.nav
 				className="navbar"
+				aria-label="Primary"
 				variants={{ hidden: { y: "-100%" }, visible: { y: 0 } }}
 				animate={isHidden ? "hidden" : "visible"}
 				transition={{ duration: 0.4, ease: "easeInOut" }}
@@ -40,6 +41,7 @@ const MobileNavBar = () => {
 					<motion.div
 						key="menu"
 						className="menu-wrapper"
+						id="mobile-nav-menu"
 						initial={{ x: "100%", opacity: 0 }}
 						animate={{ x: 0, opacity: 1 }}
 						exit={{ x: "100%", opacity: 0 }}

@@ -33,7 +33,7 @@ const AboutContent = () => {
 				</RevealAnimation>
 				<RevealAnimation manualControl shouldAnimate={shouldAnimate}>
 					<h3>
-						<img src={heart} alt="Heart" className="about-section-icon" />
+						<img src={heart} alt="" aria-hidden="true" className="about-section-icon" />
 						How I Found My Passion for Development
 					</h3>
 					<p>
@@ -48,7 +48,7 @@ const AboutContent = () => {
 			<div className="about-section">
 				<RevealAnimation manualControl shouldAnimate={shouldAnimate}>
 					<h3>
-						<img src={paintBrush} alt="Paint brush" className="about-section-icon" />
+						<img src={paintBrush} alt="" aria-hidden="true" className="about-section-icon" />
 						Why Details Matter
 					</h3>
 					<p>

@@ -1,3 +1,4 @@
+import { MotionConfig } from "motion/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
@@ -10,8 +11,10 @@ if (!rootElement) throw new Error("Root element with ID 'root' not found");
 
 ReactDOM.createRoot(rootElement).render(
 	<React.StrictMode>
-		<AnimationProvider>
-			<App />
-		</AnimationProvider>
+		<MotionConfig reducedMotion="user">
+			<AnimationProvider>
+				<App />
+			</AnimationProvider>
+		</MotionConfig>
 	</React.StrictMode>,
 );

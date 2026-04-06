@@ -64,6 +64,7 @@ const DesktopNavLinks = () => {
 								smoothScrollTo(section);
 							}}
 							className="navbar-link"
+							aria-current={isActive ? "location" : undefined}
 						>
 							{section}
 						</a>

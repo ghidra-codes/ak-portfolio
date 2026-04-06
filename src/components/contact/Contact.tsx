@@ -51,7 +51,7 @@ const Contact = () => {
 							delay: 0.2,
 						}}
 					>
-						<FaRegPaperPlane />
+						<FaRegPaperPlane aria-hidden="true" />
 					</motion.div>
 				</motion.div>
 			</motion.div>

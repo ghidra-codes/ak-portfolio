@@ -26,7 +26,7 @@ const DesktopNavBar = () => {
 	}, []);
 
 	return (
-		<motion.nav className="navbar">
+		<motion.nav className="navbar" aria-label="Primary">
 			<NavBarBrand />
 
 			<motion.div
