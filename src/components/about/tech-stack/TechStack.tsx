@@ -1,6 +1,6 @@
 import { motion, useInView } from "motion/react";
 import type { MouseEvent } from "react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import SectionDivider from "@/components/layout/SectionDivider";
 import CursorInfoBox from "@/components/ui/CursorInfoBox";
@@ -8,6 +8,7 @@ import { EASE_OUT_SLOW } from "@/constants/animations";
 import { CATEGORY_INFO, TECH_STACK } from "@/constants/techStack";
 import type { GroupedCategories } from "@/types/tech-stack.types";
 import { fadeInSimpleStaggered } from "@/utils/animations/tech-stack/fadeInSimpleStaggered";
+import { preloadTechStackIcons } from "@/utils/preloaders/preloadTechStackIcons";
 import RevealAnimation from "../../ui/RevealAnimation";
 import TechStackIcon from "./TechStackIcon";
 import TechStackSlider from "./TechStackSlider";
@@ -21,6 +22,11 @@ const TechStack = () => {
 	const isInView = useInView(sliderRef, { once: true, margin: "-50px" });
 	const isSmallScreen = useMediaQuery({ maxWidth: 768 });
 	const cols = 4;
+
+	// Preload all tech stack icons on mount to prevent loading delays
+	useEffect(() => {
+		preloadTechStackIcons();
+	}, []);
 
 	const groupedByCategory = TECH_STACK.reduce((acc, tech) => {
 		(acc[tech.category] ??= []).push(tech);
