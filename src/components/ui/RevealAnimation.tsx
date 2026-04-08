@@ -1,7 +1,11 @@
 import { motion, useAnimation, useInView } from "motion/react";
 import React, { useEffect, useRef } from "react";
+import { useMediaQuery } from "react-responsive";
 import type { MarginType } from "@/types/reveal-animation.types";
-import { fadeInStaggeredGroup } from "@/utils/animations/shared/fadeInStaggeredGroup";
+import {
+	fadeInStaggeredGroup,
+	fadeInStaggeredGroupMobile,
+} from "@/utils/animations/shared/fadeInStaggeredGroup";
 
 interface RevealAnimationProps {
 	children: React.ReactNode;
@@ -24,6 +28,10 @@ const RevealAnimation: React.FC<RevealAnimationProps> = ({
 }) => {
 	const controls = useAnimation();
 	const ref = useRef(null);
+	const isMobile = useMediaQuery({ maxWidth: 768 });
+
+	// Use mobile-optimized variant on smaller screens for better performance
+	const variants = isMobile ? fadeInStaggeredGroupMobile : fadeInStaggeredGroup;
 
 	const inView = useInView(ref, {
 		once: true,
@@ -52,7 +60,7 @@ const RevealAnimation: React.FC<RevealAnimationProps> = ({
 		<motion.div
 			ref={ref}
 			className={className}
-			variants={fadeInStaggeredGroup.container}
+			variants={variants.container}
 			initial="hidden"
 			animate={controls}
 			style={{ width: setFullWidth ? "100%" : undefined }}
@@ -63,7 +71,7 @@ const RevealAnimation: React.FC<RevealAnimationProps> = ({
 				return (
 					<motion.div
 						key={index}
-						variants={fadeInStaggeredGroup.item}
+						variants={variants.item}
 						onAnimationComplete={isLast ? onAnimationComplete : undefined}
 					>
 						{child}
