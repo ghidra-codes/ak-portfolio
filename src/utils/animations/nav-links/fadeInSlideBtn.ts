@@ -14,7 +14,7 @@ export const fadeInSlideBtn: Variants = {
 };
 
 export const fadeInSlideBtnSmallScreen: Variants = {
-	hidden: { opacity: 0, y: -70 },
+	hidden: { opacity: 0, y: -40 },
 	show: {
 		opacity: 1,
 		y: 0,

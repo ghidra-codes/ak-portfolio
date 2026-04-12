@@ -12,8 +12,9 @@ export const fadeInMobileImage: Variants = {
 		y: 0,
 		scale: 1,
 		transition: {
-			duration: 0.62,
+			duration: 0.48,
 			ease: EASE_OUT_SLOW,
+			type: "tween",
 		},
 	},
 };
@@ -29,8 +30,9 @@ export const fadeInMobileDescription: Variants = {
 		y: 0,
 		scale: 1,
 		transition: {
-			duration: 0.48,
+			duration: 0.36,
 			ease: EASE_IN_OUT,
+			type: "tween",
 		},
 	},
 };

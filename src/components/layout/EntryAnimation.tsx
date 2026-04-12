@@ -2,6 +2,7 @@ import { motion, useInView, type ValueTransition } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import logoText from "@/assets/images/logo/logo-text.png";
 import { EASE_OUT_SLOW, HONOLULU_BLUE, MAYA_BLUE } from "@/constants/animations";
+import { preloadNavbarLogo } from "@/utils/preloaders/preloadNavbarLogo";
 
 const backgroundColorTransition: ValueTransition = {
 	duration: 0.6,
@@ -18,6 +19,9 @@ const EntryAnimation = ({ onComplete }: { onComplete: () => void }) => {
 
 	useEffect(() => {
 		if (!isInView) return;
+
+		// Preload navbar logos at the start of entry animation
+		preloadNavbarLogo();
 
 		const colorTimer = setTimeout(() => setColorTransition(true), 600);
 		const glowStart = setTimeout(() => setGlowVisible(true), 775);

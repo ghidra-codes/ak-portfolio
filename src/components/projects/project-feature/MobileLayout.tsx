@@ -1,7 +1,6 @@
 import { motion } from "motion/react";
 import React, { useState } from "react";
 import TintedImage from "@/components/ui/TintedImage";
-import { DEFAULT_VIEWPORT_MARGIN } from "@/constants/animations";
 import type { ProjectFeatureLayoutProps } from "@/types/project-feature.types";
 import { fadeInSlideDownwardGroup } from "@/utils/animations/nav-links/fadeInSlideDownwardGroup";
 import {
@@ -36,7 +35,7 @@ const MobileLayout: React.FC<ProjectFeatureLayoutProps> = ({
 					variants={fadeInMobileImage}
 					initial="hidden"
 					whileInView="show"
-					viewport={{ once: true, margin: DEFAULT_VIEWPORT_MARGIN }}
+					viewport={{ once: true, margin: "-120px" }}
 					onAnimationComplete={triggerProjectIcons}
 				>
 					<TintedImage
@@ -64,7 +63,7 @@ const MobileLayout: React.FC<ProjectFeatureLayoutProps> = ({
 					variants={fadeInMobileDescription}
 					initial="hidden"
 					whileInView="show"
-					viewport={{ once: true, margin: "-80px" }}
+					viewport={{ once: true, margin: "-150px" }}
 					onAnimationComplete={triggerLinkIcons}
 				>
 					{description}
