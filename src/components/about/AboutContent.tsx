@@ -54,8 +54,8 @@ const AboutContent = () => {
 					<p>
 						Before I started working with code, I worked with paint — literally. My background as
 						a decorative painter taught me an important lesson: details shape everything. That
-						same mindset still drives how I approach development today. Whether it’s refining a
-						layout, structuring clean logic, or handling data consistently, I believe thoughtful
+						same mindset still drives how I approach development today. From refining a layout to
+						structuring clean logic and handling data consistently, I believe thoughtful
 						implementation creates a better experience.
 					</p>
 				</RevealAnimation>
