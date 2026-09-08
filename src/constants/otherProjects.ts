@@ -20,6 +20,17 @@ export const OTHER_PROJECTS: OtherProject[] = [
 		technologies: ["Laravel", "JavaScript", "MySQL"],
 	},
 	{
+		id: "glam-by-kt",
+		title: "Glam By KT",
+		description:
+			"Designed and developed a production website for a professional hair and makeup brand, with a focus on responsive design, accessibility, multilingual content, and a polished premium UI. I also used the project to explore an AI-assisted workflow with Lovable for early prototyping before continuing development manually.",
+		links: {
+			site: "https://glambykt.se/",
+			github: "https://github.com/ghidra-codes/glam-by-kt",
+		},
+		technologies: ["React", "TypeScript", "TanStack Start", "Tailwind CSS"],
+	},
+	{
 		id: "nadjas-levande-tradvard",
 		title: "Nadjas Levande Trädvård",
 		description:
