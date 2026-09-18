@@ -1,6 +1,6 @@
 @use "../abstracts/index" as *;
 
-.privacy-page {
+.information-page {
 	width: min(calc(100% - 3rem), 58rem);
 	padding: 5rem 0 6rem;
 
@@ -8,7 +8,7 @@
 		display: none;
 	}
 
-	.privacy-content {
+	.information-content {
 		padding: 3.5rem 4rem 4rem;
 		background-color: $rich-black-light;
 		border: 1px solid rgba($blue-gray, 0.25);
@@ -16,7 +16,7 @@
 		box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
 	}
 
-	.privacy-header {
+	.information-header {
 		display: block;
 		padding: 0 0 2rem;
 		margin: 0 0 2.25rem;
@@ -24,14 +24,14 @@
 		text-align: left;
 	}
 
-	.privacy-title {
+	.information-title {
 		@include fluid-type(h1);
 		margin: 0;
 		color: $blue-ivory;
 		line-height: 1.15;
 	}
 
-	.privacy-updated {
+	.information-meta {
 		@include fluid-type(small-label);
 		margin: 0.75rem 0 0;
 		color: $blue-gray;
@@ -40,7 +40,7 @@
 		letter-spacing: 0.04em;
 	}
 
-	.privacy-section-heading {
+	.information-section-heading {
 		@include fluid-type(h3);
 		margin: 2.5rem 0 0.75rem;
 		color: $blue-tint;
@@ -49,15 +49,15 @@
 		line-height: 1.35;
 	}
 
-	.privacy-copy {
+	.information-copy {
 		@include fluid-type(small-p);
 		margin: 0.75rem 0 0;
 		color: $brighter-jet;
 		line-height: 1.8;
 	}
 
-	.privacy-inline-link,
-	.privacy-return-link {
+	.information-inline-link,
+	.information-return-link {
 		color: $maya-blue;
 		text-decoration-color: rgba($maya-blue, 0.55);
 		text-decoration-line: underline;
@@ -74,7 +74,7 @@
 		}
 	}
 
-	.privacy-return-link {
+	.information-return-link {
 		display: inline-block;
 		margin-top: 3rem;
 		font-family: "Oxanium", sans-serif;
@@ -86,7 +86,7 @@
 		width: min(calc(100% - 2.5rem), 58rem);
 		padding: 3.5rem 0 4.5rem;
 
-		.privacy-content {
+		.information-content {
 			padding: 2.75rem 2.5rem 3rem;
 		}
 	}
@@ -95,20 +95,20 @@
 		width: calc(100% - 2rem);
 		padding: 2rem 0 3rem;
 
-		.privacy-content {
+		.information-content {
 			padding: 2rem 1.25rem 2.5rem;
 		}
 
-		.privacy-header {
+		.information-header {
 			padding: 0 0 1.5rem;
 			margin: 0 0 1.75rem;
 		}
 
-		.privacy-section-heading {
+		.information-section-heading {
 			margin-top: 2rem;
 		}
 
-		.privacy-return-link {
+		.information-return-link {
 			margin-top: 2.5rem;
 		}
 	}
