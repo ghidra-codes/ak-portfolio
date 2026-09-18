@@ -1,0 +1,115 @@
+@use "../abstracts/index" as *;
+
+.privacy-page {
+	width: min(calc(100% - 3rem), 58rem);
+	padding: 5rem 0 6rem;
+
+	&::after {
+		display: none;
+	}
+
+	.privacy-content {
+		padding: 3.5rem 4rem 4rem;
+		background-color: $rich-black-light;
+		border: 1px solid rgba($blue-gray, 0.25);
+		border-radius: 4px;
+		box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+	}
+
+	.privacy-header {
+		display: block;
+		padding: 0 0 2rem;
+		margin: 0 0 2.25rem;
+		border-bottom: 1px solid rgba($blue-gray, 0.25);
+		text-align: left;
+	}
+
+	.privacy-title {
+		@include fluid-type(h1);
+		margin: 0;
+		color: $blue-ivory;
+		line-height: 1.15;
+	}
+
+	.privacy-updated {
+		@include fluid-type(small-label);
+		margin: 0.75rem 0 0;
+		color: $blue-gray;
+		font-family: "Oxanium", sans-serif;
+		font-weight: 500;
+		letter-spacing: 0.04em;
+	}
+
+	.privacy-section-heading {
+		@include fluid-type(h3);
+		margin: 2.5rem 0 0.75rem;
+		color: $blue-tint;
+		font-family: "Oxanium", sans-serif;
+		font-weight: 600;
+		line-height: 1.35;
+	}
+
+	.privacy-copy {
+		@include fluid-type(small-p);
+		margin: 0.75rem 0 0;
+		color: $brighter-jet;
+		line-height: 1.8;
+	}
+
+	.privacy-inline-link,
+	.privacy-return-link {
+		color: $maya-blue;
+		text-decoration-color: rgba($maya-blue, 0.55);
+		text-decoration-line: underline;
+		text-decoration-thickness: 1px;
+		text-underline-offset: 0.2em;
+		transition:
+			color 0.2s ease,
+			text-decoration-color 0.2s ease;
+
+		&:hover,
+		&:focus-visible {
+			color: $soft-light-blue;
+			text-decoration-color: currentColor;
+		}
+	}
+
+	.privacy-return-link {
+		display: inline-block;
+		margin-top: 3rem;
+		font-family: "Oxanium", sans-serif;
+		font-weight: 500;
+		@include fluid-type(small-p);
+	}
+
+	@include respond(tablet) {
+		width: min(calc(100% - 2.5rem), 58rem);
+		padding: 3.5rem 0 4.5rem;
+
+		.privacy-content {
+			padding: 2.75rem 2.5rem 3rem;
+		}
+	}
+
+	@include respond(mobile) {
+		width: calc(100% - 2rem);
+		padding: 2rem 0 3rem;
+
+		.privacy-content {
+			padding: 2rem 1.25rem 2.5rem;
+		}
+
+		.privacy-header {
+			padding: 0 0 1.5rem;
+			margin: 0 0 1.75rem;
+		}
+
+		.privacy-section-heading {
+			margin-top: 2rem;
+		}
+
+		.privacy-return-link {
+			margin-top: 2.5rem;
+		}
+	}
+}

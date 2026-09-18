@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import me from "@/assets/images/me.jpg";
 import { useAnimationContext } from "@/hooks/useAnimationContext";
 import { fadeInSlideImage } from "@/utils/animations/header/fadeInSlideImage";
-import RevealAnimation from "../ui/RevealAnimation";
-import SlideFillButton from "../ui/SlideFillButton";
-import TintedImage from "../ui/TintedImage";
+import RevealAnimation from "@/components/ui/RevealAnimation";
+import SlideFillButton from "@/components/ui/SlideFillButton";
+import TintedImage from "@/components/ui/TintedImage";
 
 export default function Header() {
 	// animateHeader boolean initiates animation sequence

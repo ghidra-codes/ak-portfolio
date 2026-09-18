@@ -3,7 +3,6 @@ import { useMediaQuery } from "react-responsive";
 
 export default function Footer() {
 	const year = new Date().getFullYear();
-
 	const isSmallScreen = useMediaQuery({ maxWidth: 768 });
 
 	return (
@@ -44,7 +43,13 @@ export default function Footer() {
 					</div>
 				)}
 
-				<p className="info">Built by Alexander Kallin © {year}</p>
+				<div className="footer-bottom">
+					<p className="info">Built by Alexander Kallin © {year}</p>
+
+					<a className="privacy-link" href="/privacy">
+						Privacy Policy
+					</a>
+				</div>
 			</div>
 		</footer>
 	);

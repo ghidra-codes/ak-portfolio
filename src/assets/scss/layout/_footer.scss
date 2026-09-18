@@ -11,14 +11,36 @@ footer {
 		align-items: center;
 	}
 
-	p {
-		color: $blue-gray;
-		margin: 0;
+	.footer-bottom {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.5rem;
 		padding-bottom: 1rem;
-		white-space: nowrap;
-		@include fluid-type(small-label);
-		text-align: center;
-		font-weight: 500;
+
+		.info,
+		.privacy-link {
+			color: $blue-gray;
+			margin: 0;
+			white-space: nowrap;
+			text-align: center;
+			font-weight: 500;
+			@include fluid-type(small-label);
+		}
+
+		p.info {
+			line-height: 1;
+		}
+
+		.privacy-link {
+			@include fluid-type(xsmall-label);
+			text-decoration: none;
+
+			&:hover,
+			&:focus-visible {
+				text-decoration: underline;
+			}
+		}
 	}
 
 	.mobile-links {

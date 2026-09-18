@@ -9,7 +9,7 @@ import { CATEGORY_INFO, TECH_STACK } from "@/constants/techStack";
 import type { GroupedCategories } from "@/types/tech-stack.types";
 import { fadeInSimpleStaggered } from "@/utils/animations/tech-stack/fadeInSimpleStaggered";
 import { preloadTechStackIcons } from "@/utils/preloaders/preloadTechStackIcons";
-import RevealAnimation from "../../ui/RevealAnimation";
+import RevealAnimation from "@/components/ui/RevealAnimation";
 import TechStackIcon from "./TechStackIcon";
 import TechStackSlider from "./TechStackSlider";
 

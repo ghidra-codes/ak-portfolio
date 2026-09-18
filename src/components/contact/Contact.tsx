@@ -1,15 +1,15 @@
 import { motion } from "motion/react";
 import { useState } from "react";
 import { FaRegPaperPlane } from "react-icons/fa6";
+import SectionHeader from "@/components/layout/SectionHeader";
+import RevealAnimation from "@/components/ui/RevealAnimation";
+import SlideFillButton from "@/components/ui/SlideFillButton";
 import {
 	DEFAULT_VIEWPORT_MARGIN,
 	EASE_OUT_BACK,
 	EASE_OUT_SHARP,
 	EASE_OUT_SLOW,
 } from "@/constants/animations";
-import SectionHeader from "../layout/SectionHeader";
-import RevealAnimation from "../ui/RevealAnimation";
-import SlideFillButton from "../ui/SlideFillButton";
 
 const Contact = () => {
 	const [revealFinished, setRevealFinished] = useState(false);

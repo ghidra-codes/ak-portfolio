@@ -1,12 +1,12 @@
 import React from "react";
+import SectionDivider from "@/components/layout/SectionDivider";
+import SectionHeader from "@/components/layout/SectionHeader";
+import ProjectFeature from "@/components/projects/project-feature/ProjectFeature";
+import RevealAnimation from "@/components/ui/RevealAnimation";
 import { FEATURED_PROJECTS } from "@/constants/featuredProjects";
 import { PROJECT_ICONS } from "@/constants/projectIcons";
-import SectionDivider from "../layout/SectionDivider";
-import SectionHeader from "../layout/SectionHeader";
-import RevealAnimation from "../ui/RevealAnimation";
 import FeatureDivider from "./FeatureDivider";
 import OtherProjects from "./OtherProjects";
-import ProjectFeature from "./project-feature/ProjectFeature";
 
 export default function Projects() {
 	return (

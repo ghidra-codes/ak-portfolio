@@ -1,9 +1,10 @@
 import { MotionConfig } from "motion/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 import App from "./App";
-import "./assets/scss/main.scss";
-import { AnimationProvider } from "./context/AnimationContextProvider";
+import "@/assets/scss/main.scss";
+import { AnimationProvider } from "@/context/AnimationContextProvider";
 
 const rootElement = document.getElementById("root");
 
@@ -13,7 +14,9 @@ ReactDOM.createRoot(rootElement).render(
 	<React.StrictMode>
 		<MotionConfig reducedMotion="user">
 			<AnimationProvider>
-				<App />
+				<BrowserRouter>
+					<App />
+				</BrowserRouter>
 			</AnimationProvider>
 		</MotionConfig>
 	</React.StrictMode>,

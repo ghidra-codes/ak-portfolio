@@ -1,9 +1,9 @@
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
+import NavBarBrand from "@/components/layout/nav-bar/NavBarBrand";
 import SlideFillButton from "@/components/ui/SlideFillButton";
 import { SECTIONS } from "@/constants/sections";
 import { fadeInSlideBtn } from "@/utils/animations/nav-links/fadeInSlideBtn.js";
-import NavBarBrand from "../NavBarBrand";
 import DesktopNavLinks from "./DesktopNavLinks";
 
 const containerVariants = {
